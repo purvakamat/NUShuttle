@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class = "row dropoff">
+    <div class="col-xs-12">
+      <input placeholder="Dropoff Address"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="off"
+             type="text"
+             name="pickup"
+             class="form-control"
+             #search [formControl]="searchControl">
+    </div>
+  </div>
+  <div class="row dropoff">
+    <div class="col-xs-12">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="16" >
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconUrl"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+  <div class="row dropoff">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-success btn-block">Confirm Drop Off</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class = "container">
+  <div class = "row pickup">
+    <div class="col-xs-12">
+      <!--<input type ="text"-->
+             <!--name="pickupAddress"-->
+             <!--placeholder="Pickup Address"-->
+             <!--class="form-control"-->
+             <!--[(ngModel)]="pickupAddress"/>-->
+      <!--<span class="input-group-btn">-->
+               <!--<a (click)="searchLocation()" class="btn btn-default" type="button">-->
+                   <!--<span class="glyphicon glyphicon-search"></span>-->
+               <!--</a>-->
+      <!--</span>-->
+      <input placeholder="Pickup Address"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="off"
+             type="text"
+             name="pickup"
+             class="form-control"
+             #search [formControl]="searchControl">
+    </div>
+  </div>
+  <!--<div *ngFor="let loc of locations">-->
+    <!--<div class="row pickup">-->
+      <!--<div class="col-xs-5">-->
+        <!--<a (click)="showLocation(loc._id)">{{loc.name}}</a>-->
+      <!--</div>-->
+      <!--<div class="col-xs-4">-->
+        <!--<span>{{loc.latitude}}</span>-->
+      <!--</div>-->
+      <!--<div class="col-xs-3">-->
+        <!--<span>{{loc.longitude}}</span>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<agm-map [latitude]="lat" [longitude]="lng" [zoom]="17">-->
+
+    <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+
+  <!--</agm-map>-->
+  <div class="row pickup">
+    <div class="col-xs-12">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="16">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"
+                    [iconUrl]="iconUrl"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+  <div class="row pickup">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-primary btn-block">Confirm Pick Up</button>
+    </div>
+  </div>
+</div>
+
+
