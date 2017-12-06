@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nagm-map {\n  height: 500px;\n  width: 100%;\n}\n\nbody{\n  padding-top: 70px;\n}\n\n.navbar-default{\n  background-color: #428BCA;\n}\n\n.navbar-brand\n{\n  position: absolute;\n  width: 100%;\n  left: 0;\n  text-align: center;\n  margin:0 auto;\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\r\nagm-map {\r\n  height: 500px;\r\n  width: 100%;\r\n}\r\n\r\nbody{\r\n  padding-top: 70px;\r\n}\r\n\r\n.navbar-default{\r\n  background-color: #428BCA;\r\n}\r\n\r\n.navbar-brand\r\n{\r\n  position: absolute;\r\n  width: 100%;\r\n  left: 0;\r\n  text-align: center;\r\n  margin:0 auto;\r\n}\r\n", ""]);
 
 // exports
 
