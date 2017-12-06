@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { PickupComponent } from './components/pickup/pickup.component';
 import { AgmCoreModule } from '@agm/core';
 import { DropoffComponent } from './components/dropoff/dropoff.component';
-import {ShortestpathComponent} from "./components/shortestpath/shortestpath.component";
-import {LoginComponent} from "./components/user/login/login.component";
-import {ProfileComponent} from "./components/user/profile/profile.component";
-import {RegisterComponent} from "./components/user/register/register.component";
-import {Routing} from "./app.routing";
-import {UserService} from "./services/user.service.client";
+import {ShortestpathComponent} from './components/shortestpath/shortestpath.component';
+import {LoginComponent} from './components/user/login/login.component';
+import {ProfileComponent} from './components/user/profile/profile.component';
+import {RegisterComponent} from './components/user/register/register.component';
+import {Routing} from './app.routing';
+import {UserService} from './services/user.service.client';
 import { ApitestComponent } from './components/apitest/apitest.component';
+import { HomeComponent } from './components/user/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ApitestComponent } from './components/apitest/apitest.component';
     ProfileComponent,
     RegisterComponent,
     ApitestComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

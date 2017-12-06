@@ -93,12 +93,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routing__ = __webpack_require__("../../../../../src/app/app.routing.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_apitest_apitest_component__ = __webpack_require__("../../../../../src/app/components/apitest/apitest.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_user_home_home_component__ = __webpack_require__("../../../../../src/app/components/user/home/home.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -130,6 +132,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__components_user_profile_profile_component__["a" /* ProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_11__components_user_register_register_component__["a" /* RegisterComponent */],
             __WEBPACK_IMPORTED_MODULE_14__components_apitest_apitest_component__["a" /* ApitestComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_user_home_home_component__["a" /* HomeComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -161,6 +164,8 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_user_login_login_component__ = __webpack_require__("../../../../../src/app/components/user/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_user_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/user/profile/profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_apitest_apitest_component__ = __webpack_require__("../../../../../src/app/components/apitest/apitest.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_user_home_home_component__ = __webpack_require__("../../../../../src/app/components/user/home/home.component.ts");
+
 
 
 
@@ -170,7 +175,8 @@ var APP_ROUTES = [
     { path: 'apitest', component: __WEBPACK_IMPORTED_MODULE_4__components_apitest_apitest_component__["a" /* ApitestComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_1__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_2__components_user_login_login_component__["a" /* LoginComponent */] },
-    { path: 'user/:uid', component: __WEBPACK_IMPORTED_MODULE_3__components_user_profile_profile_component__["a" /* ProfileComponent */] }
+    { path: 'user/:uid', component: __WEBPACK_IMPORTED_MODULE_3__components_user_profile_profile_component__["a" /* ProfileComponent */] },
+    { path: 'user/:uid/home', component: __WEBPACK_IMPORTED_MODULE_5__components_user_home_home_component__["a" /* HomeComponent */] }
 ];
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(APP_ROUTES);
 //# sourceMappingURL=app.routing.js.map
@@ -198,7 +204,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/apitest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <app-pickup></app-pickup>\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Pick Up\n    </h2>\n  </div>\n  <app-dropoff></app-dropoff>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Drop Off\r\n    </h2>\r\n  </div>\r\n  <app-pickup></app-pickup>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Pick Up\r\n    </h2>\r\n  </div>\r\n  <app-dropoff></app-dropoff>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Optimum Route Finder\r\n    </h2>\r\n  </div>\r\n  <app-shortestpath></app-shortestpath>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -633,6 +639,67 @@ ShortestpathComponent = __decorate([
 
 var _a, _b, _c;
 //# sourceMappingURL=shortestpath.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/home/home.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".colorWhite{\r\n  color: white;\r\n}\r\n\r\n::before,::after {\r\n  box-sizing: border-box;\r\n}\r\n\r\n.shuttle {\r\n  margin: 20px auto;\r\n  max-width: 200px;\r\n}\r\n\r\n.cockpit {\r\n  height: 100px;\r\n  position: relative;\r\n  overflow: hidden;\r\n  text-align: center;\r\n  border-bottom: 5px solid #a6ada1;\r\n}\r\n\r\n.cockpit::before {\r\n   content: \"\";\r\n   display: block;\r\n   position: absolute;\r\n   height: 200px;\r\n   width: 100%;\r\n   border-radius: 30px;\r\n   border-right: 5px solid #a6ada1;\r\n   border-left: 5px solid #a6ada1;\r\n }\r\n\r\n.cockpit h4 {\r\n  width: 100%;\r\n  margin: 50px auto 20px auto;\r\n}\r\n\r\n.entry {\r\n  position: relative;\r\n  height: 50px;\r\n}\r\n\r\n.entry::after {\r\n   content: \"ENTRY\";\r\n   font-size: 14px;\r\n   display: block;\r\n   position: absolute;\r\n   background: green;\r\n   color: white;\r\n   top: 30%;\r\n   right: 0;\r\n }\r\n\r\n.shuttle-body {\r\n  border-right: 5px solid #a6ada1;\r\n  border-left: 5px solid #a6ada1;\r\n}\r\n\r\nol {\r\n  list-style :none;\r\n  padding-left: 10px;\r\n  margin: 0;\r\n}\r\n\r\n.seats {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: row;\r\n          flex-direction: row;\r\n  -ms-flex-wrap: nowrap;\r\n      flex-wrap: nowrap;\r\n  -webkit-box-pack: start;\r\n      -ms-flex-pack: start;\r\n          justify-content: flex-start;\r\n}\r\n\r\n\r\n.seat {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-flex: 0;\r\n      -ms-flex: 0 0 25%;\r\n          flex: 0 0 25%;\r\n  padding: 5px;\r\n  position: relative;\r\n}\r\n\r\n.seat input[type=radio] {\r\n  position: absolute;\r\n  opacity: 0;\r\n}\r\n\r\n.seat input[type=radio]:checked + label {\r\n  background: #9bef64;\r\n}\r\n\r\n.seat label {\r\n  display: block;\r\n  position: relative;\r\n  width: 100%;\r\n  text-align: center;\r\n  font-size: 14px;\r\n  padding: 4px 0;\r\n  background: #ef6464;\r\n  border-radius: 5px;\r\n}\r\n\r\n.seat label:hover {\r\n   cursor: pointer;\r\n   box-shadow: 0 0 0 2px #428BCA;\r\n }\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/home/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-sm-9\">\n        <div class=\"navbar-text pull-left\">\n          <a [routerLink]=\"['/user', userId, 'website']\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n\n        <div class=\" navbar-header hidden-xs\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Home</b>\n          </a>\n        </div>\n\n        <div class=\"navbar-text pull-right hidden-xs\">\n          <a class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n\n      <div class=\"col-sm-3\">\n        <a class=\"navbar-brand\">\n          <b class=\"colorWhite\">Schedules</b>\n        </a>\n      </div>\n\n    </div>\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"col-sm-9\">\n    <div class=\"shuttle\">\n      <div class=\"cockpit\">\n        <h4>Please select a seat</h4>\n      </div>\n      <div class=\"entry shuttle-body\">\n      </div>\n      <ol class=\"cabin shuttle-body\">\n        <li class=\"row\">\n          <ol class=\"seats\" type=\"A\">\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"1A\"/>\n              <label for=\"1A\">1A</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"1B\"/>\n              <label for=\"1B\">1B</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"1C\"/>\n              <label for=\"1C\">1C</label>\n            </li>\n          </ol>\n        </li>\n        <li class=\"row\">\n          <ol class=\"seats\" type=\"A\">\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"2A\"/>\n              <label for=\"2A\">2A</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"2B\"/>\n              <label for=\"2B\">2B</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"2C\"/>\n              <label for=\"2C\">2C</label>\n            </li>\n          </ol>\n        </li>\n        <li class=\"row\">\n          <ol class=\"seats\" type=\"A\">\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"3A\"/>\n              <label for=\"3A\">3A</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"3B\"/>\n              <label for=\"3B\">3B</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"3C\"/>\n              <label for=\"3C\">3C</label>\n            </li>\n          </ol>\n        </li>\n      </ol>\n    </div>\n  </div>\n\n  <div class=\"col-sm-3\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a href=\"#\">18:00</a>\n      </li>\n\n      <li class=\"list-group-item\">\n        <a href=\"#\">18:30</a>\n      </li>\n\n      <li class=\"list-group-item\">\n        <a href=\"#\">19:00</a>\n      </li>\n\n      <li class=\"list-group-item\">\n        <a href=\"#\">19:30</a>\n      </li>\n\n      <li class=\"list-group-item\">\n        <a href=\"#\">20:00</a>\n      </li>\n    </ul>\n  </div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/user/home/home.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    return HomeComponent;
+}());
+HomeComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-home',
+        template: __webpack_require__("../../../../../src/app/components/user/home/home.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/user/home/home.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], HomeComponent);
+
+//# sourceMappingURL=home.component.js.map
 
 /***/ }),
 
