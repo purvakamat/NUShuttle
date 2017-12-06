@@ -12,6 +12,22 @@
              [formControl]="searchControl">
     </div>
   </div>
+  <div>
+    <h4>
+      ORIGIN: {{shuttleOrigin}}
+    </h4>
+    <h4>
+      DESTINATON: {{shuttleDestination}}
+    </h4>
+  </div>
+  <div>
+    <h4>
+      DROP POINTS:
+    </h4>
+    <ul>
+      <li *ngFor="let w of waypoints">{{w.location}}</li>
+    </ul>
+  </div>
   <div class="row row-style">
     <div class="col-xs-12">
       <agm-map id="map"
@@ -29,13 +45,13 @@
               id="addDrop"
               type="button"
               class="btn btn-success btn-block"
-              (click)="addDropLocation()">Add Drop</button>
+              (click)="addDropLocation()">Add Drop Point</button>
     </div>
     <div class="col-xs-6">
       <button #findRoute
               id="findRoute"
               type="button"
-              class="btn btn-success btn-block"
+              class="btn btn-primary btn-block"
               (click)="findOptimumRoute()">Find Shortest Route</button>
     </div>
   </div>

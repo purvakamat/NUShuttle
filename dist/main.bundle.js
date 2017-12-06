@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -185,7 +185,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".row_style{\r\n  margin: 10pt;\r\n}\r\n", ""]);
 
 // exports
 
@@ -198,7 +198,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/apitest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <app-pickup></app-pickup>\n  <app-dropoff></app-dropoff>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <app-pickup></app-pickup>\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Pick Up\n    </h2>\n  </div>\n  <app-dropoff></app-dropoff>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
 
 /***/ }),
 
@@ -246,7 +246,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".dropoff {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n", ""]);
+exports.push([module.i, ".dropoff {\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -259,7 +259,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dropoff/dropoff.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n  <div class = \"row dropoff\">\n    <div class=\"col-xs-12\">\n      <input placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"pickup\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" class=\"btn btn-success btn-block\">Confirm Drop Off</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class = \"container\">\r\n  <div class = \"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"pickup\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-success btn-block\">Confirm Drop Off</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -355,7 +355,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".pickup {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n.gm-style div{color: #fff !important; font-weight: bold;}\n", ""]);
+exports.push([module.i, ".pickup {\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n.gm-style div{color: #fff !important; font-weight: bold;}\r\n", ""]);
 
 // exports
 
@@ -368,7 +368,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/pickup/pickup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n  <div class = \"row pickup\">\n    <div class=\"col-xs-12\">\n      <!--<input type =\"text\"-->\n             <!--name=\"pickupAddress\"-->\n             <!--placeholder=\"Pickup Address\"-->\n             <!--class=\"form-control\"-->\n             <!--[(ngModel)]=\"pickupAddress\"/>-->\n      <!--<span class=\"input-group-btn\">-->\n               <!--<a (click)=\"searchLocation()\" class=\"btn btn-default\" type=\"button\">-->\n                   <!--<span class=\"glyphicon glyphicon-search\"></span>-->\n               <!--</a>-->\n      <!--</span>-->\n      <input placeholder=\"Pickup Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"pickup\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <!--<div *ngFor=\"let loc of locations\">-->\n    <!--<div class=\"row pickup\">-->\n      <!--<div class=\"col-xs-5\">-->\n        <!--<a (click)=\"showLocation(loc._id)\">{{loc.name}}</a>-->\n      <!--</div>-->\n      <!--<div class=\"col-xs-4\">-->\n        <!--<span>{{loc.latitude}}</span>-->\n      <!--</div>-->\n      <!--<div class=\"col-xs-3\">-->\n        <!--<span>{{loc.longitude}}</span>-->\n      <!--</div>-->\n    <!--</div>-->\n  <!--</div>-->\n  <!--<agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"17\">-->\n\n    <!--<agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>-->\n\n  <!--</agm-map>-->\n  <div class=\"row pickup\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\">\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\"\n                    [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row pickup\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" class=\"btn btn-primary btn-block\">Confirm Pick Up</button>\n    </div>\n  </div>\n</div>\n\n\n"
+module.exports = "<div class = \"container\">\r\n  <div class = \"row pickup\">\r\n    <div class=\"col-xs-12\">\r\n      <!--<input type =\"text\"-->\r\n             <!--name=\"pickupAddress\"-->\r\n             <!--placeholder=\"Pickup Address\"-->\r\n             <!--class=\"form-control\"-->\r\n             <!--[(ngModel)]=\"pickupAddress\"/>-->\r\n      <!--<span class=\"input-group-btn\">-->\r\n               <!--<a (click)=\"searchLocation()\" class=\"btn btn-default\" type=\"button\">-->\r\n                   <!--<span class=\"glyphicon glyphicon-search\"></span>-->\r\n               <!--</a>-->\r\n      <!--</span>-->\r\n      <input placeholder=\"Pickup Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"pickup\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <!--<div *ngFor=\"let loc of locations\">-->\r\n    <!--<div class=\"row pickup\">-->\r\n      <!--<div class=\"col-xs-5\">-->\r\n        <!--<a (click)=\"showLocation(loc._id)\">{{loc.name}}</a>-->\r\n      <!--</div>-->\r\n      <!--<div class=\"col-xs-4\">-->\r\n        <!--<span>{{loc.latitude}}</span>-->\r\n      <!--</div>-->\r\n      <!--<div class=\"col-xs-3\">-->\r\n        <!--<span>{{loc.longitude}}</span>-->\r\n      <!--</div>-->\r\n    <!--</div>-->\r\n  <!--</div>-->\r\n  <!--<agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"17\">-->\r\n\r\n    <!--<agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>-->\r\n\r\n  <!--</agm-map>-->\r\n  <div class=\"row pickup\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\">\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\"\r\n                    [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n  <div class=\"row pickup\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-primary btn-block\">Confirm Pick Up</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -491,7 +491,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-style {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n\n", ""]);
+exports.push([module.i, ".row-style {\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -504,7 +504,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shortestpath/shortestpath.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n  <div class = \"row row-style\">\n    <div class=\"col-xs-12\">\n      <input #search\n             placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"search\"\n             class=\"form-control\"\n             [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row row-style\">\n    <div class=\"col-xs-12\">\n      <agm-map id=\"map\"\n               [latitude]=\"latitude\"\n               [longitude]=\"longitude\"\n               [scrollwheel]=\"false\"\n               [zoom]=\"16\">\n      </agm-map>\n    </div>\n  </div>\n\n  <div class=\"row row-style\">\n    <div class=\"col-xs-6\">\n      <button #addDrop\n              id=\"addDrop\"\n              type=\"button\"\n              class=\"btn btn-success btn-block\"\n              (click)=\"addDropLocation()\">Add Drop</button>\n    </div>\n    <div class=\"col-xs-6\">\n      <button #findRoute\n              id=\"findRoute\"\n              type=\"button\"\n              class=\"btn btn-success btn-block\"\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class = \"container\">\r\n  <div class = \"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <input #search\r\n             placeholder=\"Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"search\"\r\n             class=\"form-control\"\r\n             [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div>\r\n    <h4>\r\n      ORIGIN: {{shuttleOrigin}}\r\n    </h4>\r\n    <h4>\r\n      DESTINATON: {{shuttleDestination}}\r\n    </h4>\r\n  </div>\r\n  <div>\r\n    <h4>\r\n      DROP POINTS:\r\n    </h4>\r\n    <ul>\r\n      <li *ngFor=\"let w of waypoints\">{{w.location}}</li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map id=\"map\"\r\n               [latitude]=\"latitude\"\r\n               [longitude]=\"longitude\"\r\n               [scrollwheel]=\"false\"\r\n               [zoom]=\"16\">\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-6\">\r\n      <button #addDrop\r\n              id=\"addDrop\"\r\n              type=\"button\"\r\n              class=\"btn btn-success btn-block\"\r\n              (click)=\"addDropLocation()\">Add Drop Point</button>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <button #findRoute\r\n              id=\"findRoute\"\r\n              type=\"button\"\r\n              class=\"btn btn-primary btn-block\"\r\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -535,7 +535,8 @@ var ShortestpathComponent = (function () {
         this.latitude = 42.3404957;
         this.longitude = -71.0878975;
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-        this.pickUpLocation = 'Snell Library, Huntington Avenue, Boston, MA';
+        this.shuttleOrigin = 'Snell Library, Huntington Avenue, Boston, MA';
+        this.shuttleDestination = 'Snell Library, Huntington Avenue, Boston, MA';
         this.waypoints = [];
     }
     ShortestpathComponent.prototype.ngOnInit = function () {
@@ -596,8 +597,8 @@ var ShortestpathComponent = (function () {
         directionsDisplay.setMap(this.map);
         console.log(directionsDisplay);
         directionsService.route({
-            origin: this.pickUpLocation,
-            destination: this.pickUpLocation,
+            origin: this.shuttleOrigin,
+            destination: this.shuttleDestination,
             waypoints: this.waypoints,
             optimizeWaypoints: true,
             travelMode: google.maps.TravelMode.DRIVING
@@ -643,7 +644,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".login-elements {\n  margin-bottom: 10px;\n}\n", ""]);
+exports.push([module.i, ".login-elements {\r\n  margin-bottom: 10px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -656,7 +657,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\n    {{errorMsg}}\n  </div>\n  <h1>Login</h1>\n  <form (ngSubmit)=\"login()\" #form=\"ngForm\">\n    <input type=\"text\" class=\"form-control login-elements\" placeholder=\"username\" name=\"username\" ngModel required\n           #username=\"ngModel\"/>\n    <span class=\"errorMessage\" *ngIf=\"!username.valid && username.touched\">\n            Please enter valid username\n    </span>\n    <input type=\"password\" class=\"form-control login-elements\" placeholder=\"password\" name=\"password\" ngModel\n           required  #password=\"ngModel\"/>\n    <span class=\"errorMessage\" *ngIf=\"!password.valid && password.touched\">\n            Please enter valid password\n    </span>\n    <button class=\"btn btn-primary btn-block login-elements\" type=\"submit\" [disabled]=\"!form.valid\">Login</button>\n    <button class=\"btn btn-success btn-block login-elements\" type=\"submit\" [routerLink]=\"['/register']\">Register</button>\n  </form>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\r\n    {{errorMsg}}\r\n  </div>\r\n  <h1>Login</h1>\r\n  <form (ngSubmit)=\"login()\" #form=\"ngForm\">\r\n    <input type=\"text\" class=\"form-control login-elements\" placeholder=\"username\" name=\"username\" ngModel required\r\n           #username=\"ngModel\"/>\r\n    <span class=\"errorMessage\" *ngIf=\"!username.valid && username.touched\">\r\n            Please enter valid username\r\n    </span>\r\n    <input type=\"password\" class=\"form-control login-elements\" placeholder=\"password\" name=\"password\" ngModel\r\n           required  #password=\"ngModel\"/>\r\n    <span class=\"errorMessage\" *ngIf=\"!password.valid && password.touched\">\r\n            Please enter valid password\r\n    </span>\r\n    <button class=\"btn btn-primary btn-block login-elements\" type=\"submit\" [disabled]=\"!form.valid\">Login</button>\r\n    <button class=\"btn btn-success btn-block login-elements\" type=\"submit\" [routerLink]=\"['/register']\">Register</button>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -746,7 +747,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  profile works!\n</p>\n"
+module.exports = "<p>\r\n  profile works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -794,7 +795,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".regitser-elements {\n  margin-top: 10px;\n}\n", ""]);
+exports.push([module.i, ".regitser-elements {\r\n  margin-top: 10px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -807,7 +808,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <h1>Register</h1>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <div class=\"radio\">\n        <div class = \"col-xs-4\">\n          <label><input type=\"radio\" value=\"STUDENT\" [(ngModel)]=\"type\" name=\"userType\">Student</label>\n        </div>\n        <div class = \"col-xs-4\">\n          <label><input type=\"radio\" value=\"DRIVER\" [(ngModel)]=\"type\" name=\"userType\">Driver</label>\n        </div>\n        <div class = \"col-xs-4\">\n          <label><input type=\"radio\" value=\"NUPD\" [(ngModel)]=\"type\" name=\"userType\" disabled>NUPD</label>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"username\" type=\"text\"class=\"form-control\" [(ngModel)]=\"username\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"Email Address\" type=\"email\" class=\"form-control\" [(ngModel)]=\"emailId\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"password\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"verify password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"verifyPassword\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <a class=\"btn btn-primary btn-block\" (click)=\"createUser(username, password, verifyPassword, emailId, type)\">\n        Register</a>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <a class=\"btn btn-danger btn-block\" [routerLink]=\"['/login']\">Cancel</a>\n    </div>\n  </div>\n  <div class=\"row errorBlock\" [hidden]=\"!showError\">\n    <div class = \"col-sm-8 col-xs-11 col-sm-offset-4 col-xs-offset-1\">\n      <span class=\"errorMessage\">Please enter Username and Passwords</span>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <h1>Register</h1>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <div class=\"radio\">\r\n        <div class = \"col-xs-4\">\r\n          <label><input type=\"radio\" value=\"STUDENT\" [(ngModel)]=\"type\" name=\"userType\">Student</label>\r\n        </div>\r\n        <div class = \"col-xs-4\">\r\n          <label><input type=\"radio\" value=\"DRIVER\" [(ngModel)]=\"type\" name=\"userType\">Driver</label>\r\n        </div>\r\n        <div class = \"col-xs-4\">\r\n          <label><input type=\"radio\" value=\"NUPD\" [(ngModel)]=\"type\" name=\"userType\" disabled>NUPD</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"username\" type=\"text\"class=\"form-control\" [(ngModel)]=\"username\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"Email Address\" type=\"email\" class=\"form-control\" [(ngModel)]=\"emailId\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"password\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"verify password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"verifyPassword\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <a class=\"btn btn-primary btn-block\" (click)=\"createUser(username, password, verifyPassword, emailId, type)\">\r\n        Register</a>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <a class=\"btn btn-danger btn-block\" [routerLink]=\"['/login']\">Cancel</a>\r\n    </div>\r\n  </div>\r\n  <div class=\"row errorBlock\" [hidden]=\"!showError\">\r\n    <div class = \"col-sm-8 col-xs-11 col-sm-offset-4 col-xs-offset-1\">\r\n      <span class=\"errorMessage\">Please enter Username and Passwords</span>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 

@@ -16,7 +16,8 @@ export class ShortestpathComponent implements OnInit {
   iconUrl: any;
   waypoints: any[];
   currentLocation: string;
-  pickUpLocation: string;
+  shuttleOrigin: string;
+  shuttleDestination: string;
   searchControl: FormControl;
 
   @ViewChild('search')
@@ -31,7 +32,8 @@ export class ShortestpathComponent implements OnInit {
     this.latitude = 42.3404957;
     this.longitude = -71.0878975;
     this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
-    this.pickUpLocation = 'Snell Library, Huntington Avenue, Boston, MA';
+    this.shuttleOrigin = 'Snell Library, Huntington Avenue, Boston, MA';
+    this.shuttleDestination = 'Snell Library, Huntington Avenue, Boston, MA';
     this.waypoints = [];
   }
 
@@ -103,8 +105,8 @@ export class ShortestpathComponent implements OnInit {
     console.log(directionsDisplay);
 
     directionsService.route({
-      origin: this.pickUpLocation,
-      destination: this.pickUpLocation,
+      origin: this.shuttleOrigin,
+      destination: this.shuttleDestination,
       waypoints: this.waypoints,
       optimizeWaypoints: true,
       travelMode : google.maps.TravelMode.DRIVING
