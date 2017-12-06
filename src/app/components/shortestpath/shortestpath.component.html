@@ -1,0 +1,43 @@
+<div class = "container">
+  <div class = "row row-style">
+    <div class="col-xs-12">
+      <input #search
+             placeholder="Dropoff Address"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="off"
+             type="text"
+             name="search"
+             class="form-control"
+             [formControl]="searchControl">
+    </div>
+  </div>
+  <div class="row row-style">
+    <div class="col-xs-12">
+      <agm-map id="map"
+               [latitude]="latitude"
+               [longitude]="longitude"
+               [scrollwheel]="false"
+               [zoom]="16">
+      </agm-map>
+    </div>
+  </div>
+
+  <div class="row row-style">
+    <div class="col-xs-6">
+      <button #addDrop
+              id="addDrop"
+              type="button"
+              class="btn btn-success btn-block"
+              (click)="addDropLocation()">Add Drop</button>
+    </div>
+    <div class="col-xs-6">
+      <button #findRoute
+              id="findRoute"
+              type="button"
+              class="btn btn-success btn-block"
+              (click)="findOptimumRoute()">Find Shortest Route</button>
+    </div>
+  </div>
+
+</div>
