@@ -7,8 +7,8 @@
 }
 
 .shuttle {
-  margin: 20px auto;
-  max-width: 200px;
+  margin: 50px auto;
+  max-width: 500px;
 }
 
 .cockpit {
@@ -72,7 +72,7 @@ ol {
 
 .seat {
   display: flex;
-  flex: 0 0 25%;
+  flex: 0 0 32%;
   padding: 5px;
   position: relative;
 }
@@ -90,9 +90,10 @@ ol {
   display: block;
   position: relative;
   width: 100%;
+  height: 100px;
   text-align: center;
-  font-size: 14px;
-  padding: 4px 0;
+  font-size: 20px;
+  padding-top: 27%;
   background: #ef6464;
   border-radius: 5px;
 }
