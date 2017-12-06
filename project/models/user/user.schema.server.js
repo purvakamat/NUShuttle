@@ -6,7 +6,9 @@ var UserSchema = mongoose.Schema ({
   lastName: String,
   emailId: String,
   type: String,
-  pickUp: String,
-  dropOff: String,
+  pickup: String,
+  dropoff: String,
+  latitude: Number,
+  longitude: Number,
 }, {collection: 'user'});
 module.exports = UserSchema;

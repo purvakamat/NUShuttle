@@ -6,7 +6,8 @@
              autocapitalize="off"
              spellcheck="off"
              type="text"
-             name="pickup"
+             name="dropoff"
+             [(ngModel)]="dropoff"
              class="form-control"
              #search [formControl]="searchControl">
     </div>
@@ -20,7 +21,7 @@
   </div>
   <div class="row dropoff">
     <div class="col-xs-12">
-      <button type="button" class="btn btn-success btn-block">Confirm Drop Off</button>
+      <button type="button" class="btn btn-success btn-block" (click)="updateDropoff()">Confirm Drop Off</button>
     </div>
   </div>
 </div>

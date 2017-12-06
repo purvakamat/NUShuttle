@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core'
 import { FormControl} from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import {} from '@types/googlemaps';
+import {UserService} from '../../services/user.service.client';
+import {User} from '../../models/user.model.client';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-dropoff',
@@ -10,22 +13,52 @@ import {} from '@types/googlemaps';
 })
 export class DropoffComponent implements OnInit {
 
-  latitude: number;
-  longitude: number;
+  latitude: Number;
+  longitude: Number;
   searchControl: FormControl;
   zoom: number;
   iconUrl: any;
+  userId: String;
+  user: User;
+  username: String;
+  emailId: String;
+  firstName: String;
+  lastName: String;
+  type: String;
+  pickup: String;
+  dropoff: any;
   @ViewChild('search')
   searchElementRef: ElementRef;
-  constructor(private mapsAPILoader: MapsAPILoader,
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone) { }
 
   ngOnInit() {
-    this.latitude = 42.3404957;
-    this.longitude = -71.0878975;
+    this.route.params.subscribe(params => {
+      this.userId = params['uid'];
+      this.userService.findUserById(this.userId)
+        .subscribe((user: User) => {
+          this.user = user;
+          this.username = user.username;
+          this.emailId = user.emailId;
+          this.firstName = user.firstName;
+          this.lastName = user.lastName;
+          this.type = user.type;
+          this.pickup = user.pickup;
+          this.dropoff = user.dropoff;
+          this.latitude = user.latitude;
+          this.longitude = user.longitude;
+        });
+    });
+    // this.latitude = 42.3404957;
+    // this.longitude = -71.0878975;
     this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
     // create search FormControl
     this.searchControl = new FormControl();
+
+
 
     // set current position
     this.setCurrentPosition();
@@ -38,6 +71,7 @@ export class DropoffComponent implements OnInit {
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
           // get the place result
+          // console.log(autocomplete);
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
           // verify result
@@ -48,10 +82,26 @@ export class DropoffComponent implements OnInit {
           // set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
+          this.dropoff = place.formatted_address;
           this.zoom = 12;
         });
       });
     });
+  }
+  updateDropoff() {
+    // Remove this during final stages
+    if (!this.userId) {
+      return;
+    }
+    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type,
+      this.pickup, this.dropoff);
+    tempUser.latitude = this.latitude;
+    tempUser.longitude = this.longitude;
+    this.userService
+      .updateUser(this.userId, tempUser)
+      .subscribe((user) => {
+        this.user = user;
+      });
   }
   private setCurrentPosition() {
     if ('geolocation' in navigator) {

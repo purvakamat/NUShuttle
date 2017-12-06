@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   verifyPassword: String;
   emailId: String;
   type: String;
+  pickup: String = '360 Huntington Avenue, Boston, MA, United States';
+  dropoff: String = '360 Huntington Avenue, Boston, MA, United States';
   constructor(private userService: UserService, private  router: Router) { }
 
   ngOnInit() {
@@ -24,13 +26,15 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser(username: String, password: String, verifyPassword: String, emailId: String, type: String) {
-    console.log(type);
+    // console.log(type);
     this.username = username;
     this.password = password;
     this.verifyPassword = verifyPassword;
     this.emailId = emailId;
     if (password === verifyPassword) {
-      const tempUser = new User('', username, password, emailId, type);
+      const tempUser = new User('', username, password, emailId, type, this.pickup, this.dropoff);
+      tempUser.latitude = 42.3404;
+      tempUser.longitude = -71.0878;
       this.userService
         .findUserByUsername(username)
         .subscribe((user) => {

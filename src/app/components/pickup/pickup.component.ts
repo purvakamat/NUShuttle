@@ -2,6 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core'
 import { FormControl} from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import {} from '@types/googlemaps';
+import {ActivatedRoute} from '@angular/router';
+import {UserService} from '../../services/user.service.client';
+import {User} from '../../models/user.model.client';
+
 @Component({
   selector: 'app-pickup',
   templateUrl: './pickup.component.html',
@@ -10,26 +14,44 @@ import {} from '@types/googlemaps';
 
 export class PickupComponent implements OnInit {
 
-  // pickupAddress: any;
-  // locations = [];
-  // lat: Number;
-  // lng: Number;
-  latitude: number;
-  longitude: number;
+  latitude: Number;
+  longitude: Number;
   searchControl: FormControl;
   iconUrl: any;
   zoom: number;
+  userId: String;
+  user: User;
+  username: String;
+  emailId: String;
+  firstName: String;
+  lastName: String;
+  type: String;
+  pickup: String;
+  dropoff: String;
   @ViewChild('search')
   searchElementRef: ElementRef;
-  constructor(
-    // private http: Http,
-    //           private locationService: LocationService,
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
               private mapsAPILoader: MapsAPILoader,
               private ngZone: NgZone) { }
 
   ngOnInit() {
-    this.latitude = 42.3404957;
-    this.longitude = -71.0878975;
+    this.route.params.subscribe(params => {
+      this.userId = params['uid'];
+      this.userService.findUserById(this.userId)
+        .subscribe((user: User) => {
+          this.user = user;
+          this.username = user.username;
+          this.emailId = user.emailId;
+          this.firstName = user.firstName;
+          this.lastName = user.lastName;
+          this.type = user.type;
+          this.pickup = user.pickup;
+          this.dropoff = user.dropoff;
+          this.latitude = 42.340495;
+          this.longitude = -71.0878;
+        });
+    });
     this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
     // create search FormControl
@@ -56,37 +78,26 @@ export class PickupComponent implements OnInit {
           // set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
+          this.pickup = place.formatted_address;
           this.zoom = 12;
         });
       });
     });
   }
-
-
-  // searchLocation() {
-  //   this.locations = [];
-  //   this.locationService
-  //     .searchLocation(this.pickupAddress)
-  //     .subscribe((data: any) => {
-  //       const val = data._body;
-  //       const mapsOutput = JSON.parse(val);
-  //       const results = mapsOutput['results'];
-  //       for (let i = 0; i < results.length; i++) {
-  //         const lat = results[i].geometry.location.lat;
-  //         const lon = results[i].geometry.location.lng;
-  //         const name = results[i].formatted_address;
-  //         const _id = results[i].place_id;
-  //         const temp = {};
-  //         temp['latitude'] = lat;
-  //         temp['longitude'] = lon;
-  //         temp['name'] = name;
-  //         temp['_id'] = _id;
-  //         this.locations.push(temp);
-  //       }
-  //       console.log(this.locations);
-  //     });
-  //
-  // }
+  updatePickup() {
+    // Remove this during final stages
+    if (!this.userId) {
+      return;
+    }
+    console.log(this.pickup);
+    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type,
+      this.pickup, this.dropoff);
+    this.userService
+      .updateUser(this.userId, tempUser)
+      .subscribe((user) => {
+        this.user = user;
+      });
+  }
   private setCurrentPosition() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -96,12 +107,5 @@ export class PickupComponent implements OnInit {
     }
   }
 
-  // showLocation(_id: String) {
-  //   for (let i = 0; i < this.locations.length; i++) {
-  //     if (this.locations[i]._id === _id) {
-  //       this.lat = this.locations[i].latitude;
-  //       this.lng = this.locations[i].longitude;
-  //     }
-  //   }
-  // }
+
 }

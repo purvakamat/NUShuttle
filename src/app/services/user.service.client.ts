@@ -20,14 +20,14 @@ export class UserService {
         return response.json();
       });
   }
-  // findUserById(userId: String) {
-  //   const url = this.baseUrl + '/api/user/' + userId;
-  //   return this.http.get(url)
-  //     .map((response: Response) => {
-  //       return response.json();
-  //     });
-  // }
-  //
+  findUserById(userId: String) {
+    const url = this.baseUrl + '/api/user/' + userId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
   findUserByUsername(username: String) {
     const url = this.baseUrl + '/api/user?username=' + username;
     return this.http.get(url)
@@ -43,18 +43,19 @@ export class UserService {
           return response.json();
         });
   }
-  // updateUser(userId: String, user: User) {
-  //   const url = this.baseUrl + '/api/user/' + userId;
-  //   return this.http.put(url, user)
-  //     .map((response: Response) => {
-  //       return response.json();
-  //     });
-  // }
-  // deleteUser(userId: String) {
-  //   const url = this.baseUrl + '/api/user/' + userId;
-  //   return this.http.delete(url)
-  //     .map((response: Response) => {
-  //       return response.json();
-  //     });
-  // }
+  updateUser(userId: String, user: User) {
+    const url = this.baseUrl + '/api/user/' + userId;
+    return this.http.put(url, user)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+  deleteUser(userId: String) {
+    const url = this.baseUrl + '/api/user/' + userId;
+    return this.http.delete(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 }
+
