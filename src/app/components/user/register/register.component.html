@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <h1>Register</h1>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <div class="radio">
+        <div class = "col-xs-4">
+          <label><input type="radio" value="STUDENT" [(ngModel)]="type" name="userType">Student</label>
+        </div>
+        <div class = "col-xs-4">
+          <label><input type="radio" value="DRIVER" [(ngModel)]="type" name="userType">Driver</label>
+        </div>
+        <div class = "col-xs-4">
+          <label><input type="radio" value="NUPD" [(ngModel)]="type" name="userType" disabled>NUPD</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <input placeholder="username" type="text"class="form-control" [(ngModel)]="username"/>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <input placeholder="Email Address" type="email" class="form-control" [(ngModel)]="emailId"/>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <input placeholder="password" type="password" class="form-control" [(ngModel)]="password"/>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <input placeholder="verify password" type="password" class="form-control" [(ngModel)]="verifyPassword"/>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <a class="btn btn-primary btn-block" (click)="createUser(username, password, verifyPassword, emailId, type)">
+        Register</a>
+    </div>
+  </div>
+  <div class = "row regitser-elements">
+    <div class = "col-xs-12">
+      <a class="btn btn-danger btn-block" [routerLink]="['/login']">Cancel</a>
+    </div>
+  </div>
+  <div class="row errorBlock" [hidden]="!showError">
+    <div class = "col-sm-8 col-xs-11 col-sm-offset-4 col-xs-offset-1">
+      <span class="errorMessage">Please enter Username and Passwords</span>
+    </div>
+  </div>
+</div>
