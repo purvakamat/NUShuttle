@@ -93,9 +93,22 @@ ol {
   height: 100px;
   text-align: center;
   font-size: 20px;
-  padding-top: 27%;
+  padding-top: 25%;
   background: #ef6464;
-  border-radius: 5px;
+  border-radius: 15px;
+}
+
+.seat label::before {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background: rgba(255,255,255,.4);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .seat label:hover {
