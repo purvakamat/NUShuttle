@@ -14,6 +14,7 @@ import {Routing} from './app.routing';
 import {UserService} from './services/user.service.client';
 import { ApitestComponent } from './components/apitest/apitest.component';
 import { HomeComponent } from './components/user/home/home.component';
+import {DriverComponent} from './components/user/driver/driver.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HomeComponent } from './components/user/home/home.component';
     RegisterComponent,
     ApitestComponent,
     HomeComponent,
+    DriverComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,3 +44,4 @@ import { HomeComponent } from './components/user/home/home.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

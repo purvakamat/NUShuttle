@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user: User) => {
           // console.log(user);
-          if (user) {
+          if (user && user.type === 'STUDENT') {
             this.router.navigate(['/user', user._id, 'home']);
+          }else if (user && user.type === 'DRIVER') {
+            this.router.navigate(['/user', user._id, 'driver']);
           }},
         (error: any) => {
           this.errorFlag = true;

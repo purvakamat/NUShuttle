@@ -7,6 +7,7 @@ import {ApitestComponent} from './components/apitest/apitest.component';
 import {HomeComponent} from './components/user/home/home.component';
 import {PickupComponent} from './components/pickup/pickup.component';
 import {DropoffComponent} from './components/dropoff/dropoff.component';
+import {DriverComponent} from './components/user/driver/driver.component';
 
 const APP_ROUTES: Routes = [
   {path: 'apitest', component: ApitestComponent},
@@ -15,7 +16,8 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid', component: ProfileComponent},
   {path: 'user/:uid/home', component: HomeComponent},
   {path: 'user/:uid/pickup', component: PickupComponent},
-  {path: 'user/:uid/dropoff', component: DropoffComponent}
+  {path: 'user/:uid/dropoff', component: DropoffComponent},
+  {path: 'user/:uid/driver', component: DriverComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
