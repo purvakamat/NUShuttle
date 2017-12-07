@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var RideSchema = mongoose.Schema ({
   departure_time: {type: Date, default: Date.now},
   driver: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
+  vehicle_no: String,
   seat_count: Number,
   blocked_seats: Number,
   status: String,
