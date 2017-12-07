@@ -4,10 +4,10 @@ agm-map {
   width: 100%;
 }
 
-body{
-  padding-top: 70px;
+body {
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
-
 .navbar-default{
   background-color: #428BCA;
 }

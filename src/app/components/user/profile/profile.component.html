@@ -1,3 +1,32 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="navbar-text pull-left">
+          <a [routerLink]="['/user', userId, 'home']"
+             class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left colorWhite"></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class=" navbar-header">
+          <a class="navbar-brand">
+            <b class="colorWhite">Profile</b>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="navbar-text pull-right">
+          <a  class="navbar-link">
+            <span class="glyphicon glyphicon-ok colorWhite"
+                  (click)="updateUser(username, emailId, firstName, lastName)"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 <div class="container">
   <div class="row">
     <div class="form-group col-xs-12">
