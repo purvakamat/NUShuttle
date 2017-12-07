@@ -5,6 +5,7 @@ var RideSchema = mongoose.Schema ({
   seat_count: Number,
   blocked_seats: Number,
   status: String,
+  delay: {type: Number, default: 0},
   origin: String,
   destination: String,
   queue: [{type: mongoose.Schema.Types.ObjectId, ref: 'queue_slot'}]

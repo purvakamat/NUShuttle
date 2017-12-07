@@ -5,10 +5,10 @@ var UserSchema = mongoose.Schema ({
   firstName: String,
   lastName: String,
   emailId: String,
-  type: String,
-  pickup: String,
-  dropoff: String,
+  role: String,
+  dropoff_location: String,
   latitude: Number,
   longitude: Number,
+  ride: {type: mongoose.Schema.Types.ObjectId, ref: 'ride'}
 }, {collection: 'user'});
 module.exports = UserSchema;
