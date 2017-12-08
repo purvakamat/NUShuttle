@@ -22,7 +22,9 @@ module.exports = function (app) {
   function getAllRides(req, res) {
     var count = req.params['count'];
     rideModel.getAllRides(count).then(function (rides) {
-      res.json(rides);
+      if(rides.length <= count)
+        res.json(rides);
+      res.json(rides.slice(0,count));
     });
   }
 

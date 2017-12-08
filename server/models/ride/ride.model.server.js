@@ -25,12 +25,9 @@ function updateRide(ride) {
   return RideModel.updateOne(ride);
 }
 
-function getAllRides(count) {
+function getAllRides() {
   var current_time = new Date();
-  var rides = RideModel.find({departure_time: {$gte : current_time}});
-  if(rides.length <= count)
-    return rides;
-  return rides.slice(0,count);
+  return RideModel.find({departure_time: {$gte : current_time}});
 }
 
 function addToQueue(rideID, queueSlot) {

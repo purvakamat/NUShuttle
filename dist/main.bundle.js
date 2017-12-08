@@ -222,7 +222,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/apitest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Drop Off\r\n    </h2>\r\n  </div>\r\n  <app-pickup></app-pickup>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Pick Up\r\n    </h2>\r\n  </div>\r\n  <app-dropoff></app-dropoff>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Optimum Route Finder\r\n    </h2>\r\n  </div>\r\n  <app-shortestpath></app-shortestpath>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <app-pickup></app-pickup>\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Pick Up\n    </h2>\n  </div>\n  <app-dropoff></app-dropoff>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
 
 /***/ }),
 
