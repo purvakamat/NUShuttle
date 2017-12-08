@@ -17,6 +17,7 @@ import { HomeComponent } from './components/user/home/home.component';
 import {DriverComponent} from './components/user/driver/driver.component';
 import {RideService} from './services/ride.service.client';
 import {QueueSlotService} from './services/queueslot.service.client'
+import {HomeService} from "./services/home.service.client";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import {QueueSlotService} from './services/queueslot.service.client'
       libraries: ['places']
     })
   ],
-  providers: [HttpModule, UserService, RideService, QueueSlotService],
+  providers: [HttpModule, UserService, RideService, QueueSlotService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

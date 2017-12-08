@@ -99,25 +99,11 @@
 
   <div class="col-sm-3">
     <ul class="list-group">
-      <li class="list-group-item">
-        <a href="#">18:00</a>
-      </li>
-
-      <li class="list-group-item">
-        <a href="#">18:30</a>
-      </li>
-
-      <li class="list-group-item">
-        <a href="#">19:00</a>
-      </li>
-
-      <li class="list-group-item">
-        <a href="#">19:30</a>
-      </li>
-
-      <li class="list-group-item">
-        <a href="#">20:00</a>
-      </li>
+      <div *ngFor="let ride of fetchRides()">
+        <li class="list-group-item">
+          <a href="#">{{ride.departure_time}}</a>
+        </li>
+      </div>
     </ul>
   </div>
 

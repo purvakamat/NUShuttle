@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { User} from '../../../models/user.model.client';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../../models/user.model.client';
 import {ActivatedRoute} from '@angular/router';
-import { UserService} from '../../../services/user.service.client';
+import {UserService} from '../../../services/user.service.client';
+import {Ride} from '../../../models/ride.model.client';
+import {HomeService} from '../../../services/home.service.client';
 
 @Component({
   selector: 'app-home',
@@ -18,11 +20,15 @@ export class HomeComponent implements OnInit {
   type: String;
   pickup: String;
   dropoff: String;
+  rides: Ride[];
+
   constructor(private userService: UserService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private homeService: HomeService) {
+  }
 
   ngOnInit() {
-    this.route.params.subscribe(params =>  {
+    this.route.params.subscribe(params => {
       this.userId = params['uid'];
       this.userService.findUserById(this.userId)
         .subscribe((user: User) => {
@@ -35,7 +41,14 @@ export class HomeComponent implements OnInit {
           this.pickup = user.pickup;
           this.dropoff = user.dropoff;
         });
+      this.homeService.findAllRides()
+        .subscribe((rides: Ride[]) => {
+          this.rides = rides;
+        });
     });
   }
 
+  fetchRides() {
+    return this.rides;
+  }
 }
