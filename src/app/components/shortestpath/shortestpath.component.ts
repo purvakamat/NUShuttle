@@ -1,7 +1,7 @@
 import {Component, OnInit, NgZone, ElementRef, ViewChild} from '@angular/core';
 import {MapsAPILoader, AgmMap} from '@agm/core';
 import {} from '@types/googlemaps';
-import {FormControl} from "@angular/forms";
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-shortestpath',
@@ -86,8 +86,8 @@ export class ShortestpathComponent implements OnInit {
     }
   }
 
-  private addDropLocation(){
-    if(this.currentLocation != undefined){
+  private addDropLocation() {
+    if (!this.currentLocation) {
       this.waypoints.push({
         location: this.currentLocation,
         stopover: true
@@ -98,9 +98,9 @@ export class ShortestpathComponent implements OnInit {
 
   private findOptimumRoute(){
 
-    console.log("map loaded");
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
+    console.log('map loaded');
+    const directionsService = new google.maps.DirectionsService();
+    const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(this.map);
     console.log(directionsDisplay);
 

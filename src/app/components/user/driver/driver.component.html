@@ -20,11 +20,28 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-3 hidden-xs">
-        <label>My Schedules</label>
+    <div class="col-xs-12">
+        <h2>My Schedules</h2>
         <ul class="list-group">
           <li *ngFor="let ride of rides" class="list-group-item">
-            <button>{{ride.departure_time | date:'shortTime'}}</button>
+            <div class="row">
+              <div class="col-xs-3">
+                <span>Departure Time</span>
+                <a [routerLink]="['/user', userId, 'driver', 'ride' , ride._id]">{{ride.departure_time | date:'medium'}}</a>
+              </div>
+              <div class="col-xs-3">
+                <span>Seat Count</span>
+                <span>{{ride.seat_count}}</span>
+              </div>
+              <div class="col-xs-3">
+                <span>Status</span>
+                <span>{{ride.status}}</span>
+              </div>
+              <div class="col-xs-3">
+                <span>Delay</span>
+                <span>{{ride.delay}}</span>
+              </div>
+            </div>
           </li>
         </ul>
     </div>

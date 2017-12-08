@@ -10,7 +10,7 @@ export class DriverService {
   baseUrl = environment.baseUrl;
 
   findRidesByUser(userId: String) {
-    const url = this.baseUrl + '/api/rides/driver';
+    const url = this.baseUrl + '/api/rides/driver/' + userId;
     console.log(url);
     return this.http.get(url)
       .map((response: Response) => {
