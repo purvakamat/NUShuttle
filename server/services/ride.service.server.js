@@ -3,6 +3,7 @@ module.exports = function (app) {
   app.post("/api/ride", createRide);
   app.get("/api/rides/:count", getAllRides);
   app.get("/api/ride/:rideId", findRideById);
+  app.get("/api/rides/driver", getRidesForDriver);
   app.put("/api/ride/:rideId/queue", addToQueue);
   app.put("/api/ride/:rideId/status", updateRideStatus);
   app.put("/api/ride/:rideId", updateRide);
@@ -86,6 +87,17 @@ module.exports = function (app) {
         res.json("Ride status updated");
       else
         res.status(404).send("Ride status cannot be updated");
+    });
+  }
+
+  function getRidesForDriver(req, res) {
+    var driver = req.body;
+
+    rideModel.getRidesForDriver(driver).then(function (rides) {
+      if(rides)
+        res.json(rides);
+      else
+        res.status(404).send("Rides for driver cannot be found.");
     });
   }
 };

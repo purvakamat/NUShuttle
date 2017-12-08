@@ -9,6 +9,7 @@ RideModel.getAllRides = getAllRides;
 RideModel.addToQueue = addToQueue;
 RideModel.updateRideStatus = updateRideStatus;
 RideModel.deleteRide = deleteRide;
+RideModel.getRidesForDriver = getRidesForDriver;
 
 module.exports = RideModel;
 
@@ -42,6 +43,10 @@ function updateRideStatus(rideID, status, delay) {
 
 function deleteRide(rideId) {
   return RideModel.deleteOne({_id: rideId});
+}
+
+function getRidesForDriver(driver) {
+  return RideModel.find({driver: driver});
 }
 
 
