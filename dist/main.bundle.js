@@ -434,7 +434,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/apitest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <div class = \"row dropoff\">\n    <div class=\"col-xs-12\">\n      <input placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"dropoff\"\n             [(ngModel)]=\"dropoff\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"updateDropoff()\">Confirm Drop Off</button>\n    </div>\n  </div>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <div class = \"row dropoff\">\n    <div class=\"col-xs-12\">\n      <input placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"dropoff\"\n             [(ngModel)]=\"dropoff\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"updateDropoff()\">Confirm Drop Off</button>\n    </div>\n  </div>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
 
 /***/ }),
 
@@ -870,29 +870,29 @@ var ShortestpathComponent = (function () {
     ShortestpathComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.userId = params['uid'];
-            _this.rideId = params['rid'];
-            _this.queueslotService
-                .findQueueSlotByRideId(_this.rideId)
-                .subscribe(function (queueSlots) {
-                // console.log(queueSlots);
-                var user1 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'abc', 'q1', 'q1', 'STUDENT', '1179 Boylston St, Boston, MA 02215, USA');
-                user1.firstName = 'Nisarg';
-                user1.lastName = 'Shah';
-                var user2 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'q2', 'q2', 'q2', 'STUDENT', '75 Peterborough St, Boston, MA 02215, USA');
-                user2.firstName = 'Purva';
-                user2.lastName = 'Kamat';
-                var queueSlot1 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user1, _this.rideId);
-                var queueSlot2 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user2, _this.rideId);
-                _this.queueSlots = queueSlots;
-                _this.queueSlots.push(queueSlot1);
-                _this.queueSlots.push(queueSlot2);
-                // console.log(this.queueSlots);
-                for (var index = 0; index < _this.queueSlots.length; index++) {
-                    var temp = queueSlots[index].student.dropoff_location;
-                    _this.addDropLocation(temp);
-                }
-            });
+            _this.userId = params['uid'] || '0';
+            _this.rideId = params['rid'] || '0';
+            // this.queueslotService
+            // .findQueueSlotByRideId(this.rideId)
+            // .subscribe((queueSlots: QueueSlot[]) => {
+            // console.log(queueSlots);
+            var user1 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'abc', 'q1', 'q1', 'STUDENT', '1179 Boylston St, Boston, MA 02215, USA');
+            user1.firstName = 'Nisarg';
+            user1.lastName = 'Shah';
+            var user2 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'q2', 'q2', 'q2', 'STUDENT', '75 Peterborough St, Boston, MA 02215, USA');
+            user2.firstName = 'Purva';
+            user2.lastName = 'Kamat';
+            var queueSlot1 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user1, _this.rideId);
+            var queueSlot2 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user2, _this.rideId);
+            _this.queueSlots = [];
+            _this.queueSlots.push(queueSlot1);
+            _this.queueSlots.push(queueSlot2);
+            // console.log(this.queueSlots);
+            for (var index = 0; index < _this.queueSlots.length; index++) {
+                var temp = _this.queueSlots[index].student.dropoff_location;
+                _this.addDropLocation(temp);
+            }
+            //
         });
         // create search FormControl
         this.searchControl = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]();
