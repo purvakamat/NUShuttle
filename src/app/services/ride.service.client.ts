@@ -11,7 +11,7 @@ export class RideService {
   baseUrl = environment.baseUrl;
 
   findRideById(rideId: String) {
-    const url = 'http://localhost:3100' + '/api/ride/' + rideId;
+    const url = this.baseUrl + '/api/ride/' + rideId;
     console.log(url);
     return this.http.get(url)
       .map((response: Response) => {
@@ -20,7 +20,7 @@ export class RideService {
   }
 
   createRide(user: Ride) {
-    const url = 'http://localhost:3100' + '/api/ride/';
+    const url = this.baseUrl + '/api/ride/';
     return this.http.post(url, user)
       .map((response: Response) => {
         return response.json();

@@ -45,9 +45,8 @@ export class DropoffComponent implements OnInit {
           this.emailId = user.emailId;
           this.firstName = user.firstName;
           this.lastName = user.lastName;
-          this.type = user.type;
-          this.pickup = user.pickup;
-          this.dropoff = user.dropoff;
+          this.type = user.role;
+          this.dropoff = user.dropoff_location
           this.latitude = user.latitude;
           this.longitude = user.longitude;
         });
@@ -93,8 +92,7 @@ export class DropoffComponent implements OnInit {
     if (!this.userId) {
       return;
     }
-    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type,
-      this.pickup, this.dropoff);
+    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type, this.dropoff);
     tempUser.latitude = this.latitude;
     tempUser.longitude = this.longitude;
     this.userService

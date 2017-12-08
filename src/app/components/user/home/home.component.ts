@@ -37,9 +37,8 @@ export class HomeComponent implements OnInit {
           this.emailId = user.emailId;
           this.firstName = user.firstName;
           this.lastName = user.lastName;
-          this.type = user.type;
-          this.pickup = user.pickup;
-          this.dropoff = user.dropoff;
+          this.type = user.role;
+          this.dropoff = user.dropoff_location;
         });
       this.homeService.findAllRides()
         .subscribe((rides: Ride[]) => {

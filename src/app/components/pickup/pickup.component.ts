@@ -14,20 +14,13 @@ import {User} from '../../models/user.model.client';
 
 export class PickupComponent implements OnInit {
 
-  latitude: Number;
-  longitude: Number;
   searchControl: FormControl;
   iconUrl: any;
   zoom: number;
   userId: String;
-  user: User;
-  username: String;
-  emailId: String;
-  firstName: String;
-  lastName: String;
-  type: String;
-  pickup: String;
-  dropoff: String;
+  latitude: Number = 42.340495;
+  longitude: Number =  -71.0878;
+  pickup: String = '360 Huntington Avenue, Boston, MA, United States';
   @ViewChild('search')
   searchElementRef: ElementRef;
   constructor(private userService: UserService,
@@ -38,19 +31,6 @@ export class PickupComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
-      this.userService.findUserById(this.userId)
-        .subscribe((user: User) => {
-          this.user = user;
-          this.username = user.username;
-          this.emailId = user.emailId;
-          this.firstName = user.firstName;
-          this.lastName = user.lastName;
-          this.type = user.type;
-          this.pickup = user.pickup;
-          this.dropoff = user.dropoff;
-          this.latitude = 42.340495;
-          this.longitude = -71.0878;
-        });
     });
     this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
@@ -78,7 +58,6 @@ export class PickupComponent implements OnInit {
           // set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          this.pickup = place.formatted_address;
           this.zoom = 12;
         });
       });
@@ -89,14 +68,6 @@ export class PickupComponent implements OnInit {
     if (!this.userId) {
       return;
     }
-    console.log(this.pickup);
-    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type,
-      this.pickup, this.dropoff);
-    this.userService
-      .updateUser(this.userId, tempUser)
-      .subscribe((user) => {
-        this.user = user;
-      });
   }
   private setCurrentPosition() {
     if ('geolocation' in navigator) {

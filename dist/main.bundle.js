@@ -191,6 +191,8 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_admin_schedule_panel_schedule_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_admin_driver_panel_driver_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_shortestpath_shortestpath_component__ = __webpack_require__("../../../../../src/app/components/shortestpath/shortestpath.component.ts");
+
 
 
 
@@ -214,7 +216,8 @@ var APP_ROUTES = [
     { path: 'user/:uid/driver', component: __WEBPACK_IMPORTED_MODULE_8__components_user_driver_driver_component__["a" /* DriverComponent */] },
     { path: 'user/:uid/admin/schedule-panel', component: __WEBPACK_IMPORTED_MODULE_9__components_admin_schedule_panel_schedule_panel_component__["a" /* SchedulePanelComponent */] },
     { path: 'user/:uid/admin/driver-panel', component: __WEBPACK_IMPORTED_MODULE_10__components_admin_driver_panel_driver_panel_component__["a" /* DriverPanelComponent */] },
-    { path: 'user/:uid/admin/setting-panel', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */] }
+    { path: 'user/:uid/admin/setting-panel', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */] },
+    { path: 'user/:uid/driver/ride/:rid', component: __WEBPACK_IMPORTED_MODULE_12__components_shortestpath_shortestpath_component__["a" /* ShortestpathComponent */] }
 ];
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(APP_ROUTES);
 //# sourceMappingURL=app.routing.js.map
@@ -534,9 +537,8 @@ var DropoffComponent = (function () {
                 _this.emailId = user.emailId;
                 _this.firstName = user.firstName;
                 _this.lastName = user.lastName;
-                _this.type = user.type;
-                _this.pickup = user.pickup;
-                _this.dropoff = user.dropoff;
+                _this.type = user.role;
+                _this.dropoff = user.dropoff_location;
                 _this.latitude = user.latitude;
                 _this.longitude = user.longitude;
             });
@@ -577,7 +579,7 @@ var DropoffComponent = (function () {
         if (!this.userId) {
             return;
         }
-        var tempUser = new __WEBPACK_IMPORTED_MODULE_4__models_user_model_client__["a" /* User */](this.userId, this.username, this.user.password, this.emailId, this.type, this.pickup, this.dropoff);
+        var tempUser = new __WEBPACK_IMPORTED_MODULE_4__models_user_model_client__["a" /* User */](this.userId, this.username, this.user.password, this.emailId, this.type, this.dropoff);
         tempUser.latitude = this.latitude;
         tempUser.longitude = this.longitude;
         this.userService
@@ -650,7 +652,6 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -665,31 +666,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var PickupComponent = (function () {
     function PickupComponent(userService, route, mapsAPILoader, ngZone) {
         this.userService = userService;
         this.route = route;
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
+        this.latitude = 42.340495;
+        this.longitude = -71.0878;
+        this.pickup = '360 Huntington Avenue, Boston, MA, United States';
     }
     PickupComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
             _this.userId = params['uid'];
-            _this.userService.findUserById(_this.userId)
-                .subscribe(function (user) {
-                _this.user = user;
-                _this.username = user.username;
-                _this.emailId = user.emailId;
-                _this.firstName = user.firstName;
-                _this.lastName = user.lastName;
-                _this.type = user.type;
-                _this.pickup = user.pickup;
-                _this.dropoff = user.dropoff;
-                _this.latitude = 42.340495;
-                _this.longitude = -71.0878;
-            });
         });
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
         // create search FormControl
@@ -712,25 +702,16 @@ var PickupComponent = (function () {
                     // set latitude, longitude and zoom
                     _this.latitude = place.geometry.location.lat();
                     _this.longitude = place.geometry.location.lng();
-                    _this.pickup = place.formatted_address;
                     _this.zoom = 12;
                 });
             });
         });
     };
     PickupComponent.prototype.updatePickup = function () {
-        var _this = this;
         // Remove this during final stages
         if (!this.userId) {
             return;
         }
-        console.log(this.pickup);
-        var tempUser = new __WEBPACK_IMPORTED_MODULE_5__models_user_model_client__["a" /* User */](this.userId, this.username, this.user.password, this.emailId, this.type, this.pickup, this.dropoff);
-        this.userService
-            .updateUser(this.userId, tempUser)
-            .subscribe(function (user) {
-            _this.user = user;
-        });
     };
     PickupComponent.prototype.setCurrentPosition = function () {
         var _this = this;
@@ -769,7 +750,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-style {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n\n", ""]);
+exports.push([module.i, ".row-style {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n.colorWhite{\n  color: white;\n}\n\n", ""]);
 
 // exports
 
@@ -782,7 +763,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shortestpath/shortestpath.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n  <div class = \"row row-style\">\n    <div class=\"col-xs-12\">\n      <input #search\n             placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"search\"\n             class=\"form-control\"\n             [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div>\n    <h4>\n      ORIGIN: {{shuttleOrigin}}\n    </h4>\n    <h4>\n      DESTINATON: {{shuttleDestination}}\n    </h4>\n  </div>\n  <div>\n    <h4>\n      DROP POINTS:\n    </h4>\n    <ul>\n      <li *ngFor=\"let w of waypoints\">{{w.location}}</li>\n    </ul>\n  </div>\n  <div class=\"row row-style\">\n    <div class=\"col-xs-12\">\n      <agm-map id=\"map\"\n               [latitude]=\"latitude\"\n               [longitude]=\"longitude\"\n               [scrollwheel]=\"false\"\n               [zoom]=\"16\">\n      </agm-map>\n    </div>\n  </div>\n\n  <div class=\"row row-style\">\n    <div class=\"col-xs-6\">\n      <button #addDrop\n              id=\"addDrop\"\n              type=\"button\"\n              class=\"btn btn-success btn-block\"\n              (click)=\"addDropLocation()\">Add Drop Point</button>\n    </div>\n    <div class=\"col-xs-6\">\n      <button #findRoute\n              id=\"findRoute\"\n              type=\"button\"\n              class=\"btn btn-primary btn-block\"\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-left\">\n          <a [routerLink]=\"['/user', userId, 'driver']\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Ride</b>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class = \"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Ride Information:</label>\n      <label>{{this.rideId}}</label>\n    </div>\n  </div>\n  <div class = \"row row-style\">\n    <div class=\"col-xs-12\">\n      <input #search\n             placeholder=\"Add a Custom Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"search\"\n             class=\"form-control\"\n             disabled\n             [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-6\">\n      <label>ORIGIN</label>\n    </div>\n    <div class=\"col-xs-6\">\n      <span>{{shuttleOrigin}}</span>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-6\">\n      <label>DESTINATION</label>\n    </div>\n    <div class=\"col-xs-6\">\n      <span>{{shuttleDestination}}</span>\n    </div>\n  </div>\n  <hr />\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>STUDENTS</label>\n    </div>\n  </div>\n  <ul class=\"list-group\">\n    <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\n      <div class=\"row\">\n        <div class=\"col-xs-2\">\n          {{queueSlot.student.firstName}}\n        </div>\n        <div class=\"col-xs-2\">\n          {{queueSlot.student.lastName}}\n        </div>\n        <div class=\"col-xs-4\">\n          {{queueSlot.student.dropoff_location}}\n        </div>\n        <div class=\"col-xs-2\">\n          <button type=\"button\" class=\"btn btn-primary btn-xs\">Check In</button>\n        </div>\n      </div>\n    </li>\n  </ul>\n  <div class=\"row row-style\">\n    <div class=\"col-xs-12\">\n      <button #findRoute\n              id=\"findRoute\"\n              type=\"button\"\n              class=\"btn btn-primary btn-block\"\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\n    </div>\n  </div>\n  <div class=\"row row-style\">\n    <div class=\"col-xs-12\">\n      <agm-map id=\"map\"\n               [latitude]=\"latitude\"\n               [longitude]=\"longitude\"\n               [scrollwheel]=\"false\"\n               [zoom]=\"16\">\n      </agm-map>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -794,6 +775,10 @@ module.exports = "<div class = \"container\">\n  <div class = \"row row-style\">
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__ = __webpack_require__("../../../../../src/app/services/queueslot.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__ = __webpack_require__("../../../../../src/app/models/queueslot.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -806,10 +791,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var ShortestpathComponent = (function () {
-    function ShortestpathComponent(mapsAPILoader, ngZone) {
+    function ShortestpathComponent(mapsAPILoader, queueslotService, ngZone, route) {
         this.mapsAPILoader = mapsAPILoader;
+        this.queueslotService = queueslotService;
         this.ngZone = ngZone;
+        this.route = route;
         this.latitude = 42.3404957;
         this.longitude = -71.0878975;
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
@@ -819,6 +810,31 @@ var ShortestpathComponent = (function () {
     }
     ShortestpathComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.rideId = params['rid'];
+            _this.queueslotService
+                .findQueueSlotByRideId(_this.rideId)
+                .subscribe(function (queueSlots) {
+                // console.log(queueSlots);
+                var user1 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'abc', 'q1', 'q1', 'STUDENT', '1179 Boylston St, Boston, MA 02215, USA');
+                user1.firstName = 'Nisarg';
+                user1.lastName = 'Shah';
+                var user2 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'q2', 'q2', 'q2', 'STUDENT', '75 Peterborough St, Boston, MA 02215, USA');
+                user2.firstName = 'Purva';
+                user2.lastName = 'Kamat';
+                var queueSlot1 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user1, _this.rideId);
+                var queueSlot2 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user2, _this.rideId);
+                _this.queueSlots = queueSlots;
+                _this.queueSlots.push(queueSlot1);
+                _this.queueSlots.push(queueSlot2);
+                // console.log(this.queueSlots);
+                for (var index = 0; index < _this.queueSlots.length; index++) {
+                    var temp = queueSlots[index].student.dropoff_location;
+                    _this.addDropLocation(temp);
+                }
+            });
+        });
         // create search FormControl
         this.searchControl = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]();
         // set current position
@@ -842,7 +858,7 @@ var ShortestpathComponent = (function () {
                     _this.longitude = place.geometry.location.lng();
                     _this.zoom = 12;
                     _this.currentLocation = place.formatted_address;
-                    console.log(_this.currentLocation);
+                    // console.log(this.currentLocation);
                 });
             });
         });
@@ -859,21 +875,23 @@ var ShortestpathComponent = (function () {
             });
         }
     };
-    ShortestpathComponent.prototype.addDropLocation = function () {
-        if (!this.currentLocation) {
+    ShortestpathComponent.prototype.addDropLocation = function (dropOffLocation) {
+        if (dropOffLocation) {
+            // console.log('Adding DropOffLocation: ' + dropOffLocation);
             this.waypoints.push({
-                location: this.currentLocation,
+                location: dropOffLocation,
                 stopover: true
             });
-            console.log(this.waypoints);
+            // console.log('testing');
+            // console.log(this.waypoints);
         }
     };
     ShortestpathComponent.prototype.findOptimumRoute = function () {
-        console.log('map loaded');
+        // console.log('map loaded');
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer();
         directionsDisplay.setMap(this.map);
-        console.log(directionsDisplay);
+        // console.log(directionsDisplay);
         directionsService.route({
             origin: this.shuttleOrigin,
             destination: this.shuttleDestination,
@@ -882,7 +900,7 @@ var ShortestpathComponent = (function () {
             travelMode: google.maps.TravelMode.DRIVING
         }, function (response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
-                console.log(directionsDisplay);
+                // console.log(directionsDisplay);
                 directionsDisplay.setDirections(response);
             }
             else {
@@ -906,10 +924,10 @@ ShortestpathComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/shortestpath/shortestpath.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/shortestpath/shortestpath.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _e || Object])
 ], ShortestpathComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=shortestpath.component.js.map
 
 /***/ }),
@@ -935,7 +953,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/driver/driver.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4 col-xs-offset-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Dashboard</b>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-right\">\n          <a  class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n        <h2>My Schedules</h2>\n        <ul class=\"list-group\">\n          <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\n            <div class=\"row\">\n              <div class=\"col-xs-3\">\n                <span>Departure Time</span>\n                <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\n              </div>\n              <div class=\"col-xs-3\">\n                <span>Seat Count</span>\n                <span>{{ride.seat_count}}</span>\n              </div>\n              <div class=\"col-xs-3\">\n                <span>Status</span>\n                <span>{{ride.status}}</span>\n              </div>\n              <div class=\"col-xs-3\">\n                <span>Delay</span>\n                <span>{{ride.delay}}</span>\n              </div>\n            </div>\n          </li>\n        </ul>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4 col-xs-offset-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Dashboard</b>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-right\">\n          <a  class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <h2>My Rides</h2>\n      <ul class=\"list-group\">\n        <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\n          <div class=\"row\">\n            <div class=\"col-xs-3\">\n              <span>Departure Time</span>\n              <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\n            </div>\n            <div class=\"col-xs-3\">\n              <span>Seat Count</span>\n              <span>{{ride.seat_count}}</span>\n            </div>\n            <div class=\"col-xs-3\">\n              <span>Status</span>\n              <span>{{ride.status}}</span>\n            </div>\n            <div class=\"col-xs-3\">\n              <span>Delay</span>\n              <span>{{ride.delay}}</span>\n            </div>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -976,12 +994,12 @@ var DriverComponent = (function () {
             _this.driverService
                 .findRidesByUser(_this.userId)
                 .subscribe(function (rides) {
-                var newRide = new __WEBPACK_IMPORTED_MODULE_2__models_ride_model_client__["a" /* Ride */]('123', new Date(new Date().getTime() - 2000000), _this.userId);
-                var newRide1 = new __WEBPACK_IMPORTED_MODULE_2__models_ride_model_client__["a" /* Ride */]('456', new Date(), _this.userId);
+                console.log(rides);
+                var newRide = new __WEBPACK_IMPORTED_MODULE_2__models_ride_model_client__["a" /* Ride */]('123', new Date(new Date().getTime() - 2000000), '200');
+                var newRide1 = new __WEBPACK_IMPORTED_MODULE_2__models_ride_model_client__["a" /* Ride */]('456', new Date(), '100');
                 _this.rides = rides;
                 _this.rides.push(newRide);
                 _this.rides.push(newRide1);
-                console.log(_this.rides);
             });
         });
     };
@@ -1065,9 +1083,8 @@ var HomeComponent = (function () {
                 _this.emailId = user.emailId;
                 _this.firstName = user.firstName;
                 _this.lastName = user.lastName;
-                _this.type = user.type;
-                _this.pickup = user.pickup;
-                _this.dropoff = user.dropoff;
+                _this.type = user.role;
+                _this.dropoff = user.dropoff_location;
             });
             _this.homeService.findAllRides()
                 .subscribe(function (rides) {
@@ -1158,10 +1175,10 @@ var LoginComponent = (function () {
         this.userService.findUserByCredentials(this.username, this.password)
             .subscribe(function (user) {
             // console.log(user);
-            if (user && user.type === 'STUDENT') {
+            if (user && user.role === 'STUDENT') {
                 _this.router.navigate(['/user', user._id, 'home']);
             }
-            else if (user && user.type === 'DRIVER') {
+            else if (user && user.role === 'DRIVER') {
                 _this.router.navigate(['/user', user._id, 'driver']);
             }
         }, function (error) {
@@ -1253,15 +1270,14 @@ var ProfileComponent = (function () {
                 _this.emailId = user.emailId;
                 _this.firstName = user.firstName;
                 _this.lastName = user.lastName;
-                _this.type = user.type;
-                _this.pickup = user.pickup;
-                _this.dropoff = user.dropoff;
+                _this.type = user.role;
+                _this.dropoff = user.dropoff_location;
             });
         });
     };
     ProfileComponent.prototype.updateUser = function (userName, emailId, firstName, lastName) {
         var _this = this;
-        var tempUser = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */](this.userId, userName, this.user.password, this.emailId, this.type, this.pickup, this.dropoff);
+        var tempUser = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */](this.userId, userName, this.user.password, this.emailId, this.type, this.dropoff);
         tempUser.emailId = emailId;
         tempUser.firstName = firstName;
         tempUser.lastName = lastName;
@@ -1347,7 +1363,6 @@ var RegisterComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.user = __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */];
-        this.pickup = '360 Huntington Avenue, Boston, MA, United States';
         this.dropoff = '360 Huntington Avenue, Boston, MA, United States';
     }
     RegisterComponent.prototype.ngOnInit = function () {
@@ -1361,7 +1376,7 @@ var RegisterComponent = (function () {
         this.verifyPassword = verifyPassword;
         this.emailId = emailId;
         if (password === verifyPassword) {
-            var tempUser_1 = new __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */]('', username, password, emailId, type, this.pickup, this.dropoff);
+            var tempUser_1 = new __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */]('', username, password, emailId, type, this.dropoff);
             tempUser_1.latitude = 42.3404;
             tempUser_1.longitude = -71.0878;
             this.userService
@@ -1399,6 +1414,24 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/models/queueslot.model.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QueueSlot; });
+var QueueSlot = (function () {
+    function QueueSlot(_id, student, _ride) {
+        this._id = _id;
+        this.student = student;
+        this._ride = _ride;
+    }
+    return QueueSlot;
+}());
+
+//# sourceMappingURL=queueslot.model.client.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/models/ride.model.client.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1423,14 +1456,13 @@ var Ride = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var User = (function () {
-    function User(_id, username, password, emailId, type, pickup, dropoff) {
+    function User(_id, username, password, emailId, role, dropoff_location) {
         this._id = _id;
         this.username = username;
         this.password = password;
         this.emailId = emailId;
-        this.type = type;
-        this.pickup = pickup;
-        this.dropoff = dropoff;
+        this.role = role;
+        this.dropoff_location = dropoff_location;
     }
     return User;
 }());
@@ -1560,6 +1592,15 @@ var QueueSlotService = (function () {
         this.http = http;
         this.baseUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].baseUrl;
     }
+    QueueSlotService.prototype.findQueueSlotByRideId = function (rideId) {
+        // console.log(this.baseUrl);
+        var url = this.baseUrl + '/api/ride/' + rideId + '/queue';
+        // console.log(url);
+        return this.http.get(url)
+            .map(function (response) {
+            return response.json();
+        });
+    };
     return QueueSlotService;
 }());
 QueueSlotService = __decorate([
@@ -1600,7 +1641,7 @@ var RideService = (function () {
         this.baseUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].baseUrl;
     }
     RideService.prototype.findRideById = function (rideId) {
-        var url = 'http://localhost:3100' + '/api/ride/' + rideId;
+        var url = this.baseUrl + '/api/ride/' + rideId;
         console.log(url);
         return this.http.get(url)
             .map(function (response) {
@@ -1608,7 +1649,7 @@ var RideService = (function () {
         });
     };
     RideService.prototype.createRide = function (user) {
-        var url = 'http://localhost:3100' + '/api/ride/';
+        var url = this.baseUrl + '/api/ride/';
         return this.http.post(url, user)
             .map(function (response) {
             return response.json();

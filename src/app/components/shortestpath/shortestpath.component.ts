@@ -2,6 +2,10 @@ import {Component, OnInit, NgZone, ElementRef, ViewChild} from '@angular/core';
 import {MapsAPILoader, AgmMap} from '@agm/core';
 import {} from '@types/googlemaps';
 import {FormControl} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {QueueSlotService} from '../../services/queueslot.service.client';
+import {QueueSlot} from "../../models/queueslot.model.client";
+import {User} from "../../models/user.model.client";
 
 @Component({
   selector: 'app-shortestpath',
@@ -19,7 +23,9 @@ export class ShortestpathComponent implements OnInit {
   shuttleOrigin: string;
   shuttleDestination: string;
   searchControl: FormControl;
-
+  rideId: String;
+  userId: String;
+  queueSlots: QueueSlot[];
   @ViewChild('search')
   searchElementRef: ElementRef;
 
@@ -28,7 +34,9 @@ export class ShortestpathComponent implements OnInit {
   map: any;
 
   constructor(private mapsAPILoader: MapsAPILoader,
-              private ngZone: NgZone) {
+              private queueslotService: QueueSlotService,
+              private ngZone: NgZone,
+              private route: ActivatedRoute) {
     this.latitude = 42.3404957;
     this.longitude = -71.0878975;
     this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
@@ -38,6 +46,33 @@ export class ShortestpathComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.userId = params['uid'];
+      this.rideId = params['rid'];
+      this.queueslotService
+        .findQueueSlotByRideId(this.rideId)
+        .subscribe((queueSlots: QueueSlot[]) => {
+          // console.log(queueSlots);
+          const user1 = new User('', 'abc', 'q1', 'q1', 'STUDENT',
+            '1179 Boylston St, Boston, MA 02215, USA');
+          user1.firstName = 'Nisarg';
+          user1.lastName = 'Shah';
+          const user2 = new User('', 'q2', 'q2', 'q2', 'STUDENT',
+            '75 Peterborough St, Boston, MA 02215, USA');
+          user2.firstName = 'Purva';
+          user2.lastName = 'Kamat';
+          const queueSlot1 = new QueueSlot('', user1, this.rideId);
+          const queueSlot2 = new QueueSlot('', user2, this.rideId);
+          this.queueSlots = queueSlots;
+          this.queueSlots.push(queueSlot1);
+          this.queueSlots.push(queueSlot2);
+          // console.log(this.queueSlots);
+          for (let index = 0; index < this.queueSlots.length; index++) {
+            const temp = queueSlots[index].student.dropoff_location;
+            this.addDropLocation(temp);
+          }
+        });
+    });
     // create search FormControl
     this.searchControl = new FormControl();
 
@@ -66,7 +101,7 @@ export class ShortestpathComponent implements OnInit {
           this.zoom = 12;
 
           this.currentLocation = place.formatted_address;
-          console.log(this.currentLocation);
+          // console.log(this.currentLocation);
         });
       });
     });
@@ -86,23 +121,25 @@ export class ShortestpathComponent implements OnInit {
     }
   }
 
-  private addDropLocation() {
-    if (!this.currentLocation) {
+  addDropLocation(dropOffLocation: String) {
+    if (dropOffLocation) {
+      // console.log('Adding DropOffLocation: ' + dropOffLocation);
       this.waypoints.push({
-        location: this.currentLocation,
+        location: dropOffLocation,
         stopover: true
       });
-      console.log(this.waypoints);
+      // console.log('testing');
+      // console.log(this.waypoints);
     }
   }
 
-  private findOptimumRoute(){
+  private findOptimumRoute() {
 
-    console.log('map loaded');
+    // console.log('map loaded');
     const directionsService = new google.maps.DirectionsService();
     const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(this.map);
-    console.log(directionsDisplay);
+    // console.log(directionsDisplay);
 
     directionsService.route({
       origin: this.shuttleOrigin,
@@ -112,7 +149,7 @@ export class ShortestpathComponent implements OnInit {
       travelMode : google.maps.TravelMode.DRIVING
     }, function(response, status) {
       if (status === google.maps.DirectionsStatus.OK) {
-        console.log(directionsDisplay);
+        // console.log(directionsDisplay);
         directionsDisplay.setDirections(response);
       } else {
         window.alert('Directions request failed due to ' + status);

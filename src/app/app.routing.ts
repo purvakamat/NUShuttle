@@ -11,6 +11,7 @@ import {DriverComponent} from './components/user/driver/driver.component';
 import {SchedulePanelComponent} from './components/admin/schedule-panel/schedule-panel.component';
 import {DriverPanelComponent} from './components/admin/driver-panel/driver-panel.component';
 import {SettingPanelComponent} from './components/admin/setting-panel/setting-panel.component';
+import {ShortestpathComponent} from './components/shortestpath/shortestpath.component';
 
 const APP_ROUTES: Routes = [
   {path: 'apitest', component: ApitestComponent},
@@ -23,7 +24,8 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/driver', component: DriverComponent},
   {path: 'user/:uid/admin/schedule-panel', component: SchedulePanelComponent},
   {path: 'user/:uid/admin/driver-panel', component: DriverPanelComponent},
-  {path: 'user/:uid/admin/setting-panel', component: SettingPanelComponent}
+  {path: 'user/:uid/admin/setting-panel', component: SettingPanelComponent},
+  {path: 'user/:uid/driver/ride/:rid', component: ShortestpathComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
