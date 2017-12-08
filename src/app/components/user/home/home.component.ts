@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
       this.homeService.findAllRides()
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
-          console.log(rides);
         });
     });
   }

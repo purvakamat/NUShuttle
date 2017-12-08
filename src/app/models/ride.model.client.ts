@@ -4,7 +4,7 @@ import {QueueSlot} from './queueslot.model.client';
 export class Ride {
   _id: String;
   departure_time: Date;
-  driver: User;
+  _driver: String;
   seat_count: Number;
   blocked_seats: Number;
   status: String;
@@ -12,9 +12,9 @@ export class Ride {
   origin: String;
   destination: String;
   queue: QueueSlot[];
-  constructor(_id: String, departure_time: Date, driver: User) {
+  constructor(_id: String, departure_time: Date, _driver: String) {
     this._id = _id;
     this.departure_time = departure_time;
-    this.driver = driver;
+    this._driver = _driver;
   }
 }

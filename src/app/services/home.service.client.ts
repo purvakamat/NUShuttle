@@ -15,7 +15,6 @@ export class HomeService {
 
   findAllRides() {
     const url = this.baseUrl + '/api/rides/10';
-    console.log(url);
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
