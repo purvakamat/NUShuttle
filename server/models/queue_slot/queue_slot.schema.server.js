@@ -4,6 +4,6 @@ var QueueSlotSchema = mongoose.Schema ({
   checked_in: {type: Boolean, default: false},
   ready: {type: Boolean, default: false},
   notified: {type: Boolean, default: false},
-  ride_id: String
+  _ride: String
 }, {collection: 'queue_slot'});
 module.exports = QueueSlotSchema;

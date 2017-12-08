@@ -4,7 +4,6 @@ module.exports = function (app) {
   app.get("/api/rides/:count", getAllRides);
   app.get("/api/ride/:rideId", findRideById);
   app.get("/api/rides/driver/:driverId", getRidesForDriver);
-  app.put("/api/ride/:rideId/queue", addToQueue);
   app.put("/api/ride/:rideId/status", updateRideStatus);
   app.put("/api/ride/:rideId", updateRide);
   app.delete("/api/ride/:rideId", deleteRide);
@@ -59,28 +58,6 @@ module.exports = function (app) {
     });
   }
 
-  function addToQueue(req, res) {
-    var rideId = req.params['rideId'];
-    var queue_slot = req.body;
-
-    rideModel.getRideWithID(rideId).then(function (ride) {
-      if(ride){
-        if(ride.queue.length < (ride.seat_count - ride.blocked_seats)){
-          rideModel.addToQueue(rideId, queue_slot).then(function (response) {
-            if(response.n >0 || response.nModified > 0)
-              res.json("User added to queue");
-            else
-              res.status(404).send("User cannot be added to queue");
-          });
-        }
-        else
-          res.status(404).send("Queue is full");
-      }
-      else
-        res.status(404).send("No ride with given id.");
-    });
-  }
-
   function updateRideStatus(req, res) {
     var rideId = req.params['rideId'];
     var obj = req.body;
@@ -96,10 +73,7 @@ module.exports = function (app) {
     var driverId = req.params['driverId'];
 
     rideModel.getRidesForDriver(driverId).then(function (rides) {
-      if(rides)
-        res.json(rides);
-      else
-        res.status(404).send("Rides for driver cannot be found.");
+      res.json(rides);
     });
   }
 };

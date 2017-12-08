@@ -4,9 +4,9 @@ var QueueSlotModel = mongoose.model('QueueSlotModel', QueueSlotSchema);
 
 QueueSlotModel.createQueueSlot = createQueueSlot;
 QueueSlotModel.deleteQueueSlot = deleteQueueSlot;
-QueueSlotModel.checkInUser = checkInUser;
-QueueSlotModel.userReady = userReady;
+QueueSlotModel.updateQueueSlot = updateQueueSlot;
 QueueSlotModel.getQSlotWithID = getQSlotWithID;
+QueueSlotModel.getQueueSlotsForRide = getQueueSlotsForRide;
 
 module.exports = QueueSlotModel;
 
@@ -18,16 +18,16 @@ function deleteQueueSlot(slotID) {
   return QueueSlotModel.deleteOne({_id: slotID});
 }
 
-function checkInUser(slotID) {
-  return QueueSlotModel.update({_id: slotID}, {checked_in: true});
-}
-
-function userReady(slotID) {
-  return QueueSlotModel.update({_id: slotID}, {ready: true});
+function updateQueueSlot(slotID, queueSlot) {
+  return QueueSlotModel.updateOne({_id: slotID}, queueSlot);
 }
 
 function getQSlotWithID(slotID) {
   return QueueSlotModel.find({_id: slotID});
+}
+
+function getQueueSlotsForRide(rideId){
+  return QueueSlotModel.find({_ride: rideId});
 }
 
 
