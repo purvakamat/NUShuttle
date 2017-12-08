@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var RideModel = mongoose.model('RideModel', RideSchema);
 
 RideModel.createRide = createRide;
-RideModel.getRideWithID = getRideWithID;
+RideModel.findRideById = findRideById;
 RideModel.updateRide = updateRide;
 RideModel.getAllRides = getAllRides;
 RideModel.addToQueue = addToQueue;
@@ -16,7 +16,7 @@ function createRide(ride) {
   return RideModel.create(ride);
 }
 
-function getRideWithID(rideID) {
+function findRideById(rideID) {
   return RideModel.findOne({_id: rideID});
 }
 

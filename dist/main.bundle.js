@@ -95,12 +95,16 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_apitest_apitest_component__ = __webpack_require__("../../../../../src/app/components/apitest/apitest.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_user_home_home_component__ = __webpack_require__("../../../../../src/app/components/user/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_user_driver_driver_component__ = __webpack_require__("../../../../../src/app/components/user/driver/driver.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_queueslot_service_client__ = __webpack_require__("../../../../../src/app/services/queueslot.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -148,7 +152,7 @@ AppModule = __decorate([
                 libraries: ['places']
             })
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_13__services_user_service_client__["a" /* UserService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_13__services_user_service_client__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_17__services_ride_service_client__["a" /* RideService */], __WEBPACK_IMPORTED_MODULE_18__services_queueslot_service_client__["a" /* QueueSlotService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -726,7 +730,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/driver/driver.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4 col-xs-offset-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Dashboard</b>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-right\">\n          <a  class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4 col-xs-offset-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Dashboard</b>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-right\">\n          <a  class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9\">\n        <div class=\"row\">\n          <div class=\"col-xs-6\">\n            <label>Ride Identifier</label>\n          </div>\n          <div class=\"col-xs-6\">\n            <span>{{rideId}}</span>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-xs-6\">\n            <label>Ride Time</label>\n          </div>\n          <div class=\"col-xs-6\">\n            <span>{{rideTime | date:'shortTime'}}</span>\n          </div>\n        </div>\n    </div>\n    <div class=\"col-sm-3 hidden-xs\">\n        <label>My Schedules</label>\n        <ul class=\"list-group\">\n          <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\n            <button (click)=\"findRideById(ride._id)\">{{ride.time | date:'shortTime'}}</button>\n          </li>\n        </ul>\n    </div>\n    <button (click)=\"createRide()\">Test</button>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -738,6 +742,10 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_ride_model_client__ = __webpack_require__("../../../../../src/app/models/ride.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_queueslot_model_client__ = __webpack_require__("../../../../../src/app/models/queueslot.model.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -750,13 +758,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var DriverComponent = (function () {
-    function DriverComponent(userService, route, router) {
+    function DriverComponent(userService, rideService, route, router) {
         this.userService = userService;
+        this.rideService = rideService;
         this.route = route;
         this.router = router;
+        this.rides = [
+            { '_id': '123', 'time': Date.now() - 100000 },
+            { '_id': '234', 'time': Date.now() - 200000 },
+            { '_id': '345', 'time': Date.now() - 300000 },
+            { '_id': '456', 'time': Date.now() - 400000 }
+        ];
     }
     DriverComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.userService.findUserById(_this.userId)
+                .subscribe(function (user) {
+                _this.user = user;
+            });
+        });
+    };
+    DriverComponent.prototype.findRideById = function (_id) {
+        var _this = this;
+        this.rideService.findRideById(_id)
+            .subscribe(function (ride) {
+            _this.ride = ride;
+        });
+    };
+    DriverComponent.prototype.createRide = function () {
+        var _this = this;
+        var newRide = new __WEBPACK_IMPORTED_MODULE_5__models_ride_model_client__["a" /* Ride */]('', new Date(), this.user);
+        var newStudent = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('', 'nisarg', '123', 'abc', 'STUDENT', '360 Huntington Avenue, Boston, MA, United States', '360 Huntington Avenue, Boston, MA, United States');
+        var newQueueSlot = new __WEBPACK_IMPORTED_MODULE_6__models_queueslot_model_client__["a" /* QueueSlot */]('', newStudent, this.rideId);
+        var arr = [];
+        arr.push(newQueueSlot);
+        newRide.queue = arr;
+        this.rideService.createRide(newRide).subscribe(function (ride) {
+            _this.ride = ride;
+        });
     };
     return DriverComponent;
 }());
@@ -766,10 +812,10 @@ DriverComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/user/driver/driver.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/user/driver/driver.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_ride_service_client__["a" /* RideService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DriverComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=driver.component.js.map
 
 /***/ }),
@@ -1162,6 +1208,42 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/models/queueslot.model.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QueueSlot; });
+var QueueSlot = (function () {
+    function QueueSlot(_id, student, ride_id) {
+        this._id = _id;
+        this.student = student;
+        this.ride_id = ride_id;
+    }
+    return QueueSlot;
+}());
+
+//# sourceMappingURL=queueslot.model.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/models/ride.model.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Ride; });
+var Ride = (function () {
+    function Ride(_id, departure_time, driver) {
+        this._id = _id;
+        this.departure_time = departure_time;
+        this.driver = driver;
+    }
+    return Ride;
+}());
+
+//# sourceMappingURL=ride.model.client.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/models/user.model.client.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1181,6 +1263,99 @@ var User = (function () {
 }());
 
 //# sourceMappingURL=user.model.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/queueslot.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QueueSlotService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__ = __webpack_require__("../../../../../src/environments/environment.prod.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var QueueSlotService = (function () {
+    function QueueSlotService(http) {
+        this.http = http;
+        this.baseUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].baseUrl;
+    }
+    return QueueSlotService;
+}());
+QueueSlotService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], QueueSlotService);
+
+var _a;
+//# sourceMappingURL=queueslot.service.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/ride.service.client.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RideService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__ = __webpack_require__("../../../../../src/environments/environment.prod.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var RideService = (function () {
+    function RideService(http) {
+        this.http = http;
+        this.baseUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].baseUrl;
+    }
+    RideService.prototype.findRideById = function (rideId) {
+        var url = 'http://localhost:3100' + '/api/ride/' + rideId;
+        console.log(url);
+        return this.http.get(url)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    RideService.prototype.createRide = function (user) {
+        var url = 'http://localhost:3100' + '/api/ride/';
+        return this.http.post(url, user)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    return RideService;
+}());
+RideService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], RideService);
+
+var _a;
+//# sourceMappingURL=ride.service.client.js.map
 
 /***/ }),
 
@@ -1263,6 +1438,19 @@ UserService = __decorate([
 
 var _a;
 //# sourceMappingURL=user.service.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/environments/environment.prod.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+var environment = {
+    production: true,
+    baseUrl: ''
+};
+//# sourceMappingURL=environment.prod.js.map
 
 /***/ }),
 
