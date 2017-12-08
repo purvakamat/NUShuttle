@@ -20,33 +20,13 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-9">
-        <div class="row">
-          <div class="col-xs-6">
-            <label>Ride Identifier</label>
-          </div>
-          <div class="col-xs-6">
-            <span>{{rideId}}</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <label>Ride Time</label>
-          </div>
-          <div class="col-xs-6">
-            <span>{{rideTime | date:'shortTime'}}</span>
-          </div>
-        </div>
-    </div>
     <div class="col-sm-3 hidden-xs">
         <label>My Schedules</label>
         <ul class="list-group">
           <li *ngFor="let ride of rides" class="list-group-item">
-            <button (click)="findRideById(ride._id)">{{ride.time | date:'shortTime'}}</button>
+            <button>{{ride.departure_time | date:'shortTime'}}</button>
           </li>
         </ul>
     </div>
-    <button (click)="createRide()">Test</button>
-
   </div>
 </div>

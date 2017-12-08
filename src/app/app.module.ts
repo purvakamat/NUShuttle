@@ -16,8 +16,9 @@ import { ApitestComponent } from './components/apitest/apitest.component';
 import { HomeComponent } from './components/user/home/home.component';
 import {DriverComponent} from './components/user/driver/driver.component';
 import {RideService} from './services/ride.service.client';
-import {QueueSlotService} from './services/queueslot.service.client'
-import {HomeService} from "./services/home.service.client";
+import {QueueSlotService} from './services/queueslot.service.client';
+import {HomeService} from './services/home.service.client';
+import {DriverService} from './services/driver.service.client';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import {HomeService} from "./services/home.service.client";
       libraries: ['places']
     })
   ],
-  providers: [HttpModule, UserService, RideService, QueueSlotService, HomeService],
+  providers: [HttpModule, UserService, RideService, QueueSlotService, HomeService, DriverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
