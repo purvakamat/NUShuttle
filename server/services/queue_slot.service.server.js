@@ -1,3 +1,4 @@
-/**
- * Created by kamat on 12/6/2017.
- */
+
+module.exports = function (app) {
+
+};

@@ -8,7 +8,7 @@ RideModel.updateRide = updateRide;
 RideModel.getAllRides = getAllRides;
 RideModel.addToQueue = addToQueue;
 RideModel.updateRideStatus = updateRideStatus;
-
+RideModel.deleteRide = deleteRide;
 
 module.exports = RideModel;
 
@@ -38,6 +38,10 @@ function addToQueue(rideID, queueSlot) {
 
 function updateRideStatus(rideID, status, delay) {
   return RideModel.update({_id: rideID}, {status: status, delay: delay});
+}
+
+function deleteRide(rideId) {
+  return RideModel.deleteOne({_id: rideId});
 }
 
 
