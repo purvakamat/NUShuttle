@@ -9,6 +9,7 @@ UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUsername = findUserByUsername;
 UserModel.deleteUser = deleteUser;
 UserModel.updateUser = updateUser;
+UserModel.getAllDrivers = getAllDrivers;
 
 module.exports = UserModel;
 
@@ -41,4 +42,8 @@ function findUserByUsername(username) {
 
 function updateUser(userId, user) {
   return UserModel.update({_id: userId}, user);
+}
+
+function getAllDrivers() {
+  return UserModel.find({role:"DRIVER"});
 }

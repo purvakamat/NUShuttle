@@ -2,11 +2,9 @@
 module.exports = function(app) {
 
   app.get('/api/user/hello', helloUser);
-  // find all users
   app.get('/api/user', findUsers);
-  // find user by id
   app.get('/api/user/:uid', findUserById);
-
+  app.get('/api/user/drivers', getAllDrivers);
   app.post('/api/user', createUser);
   app.put('/api/user/:uid', updateUser);
   app.delete('/api/user/:uid', deleteUser);
@@ -23,7 +21,6 @@ module.exports = function(app) {
       }, function(error) {
         console.log(error);
       });
-
   }
 
   function deleteUser(request, response) {
@@ -77,5 +74,11 @@ module.exports = function(app) {
       .then(function(user) {
         res.json(user);
       });
+  }
+
+  function getAllDrivers() {
+    userModel.getAllDrivers().then(function (drivers) {
+      res.json(drivers);
+    });
   }
 }
