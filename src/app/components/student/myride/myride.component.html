@@ -1,3 +1,62 @@
-<p>
-  myride works!
-</p>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">MY RIDE</b>
+      </a>
+    </p>
+
+    <!--chevron-->
+    <p class="navbar-text pull-left vertical-center">
+      <a [routerLink]="['/rides']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left nav-foreground"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class = "row dropoff">
+    <div class="col-xs-12">
+      <input placeholder="Dropoff Location"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="off"
+             type="text"
+             name="dropoff"
+             [(ngModel)]="dropoff"
+             class="form-control"
+             #search [formControl]="searchControl">
+    </div>
+  </div>
+
+  <div class="row dropoff">
+    <div class="col-xs-12">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="16" >
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconUrl"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+
+  <div class="row dropoff">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-success btn-block" (click)="locationConfirmed()">
+        Confirm Drop Off Location
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
+        <span class="glyphicon glyphicon-user nav-foreground"></span>
+      </a>
+    </p>
+  </div>
+</nav>

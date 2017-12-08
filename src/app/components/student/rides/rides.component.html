@@ -1,3 +1,41 @@
-<p>
-  rides works!
-</p>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">RIDES</b>
+      </a>
+    </p>
+
+    <!--hamburger to open rides in list form-->
+    <p class="navbar-text pull-right vertical-center">
+      <a [routerLink]="['/rides-list']" class="navbar-link">
+        <span class="glyphicon glyphicon-align-justify nav-foreground"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+<div class="container page-margin">
+
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/myride']" class="navbar-link">
+        <span class="glyphicon glyphicon-road nav-foreground"></span>
+      </a>
+    </p>
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
+        <span class="glyphicon glyphicon-user nav-foreground"></span>
+      </a>
+    </p>
+  </div>
+</nav>

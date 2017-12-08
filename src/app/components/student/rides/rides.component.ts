@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RidesComponent implements OnInit {
 
+  userId: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.userId = "123";
   }
 
 }

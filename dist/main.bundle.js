@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -104,12 +104,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_admin_setting_panel_setting_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_student_rides_rides_component__ = __webpack_require__("../../../../../src/app/components/student/rides/rides.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_student_myride_myride_component__ = __webpack_require__("../../../../../src/app/components/student/myride/myride.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_student_rides_list_rides_list_component__ = __webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -158,7 +160,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_22__components_admin_driver_panel_driver_panel_component__["a" /* DriverPanelComponent */],
             __WEBPACK_IMPORTED_MODULE_23__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */],
             __WEBPACK_IMPORTED_MODULE_24__components_student_rides_rides_component__["a" /* RidesComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__components_student_myride_myride_component__["a" /* MyrideComponent */]
+            __WEBPACK_IMPORTED_MODULE_25__components_student_myride_myride_component__["a" /* MyrideComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__components_student_rides_list_rides_list_component__["a" /* RidesListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -198,6 +201,12 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_admin_driver_panel_driver_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_shortestpath_shortestpath_component__ = __webpack_require__("../../../../../src/app/components/shortestpath/shortestpath.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_student_rides_list_rides_list_component__ = __webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_student_rides_rides_component__ = __webpack_require__("../../../../../src/app/components/student/rides/rides.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_student_myride_myride_component__ = __webpack_require__("../../../../../src/app/components/student/myride/myride.component.ts");
+
+
+
 
 
 
@@ -223,7 +232,11 @@ var APP_ROUTES = [
     { path: 'user/:uid/admin/schedule-panel', component: __WEBPACK_IMPORTED_MODULE_9__components_admin_schedule_panel_schedule_panel_component__["a" /* SchedulePanelComponent */] },
     { path: 'user/:uid/admin/driver-panel', component: __WEBPACK_IMPORTED_MODULE_10__components_admin_driver_panel_driver_panel_component__["a" /* DriverPanelComponent */] },
     { path: 'user/:uid/admin/setting-panel', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */] },
-    { path: 'user/:uid/driver/ride/:rid', component: __WEBPACK_IMPORTED_MODULE_12__components_shortestpath_shortestpath_component__["a" /* ShortestpathComponent */] }
+    { path: 'user/:uid/driver/ride/:rid', component: __WEBPACK_IMPORTED_MODULE_12__components_shortestpath_shortestpath_component__["a" /* ShortestpathComponent */] },
+    { path: 'rides-list', component: __WEBPACK_IMPORTED_MODULE_13__components_student_rides_list_rides_list_component__["a" /* RidesListComponent */] },
+    { path: 'rides', component: __WEBPACK_IMPORTED_MODULE_14__components_student_rides_rides_component__["a" /* RidesComponent */] },
+    { path: 'myride', component: __WEBPACK_IMPORTED_MODULE_15__components_student_myride_myride_component__["a" /* MyrideComponent */] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_3__components_user_profile_profile_component__["a" /* ProfileComponent */] },
 ];
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(APP_ROUTES);
 //# sourceMappingURL=app.routing.js.map
@@ -251,7 +264,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/driver-panel/driver-panel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <button class=\"tablinks\">Schedule</button>\n  <button class=\"tablinks\">Driver</button>\n  <button class=\"tablinks\">Settings</button>\n</div>\n"
+module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</button>\r\n  <button class=\"tablinks\">Driver</button>\r\n  <button class=\"tablinks\">Settings</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -312,7 +325,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <button class=\"tablinks\">Schedule</button>\n  <button class=\"tablinks\">Driver</button>\n  <button class=\"tablinks\">Settings</button>\n</div>\n"
+module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</button>\r\n  <button class=\"tablinks\">Driver</button>\r\n  <button class=\"tablinks\">Settings</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -373,7 +386,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/setting-panel/setting-panel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <button class=\"tablinks\">Schedule</button>\n  <button class=\"tablinks\">Driver</button>\n  <button class=\"tablinks\">Settings</button>\n</div>\n"
+module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</button>\r\n  <button class=\"tablinks\">Driver</button>\r\n  <button class=\"tablinks\">Settings</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -421,7 +434,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row_style{\n  margin: 10px;\n}\n.dropoff {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n", ""]);
+exports.push([module.i, ".row_style{\r\n  margin: 10px;\r\n}\r\n.dropoff {\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -434,7 +447,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/apitest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <div class = \"row dropoff\">\n    <div class=\"col-xs-12\">\n      <input placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"dropoff\"\n             [(ngModel)]=\"dropoff\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"updateDropoff()\">Confirm Drop Off</button>\n    </div>\n  </div>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Drop Off\r\n    </h2>\r\n  </div>\r\n  <div class = \"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"dropoff\"\r\n             [(ngModel)]=\"dropoff\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"updateDropoff()\">Confirm Drop Off</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Optimum Route Finder\r\n    </h2>\r\n  </div>\r\n  <app-shortestpath></app-shortestpath>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -535,7 +548,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".dropoff {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n.gm-style div{color: #fff !important; font-weight: bold;}\n\n.colorWhite{\n  color: white;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -548,7 +561,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dropoff/dropoff.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-1 col-sm-1\">\n        <div class=\"navbar-text\">\n          <a [routerLink]=\"['/user', userId]\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-11 col-sm-11\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">My Drop Off</b>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class = \"container\">\n  <div class = \"row dropoff\">\n    <div class=\"col-xs-12\">\n      <input placeholder=\"Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"dropoff\"\n             [(ngModel)]=\"dropoff\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row dropoff\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"updateDropoff()\">Confirm Drop Off</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-1 col-sm-1\">\r\n        <div class=\"navbar-text\">\r\n          <a [routerLink]=\"['/user', userId]\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-11 col-sm-11\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">My Drop Off</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class = \"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"dropoff\"\r\n             [(ngModel)]=\"dropoff\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"updateDropoff()\">Confirm Drop Off</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -684,7 +697,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".pickup {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n.gm-style div{color: #fff !important; font-weight: bold;}\n\n.colorWhite{\n  color: white;\n}\n\n", ""]);
+exports.push([module.i, ".pickup {\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n.gm-style div{color: #fff !important; font-weight: bold;}\r\n\r\n.colorWhite{\r\n  color: white;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -697,7 +710,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/pickup/pickup.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-2\">\n        <div class=\"navbar-text pull-left\">\n          <a [routerLink]=\"['/user', userId]\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-10\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">My Pick Up</b>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class = \"container\">\n  <div class = \"row pickup\">\n    <div class=\"col-xs-12\">\n      <input placeholder=\"Pickup Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             disabled\n             name=\"pickup\"\n             [(ngModel)]=\"pickup\"\n             class=\"form-control\"\n             #search [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row pickup\">\n    <div class=\"col-xs-12\">\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\">\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\"\n                    [iconUrl]=\"iconUrl\"></agm-marker>\n      </agm-map>\n    </div>\n  </div>\n  <div class=\"row pickup\">\n    <div class=\"col-xs-12\">\n      <button type=\"button\" *ngIf=\"false\" class=\"btn btn-primary btn-block\" (click)=\"updatePickup()\">Confirm Pick Up</button>\n    </div>\n  </div>\n</div>\n\n\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-2\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId]\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-10\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">My Pick Up</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class = \"row pickup\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Pickup Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             disabled\r\n             name=\"pickup\"\r\n             [(ngModel)]=\"pickup\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row pickup\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\">\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\"\r\n                    [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n  <div class=\"row pickup\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" *ngIf=\"false\" class=\"btn btn-primary btn-block\" (click)=\"updatePickup()\">Confirm Pick Up</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -809,7 +822,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row-style {\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n.colorWhite{\n  color: white;\n}\n\n", ""]);
+exports.push([module.i, ".row-style {\r\n  margin-top: 10px;\r\n  margin-bottom: 20px;\r\n}\r\n.colorWhite{\r\n  color: white;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -822,7 +835,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shortestpath/shortestpath.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-left\">\n          <a [routerLink]=\"['/user', userId, 'driver']\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Ride</b>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class = \"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Ride Information:</label>\n      <label>{{this.rideId}}</label>\n    </div>\n  </div>\n  <div class = \"row row-style\">\n    <div class=\"col-xs-12\">\n      <input #search\n             placeholder=\"Add a Custom Dropoff Address\"\n             autocorrect=\"off\"\n             autocapitalize=\"off\"\n             spellcheck=\"off\"\n             type=\"text\"\n             name=\"search\"\n             class=\"form-control\"\n             disabled\n             [formControl]=\"searchControl\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-6\">\n      <label>ORIGIN</label>\n    </div>\n    <div class=\"col-xs-6\">\n      <span>{{shuttleOrigin}}</span>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-6\">\n      <label>DESTINATION</label>\n    </div>\n    <div class=\"col-xs-6\">\n      <span>{{shuttleDestination}}</span>\n    </div>\n  </div>\n  <hr />\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>STUDENTS</label>\n    </div>\n  </div>\n  <ul class=\"list-group\">\n    <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\n      <div class=\"row\">\n        <div class=\"col-xs-2\">\n          {{queueSlot.student.firstName}}\n        </div>\n        <div class=\"col-xs-2\">\n          {{queueSlot.student.lastName}}\n        </div>\n        <div class=\"col-xs-4\">\n          {{queueSlot.student.dropoff_location}}\n        </div>\n        <div class=\"col-xs-2\">\n          <button type=\"button\" class=\"btn btn-primary btn-xs\">Check In</button>\n        </div>\n      </div>\n    </li>\n  </ul>\n  <div class=\"row row-style\">\n    <div class=\"col-xs-12\">\n      <button #findRoute\n              id=\"findRoute\"\n              type=\"button\"\n              class=\"btn btn-primary btn-block\"\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\n    </div>\n  </div>\n  <div class=\"row row-style\">\n    <div class=\"col-xs-12\">\n      <agm-map id=\"map\"\n               [latitude]=\"latitude\"\n               [longitude]=\"longitude\"\n               [scrollwheel]=\"false\"\n               [zoom]=\"16\">\n      </agm-map>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId, 'driver']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Ride</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>Ride Information:</label>\r\n      <label>{{this.rideId}}</label>\r\n    </div>\r\n  </div>\r\n  <div class = \"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <input #search\r\n             placeholder=\"Add a Custom Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"search\"\r\n             class=\"form-control\"\r\n             disabled\r\n             [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>ORIGIN</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleOrigin}}</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>DESTINATION</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleDestination}}</span>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>STUDENTS</label>\r\n    </div>\r\n  </div>\r\n  <ul class=\"list-group\">\r\n    <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-2\">\r\n          {{queueSlot.student.firstName}}\r\n        </div>\r\n        <div class=\"col-xs-2\">\r\n          {{queueSlot.student.lastName}}\r\n        </div>\r\n        <div class=\"col-xs-4\">\r\n          {{queueSlot.student.dropoff_location}}\r\n        </div>\r\n        <div class=\"col-xs-2\">\r\n          <button type=\"button\" class=\"btn btn-primary btn-xs\">Check In</button>\r\n        </div>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <button #findRoute\r\n              id=\"findRoute\"\r\n              type=\"button\"\r\n              class=\"btn btn-primary btn-block\"\r\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map id=\"map\"\r\n               [latitude]=\"latitude\"\r\n               [longitude]=\"longitude\"\r\n               [scrollwheel]=\"false\"\r\n               [zoom]=\"16\">\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1012,7 +1025,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/myride/myride.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  myride works!\n</p>\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">MY RIDE</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class = \"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Dropoff Location\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"dropoff\"\r\n             [(ngModel)]=\"dropoff\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"locationConfirmed()\">\r\n        Confirm Drop Off Location\r\n      </button>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1021,6 +1034,118 @@ module.exports = "<p>\n  myride works!\n</p>\n"
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyrideComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var MyrideComponent = (function () {
+    function MyrideComponent(mapsAPILoader, ngZone) {
+        this.mapsAPILoader = mapsAPILoader;
+        this.ngZone = ngZone;
+        this.latitude = 42.3404957;
+        this.longitude = -71.0878975;
+        this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+    }
+    MyrideComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // create search FormControl
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        // set current position
+        this.setCurrentPosition();
+        // load Places Autocomplete
+        this.mapsAPILoader.load().then(function () {
+            var autocomplete = new google.maps.places.Autocomplete(_this.searchElementRef.nativeElement, {
+                types: ['address']
+            });
+            autocomplete.addListener('place_changed', function () {
+                _this.ngZone.run(function () {
+                    // get the place result
+                    var place = autocomplete.getPlace();
+                    // verify result
+                    if (place.geometry === undefined || place.geometry === null) {
+                        return;
+                    }
+                    // set latitude, longitude and zoom
+                    _this.latitude = place.geometry.location.lat();
+                    _this.longitude = place.geometry.location.lng();
+                    _this.dropOff = place.formatted_address;
+                    _this.zoom = 12;
+                });
+            });
+        });
+    };
+    MyrideComponent.prototype.setCurrentPosition = function () {
+        var _this = this;
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.latitude = position.coords.latitude;
+                _this.longitude = position.coords.longitude;
+            });
+        }
+    };
+    MyrideComponent.prototype.locationConfirmed = function () {
+    };
+    return MyrideComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('search'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], MyrideComponent.prototype, "searchElementRef", void 0);
+MyrideComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-myride',
+        template: __webpack_require__("../../../../../src/app/components/student/myride/myride.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/student/myride/myride.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object])
+], MyrideComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=myride.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/student/rides-list/rides-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/student/rides-list/rides-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container page-margin\">\r\n\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/student/rides-list/rides-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RidesListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1032,23 +1157,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var MyrideComponent = (function () {
-    function MyrideComponent() {
+var RidesListComponent = (function () {
+    function RidesListComponent() {
     }
-    MyrideComponent.prototype.ngOnInit = function () {
+    RidesListComponent.prototype.ngOnInit = function () {
     };
-    return MyrideComponent;
+    return RidesListComponent;
 }());
-MyrideComponent = __decorate([
+RidesListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-myride',
-        template: __webpack_require__("../../../../../src/app/components/student/myride/myride.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/components/student/myride/myride.component.css")]
+        selector: 'app-rides-list',
+        template: __webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.css")]
     }),
     __metadata("design:paramtypes", [])
-], MyrideComponent);
+], RidesListComponent);
 
-//# sourceMappingURL=myride.component.js.map
+//# sourceMappingURL=rides-list.component.js.map
 
 /***/ }),
 
@@ -1073,7 +1198,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/rides/rides.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  rides works!\n</p>\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container page-margin\">\r\n\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1097,6 +1222,7 @@ var RidesComponent = (function () {
     function RidesComponent() {
     }
     RidesComponent.prototype.ngOnInit = function () {
+        this.userId = "123";
     };
     return RidesComponent;
 }());
@@ -1121,7 +1247,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".colorWhite{\n  color: white;\n}\n", ""]);
+exports.push([module.i, ".colorWhite{\r\n  color: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1134,7 +1260,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/driver/driver.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4 col-xs-offset-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Dashboard</b>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-right\">\n          <a  class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <h2>My Rides</h2>\n      <ul class=\"list-group\">\n        <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\n          <div class=\"row\">\n            <div class=\"col-xs-3\">\n              <span>Departure Time</span>\n              <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\n            </div>\n            <div class=\"col-xs-3\">\n              <span>Seat Count</span>\n              <span>{{ride.seat_count}}</span>\n            </div>\n            <div class=\"col-xs-3\">\n              <span>Status</span>\n              <span>{{ride.status}}</span>\n            </div>\n            <div class=\"col-xs-3\">\n              <span>Delay</span>\n              <span>{{ride.delay}}</span>\n            </div>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4 col-xs-offset-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Dashboard</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-right\">\r\n          <a  class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-user colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <h2>My Rides</h2>\r\n      <ul class=\"list-group\">\r\n        <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xs-3\">\r\n              <span>Departure Time</span>\r\n              <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Seat Count</span>\r\n              <span>{{ride.seat_count}}</span>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Status</span>\r\n              <span>{{ride.status}}</span>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Delay</span>\r\n              <span>{{ride.delay}}</span>\r\n            </div>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1208,7 +1334,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".colorWhite{\n  color: white;\n}\n\n::before,::after {\n  box-sizing: border-box;\n}\n\n.shuttle {\n  margin: 50px auto;\n  max-width: 500px;\n}\n\n.cockpit {\n  height: 100px;\n  position: relative;\n  overflow: hidden;\n  text-align: center;\n  border-bottom: 5px solid #a6ada1;\n}\n\n.cockpit::before {\n   content: \"\";\n   display: block;\n   position: absolute;\n   height: 200px;\n   width: 100%;\n   border-radius: 30px;\n   border-right: 5px solid #a6ada1;\n   border-left: 5px solid #a6ada1;\n }\n\n.cockpit h4 {\n  width: 100%;\n  margin: 50px auto 20px auto;\n}\n\n.entry {\n  position: relative;\n  height: 50px;\n}\n\n.entry::after {\n   content: \"ENTRY\";\n   font-size: 14px;\n   display: block;\n   position: absolute;\n   background: green;\n   color: white;\n   top: 30%;\n   right: 0;\n }\n\n.shuttle-body {\n  border-right: 5px solid #a6ada1;\n  border-left: 5px solid #a6ada1;\n}\n\nol {\n  list-style :none;\n  padding-left: 10px;\n  margin: 0;\n}\n\n.seats {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n}\n\n\n.seat {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 32%;\n          flex: 0 0 32%;\n  padding: 5px;\n  position: relative;\n}\n\n.seat input[type=radio] {\n  position: absolute;\n  opacity: 0;\n}\n\n.seat input[type=radio]:checked + label {\n  background: #9bef64;\n}\n\n.seat label {\n  display: block;\n  position: relative;\n  width: 100%;\n  height: 100px;\n  text-align: center;\n  font-size: 20px;\n  padding-top: 25%;\n  background: #ef6464;\n  border-radius: 15px;\n}\n\n.seat label::before {\n  content: \"\";\n  position: absolute;\n  width: 75%;\n  height: 75%;\n  top: 0;\n  left: 50%;\n  -webkit-transform: translate(-50%, 0%);\n          transform: translate(-50%, 0%);\n  background: rgba(255,255,255,.4);\n  border-bottom-left-radius: 10px;\n  border-bottom-right-radius: 10px;\n}\n\n.seat label:hover {\n   cursor: pointer;\n   box-shadow: 0 0 0 2px #428BCA;\n }\n", ""]);
+exports.push([module.i, ".colorWhite{\r\n  color: white;\r\n}\r\n\r\n::before,::after {\r\n  box-sizing: border-box;\r\n}\r\n\r\n.shuttle {\r\n  margin: 50px auto;\r\n  max-width: 500px;\r\n}\r\n\r\n.cockpit {\r\n  height: 100px;\r\n  position: relative;\r\n  overflow: hidden;\r\n  text-align: center;\r\n  border-bottom: 5px solid #a6ada1;\r\n}\r\n\r\n.cockpit::before {\r\n   content: \"\";\r\n   display: block;\r\n   position: absolute;\r\n   height: 200px;\r\n   width: 100%;\r\n   border-radius: 30px;\r\n   border-right: 5px solid #a6ada1;\r\n   border-left: 5px solid #a6ada1;\r\n }\r\n\r\n.cockpit h4 {\r\n  width: 100%;\r\n  margin: 50px auto 20px auto;\r\n}\r\n\r\n.entry {\r\n  position: relative;\r\n  height: 50px;\r\n}\r\n\r\n.entry::after {\r\n   content: \"ENTRY\";\r\n   font-size: 14px;\r\n   display: block;\r\n   position: absolute;\r\n   background: green;\r\n   color: white;\r\n   top: 30%;\r\n   right: 0;\r\n }\r\n\r\n.shuttle-body {\r\n  border-right: 5px solid #a6ada1;\r\n  border-left: 5px solid #a6ada1;\r\n}\r\n\r\nol {\r\n  list-style :none;\r\n  padding-left: 10px;\r\n  margin: 0;\r\n}\r\n\r\n.seats {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: row;\r\n          flex-direction: row;\r\n  -ms-flex-wrap: nowrap;\r\n      flex-wrap: nowrap;\r\n  -webkit-box-pack: start;\r\n      -ms-flex-pack: start;\r\n          justify-content: flex-start;\r\n}\r\n\r\n\r\n.seat {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-flex: 0;\r\n      -ms-flex: 0 0 32%;\r\n          flex: 0 0 32%;\r\n  padding: 5px;\r\n  position: relative;\r\n}\r\n\r\n.seat input[type=radio] {\r\n  position: absolute;\r\n  opacity: 0;\r\n}\r\n\r\n.seat input[type=radio]:checked + label {\r\n  background: #9bef64;\r\n}\r\n\r\n.seat label {\r\n  display: block;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100px;\r\n  text-align: center;\r\n  font-size: 20px;\r\n  padding-top: 25%;\r\n  background: #ef6464;\r\n  border-radius: 15px;\r\n}\r\n\r\n.seat label::before {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 75%;\r\n  height: 75%;\r\n  top: 0;\r\n  left: 50%;\r\n  -webkit-transform: translate(-50%, 0%);\r\n          transform: translate(-50%, 0%);\r\n  background: rgba(255,255,255,.4);\r\n  border-bottom-left-radius: 10px;\r\n  border-bottom-right-radius: 10px;\r\n}\r\n\r\n.seat label:hover {\r\n   cursor: pointer;\r\n   box-shadow: 0 0 0 2px #428BCA;\r\n }\r\n", ""]);
 
 // exports
 
@@ -1221,7 +1347,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n\n      <div class=\"col-sm-9\">\n        <div class=\"navbar-text pull-left\">\n          <a [routerLink]=\"['/user', userId, 'website']\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n\n        <div class=\" navbar-header hidden-xs\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Home</b>\n          </a>\n        </div>\n\n        <div class=\"navbar-text pull-right hidden-xs\">\n          <a class=\"navbar-link\">\n            <a [routerLink]=\"['/user', userId]\"><span class=\"glyphicon glyphicon-user colorWhite\"></span></a>\n          </a>\n        </div>\n      </div>\n\n      <div class=\"col-sm-3\">\n        <a class=\"navbar-brand\">\n          <b class=\"colorWhite\">Schedules</b>\n        </a>\n      </div>\n\n    </div>\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"col-sm-9\">\n    <div class=\"shuttle\">\n      <div class=\"cockpit\">\n        <h4>Please select a seat</h4>\n      </div>\n      <div class=\"entry shuttle-body\">\n      </div>\n      <ol class=\"cabin shuttle-body\">\n        <li class=\"row\">\n          <ol class=\"seats\" type=\"A\">\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"1A\"/>\n              <label for=\"1A\">1A</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"1B\"/>\n              <label for=\"1B\">1B</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"1C\"/>\n              <label for=\"1C\">1C</label>\n            </li>\n          </ol>\n        </li>\n        <li class=\"row\">\n          <ol class=\"seats\" type=\"A\">\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"2A\"/>\n              <label for=\"2A\">2A</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"2B\"/>\n              <label for=\"2B\">2B</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"2C\"/>\n              <label for=\"2C\">2C</label>\n            </li>\n          </ol>\n        </li>\n        <li class=\"row\">\n          <ol class=\"seats\" type=\"A\">\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"3A\"/>\n              <label for=\"3A\">3A</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"3B\"/>\n              <label for=\"3B\">3B</label>\n            </li>\n            <li class=\"seat\">\n              <input type=\"radio\" name=\"seat\" id=\"3C\"/>\n              <label for=\"3C\">3C</label>\n            </li>\n          </ol>\n        </li>\n      </ol>\n    </div>\n\n    <button class=\"btn btn-primary btn-block\" type=\"submit\">Confirm Ride</button>\n\n  </div>\n\n  <div class=\"col-sm-3\">\n    <ul class=\"list-group\">\n      <div *ngFor=\"let ride of fetchRides()\">\n        <li class=\"list-group-item\">\n          <a href=\"#\">{{ride.departure_time}}</a>\n        </li>\n      </div>\n    </ul>\n  </div>\n\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n\r\n      <div class=\"col-sm-9\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId, 'website']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n\r\n        <div class=\" navbar-header hidden-xs\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Home</b>\r\n          </a>\r\n        </div>\r\n\r\n        <div class=\"navbar-text pull-right hidden-xs\">\r\n          <a class=\"navbar-link\">\r\n            <a [routerLink]=\"['/user', userId]\"><span class=\"glyphicon glyphicon-user colorWhite\"></span></a>\r\n          </a>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-sm-3\">\r\n        <a class=\"navbar-brand\">\r\n          <b class=\"colorWhite\">Schedules</b>\r\n        </a>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"col-sm-9\">\r\n    <div class=\"shuttle\">\r\n      <div class=\"cockpit\">\r\n        <h4>Please select a seat</h4>\r\n      </div>\r\n      <div class=\"entry shuttle-body\">\r\n      </div>\r\n      <ol class=\"cabin shuttle-body\">\r\n        <li class=\"row\">\r\n          <ol class=\"seats\" type=\"A\">\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"1A\"/>\r\n              <label for=\"1A\">1A</label>\r\n            </li>\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"1B\"/>\r\n              <label for=\"1B\">1B</label>\r\n            </li>\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"1C\"/>\r\n              <label for=\"1C\">1C</label>\r\n            </li>\r\n          </ol>\r\n        </li>\r\n        <li class=\"row\">\r\n          <ol class=\"seats\" type=\"A\">\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"2A\"/>\r\n              <label for=\"2A\">2A</label>\r\n            </li>\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"2B\"/>\r\n              <label for=\"2B\">2B</label>\r\n            </li>\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"2C\"/>\r\n              <label for=\"2C\">2C</label>\r\n            </li>\r\n          </ol>\r\n        </li>\r\n        <li class=\"row\">\r\n          <ol class=\"seats\" type=\"A\">\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"3A\"/>\r\n              <label for=\"3A\">3A</label>\r\n            </li>\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"3B\"/>\r\n              <label for=\"3B\">3B</label>\r\n            </li>\r\n            <li class=\"seat\">\r\n              <input type=\"radio\" name=\"seat\" id=\"3C\"/>\r\n              <label for=\"3C\">3C</label>\r\n            </li>\r\n          </ol>\r\n        </li>\r\n      </ol>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\">Confirm Ride</button>\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm-3\">\r\n    <ul class=\"list-group\">\r\n      <div *ngFor=\"let ride of fetchRides()\">\r\n        <li class=\"list-group-item\">\r\n          <a href=\"#\">{{ride.departure_time}}</a>\r\n        </li>\r\n      </div>\r\n    </ul>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1300,7 +1426,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".login-elements {\n  margin-bottom: 10px;\n}\n", ""]);
+exports.push([module.i, ".login-elements {\r\n  margin-bottom: 10px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1313,7 +1439,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\n    {{errorMsg}}\n  </div>\n  <h1>Login</h1>\n  <form (ngSubmit)=\"login()\" #form=\"ngForm\">\n    <input type=\"text\" class=\"form-control login-elements\" placeholder=\"username\" name=\"username\" ngModel required\n           #username=\"ngModel\"/>\n    <span class=\"errorMessage\" *ngIf=\"!username.valid && username.touched\">\n            Please enter valid username\n    </span>\n    <input type=\"password\" class=\"form-control login-elements\" placeholder=\"password\" name=\"password\" ngModel\n           required  #password=\"ngModel\"/>\n    <span class=\"errorMessage\" *ngIf=\"!password.valid && password.touched\">\n            Please enter valid password\n    </span>\n    <button class=\"btn btn-primary btn-block login-elements\" type=\"submit\" [disabled]=\"!form.valid\">Login</button>\n    <button class=\"btn btn-success btn-block login-elements\" type=\"submit\" [routerLink]=\"['/register']\">Register</button>\n  </form>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\r\n    {{errorMsg}}\r\n  </div>\r\n  <h1>Login</h1>\r\n  <form (ngSubmit)=\"login()\" #form=\"ngForm\">\r\n    <input type=\"text\" class=\"form-control login-elements\" placeholder=\"username\" name=\"username\" ngModel required\r\n           #username=\"ngModel\"/>\r\n    <span class=\"errorMessage\" *ngIf=\"!username.valid && username.touched\">\r\n            Please enter valid username\r\n    </span>\r\n    <input type=\"password\" class=\"form-control login-elements\" placeholder=\"password\" name=\"password\" ngModel\r\n           required  #password=\"ngModel\"/>\r\n    <span class=\"errorMessage\" *ngIf=\"!password.valid && password.touched\">\r\n            Please enter valid password\r\n    </span>\r\n    <button class=\"btn btn-primary btn-block login-elements\" type=\"submit\" [disabled]=\"!form.valid\">Login</button>\r\n    <button class=\"btn btn-success btn-block login-elements\" type=\"submit\" [routerLink]=\"['/register']\">Register</button>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1394,7 +1520,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".colorWhite{\n  color: white;\n}\n", ""]);
+exports.push([module.i, ".colorWhite{\r\n  color: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1407,7 +1533,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-left\">\n          <a [routerLink]=\"['/user', userId, 'home']\"\n             class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\" navbar-header\">\n          <a class=\"navbar-brand\">\n            <b class=\"colorWhite\">Profile</b>\n          </a>\n        </div>\n      </div>\n      <div class=\"col-xs-4\">\n        <div class=\"navbar-text pull-right\">\n          <a  class=\"navbar-link\">\n            <span class=\"glyphicon glyphicon-ok colorWhite\"\n                  (click)=\"updateUser(username, emailId, firstName, lastName)\"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</nav>\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"form-group col-xs-12\">\n      <label for=\"username\">Type</label>\n      <input type=\"text\" class=\"form-control\" id=\"type\" placeholder=\"username\" disabled=\"true\" [(ngModel)]=\"type\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"form-group col-xs-12\">\n      <label for=\"username\">Username</label>\n      <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"username\" [(ngModel)]=\"username\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"form-group col-xs-12\">\n      <label for=\"email\">Email Address</label>\n      <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"emailid\" [(ngModel)]=\"emailId\" disabled=\"true\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"form-group col-xs-12\">\n      <label for=\"first-name\">First Name</label>\n      <input type=\"text\" class=\"form-control\" id=\"first-name\" placeholder=\"firstname\" [(ngModel)]=\"firstName\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"form-group col-xs-12\">\n      <label for=\"last-name\">Last Name</label>\n      <input type=\"text\" class=\"form-control\" id=\"last-name\" placeholder=\"lastname\" [(ngModel)]=\"lastName\">\n    </div>\n  </div>\n  <div class=\"row\">\n    <div class=\"col-xs-6 form-group\">\n      <a class = \"btn btn-success btn-block form-control\" [routerLink]=\"['/user', userId, 'pickup']\">Update PickUp</a>\n    </div>\n    <div class=\"col-xs-6 form-group\">\n      <a class = \"btn btn-success btn-block form-control\" [routerLink]=\"['/user', userId, 'dropoff']\">Update DropOff</a>\n    </div>\n  </div>\n  <a class = \"btn btn-danger btn-block form-control\" (click)=\"deleteUser(user._id)\">Delete</a>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId, 'home']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Profile</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-right\">\r\n          <a  class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-ok colorWhite\"\r\n                  (click)=\"updateUser(username, emailId, firstName, lastName)\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-xs-12\">\r\n      <label for=\"username\">Type</label>\r\n      <input type=\"text\" class=\"form-control\" id=\"type\" placeholder=\"username\" disabled=\"true\" [(ngModel)]=\"type\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-xs-12\">\r\n      <label for=\"username\">Username</label>\r\n      <input type=\"text\" class=\"form-control\" id=\"username\" placeholder=\"username\" [(ngModel)]=\"username\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-xs-12\">\r\n      <label for=\"email\">Email Address</label>\r\n      <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"emailid\" [(ngModel)]=\"emailId\" disabled=\"true\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-xs-12\">\r\n      <label for=\"first-name\">First Name</label>\r\n      <input type=\"text\" class=\"form-control\" id=\"first-name\" placeholder=\"firstname\" [(ngModel)]=\"firstName\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col-xs-12\">\r\n      <label for=\"last-name\">Last Name</label>\r\n      <input type=\"text\" class=\"form-control\" id=\"last-name\" placeholder=\"lastname\" [(ngModel)]=\"lastName\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6 form-group\">\r\n      <a class = \"btn btn-success btn-block form-control\" [routerLink]=\"['/user', userId, 'pickup']\">Update PickUp</a>\r\n    </div>\r\n    <div class=\"col-xs-6 form-group\">\r\n      <a class = \"btn btn-success btn-block form-control\" [routerLink]=\"['/user', userId, 'dropoff']\">Update DropOff</a>\r\n    </div>\r\n  </div>\r\n  <a class = \"btn btn-danger btn-block form-control\" (click)=\"deleteUser(user._id)\">Delete</a>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1500,7 +1626,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".regitser-elements {\n  margin-top: 10px;\n}\n", ""]);
+exports.push([module.i, ".regitser-elements {\r\n  margin-top: 10px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1513,7 +1639,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <h1>Register</h1>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <div class=\"radio\">\n        <div class = \"col-xs-4\">\n          <label><input type=\"radio\" value=\"STUDENT\" [(ngModel)]=\"type\" name=\"userType\">Student</label>\n        </div>\n        <div class = \"col-xs-4\">\n          <label><input type=\"radio\" value=\"DRIVER\" [(ngModel)]=\"type\" name=\"userType\">Driver</label>\n        </div>\n        <div class = \"col-xs-4\">\n          <label><input type=\"radio\" value=\"NUPD\" [(ngModel)]=\"type\" name=\"userType\">NUPD</label>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"username\" type=\"text\"class=\"form-control\" [(ngModel)]=\"username\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"Email Address\" type=\"email\" class=\"form-control\" [(ngModel)]=\"emailId\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"password\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <input placeholder=\"verify password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"verifyPassword\"/>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <a class=\"btn btn-primary btn-block\" (click)=\"createUser(username, password, verifyPassword, emailId, type)\">\n        Register</a>\n    </div>\n  </div>\n  <div class = \"row regitser-elements\">\n    <div class = \"col-xs-12\">\n      <a class=\"btn btn-danger btn-block\" [routerLink]=\"['/login']\">Cancel</a>\n    </div>\n  </div>\n  <div class=\"row errorBlock\" [hidden]=\"!showError\">\n    <div class = \"col-sm-8 col-xs-11 col-sm-offset-4 col-xs-offset-1\">\n      <span class=\"errorMessage\">Please enter Username and Passwords</span>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <h1>Register</h1>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <div class=\"radio\">\r\n        <div class = \"col-xs-4\">\r\n          <label><input type=\"radio\" value=\"STUDENT\" [(ngModel)]=\"type\" name=\"userType\">Student</label>\r\n        </div>\r\n        <div class = \"col-xs-4\">\r\n          <label><input type=\"radio\" value=\"DRIVER\" [(ngModel)]=\"type\" name=\"userType\">Driver</label>\r\n        </div>\r\n        <div class = \"col-xs-4\">\r\n          <label><input type=\"radio\" value=\"NUPD\" [(ngModel)]=\"type\" name=\"userType\">NUPD</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"username\" type=\"text\"class=\"form-control\" [(ngModel)]=\"username\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"Email Address\" type=\"email\" class=\"form-control\" [(ngModel)]=\"emailId\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"password\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <input placeholder=\"verify password\" type=\"password\" class=\"form-control\" [(ngModel)]=\"verifyPassword\"/>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <a class=\"btn btn-primary btn-block\" (click)=\"createUser(username, password, verifyPassword, emailId, type)\">\r\n        Register</a>\r\n    </div>\r\n  </div>\r\n  <div class = \"row regitser-elements\">\r\n    <div class = \"col-xs-12\">\r\n      <a class=\"btn btn-danger btn-block\" [routerLink]=\"['/login']\">Cancel</a>\r\n    </div>\r\n  </div>\r\n  <div class=\"row errorBlock\" [hidden]=\"!showError\">\r\n    <div class = \"col-sm-8 col-xs-11 col-sm-offset-4 col-xs-offset-1\">\r\n      <span class=\"errorMessage\">Please enter Username and Passwords</span>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 

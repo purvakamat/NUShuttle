@@ -24,6 +24,7 @@ import { DriverPanelComponent } from './components/admin/driver-panel/driver-pan
 import { SettingPanelComponent } from './components/admin/setting-panel/setting-panel.component';
 import { RidesComponent } from './components/student/rides/rides.component';
 import { MyrideComponent } from './components/student/myride/myride.component';
+import { RidesListComponent } from './components/student/rides-list/rides-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MyrideComponent } from './components/student/myride/myride.component';
     DriverPanelComponent,
     SettingPanelComponent,
     RidesComponent,
-    MyrideComponent
+    MyrideComponent,
+    RidesListComponent
   ],
   imports: [
     BrowserModule,

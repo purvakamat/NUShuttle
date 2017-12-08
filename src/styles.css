@@ -44,3 +44,52 @@ div.tab button {
 div.tab button:hover {
   background-color: #595959;
 }
+
+
+/*Styles added for student component*/
+
+.page-margin{
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.nav-foreground {
+  color: white;
+  vertical-align: middle;
+}
+
+.nav-icon {
+  color: white;
+  vertical-align: middle;
+  height: 30px;
+  width: 30px;
+}
+
+.pull-left{
+  margin-right: 3pt;
+}
+
+.pull-right{
+  margin-right: 3pt;
+}
+
+.vertical-center{
+  margin-top: 3pt;
+  margin-bottom: 3pt;
+}
+
+.color-check{
+  color: #9bef64;
+}
+
+.dropoff {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.gm-style div{color: #fff !important; font-weight: bold;}
+
+.colorWhite{
+  color: white;
+}
+
+/*Styles added for student component*/
