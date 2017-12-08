@@ -14,7 +14,8 @@ export class HomeService {
   baseUrl = environment.baseUrl;
 
   findAllRides() {
-    const url = this.baseUrl + '/api/user/';  // to be changed
+    const url = this.baseUrl + '/api/rides/10';
+    console.log(url);
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
