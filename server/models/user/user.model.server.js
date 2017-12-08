@@ -14,6 +14,7 @@ UserModel.getAllDrivers = getAllDrivers;
 module.exports = UserModel;
 
 function createUser(user) {
+  console.log('from usermodel' + user);
   return UserModel.create(user);
 }
 

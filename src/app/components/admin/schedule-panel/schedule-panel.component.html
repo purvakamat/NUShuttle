@@ -1,5 +1,92 @@
-<div class="tab">
-  <button class="tablinks">Schedule</button>
-  <button class="tablinks">Driver</button>
-  <button class="tablinks">Settings</button>
+<div class="container-fluid">
+  <div class="tab">
+    <button class="tablinks">Schedule</button>
+    <button class="tablinks" [routerLink]="['/user/123/admin/driver-panel']">Driver</button>
+    <button class="tablinks" [routerLink]="['/user/123/admin/setting-panel']">Settings</button>
+  </div>
+
+  <div class="form-group">
+    <label for="vehicleNo">
+      Vehicle No:
+    </label>
+    <input [(ngModel)]="vehicleNo"
+           placeholder="Vehicle Number"
+           type="text"
+           id="vehicleNo"
+           class="form-control"/>
+
+    <div>
+      <label for="driver">
+        Choose driver
+      </label>
+    </div>
+    <div>
+      <select id="driver" class="form-control">
+        <option value="driver1">Driver1</option>
+        <option value="driver2">Driver2</option>
+      </select>
+    </div>
+    <div>
+      <label for="departureTime">
+        Departure Time
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="departureTime"
+             type="datetime-local" id="departureTime" name="departureTime"
+             placeholder="HH:mm:ss"/>
+    </div>
+
+    <div>
+      <label for="seatCount">
+        Seat count
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="seatCount"
+             type="number" id="seatCount" name="seatCount"
+             placeholder="9" value="9"/>
+    </div>
+
+    <div>
+      <label for="blockedSeat">
+        Blocked Seat
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="blockedCount"
+             type="number" id="Blockedseat" name="blockedSeat"
+             placeholder="1" value="1"/>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit"
+            (click)="createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount)">Add Ride</button>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <label>Rides</label>
+      </div>
+    </div>
+
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row" *ngFor="let ride of fetchRides()">
+            <div class="col-xs-2">
+              {{ride._id}}
+            </div>
+            <div class="col-xs-2">
+              {{ride._driver}}
+            </div>
+            <div class="col-xs-4">
+              {{ride.departure_time}}
+            </div>
+            <div class="col-xs-2">
+              {{ride.seat_count}}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,26 @@
-<div class="tab">
-  <button class="tablinks">Schedule</button>
-  <button class="tablinks">Driver</button>
-  <button class="tablinks">Settings</button>
+<div class="container-fluid">
+  <div class="tab">
+    <button class="tablinks" [routerLink]="['/user/123/admin/schedule-panel']">Schedule</button>
+    <button class="tablinks " [routerLink]="['/user/123/admin/driver-panel']">Driver</button>
+    <button class="tablinks">Settings</button>
+  </div>
+
+  <div class="form-group">
+    <label for="origin">
+      Origin
+    </label>
+    <input placeholder="Northeastern University"
+           type="text"
+           id="origin"
+           class="form-control"/>
+
+    <label for="destination">
+      Destination
+    </label>
+    <input placeholder="Home address"
+           type="text"
+           id="destination"
+           class="form-control"/>
+    <button class="btn btn-primary btn-block" type="submit">Update</button>
+  </div>
 </div>

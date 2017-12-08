@@ -20,7 +20,7 @@ export class RideService {
   }
 
   createRide(user: Ride) {
-    const url = this.baseUrl + '/api/ride/';
+    const url = 'http://localhost:3100' + '/api/ride/';
     return this.http.post(url, user)
       .map((response: Response) => {
         return response.json();

@@ -14,6 +14,7 @@ export class UserService {
 
   createUser(user: User) {
     const url = this.baseUrl + '/api/user/';
+    console.log(user);
     return this.http.post(url, user)
       .map((response: Response) => {
         return response.json();

@@ -15,6 +15,7 @@ module.exports = function (app) {
     delete ride._id;
     rideModel.createRide(ride).then(function (ride) {
       res.json(ride);
+    }, function(error){
     });
   }
 

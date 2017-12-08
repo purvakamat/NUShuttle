@@ -11,6 +11,7 @@ export class Ride {
   delay: Number;
   origin: String;
   destination: String;
+  vehicle_no: String;
   constructor(_id: String, departure_time: Date, _driver: String) {
     this._id = _id;
     this.departure_time = departure_time;

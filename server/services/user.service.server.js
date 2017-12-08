@@ -14,10 +14,11 @@ module.exports = function(app) {
   function createUser(request, response) {
     var newUser = request.body;
     delete newUser._id;
+    console.log(newUser);
     userModel
       .createUser(newUser)
       .then(function(user) {
-        res.json(user);
+        response.json(user);
       }, function(error) {
         console.log(error);
       });
@@ -76,8 +77,10 @@ module.exports = function(app) {
       });
   }
 
-  function getAllDrivers() {
+  function getAllDrivers(req, res) {
+    console.log("get all drivers");
     userModel.getAllDrivers().then(function (drivers) {
+      console.log(drivers);
       res.json(drivers);
     });
   }
