@@ -42,8 +42,8 @@ function deleteRide(rideId) {
   return RideModel.deleteOne({_id: rideId});
 }
 
-function getRidesForDriver(driver) {
-  return RideModel.find({driver: driver});
+function getRidesForDriver(driverId) {
+  return RideModel.find({_driver: driverId});
 }
 
 

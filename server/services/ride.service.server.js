@@ -3,7 +3,7 @@ module.exports = function (app) {
   app.post("/api/ride", createRide);
   app.get("/api/rides/:count", getAllRides);
   app.get("/api/ride/:rideId", findRideById);
-  app.get("/api/rides/driver", getRidesForDriver);
+  app.get("/api/rides/driver/:driverId", getRidesForDriver);
   app.put("/api/ride/:rideId/queue", addToQueue);
   app.put("/api/ride/:rideId/status", updateRideStatus);
   app.put("/api/ride/:rideId", updateRide);
@@ -93,9 +93,9 @@ module.exports = function (app) {
   }
 
   function getRidesForDriver(req, res) {
-    var driver = req.body;
+    var driverId = req.params['driverId'];
 
-    rideModel.getRidesForDriver(driver).then(function (rides) {
+    rideModel.getRidesForDriver(driverId).then(function (rides) {
       if(rides)
         res.json(rides);
       else
