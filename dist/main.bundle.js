@@ -99,12 +99,18 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_queueslot_service_client__ = __webpack_require__("../../../../../src/app/services/queueslot.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_home_service_client__ = __webpack_require__("../../../../../src/app/services/home.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_admin_schedule_panel_schedule_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_admin_driver_panel_driver_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_admin_setting_panel_setting_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -144,6 +150,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_14__components_apitest_apitest_component__["a" /* ApitestComponent */],
             __WEBPACK_IMPORTED_MODULE_15__components_user_home_home_component__["a" /* HomeComponent */],
             __WEBPACK_IMPORTED_MODULE_16__components_user_driver_driver_component__["a" /* DriverComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__components_admin_schedule_panel_schedule_panel_component__["a" /* SchedulePanelComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__components_admin_driver_panel_driver_panel_component__["a" /* DriverPanelComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -179,6 +188,12 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pickup_pickup_component__ = __webpack_require__("../../../../../src/app/components/pickup/pickup.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_dropoff_dropoff_component__ = __webpack_require__("../../../../../src/app/components/dropoff/dropoff.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_user_driver_driver_component__ = __webpack_require__("../../../../../src/app/components/user/driver/driver.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_admin_schedule_panel_schedule_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_admin_driver_panel_driver_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__ = __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.ts");
+
+
+
 
 
 
@@ -196,10 +211,196 @@ var APP_ROUTES = [
     { path: 'user/:uid/home', component: __WEBPACK_IMPORTED_MODULE_5__components_user_home_home_component__["a" /* HomeComponent */] },
     { path: 'user/:uid/pickup', component: __WEBPACK_IMPORTED_MODULE_6__components_pickup_pickup_component__["a" /* PickupComponent */] },
     { path: 'user/:uid/dropoff', component: __WEBPACK_IMPORTED_MODULE_7__components_dropoff_dropoff_component__["a" /* DropoffComponent */] },
-    { path: 'user/:uid/driver', component: __WEBPACK_IMPORTED_MODULE_8__components_user_driver_driver_component__["a" /* DriverComponent */] }
+    { path: 'user/:uid/driver', component: __WEBPACK_IMPORTED_MODULE_8__components_user_driver_driver_component__["a" /* DriverComponent */] },
+    { path: 'user/:uid/admin/schedule-panel', component: __WEBPACK_IMPORTED_MODULE_9__components_admin_schedule_panel_schedule_panel_component__["a" /* SchedulePanelComponent */] },
+    { path: 'user/:uid/admin/driver-panel', component: __WEBPACK_IMPORTED_MODULE_10__components_admin_driver_panel_driver_panel_component__["a" /* DriverPanelComponent */] },
+    { path: 'user/:uid/admin/setting-panel', component: __WEBPACK_IMPORTED_MODULE_11__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */] }
 ];
 var Routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(APP_ROUTES);
 //# sourceMappingURL=app.routing.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/driver-panel/driver-panel.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/driver-panel/driver-panel.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <button class=\"tablinks\">Schedule</button>\n  <button class=\"tablinks\">Driver</button>\n  <button class=\"tablinks\">Settings</button>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/driver-panel/driver-panel.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverPanelComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DriverPanelComponent = (function () {
+    function DriverPanelComponent() {
+    }
+    DriverPanelComponent.prototype.ngOnInit = function () {
+    };
+    return DriverPanelComponent;
+}());
+DriverPanelComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-driver-panel',
+        template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], DriverPanelComponent);
+
+//# sourceMappingURL=driver-panel.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <button class=\"tablinks\">Schedule</button>\n  <button class=\"tablinks\">Driver</button>\n  <button class=\"tablinks\">Settings</button>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulePanelComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SchedulePanelComponent = (function () {
+    function SchedulePanelComponent() {
+    }
+    SchedulePanelComponent.prototype.ngOnInit = function () {
+    };
+    return SchedulePanelComponent;
+}());
+SchedulePanelComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-schedule-panel',
+        template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], SchedulePanelComponent);
+
+//# sourceMappingURL=schedule-panel.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/setting-panel/setting-panel.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/setting-panel/setting-panel.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <button class=\"tablinks\">Schedule</button>\n  <button class=\"tablinks\">Driver</button>\n  <button class=\"tablinks\">Settings</button>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/admin/setting-panel/setting-panel.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingPanelComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SettingPanelComponent = (function () {
+    function SettingPanelComponent() {
+    }
+    SettingPanelComponent.prototype.ngOnInit = function () {
+    };
+    return SettingPanelComponent;
+}());
+SettingPanelComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-setting-panel',
+        template: __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], SettingPanelComponent);
+
+//# sourceMappingURL=setting-panel.component.js.map
 
 /***/ }),
 
@@ -224,7 +425,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/apitest.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Drop Off\n    </h2>\n  </div>\n  <app-pickup></app-pickup>\n  <div class=\"row_style\">\n    <h2>\n      Location Search API for Pick Up\n    </h2>\n  </div>\n  <app-dropoff></app-dropoff>\n  <div class=\"row_style\">\n    <h2>\n      Optimum Route Finder\n    </h2>\n  </div>\n  <app-shortestpath></app-shortestpath>\n</div>\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Drop Off\r\n    </h2>\r\n  </div>\r\n  <app-pickup></app-pickup>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Location Search API for Pick Up\r\n    </h2>\r\n  </div>\r\n  <app-dropoff></app-dropoff>\r\n  <div class=\"row_style\">\r\n    <h2>\r\n      Optimum Route Finder\r\n    </h2>\r\n  </div>\r\n  <app-shortestpath></app-shortestpath>\r\n</div>\r\n"
 
 /***/ }),
 

@@ -20,3 +20,27 @@ body {
   text-align: center;
   margin:0 auto;
 }
+
+/*admin panel styling*/
+
+div.tab {
+  overflow: hidden;
+  border: 1px solid #999999;
+  background-color: #737373;
+  color: white;
+}
+
+div.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 18px;
+}
+
+div.tab button:hover {
+  background-color: #595959;
+}

@@ -8,6 +8,9 @@ import {HomeComponent} from './components/user/home/home.component';
 import {PickupComponent} from './components/pickup/pickup.component';
 import {DropoffComponent} from './components/dropoff/dropoff.component';
 import {DriverComponent} from './components/user/driver/driver.component';
+import {SchedulePanelComponent} from './components/admin/schedule-panel/schedule-panel.component';
+import {DriverPanelComponent} from './components/admin/driver-panel/driver-panel.component';
+import {SettingPanelComponent} from './components/admin/setting-panel/setting-panel.component';
 
 const APP_ROUTES: Routes = [
   {path: 'apitest', component: ApitestComponent},
@@ -17,7 +20,10 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/home', component: HomeComponent},
   {path: 'user/:uid/pickup', component: PickupComponent},
   {path: 'user/:uid/dropoff', component: DropoffComponent},
-  {path: 'user/:uid/driver', component: DriverComponent}
+  {path: 'user/:uid/driver', component: DriverComponent},
+  {path: 'user/:uid/admin/schedule-panel', component: SchedulePanelComponent},
+  {path: 'user/:uid/admin/driver-panel', component: DriverPanelComponent},
+  {path: 'user/:uid/admin/setting-panel', component: SettingPanelComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
