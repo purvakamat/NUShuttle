@@ -4,7 +4,6 @@ import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
 
 @Injectable()
-
 export class DriverService {
   constructor(private http: Http) {
   }
@@ -13,7 +12,6 @@ export class DriverService {
 
   findRidesByUser(userId: String) {
     const url = this.baseUrl + '/api/rides/driver/' + userId;
-    console.log(url);
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -21,8 +19,7 @@ export class DriverService {
   }
 
   findAllDrivers() {
-    const url = this.baseUrl + '/api/user/drivers';
-    console.log(url);
+    const url = this.baseUrl + '/api/drivers';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

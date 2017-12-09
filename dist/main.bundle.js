@@ -264,7 +264,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/driver-panel/driver-panel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</button>\r\n  <button class=\"tablinks\">Driver</button>\r\n  <button class=\"tablinks\">Settings</button>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n  <div class=\"tab\">\r\n    <button class=\"tablinks\" [routerLink]=\"['/user/123/admin/schedule-panel']\">Schedule</button>\r\n    <button class=\"tablinks\">Driver</button>\r\n    <button class=\"tablinks\" [routerLink]=\"['/user/123/admin/setting-panel']\">Settings</button>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"username\">\r\n      Username\r\n    </label>\r\n    <input [(ngModel)]=\"username\"\r\n           placeholder=\"Username\"\r\n           type=\"text\"\r\n           id=\"username\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"password\">\r\n      Password\r\n    </label>\r\n    <input [(ngModel)]=\"password\"\r\n           placeholder=\"Password\"\r\n           type=\"text\"\r\n           id=\"password\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"firstName\">\r\n      First Name\r\n    </label>\r\n    <input [(ngModel)]=\"firstName\"\r\n           placeholder=\"First Name\"\r\n           type=\"text\"\r\n           id=\"firstName\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"lastName\">\r\n      Last Name\r\n    </label>\r\n    <input [(ngModel)]=\"lastName\"\r\n           placeholder=\"Last Name\"\r\n           type=\"text\"\r\n           id=\"lastName\"\r\n           class=\"form-control\"/>\r\n    <label for=\"email\">\r\n      Email\r\n    </label>\r\n    <input [(ngModel)]=\"emailId\"\r\n           placeholder=\"abcd@gmail.com\"\r\n           type=\"text\"\r\n           id=\"email\"\r\n           class=\"form-control\"/>\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\r\n            (click)=\"createDriver(username, password, firstName, lastName, emailId)\">Add Driver</button>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-12\">\r\n        <label>Drivers</label>\r\n      </div>\r\n    </div>\r\n\r\n    <div>\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <div class=\"row\" *ngFor=\"let driver of fetchDrivers()\">\r\n            <div class=\"col-xs-2\">\r\n              {{driver.firstName}}\r\n            </div>\r\n            <div class=\"col-xs-2\">\r\n              {{driver.lastName}}\r\n            </div>\r\n            <div class=\"col-xs-4\">\r\n              {{driver.emailId}}\r\n            </div>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -274,6 +274,10 @@ module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverPanelComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -284,10 +288,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var DriverPanelComponent = (function () {
-    function DriverPanelComponent() {
+    function DriverPanelComponent(userService, driverService, route, router) {
+        this.userService = userService;
+        this.driverService = driverService;
+        this.route = route;
+        this.router = router;
     }
     DriverPanelComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.driverService.findAllDrivers()
+                .subscribe(function (drivers) {
+                _this.drivers = drivers;
+            });
+        });
+    };
+    DriverPanelComponent.prototype.fetchDrivers = function () {
+        return this.drivers;
+    };
+    DriverPanelComponent.prototype.createDriver = function (username, password, firstName, lastName, emailId) {
+        var _this = this;
+        var user = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('', username, password, emailId, 'DRIVER', '');
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.latitude = 0.0;
+        user.longitude = 0.0;
+        this.userService.createUser(user)
+            .subscribe(function (ride1) {
+            if (ride1) {
+                _this.router.navigate(['/user/123/admin/driver-panel']);
+            }
+        });
     };
     return DriverPanelComponent;
 }());
@@ -297,9 +334,10 @@ DriverPanelComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DriverPanelComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=driver-panel.component.js.map
 
 /***/ }),
@@ -312,7 +350,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".dropbtn {\r\n  background-color: #4CAF50;\r\n  color: white;\r\n  padding: 16px;\r\n  font-size: 16px;\r\n  border: none;\r\n  cursor: pointer;\r\n}\r\n\r\n.dropdown {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.dropdown-content {\r\n  display: none;\r\n  position: absolute;\r\n  background-color: #f9f9f9;\r\n  min-width: 160px;\r\n  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);\r\n  z-index: 1;\r\n}\r\n\r\n.dropdown-content a {\r\n  color: black;\r\n  padding: 12px 16px;\r\n  text-decoration: none;\r\n  display: block;\r\n}\r\n\r\n.dropdown-content a:hover {background-color: #f1f1f1}\r\n\r\n.dropdown:hover .dropdown-content {\r\n  display: block;\r\n}\r\n\r\n.dropdown:hover .dropbtn {\r\n  background-color: #3e8e41;\r\n}\r\n", ""]);
 
 // exports
 
@@ -325,7 +363,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</button>\r\n  <button class=\"tablinks\">Driver</button>\r\n  <button class=\"tablinks\">Settings</button>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n  <div class=\"tab\">\r\n    <button class=\"tablinks\">Schedule</button>\r\n    <button class=\"tablinks\" [routerLink]=\"['/user/123/admin/driver-panel']\">Driver</button>\r\n    <button class=\"tablinks\" [routerLink]=\"['/user/123/admin/setting-panel']\">Settings</button>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\">\r\n        <option value=\"driver1\">Driver1</option>\r\n        <option value=\"driver2\">Driver2</option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\r\n            (click)=\"createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount)\">Add Ride</button>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-12\">\r\n        <label>Rides</label>\r\n      </div>\r\n    </div>\r\n\r\n    <div>\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <div class=\"row\" *ngFor=\"let ride of fetchRides()\">\r\n            <div class=\"col-xs-2\">\r\n              {{ride._id}}\r\n            </div>\r\n            <div class=\"col-xs-2\">\r\n              {{ride._driver}}\r\n            </div>\r\n            <div class=\"col-xs-4\">\r\n              {{ride.departure_time}}\r\n            </div>\r\n            <div class=\"col-xs-2\">\r\n              {{ride.seat_count}}\r\n            </div>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -335,6 +373,10 @@ module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulePanelComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_home_service_client__ = __webpack_require__("../../../../../src/app/services/home.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_ride_model_client__ = __webpack_require__("../../../../../src/app/models/ride.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -345,10 +387,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var SchedulePanelComponent = (function () {
-    function SchedulePanelComponent() {
+    function SchedulePanelComponent(rideService, route, homeService, router) {
+        this.rideService = rideService;
+        this.route = route;
+        this.homeService = homeService;
+        this.router = router;
     }
     SchedulePanelComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.homeService.findAllRides()
+                .subscribe(function (rides) {
+                _this.rides = rides;
+                console.log(rides);
+            });
+        });
+    };
+    SchedulePanelComponent.prototype.fetchRides = function () {
+        return this.rides;
+    };
+    SchedulePanelComponent.prototype.createRide = function (departureTime, _driver, vehicleNo, seatCount, blockedCount) {
+        var _this = this;
+        var ride = new __WEBPACK_IMPORTED_MODULE_3__models_ride_model_client__["a" /* Ride */]('', departureTime, _driver);
+        ride.seat_count = seatCount;
+        ride.blocked_seats = blockedCount;
+        ride._driver = 'driver_id';
+        ride.delay = 0;
+        ride.origin = '';
+        ride.status = '';
+        ride.destination = '';
+        ride.vehicle_no = vehicleNo;
+        this.rideService.createRide(ride)
+            .subscribe(function (ride1) {
+            if (ride1) {
+                _this.router.navigate(['/user/123/admin/schedule-panel']);
+            }
+        });
     };
     return SchedulePanelComponent;
 }());
@@ -358,9 +438,10 @@ SchedulePanelComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_ride_service_client__["a" /* RideService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_home_service_client__["a" /* HomeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_home_service_client__["a" /* HomeService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], SchedulePanelComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=schedule-panel.component.js.map
 
 /***/ }),
@@ -386,7 +467,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/setting-panel/setting-panel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\r\n  <button class=\"tablinks\">Schedule</button>\r\n  <button class=\"tablinks\">Driver</button>\r\n  <button class=\"tablinks\">Settings</button>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n  <div class=\"tab\">\r\n    <button class=\"tablinks\" [routerLink]=\"['/user/123/admin/schedule-panel']\">Schedule</button>\r\n    <button class=\"tablinks \" [routerLink]=\"['/user/123/admin/driver-panel']\">Driver</button>\r\n    <button class=\"tablinks\">Settings</button>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label for=\"origin\">\r\n      Origin\r\n    </label>\r\n    <input placeholder=\"Northeastern University\"\r\n           type=\"text\"\r\n           id=\"origin\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"destination\">\r\n      Destination\r\n    </label>\r\n    <input placeholder=\"Home address\"\r\n           type=\"text\"\r\n           id=\"destination\"\r\n           class=\"form-control\"/>\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\">Update</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1137,7 +1218,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/rides-list/rides-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container page-margin\">\r\n\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container page-margin\">\r\n  <ul class=\"list-group\">\r\n    <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-3\">\r\n          <span>Departure Time</span>\r\n          <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Seat Count</span>\r\n          <span>{{ride.seat_count}}</span>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Status</span>\r\n          <span>{{ride.status}}</span>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Delay</span>\r\n          <span>{{ride.delay}}</span>\r\n        </div>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1807,7 +1888,13 @@ var DriverService = (function () {
     }
     DriverService.prototype.findRidesByUser = function (userId) {
         var url = this.baseUrl + '/api/rides/driver/' + userId;
-        console.log(url);
+        return this.http.get(url)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    DriverService.prototype.findAllDrivers = function () {
+        var url = this.baseUrl + '/api/drivers';
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -1956,7 +2043,7 @@ var RideService = (function () {
         });
     };
     RideService.prototype.createRide = function (user) {
-        var url = this.baseUrl + '/api/ride/';
+        var url = 'http://localhost:3100' + '/api/ride/';
         return this.http.post(url, user)
             .map(function (response) {
             return response.json();
@@ -2004,6 +2091,7 @@ var UserService = (function () {
     }
     UserService.prototype.createUser = function (user) {
         var url = this.baseUrl + '/api/user/';
+        console.log(user);
         return this.http.post(url, user)
             .map(function (response) {
             return response.json();

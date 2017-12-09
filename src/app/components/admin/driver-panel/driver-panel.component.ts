@@ -30,7 +30,6 @@ export class DriverPanelComponent implements OnInit {
       this.driverService.findAllDrivers()
         .subscribe((drivers: User[]) => {
           this.drivers = drivers;
-          console.log(drivers);
         });
     });
   }

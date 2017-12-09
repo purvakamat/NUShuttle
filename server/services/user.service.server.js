@@ -1,13 +1,12 @@
 
 module.exports = function(app) {
 
-  app.get('/api/user/hello', helloUser);
   app.get('/api/user', findUsers);
   app.get('/api/user/:uid', findUserById);
-  app.get('/api/user/drivers', getAllDrivers);
   app.post('/api/user', createUser);
   app.put('/api/user/:uid', updateUser);
   app.delete('/api/user/:uid', deleteUser);
+  app.get('/api/drivers', getAllDrivers);
 
   var userModel = require('../models/user/user.model.server');
 
@@ -43,10 +42,6 @@ module.exports = function(app) {
       });
   }
 
-  function helloUser(req, res) {
-    res.send('Hello from user service');
-  }
-
   function findUsers(req, res) {
     var username = req.query['username'];
     var password = req.query['password'];
@@ -78,9 +73,7 @@ module.exports = function(app) {
   }
 
   function getAllDrivers(req, res) {
-    console.log("get all drivers");
     userModel.getAllDrivers().then(function (drivers) {
-      console.log(drivers);
       res.json(drivers);
     });
   }
