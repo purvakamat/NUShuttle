@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HomeService} from '../../../../services/home.service.client';
 
 @Component({
   selector: 'app-schedule-list',
@@ -22,13 +21,12 @@ export class ScheduleListComponent implements OnInit {
 
   constructor(private rideService: RideService,
               private route: ActivatedRoute,
-              private homeService: HomeService,
               private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
-      this.homeService.findAllRides()
+      this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
           console.log(rides);

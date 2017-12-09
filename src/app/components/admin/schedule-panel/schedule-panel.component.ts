@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HomeService} from '../../../services/home.service.client';
-import {User} from '../../../models/user.model.client';
 import {Ride} from '../../../models/ride.model.client';
 import {RideService} from "../../../services/ride.service.client";
 
@@ -23,14 +20,13 @@ export class SchedulePanelComponent implements OnInit {
 
   constructor(private rideService: RideService,
               private route: ActivatedRoute,
-              private homeService: HomeService,
               private router: Router) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
-      this.homeService.findAllRides()
+      this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
           console.log(rides);

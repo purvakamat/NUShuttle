@@ -16,7 +16,6 @@ import { ApitestComponent } from './components/apitest/apitest.component';
 import {DriverComponent} from './components/driver/driver.component';
 import {RideService} from './services/ride.service.client';
 import {QueueSlotService} from './services/queueslot.service.client';
-import {HomeService} from './services/home.service.client';
 import {DriverService} from './services/driver.service.client';
 import { SchedulePanelComponent } from './components/admin/schedule-panel/schedule-panel.component';
 import { DriverPanelComponent } from './components/admin/driver-panel/driver-panel.component';
