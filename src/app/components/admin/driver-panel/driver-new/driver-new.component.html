@@ -1,16 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
+    <a class="navbar-brand">
+      <b class="colorWhite">NEW DRIVER</b>
+    </a>
+
     <div class="navbar-text pull-left">
-      <a [routerLink]="['/user/123/admin/drivers']"
+      <a [routerLink]="['/user', userId, 'admin', 'drivers']"
          class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left colorWhite"></span>
       </a>
     </div>
-
-    <a class="navbar-brand">
-      <b class="colorWhite">NEW DRIVER</b>
-    </a>
 
   </div>
 </nav>
@@ -31,8 +31,17 @@
     </label>
     <input [(ngModel)]="password"
            placeholder="Password"
-           type="text"
+           type="password"
            id="password"
+           class="form-control"/>
+
+    <label for="verifyPassword">
+      Verify Password
+    </label>
+    <input [(ngModel)]="verifyPassword"
+           placeholder="Verify Password"
+           type="password"
+           id="verifyPassword"
            class="form-control"/>
 
     <label for="firstName">
@@ -61,7 +70,7 @@
            id="email"
            class="form-control"/>
     <button class="btn btn-primary btn-block" type="submit"
-            (click)="createDriver(username, password, firstName, lastName, emailId)">Add Driver</button>
+            (click)="createDriver(username, password, verifyPassword, firstName, lastName, emailId)">Add Driver</button>
   </div>
 </div>
 

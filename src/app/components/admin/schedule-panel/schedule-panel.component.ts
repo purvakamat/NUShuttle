@@ -51,7 +51,7 @@ export class SchedulePanelComponent implements OnInit {
     this.rideService.createRide(ride)
       .subscribe((ride1) => {
         if (ride1) {
-          this.router.navigate(['/user/123/admin/schedule-panel']);
+          this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
         }
       });
   }

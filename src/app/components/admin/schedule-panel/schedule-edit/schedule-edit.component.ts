@@ -56,7 +56,7 @@ export class ScheduleEditComponent implements OnInit {
     this.rideService.updateRide(this.rideId, ride)
       .subscribe((ride1) => {
         if (ride1) {
-          this.router.navigate(['/user/123/admin/schedules']);
+          this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
         }
       });
   }
@@ -65,7 +65,7 @@ export class ScheduleEditComponent implements OnInit {
     this.rideService.deleteRide(this.rideId)
       .subscribe((rides) => {
         this.rides = rides;
-        this.router.navigate(['/user/123/admin/schedules']);
+        this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
       });
   }
 

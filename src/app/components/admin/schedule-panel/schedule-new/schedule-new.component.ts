@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Ride} from "../../../../models/ride.model.client";
-import {RideService} from "../../../../services/ride.service.client";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Ride} from '../../../../models/ride.model.client';
+import {RideService} from '../../../../services/ride.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-schedule-new',
@@ -47,7 +47,7 @@ export class ScheduleNewComponent implements OnInit {
     this.rideService.createRide(ride)
       .subscribe((ride1) => {
         if (ride1) {
-          this.router.navigate(['/user/123/admin/schedules']);
+          this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
         }
       });
   }

@@ -53,7 +53,7 @@ export class DriverEditComponent implements OnInit {
     this.userService.updateUser(this.driverId, user)
       .subscribe((ride1) => {
         if (ride1) {
-          this.router.navigate(['/user/123/admin/drivers']);
+          this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
         }
       });
   }
@@ -62,7 +62,7 @@ export class DriverEditComponent implements OnInit {
     this.userService.deleteUser(this.driverId)
       .subscribe((drivers) => {
         this.drivers = drivers;
-        this.router.navigate(['/user/123/admin/drivers']);
+        this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
       });
   }
 }

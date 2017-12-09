@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../models/user.model.client";
 import {UserService} from "../../../../services/user.service.client";
 import {DriverService} from "../../../../services/driver.service.client";
@@ -17,10 +17,13 @@ export class DriverNewComponent implements OnInit {
   firstName: String;
   lastName: String;
   emailId: String;
+  verifyPassword: String;
+
   constructor(private userService: UserService,
               private driverService: DriverService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -32,14 +35,14 @@ export class DriverNewComponent implements OnInit {
     });
   }
 
-  createDriver(username, password, firstName, lastName, emailId) {
+  createDriver(username, password, verifyPassword, firstName, lastName, emailId) {
     const user = new User('', username, password, emailId, 'DRIVER');
     user.firstName = firstName;
     user.lastName = lastName;
     this.userService.createUser(user)
       .subscribe((ride1) => {
         if (ride1) {
-          this.router.navigate(['/user/123/admin/drivers']);
+          this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
         }
       });
   }
