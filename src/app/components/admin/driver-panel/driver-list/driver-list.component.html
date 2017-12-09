@@ -1,3 +1,71 @@
-<p>
-  driver-list works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <p class="navbar-text pull-left vertical-center">
+      <a [routerLink]="['/rides-list']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left nav-foreground"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">DRIVERS</b>
+      </a>
+    </p>
+
+    <!--hamburger to open rides in list form-->
+    <p class="navbar-text pull-right vertical-center">
+      <a [routerLink]="['/user/123/admin/drivers/new']" class="navbar-link">
+        <span class="glyphicon glyphicon-plus nav-foreground"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <label>Drivers</label>
+    </div>
+  </div>
+
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row" *ngFor="let driver of fetchDrivers()">
+          <div class="col-xs-2">
+            {{driver.firstName}}
+          </div>
+          <div class="col-xs-2">
+            {{driver.lastName}}
+          </div>
+          <div class="col-xs-4">
+            {{driver.emailId}}
+          </div>
+          <a [routerLink]="['/user/123/admin/drivers', driver._id]"
+             class="pull-right">
+            <span class="glyphicon-cog glyphicon"></span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/myride']" class="navbar-link">
+        <span class="glyphicon glyphicon-align-justify nav-foreground"></span>
+      </a>
+    </p>
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
+        <span class="glyphicon glyphicon-cog nav-foreground"></span>
+      </a>
+    </p>
+  </div>
+</nav>

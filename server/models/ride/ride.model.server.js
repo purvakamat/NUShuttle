@@ -21,8 +21,8 @@ function findRideById(rideID) {
   return RideModel.findOne({_id: rideID});
 }
 
-function updateRide(ride) {
-  return RideModel.updateOne(ride);
+function updateRide(rideID, ride) {
+  return RideModel.updateOne({_id: rideID}, ride);
 }
 
 function getAllRides() {

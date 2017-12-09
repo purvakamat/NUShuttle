@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.get("/api/ride/:rideId", findRideById);
   app.get("/api/rides/driver/:driverId", getRidesForDriver);
   app.put("/api/ride/:rideId/status", updateRideStatus);
-  app.put("/api/ride/:rideId", updateRide);
+  app.put("/api/ride/:rid", updateRide);
   app.delete("/api/ride/:rideId", deleteRide);
 
   var rideModel = require("../models/ride/ride.model.server");
@@ -39,7 +39,7 @@ module.exports = function (app) {
   }
 
   function updateRide(req, res) {
-    var rideId = req.params['rideId'];
+    var rideId = req.params['rid'];
     var rideNew = req.body;
     rideModel.updateRide(rideId, rideNew).then(function (response) {
       if(response.n >0 || response.nModified > 0)

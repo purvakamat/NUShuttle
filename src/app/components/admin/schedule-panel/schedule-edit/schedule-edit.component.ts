@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Ride} from "../../../../models/ride.model.client";
-import {RideService} from "../../../../services/ride.service.client";
-import {ActivatedRoute, Router} from "@angular/router";
-import {HomeService} from "../../../../services/home.service.client";
+import {Ride} from '../../../../models/ride.model.client';
+import {RideService} from '../../../../services/ride.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HomeService} from '../../../../services/home.service.client';
 
 @Component({
   selector: 'app-schedule-edit',

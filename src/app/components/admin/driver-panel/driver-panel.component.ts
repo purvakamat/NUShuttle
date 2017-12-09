@@ -38,7 +38,7 @@ export class DriverPanelComponent implements OnInit {
     return this.drivers;
   }
 
-  createDriver(username, password, firstName, lastName, emailId) {
+  /*createDriver(username, password, firstName, lastName, emailId) {
     const user = new User('', username, password, emailId, 'DRIVER');
     user.firstName = firstName;
     user.lastName = lastName;
@@ -48,5 +48,5 @@ export class DriverPanelComponent implements OnInit {
           this.router.navigate(['/user/123/admin/driver-panel']);
         }
       });
-  }
+  }*/
 }

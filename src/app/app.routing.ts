@@ -36,7 +36,7 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/admin/schedules/:rid', component: ScheduleEditComponent},
   {path: 'user/:uid/admin/drivers', component: DriverListComponent},
   {path: 'user/:uid/admin/drivers/new', component: DriverNewComponent},
-  {path: 'user/:uid/admin/drivers/new/:uid', component: DriverEditComponent},
+  {path: 'user/:uid/admin/drivers/:did', component: DriverEditComponent},
   {path: 'user/:uid/admin/setting-panel', component: SettingPanelComponent},
   {path: 'user/:uid/driver/ride/:rid', component: ShortestpathComponent},
   {path: 'rides-list', component: RidesListComponent},

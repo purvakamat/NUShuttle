@@ -232,6 +232,10 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_admin_driver_panel_driver_list_driver_list_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-list/driver-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_admin_schedule_panel_schedule_new_schedule_new_component__ = __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-new/schedule-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_admin_schedule_panel_schedule_edit_schedule_edit_component__ = __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_admin_driver_panel_driver_new_driver_new_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_admin_driver_panel_driver_edit_driver_edit_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.ts");
+
+
 
 
 
@@ -263,6 +267,8 @@ var APP_ROUTES = [
     { path: 'user/:uid/admin/schedules/new', component: __WEBPACK_IMPORTED_MODULE_16__components_admin_schedule_panel_schedule_new_schedule_new_component__["a" /* ScheduleNewComponent */] },
     { path: 'user/:uid/admin/schedules/:rid', component: __WEBPACK_IMPORTED_MODULE_17__components_admin_schedule_panel_schedule_edit_schedule_edit_component__["a" /* ScheduleEditComponent */] },
     { path: 'user/:uid/admin/drivers', component: __WEBPACK_IMPORTED_MODULE_15__components_admin_driver_panel_driver_list_driver_list_component__["a" /* DriverListComponent */] },
+    { path: 'user/:uid/admin/drivers/new', component: __WEBPACK_IMPORTED_MODULE_18__components_admin_driver_panel_driver_new_driver_new_component__["a" /* DriverNewComponent */] },
+    { path: 'user/:uid/admin/drivers/new/:did', component: __WEBPACK_IMPORTED_MODULE_19__components_admin_driver_panel_driver_edit_driver_edit_component__["a" /* DriverEditComponent */] },
     { path: 'user/:uid/admin/setting-panel', component: __WEBPACK_IMPORTED_MODULE_9__components_admin_setting_panel_setting_panel_component__["a" /* SettingPanelComponent */] },
     { path: 'user/:uid/driver/ride/:rid', component: __WEBPACK_IMPORTED_MODULE_10__components_shortestpath_shortestpath_component__["a" /* ShortestpathComponent */] },
     { path: 'rides-list', component: __WEBPACK_IMPORTED_MODULE_11__components_student_rides_list_rides_list_component__["a" /* RidesListComponent */] },
@@ -296,7 +302,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  driver-edit works!\n</p>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user/123/admin/drivers']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n      </a>\n    </div>\n\n    <a class=\"navbar-brand\">\n      <b class=\"colorWhite\">EDIT DRIVER</b>\n    </a>\n\n  </div>\n</nav>\n\n<div class=\"container fluid\">\n  <div class=\"form-group\">\n    <label for=\"username\">\n      Username\n    </label>\n    <input [(ngModel)]=\"username\"\n           placeholder=\"Username\"\n           type=\"text\"\n           id=\"username\"\n           class=\"form-control\"/>\n\n    <label for=\"password\">\n      Password\n    </label>\n    <input [(ngModel)]=\"password\"\n           placeholder=\"Password\"\n           type=\"text\"\n           id=\"password\"\n           class=\"form-control\"/>\n\n    <label for=\"firstName\">\n      First Name\n    </label>\n    <input [(ngModel)]=\"firstName\"\n           placeholder=\"First Name\"\n           type=\"text\"\n           id=\"firstName\"\n           class=\"form-control\"/>\n\n    <label for=\"lastName\">\n      Last Name\n    </label>\n    <input [(ngModel)]=\"lastName\"\n           placeholder=\"Last Name\"\n           type=\"text\"\n           id=\"lastName\"\n           class=\"form-control\"/>\n    <label for=\"email\">\n      Email\n    </label>\n    <input [(ngModel)]=\"emailId\"\n           placeholder=\"abcd@gmail.com\"\n           type=\"text\"\n           id=\"email\"\n           class=\"form-control\"/>\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\n            (click)=\"updateDriver(username, password, firstName, lastName, emailId)\">Update Driver</button>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\n"
 
 /***/ }),
 
@@ -306,6 +312,10 @@ module.exports = "<p>\n  driver-edit works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverEditComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -316,10 +326,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var DriverEditComponent = (function () {
-    function DriverEditComponent() {
+    function DriverEditComponent(userService, driverService, route, router) {
+        this.userService = userService;
+        this.driverService = driverService;
+        this.route = route;
+        this.router = router;
     }
     DriverEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.driverId = params['did'];
+            _this.userService.findUserById(_this.driverId)
+                .subscribe(function (user) {
+                _this.driver = user;
+                _this.username = _this.driver.username;
+                _this.password = _this.driver.password;
+                _this.firstName = _this.driver.firstName;
+                _this.lastName = _this.driver.lastName;
+                _this.emailId = _this.driver.emailId;
+            });
+            _this.driverService.findAllDrivers()
+                .subscribe(function (drivers) {
+                _this.drivers = drivers;
+            });
+        });
+    };
+    DriverEditComponent.prototype.updateDriver = function (username, password, firstName, lastName, emailId) {
+        var _this = this;
+        var user = new __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */](this.driverId, username, password, emailId, 'DRIVER');
+        user.firstName = firstName;
+        user.lastName = lastName;
+        this.userService.updateUser(this.driverId, user)
+            .subscribe(function (ride1) {
+            if (ride1) {
+                _this.router.navigate(['/user/123/admin/drivers']);
+            }
+        });
     };
     return DriverEditComponent;
 }());
@@ -329,9 +377,10 @@ DriverEditComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DriverEditComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=driver-edit.component.js.map
 
 /***/ }),
@@ -357,7 +406,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/driver-panel/driver-list/driver-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  driver-list works!\n</p>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <p class=\"navbar-text pull-left vertical-center\">\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\n      </a>\n    </p>\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header\">\n      <a class=\"navbar-brand thick\">\n        <b class=\"nav-foreground\">DRIVERS</b>\n      </a>\n    </p>\n\n    <!--hamburger to open rides in list form-->\n    <p class=\"navbar-text pull-right vertical-center\">\n      <a [routerLink]=\"['/user/123/admin/drivers/new']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus nav-foreground\"></span>\n      </a>\n    </p>\n\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Drivers</label>\n    </div>\n  </div>\n\n  <div>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <div class=\"row\" *ngFor=\"let driver of fetchDrivers()\">\n          <div class=\"col-xs-2\">\n            {{driver.firstName}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{driver.lastName}}\n          </div>\n          <div class=\"col-xs-4\">\n            {{driver.emailId}}\n          </div>\n          <a [routerLink]=\"['/user/123/admin/drivers', driver._id]\"\n             class=\"pull-right\">\n            <span class=\"glyphicon-cog glyphicon\"></span>\n          </a>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\n      </a>\n    </p>\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-cog nav-foreground\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -367,6 +416,9 @@ module.exports = "<p>\n  driver-list works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -377,10 +429,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var DriverListComponent = (function () {
-    function DriverListComponent() {
+    function DriverListComponent(userService, driverService, route, router) {
+        this.userService = userService;
+        this.driverService = driverService;
+        this.route = route;
+        this.router = router;
     }
     DriverListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.driverService.findAllDrivers()
+                .subscribe(function (drivers) {
+                _this.drivers = drivers;
+            });
+        });
+    };
+    DriverListComponent.prototype.fetchDrivers = function () {
+        return this.drivers;
     };
     return DriverListComponent;
 }());
@@ -390,9 +460,10 @@ DriverListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-list/driver-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-list/driver-list.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DriverListComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=driver-list.component.js.map
 
 /***/ }),
@@ -418,7 +489,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  driver-new works!\n</p>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <div class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user/123/admin/drivers']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n      </a>\n    </div>\n\n    <a class=\"navbar-brand\">\n      <b class=\"colorWhite\">NEW DRIVER</b>\n    </a>\n\n  </div>\n</nav>\n\n<div class=\"container fluid\">\n  <div class=\"form-group\">\n    <label for=\"username\">\n      Username\n    </label>\n    <input [(ngModel)]=\"username\"\n           placeholder=\"Username\"\n           type=\"text\"\n           id=\"username\"\n           class=\"form-control\"/>\n\n    <label for=\"password\">\n      Password\n    </label>\n    <input [(ngModel)]=\"password\"\n           placeholder=\"Password\"\n           type=\"text\"\n           id=\"password\"\n           class=\"form-control\"/>\n\n    <label for=\"firstName\">\n      First Name\n    </label>\n    <input [(ngModel)]=\"firstName\"\n           placeholder=\"First Name\"\n           type=\"text\"\n           id=\"firstName\"\n           class=\"form-control\"/>\n\n    <label for=\"lastName\">\n      Last Name\n    </label>\n    <input [(ngModel)]=\"lastName\"\n           placeholder=\"Last Name\"\n           type=\"text\"\n           id=\"lastName\"\n           class=\"form-control\"/>\n    <label for=\"email\">\n      Email\n    </label>\n    <input [(ngModel)]=\"emailId\"\n           placeholder=\"abcd@gmail.com\"\n           type=\"text\"\n           id=\"email\"\n           class=\"form-control\"/>\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\n            (click)=\"createDriver(username, password, firstName, lastName, emailId)\">Add Driver</button>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\n"
 
 /***/ }),
 
@@ -428,6 +499,10 @@ module.exports = "<p>\n  driver-new works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverNewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -438,10 +513,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var DriverNewComponent = (function () {
-    function DriverNewComponent() {
+    function DriverNewComponent(userService, driverService, route, router) {
+        this.userService = userService;
+        this.driverService = driverService;
+        this.route = route;
+        this.router = router;
     }
     DriverNewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.subscribe(function (params) {
+            _this.userId = params['uid'];
+            _this.driverService.findAllDrivers()
+                .subscribe(function (drivers) {
+                _this.drivers = drivers;
+            });
+        });
+    };
+    DriverNewComponent.prototype.createDriver = function (username, password, firstName, lastName, emailId) {
+        var _this = this;
+        var user = new __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */]('', username, password, emailId, 'DRIVER');
+        user.firstName = firstName;
+        user.lastName = lastName;
+        this.userService.createUser(user)
+            .subscribe(function (ride1) {
+            if (ride1) {
+                _this.router.navigate(['/user/123/admin/drivers']);
+            }
+        });
     };
     return DriverNewComponent;
 }());
@@ -451,9 +554,10 @@ DriverNewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DriverNewComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=driver-new.component.js.map
 
 /***/ }),
@@ -491,8 +595,7 @@ module.exports = "<div class=\"container-fluid\">\n  <div class=\"tab\">\n    <b
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__ = __webpack_require__("../../../../../src/app/models/user.model.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -502,7 +605,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -527,18 +629,6 @@ var DriverPanelComponent = (function () {
     DriverPanelComponent.prototype.fetchDrivers = function () {
         return this.drivers;
     };
-    DriverPanelComponent.prototype.createDriver = function (username, password, firstName, lastName, emailId) {
-        var _this = this;
-        var user = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('', username, password, emailId, 'DRIVER');
-        user.firstName = firstName;
-        user.lastName = lastName;
-        this.userService.createUser(user)
-            .subscribe(function (ride1) {
-            if (ride1) {
-                _this.router.navigate(['/user/123/admin/driver-panel']);
-            }
-        });
-    };
     return DriverPanelComponent;
 }());
 DriverPanelComponent = __decorate([
@@ -547,7 +637,7 @@ DriverPanelComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DriverPanelComponent);
 
 var _a, _b, _c, _d;
@@ -2650,7 +2740,8 @@ var RideService = (function () {
         });
     };
     RideService.prototype.updateRide = function (rideId, ride) {
-        var url = this.baseURL + rideId;
+        var url = this.baseURL + '/' + rideId;
+        console.log(url);
         return this.http.put(url, ride)
             .map(function (response) {
             return response.json();
