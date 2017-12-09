@@ -1,12 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
-    <p class="navbar-text pull-left vertical-center">
-      <a [routerLink]="['/rides-list']" class="navbar-link">
-        <span class="glyphicon glyphicon-chevron-left nav-foreground"></span>
-      </a>
-    </p>
-
     <!--heading on the nav bar-->
     <p class="navbar-header">
       <a class="navbar-brand thick">
@@ -16,7 +10,7 @@
 
     <!--hamburger to open rides in list form-->
     <p class="navbar-text pull-right vertical-center">
-      <a [routerLink]="['/user/123/admin/schedules/new']" class="navbar-link">
+      <a [routerLink]="['/user', userId, '/admin/schedules/new']" class="navbar-link">
         <span class="glyphicon glyphicon-plus nav-foreground"></span>
       </a>
     </p>
