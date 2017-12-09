@@ -25,6 +25,8 @@ import { SettingPanelComponent } from './components/admin/setting-panel/setting-
 import { RidesComponent } from './components/student/rides/rides.component';
 import { MyrideComponent } from './components/student/myride/myride.component';
 import { RidesListComponent } from './components/student/rides-list/rides-list.component';
+import { NgxCarouselModule } from 'ngx-carousel';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { RidesListComponent } from './components/student/rides-list/rides-list.c
     HttpModule,
     ReactiveFormsModule,
     Routing,
+    NgxCarouselModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAh8OY5Iqf02wY21IRqNkYP1AcqIvmSavI',
       libraries: ['places']

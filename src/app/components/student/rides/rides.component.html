@@ -21,7 +21,19 @@
 
 
 <div class="container page-margin">
+  <div class="row">
+    <ngx-carousel
+      [inputs]="carouselTile"
+      (carouselLoad)="carouselTileLoad($event)">
 
+      <ngx-tile NgxCarouselItem *ngFor="let ride of rides">
+        <h3 class="carousal-text">{{ride.departure_time}}</h3>
+      </ngx-tile>
+
+      <button NgxCarouselPrev class='leftRs'>&lt;</button>
+      <button NgxCarouselNext class='rightRs'>&gt;</button>
+    </ngx-carousel>
+  </div>
 </div>
 
 <!-- Footer -->
