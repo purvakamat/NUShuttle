@@ -13,7 +13,6 @@ export class RideService {
   constructor(private http: Http) {
     this.baseURL = environment.baseUrl + '/api/ride';
     this.baseURLRides = environment.baseUrl + '/api/rides';
-    console.log(this.baseURL + " " + this.baseURLRides);
   }
 
   createRide(user: Ride) {

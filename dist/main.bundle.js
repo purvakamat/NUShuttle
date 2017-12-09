@@ -1224,7 +1224,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/rides-list/rides-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container page-margin\">\r\n  <ul class=\"list-group\">\r\n    <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-3\">\r\n          <span>Departure Time</span>\r\n          <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Seat Count</span>\r\n          <span>{{ride.seat_count}}</span>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Status</span>\r\n          <span>{{ride.status}}</span>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Delay</span>\r\n          <span>{{ride.delay}}</span>\r\n        </div>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container\">\r\n  <ul class=\"list-group\">\r\n    <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-3\">\r\n          <span>Departure Time</span>\r\n          <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Seat Count</span>\r\n          <span>{{ride.seat_count}}</span>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Status</span>\r\n          <span>{{ride.status}}</span>\r\n        </div>\r\n        <div class=\"col-xs-3\">\r\n          <span>Delay</span>\r\n          <span>{{ride.delay}}</span>\r\n        </div>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1234,6 +1234,7 @@ module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RidesListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1244,10 +1245,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var RidesListComponent = (function () {
-    function RidesListComponent() {
+    function RidesListComponent(rideService) {
+        this.rideService = rideService;
     }
     RidesListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.rideService.getAllRides(10)
+            .subscribe(function (rideList) {
+            _this.rides = rideList;
+        });
     };
     return RidesListComponent;
 }());
@@ -1257,9 +1265,10 @@ RidesListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */]) === "function" && _a || Object])
 ], RidesListComponent);
 
+var _a;
 //# sourceMappingURL=rides-list.component.js.map
 
 /***/ }),
@@ -1272,7 +1281,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".carousal-height{\r\n  height: 50pt;\r\n  vertical-align: middle;\r\n  margin-bottom: 0pt;\r\n  margin-top: -15pt;\r\n}\r\n\r\n.carousal-text{\r\n  text-align: center;\r\n  line-height: 50pt;\r\n}\r\n\r\n.leftRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-left: 20px;\r\n  outline: none;\r\n}\r\n\r\n.rightRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-right: 20px;\r\n  outline: none;\r\n}\r\n", ""]);
+exports.push([module.i, ".carousal-height{\r\n  height: 50pt;\r\n  vertical-align: middle;\r\n  margin-bottom: 0pt;\r\n  margin-top: -15pt;\r\n}\r\n\r\n.carousal-text{\r\n  text-align: center;\r\n  line-height: 50pt;\r\n}\r\n\r\n.leftRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-left: 20px;\r\n  outline: none;\r\n}\r\n\r\n.rightRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-right: 20px;\r\n  outline: none;\r\n}\r\n\r\n.responsive-image {\r\n  height: auto;\r\n  max-width: 200px;\r\n  margin: auto;\r\n  display: block;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -1285,7 +1294,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/rides/rides.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <ngx-carousel [inputs]=\"carouselTile\">\r\n\r\n      <ngx-tile class=\"carousal-height\" NgxCarouselItem *ngFor=\"let ride of carousel_rides\">\r\n        <div class=\"carousal-height\">\r\n          <h3 class=\"carousal-text\">{{ride.departure_time | date:\"hh:mm a\"}}</h3>\r\n        </div>\r\n      </ngx-tile>\r\n\r\n      <button NgxCarouselPrev class=\"leftRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n        </a>\r\n      </button>\r\n\r\n      <button NgxCarouselNext class=\"rightRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n        </a>\r\n      </button>\r\n    </ngx-carousel>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <ngx-carousel [inputs]=\"carouselTile\">\r\n\r\n      <ngx-tile class=\"carousal-height\" NgxCarouselItem *ngFor=\"let ride of carousel_rides\">\r\n        <div class=\"carousal-height\">\r\n          <h3 class=\"carousal-text\">{{ride.departure_time | date:\"hh:mm a\"}}</h3>\r\n        </div>\r\n      </ngx-tile>\r\n\r\n      <button NgxCarouselPrev class=\"leftRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n        </a>\r\n      </button>\r\n\r\n      <button NgxCarouselNext class=\"rightRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n        </a>\r\n      </button>\r\n    </ngx-carousel>\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <img class=\"responsive-image\" src=\"../../../assets/red_eye.png\">\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -2064,7 +2073,6 @@ var RideService = (function () {
         this.http = http;
         this.baseURL = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].baseUrl + '/api/ride';
         this.baseURLRides = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].baseUrl + '/api/rides';
-        console.log(this.baseURL + " " + this.baseURLRides);
     }
     RideService.prototype.createRide = function (user) {
         var url = this.baseURL;
