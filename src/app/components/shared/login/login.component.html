@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h3><b>LOGIN</b></h3>
+
+  <form (ngSubmit)="login()" #form="ngForm">
+    <input type="text" class="form-control login-elements" placeholder="username" name="username" ngModel required
+           #username="ngModel"/>
+    <span class="errorMessage" *ngIf="!username.valid && username.touched">
+            Please enter valid username
+    </span>
+    <input type="password" class="form-control login-elements" placeholder="password" name="password" ngModel
+           required  #password="ngModel"/>
+    <span class="errorMessage" *ngIf="!password.valid && password.touched">
+            Please enter valid password
+    </span>
+    <button class="btn btn-primary btn-block login-elements" type="submit" [disabled]="!form.valid">Login</button>
+    <button class="btn btn-success btn-block login-elements" type="submit" [routerLink]="['/register']">Register</button>
+  </form>
+
+  <div *ngIf="errorFlag" class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
+</div>

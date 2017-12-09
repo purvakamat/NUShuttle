@@ -1,0 +1,64 @@
+
+<div class="container-fluid">
+
+  <h3><b>REGISTER</b></h3>
+
+  <form #f="ngForm" (ngSubmit) = register()>
+
+    <input placeholder="username"
+           type="text"
+           class="form-control regitser-elements"
+           name="username"
+           ngModel
+           required
+           autofocus
+           #username="ngModel"/>
+    <span class="help-block regitser-elements" *ngIf="!username.valid && username.touched">
+      Please enter a username
+    </span>
+
+    <input placeholder="email"
+           type="text"
+           class="form-control regitser-elements"
+           name="email"
+           ngModel
+           required
+           autofocus
+           #email="ngModel"/>
+    <span class="help-block regitser-elements" *ngIf="!email.valid && email.touched">
+      Please enter a valid email ID
+    </span>
+
+
+    <input placeholder="password"
+           type="password"
+           class="form-control regitser-elements"
+           name="password"
+           ngModel
+           required
+           #password="ngModel"/>
+    <span class="help-block regitser-elements" *ngIf="!password.valid && password.touched">
+      Please enter a password
+    </span>
+
+    <input placeholder="verify password"
+           type="password"
+           class="form-control regitser-elements"
+           name="verifypassword"
+           ngModel
+           required
+           #verifypassword="ngModel"/>
+    <span class="help-block regitser-elements" *ngIf="!verifypassword.valid && verifypassword.touched">
+      Please re-enter the password
+    </span>
+
+    <button class="btn btn-primary btn-block regitser-elements"
+            type="submit" [disabled] = "!f.valid">Register</button>
+    <button class="btn btn-danger btn-block regitser-elements"
+            [routerLink]="['/login']" >Cancel</button>
+  </form>
+
+  <div class="alert alert-danger error-message regitser-elements" *ngIf="errorFlag"> {{errorMsg}} </div>
+
+</div>
+

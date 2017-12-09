@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { PickupComponent } from './components/pickup/pickup.component';
+import { PickupComponent } from './components/apitest/pickup/pickup.component';
 import { AgmCoreModule } from '@agm/core';
-import { DropoffComponent } from './components/dropoff/dropoff.component';
-import {ShortestpathComponent} from './components/shortestpath/shortestpath.component';
-import {LoginComponent} from './components/user/login/login.component';
-import {ProfileComponent} from './components/user/profile/profile.component';
-import {RegisterComponent} from './components/user/register/register.component';
+import { DropoffComponent } from './components/apitest/dropoff/dropoff.component';
+import {ShortestpathComponent} from './components/apitest/shortestpath/shortestpath.component';
+import {LoginComponent} from './components/shared/login/login.component';
+import {ProfileComponent} from './components/shared/profile/profile.component';
+import {RegisterComponent} from './components/shared/register/register.component';
 import {Routing} from './app.routing';
 import {UserService} from './services/user.service.client';
 import { ApitestComponent } from './components/apitest/apitest.component';
-import { HomeComponent } from './components/user/home/home.component';
-import {DriverComponent} from './components/user/driver/driver.component';
+import {DriverComponent} from './components/driver/driver.component';
 import {RideService} from './services/ride.service.client';
 import {QueueSlotService} from './services/queueslot.service.client';
 import {HomeService} from './services/home.service.client';
@@ -34,6 +33,7 @@ import {ScheduleEditComponent} from './components/admin/schedule-panel/schedule-
 import {DriverListComponent} from './components/admin/driver-panel/driver-list/driver-list.component';
 import {DriverEditComponent} from './components/admin/driver-panel/driver-edit/driver-edit.component';
 import {DriverNewComponent} from './components/admin/driver-panel/driver-new/driver-new.component';
+import {AuthGuard} from "./services/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -45,7 +45,6 @@ import {DriverNewComponent} from './components/admin/driver-panel/driver-new/dri
     ProfileComponent,
     RegisterComponent,
     ApitestComponent,
-    HomeComponent,
     DriverComponent,
     SchedulePanelComponent,
     DriverPanelComponent,
@@ -72,7 +71,7 @@ import {DriverNewComponent} from './components/admin/driver-panel/driver-new/dri
       libraries: ['places']
     })
   ],
-  providers: [HttpModule, UserService, RideService, QueueSlotService, HomeService, DriverService, SharedService],
+  providers: [HttpModule, UserService, RideService, QueueSlotService, DriverService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

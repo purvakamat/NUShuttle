@@ -9,12 +9,11 @@ UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUsername = findUserByUsername;
 UserModel.deleteUser = deleteUser;
 UserModel.updateUser = updateUser;
-UserModel.getAllDrivers = getAllDrivers;
+UserModel.getAllUsersWithRole = getAllUsersWithRole;
 
 module.exports = UserModel;
 
 function createUser(user) {
-  console.log('from usermodel' + user);
   return UserModel.create(user);
 }
 
@@ -45,6 +44,6 @@ function updateUser(userId, user) {
   return UserModel.update({_id: userId}, user);
 }
 
-function getAllDrivers() {
-  return UserModel.find({role:"DRIVER"});
+function getAllUsersWithRole(role) {
+  return UserModel.find({role:role});
 }
