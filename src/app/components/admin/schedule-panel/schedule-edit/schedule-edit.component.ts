@@ -63,4 +63,12 @@ export class ScheduleEditComponent implements OnInit {
       });
   }
 
+  deleteRide() {
+    this.rideService.deleteRide(this.rideId)
+      .subscribe((rides) => {
+        this.rides = rides;
+        this.router.navigate(['/user/123/admin/schedules']);
+      });
+  }
+
 }

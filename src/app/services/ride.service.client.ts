@@ -45,4 +45,13 @@ export class RideService {
         return response.json();
       });
   }
+
+  deleteRide(rideId) {
+    const url = this.baseURL + '/' + rideId;
+    console.log(url);
+    return this.http.delete(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 }

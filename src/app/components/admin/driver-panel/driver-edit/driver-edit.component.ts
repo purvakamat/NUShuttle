@@ -57,4 +57,12 @@ export class DriverEditComponent implements OnInit {
         }
       });
   }
+
+  deleteDriver() {
+    this.userService.deleteUser(this.driverId)
+      .subscribe((drivers) => {
+        this.drivers = drivers;
+        this.router.navigate(['/user/123/admin/drivers']);
+      });
+  }
 }
