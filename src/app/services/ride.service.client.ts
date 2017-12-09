@@ -23,7 +23,7 @@ export class RideService {
       });
   }
 
-  findRideById(rideId: string) {
+  findRideById(rideId: String) {
     const url = this.baseURL + '/' + rideId;
     return this.http.get(url)
       .map((response: Response) => {
@@ -31,9 +31,18 @@ export class RideService {
       });
   }
 
-  getAllRides(count){
-    return this.http.get(this.baseURLRides + "/" + count).map((response: Response) => {
+  getAllRides(count) {
+    return this.http.get(this.baseURLRides + '/' + count).map((response: Response) => {
       return response.json();
     });
+  }
+
+  updateRide(rideId, ride) {
+    const url = this.baseURL + '/' + rideId;
+    console.log(url);
+    return this.http.put(url, ride)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 }

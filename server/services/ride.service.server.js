@@ -30,7 +30,7 @@ module.exports = function (app) {
 
   function findRideById(req, res) {
     var rideId = req.params['rideId'];
-    rideModel.getRideWithID(rideId).then(function (ride) {
+    rideModel.findRideById(rideId).then(function (ride) {
       if(ride)
         res.json(ride);
       else

@@ -27,7 +27,13 @@ import { MyrideComponent } from './components/student/myride/myride.component';
 import { RidesListComponent } from './components/student/rides-list/rides-list.component';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
-import {SharedService} from "./services/shared.service";
+import {SharedService} from './services/shared.service';
+import {ScheduleListComponent} from './components/admin/schedule-panel/schedule-list/schedule-list.component';
+import {ScheduleNewComponent} from './components/admin/schedule-panel/schedule-new/schedule-new.component';
+import {ScheduleEditComponent} from './components/admin/schedule-panel/schedule-edit/schedule-edit.component';
+import {DriverListComponent} from './components/admin/driver-panel/driver-list/driver-list.component';
+import {DriverEditComponent} from './components/admin/driver-panel/driver-edit/driver-edit.component';
+import {DriverNewComponent} from './components/admin/driver-panel/driver-new/driver-new.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,13 @@ import {SharedService} from "./services/shared.service";
     SettingPanelComponent,
     RidesComponent,
     MyrideComponent,
-    RidesListComponent
+    RidesListComponent,
+    ScheduleListComponent,
+    ScheduleNewComponent,
+    ScheduleEditComponent,
+    DriverListComponent,
+    DriverNewComponent,
+    DriverEditComponent
   ],
   imports: [
     BrowserModule,

@@ -12,9 +12,15 @@ import {SchedulePanelComponent} from './components/admin/schedule-panel/schedule
 import {DriverPanelComponent} from './components/admin/driver-panel/driver-panel.component';
 import {SettingPanelComponent} from './components/admin/setting-panel/setting-panel.component';
 import {ShortestpathComponent} from './components/shortestpath/shortestpath.component';
-import {RidesListComponent} from "./components/student/rides-list/rides-list.component";
-import {RidesComponent} from "./components/student/rides/rides.component";
-import {MyrideComponent} from "./components/student/myride/myride.component";
+import {RidesListComponent} from './components/student/rides-list/rides-list.component';
+import {RidesComponent} from './components/student/rides/rides.component';
+import {MyrideComponent} from './components/student/myride/myride.component';
+import {ScheduleListComponent} from './components/admin/schedule-panel/schedule-list/schedule-list.component';
+import {DriverListComponent} from './components/admin/driver-panel/driver-list/driver-list.component';
+import {ScheduleNewComponent} from './components/admin/schedule-panel/schedule-new/schedule-new.component';
+import {ScheduleEditComponent} from './components/admin/schedule-panel/schedule-edit/schedule-edit.component';
+import {DriverNewComponent} from "./components/admin/driver-panel/driver-new/driver-new.component";
+import {DriverEditComponent} from "./components/admin/driver-panel/driver-edit/driver-edit.component";
 
 const APP_ROUTES: Routes = [
   {path: 'apitest', component: ApitestComponent},
@@ -25,8 +31,12 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/pickup', component: PickupComponent},
   {path: 'user/:uid/dropoff', component: DropoffComponent},
   {path: 'user/:uid/driver', component: DriverComponent},
-  {path: 'user/:uid/admin/schedule-panel', component: SchedulePanelComponent},
-  {path: 'user/:uid/admin/driver-panel', component: DriverPanelComponent},
+  {path: 'user/:uid/admin/schedules', component: ScheduleListComponent},
+  {path: 'user/:uid/admin/schedules/new', component: ScheduleNewComponent},
+  {path: 'user/:uid/admin/schedules/:rid', component: ScheduleEditComponent},
+  {path: 'user/:uid/admin/drivers', component: DriverListComponent},
+  {path: 'user/:uid/admin/drivers/new', component: DriverNewComponent},
+  {path: 'user/:uid/admin/drivers/new/:uid', component: DriverEditComponent},
   {path: 'user/:uid/admin/setting-panel', component: SettingPanelComponent},
   {path: 'user/:uid/driver/ride/:rid', component: ShortestpathComponent},
   {path: 'rides-list', component: RidesListComponent},

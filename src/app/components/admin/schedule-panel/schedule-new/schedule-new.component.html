@@ -1,0 +1,80 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-text pull-left">
+      <a [routerLink]="['/user/123/admin/schedules']"
+         class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left colorWhite"></span>
+      </a>
+    </div>
+
+    <a class="navbar-brand">
+      <b class="colorWhite">NEW RIDE</b>
+    </a>
+
+  </div>
+</nav>
+
+<div class="container fluid">
+  <div class="form-group">
+    <label for="vehicleNo">
+      Vehicle No:
+    </label>
+    <input [(ngModel)]="vehicleNo"
+           placeholder="Vehicle Number"
+           type="text"
+           id="vehicleNo"
+           class="form-control"/>
+
+    <div>
+      <label for="driver">
+        Choose driver
+      </label>
+    </div>
+    <div>
+      <select id="driver" class="form-control">
+        <option value="driver1">Driver1</option>
+        <option value="driver2">Driver2</option>
+      </select>
+    </div>
+    <div>
+      <label for="departureTime">
+        Departure Time
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="departureTime"
+             type="datetime-local" id="departureTime" name="departureTime"
+             placeholder="HH:mm:ss"/>
+    </div>
+
+    <div>
+      <label for="seatCount">
+        Seat count
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="seatCount"
+             type="number" id="seatCount" name="seatCount"
+             placeholder="9" value="9"/>
+    </div>
+
+    <div>
+      <label for="blockedSeat">
+        Blocked Seat
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="blockedCount"
+             type="number" id="Blockedseat" name="blockedSeat"
+             placeholder="1" value="1"/>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit"
+            (click)="createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount)">Add Ride
+    </button>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom"></nav>
