@@ -298,7 +298,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/user/123/admin/drivers']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">EDIT DRIVER</b>\r\n    </a>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"username\">\r\n      Username\r\n    </label>\r\n    <input [(ngModel)]=\"username\"\r\n           placeholder=\"Username\"\r\n           type=\"text\"\r\n           id=\"username\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"password\">\r\n      Password\r\n    </label>\r\n    <input [(ngModel)]=\"password\"\r\n           placeholder=\"Password\"\r\n           type=\"text\"\r\n           id=\"password\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"firstName\">\r\n      First Name\r\n    </label>\r\n    <input [(ngModel)]=\"firstName\"\r\n           placeholder=\"First Name\"\r\n           type=\"text\"\r\n           id=\"firstName\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"lastName\">\r\n      Last Name\r\n    </label>\r\n    <input [(ngModel)]=\"lastName\"\r\n           placeholder=\"Last Name\"\r\n           type=\"text\"\r\n           id=\"lastName\"\r\n           class=\"form-control\"/>\r\n    <label for=\"email\">\r\n      Email\r\n    </label>\r\n    <input [(ngModel)]=\"emailId\"\r\n           placeholder=\"abcd@gmail.com\"\r\n           type=\"text\"\r\n           id=\"email\"\r\n           class=\"form-control\"/>\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\r\n            (click)=\"updateDriver(username, password, firstName, lastName, emailId)\">Update Driver</button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/user/123/admin/drivers']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">EDIT DRIVER</b>\r\n    </a>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"username\">\r\n      Username\r\n    </label>\r\n    <input [(ngModel)]=\"username\"\r\n           placeholder=\"Username\"\r\n           type=\"text\"\r\n           id=\"username\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"password\">\r\n      Password\r\n    </label>\r\n    <input [(ngModel)]=\"password\"\r\n           placeholder=\"Password\"\r\n           type=\"text\"\r\n           id=\"password\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"firstName\">\r\n      First Name\r\n    </label>\r\n    <input [(ngModel)]=\"firstName\"\r\n           placeholder=\"First Name\"\r\n           type=\"text\"\r\n           id=\"firstName\"\r\n           class=\"form-control\"/>\r\n\r\n    <label for=\"lastName\">\r\n      Last Name\r\n    </label>\r\n    <input [(ngModel)]=\"lastName\"\r\n           placeholder=\"Last Name\"\r\n           type=\"text\"\r\n           id=\"lastName\"\r\n           class=\"form-control\"/>\r\n    <label for=\"email\">\r\n      Email\r\n    </label>\r\n    <input [(ngModel)]=\"emailId\"\r\n           placeholder=\"abcd@gmail.com\"\r\n           type=\"text\"\r\n           id=\"email\"\r\n           class=\"form-control\"/>\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\r\n            (click)=\"updateDriver(username, password, firstName, lastName, emailId)\">Update Driver</button>\r\n    <button class=\"btn btn-danger btn-block\" type=\"submit\"\r\n            (click)=\"deleteDriver()\">Delete Driver</button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
 
 /***/ }),
 
@@ -363,6 +363,14 @@ var DriverEditComponent = (function () {
             if (ride1) {
                 _this.router.navigate(['/user/123/admin/drivers']);
             }
+        });
+    };
+    DriverEditComponent.prototype.deleteDriver = function () {
+        var _this = this;
+        this.userService.deleteUser(this.driverId)
+            .subscribe(function (drivers) {
+            _this.drivers = drivers;
+            _this.router.navigate(['/user/123/admin/drivers']);
         });
     };
     return DriverEditComponent;
@@ -662,7 +670,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/user/123/admin/schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">EDIT RIDE</b>\r\n    </a>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\">\r\n        <option value=\"driver1\">Driver1</option>\r\n        <option value=\"driver2\">Driver2</option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\r\n            (click)=\"updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount)\">Update Ride\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/user/123/admin/schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">EDIT RIDE</b>\r\n    </a>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\">\r\n        <option value=\"driver1\">Driver1</option>\r\n        <option value=\"driver2\">Driver2</option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\r\n            (click)=\"updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount)\">Update Ride\r\n    </button>\r\n    <button class=\"btn btn-danger btn-block\" type=\"submit\"\r\n            (click)=\"deleteRide()\">Delete Ride\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
 
 /***/ }),
 
@@ -734,6 +742,14 @@ var ScheduleEditComponent = (function () {
             if (ride1) {
                 _this.router.navigate(['/user/123/admin/schedules']);
             }
+        });
+    };
+    ScheduleEditComponent.prototype.deleteRide = function () {
+        var _this = this;
+        this.rideService.deleteRide(this.rideId)
+            .subscribe(function (rides) {
+            _this.rides = rides;
+            _this.router.navigate(['/user/123/admin/schedules']);
         });
     };
     return ScheduleEditComponent;
@@ -1824,8 +1840,18 @@ var LoginComponent = (function () {
         this.username = this.loginForm.value.username;
         this.password = this.loginForm.value.password;
         this.userService.login(this.username, this.password)
-            .subscribe(function (data) {
-            _this.router.navigate(['/rides']);
+            .subscribe(function (user) {
+            if (user.role == 'STUDENT')
+                _this.router.navigate(['/rides']);
+            else if (user.role == 'DRIVER')
+                _this.router.navigate(['/user', user._id, 'driver']);
+            else if (user.role == 'ADMIN')
+                _this.router.navigate(['/user', user._id, 'admin', 'schedules']);
+            else {
+                _this.userService.logout().subscribe(function (res) {
+                    _this.router.navigate(['/login']);
+                });
+            }
         }, function (error) {
             _this.errorMsg = "Username and password do not match. Please enter the correct credentials";
             _this.errorFlag = true;
@@ -2029,9 +2055,9 @@ var RegisterComponent = (function () {
                 if (user.role == 'STUDENT')
                     _this.router.navigate(['/rides']);
                 else if (user.role == 'DRIVER')
-                    _this.router.navigate(['/user', 123, 'driver']);
+                    _this.router.navigate(['/user', user._id, 'driver']);
                 else if (user.role == 'ADMIN')
-                    _this.router.navigate(['/user', 123, 'admin', 'schedules']);
+                    _this.router.navigate(['/user', user._id, 'admin', 'schedules']);
                 else {
                     _this.userService.logout().subscribe(function (res) {
                         _this.router.navigate(['/login']);
@@ -2687,6 +2713,14 @@ var RideService = (function () {
         var url = this.baseURL + '/' + rideId;
         console.log(url);
         return this.http.put(url, ride)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    RideService.prototype.deleteRide = function (rideId) {
+        var url = this.baseURL + '/' + rideId;
+        console.log(url);
+        return this.http.delete(url)
             .map(function (response) {
             return response.json();
         });

@@ -39,9 +39,9 @@ export class RegisterComponent implements OnInit {
             if(user.role == 'STUDENT')
               this.router.navigate(['/rides']);
             else if(user.role == 'DRIVER')
-              this.router.navigate(['/user', 123,'driver']);
+              this.router.navigate(['/user',user._id,'driver']);
             else if(user.role == 'ADMIN')
-              this.router.navigate(['/user', 123,'admin', 'schedules']);
+              this.router.navigate(['/user', user._id,'admin', 'schedules']);
             else{
               this.userService.logout().subscribe((res) => {
                 this.router.navigate(['/login']);
