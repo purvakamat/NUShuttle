@@ -1,16 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
+    <a class="navbar-brand">
+      <b class="colorWhite">NEW RIDE</b>
+    </a>
+
     <div class="navbar-text pull-left">
-      <a [routerLink]="['/user/123/admin/schedules']"
+      <a [routerLink]="['/user', userId,'/admin/schedules']"
          class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left colorWhite"></span>
       </a>
     </div>
-
-    <a class="navbar-brand">
-      <b class="colorWhite">NEW RIDE</b>
-    </a>
 
   </div>
 </nav>
