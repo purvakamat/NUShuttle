@@ -10,20 +10,23 @@ import {RideService} from "../../../services/ride.service.client";
 })
 export class RidesComponent implements OnInit {
 
+  carousel_rides: Ride[];
   rides: Ride[];
   carouselTile: NgxCarousel;
 
-  constructor(private rideService: RideService) { }
+  constructor(private rideService: RideService) {
+    this.carousel_rides = [];
+  }
 
   ngOnInit() {
     this.carouselTile = {
-      grid: {xs: 2, sm: 3, md: 3, lg: 5, all: 0},
-      slide: 2,
+      grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
+      slide: 1,
       animation: 'lazy',
       point: {
         visible: false
       },
-      load: 2,
+      load: 1,
       touch: true,
       easing: 'ease',
       loop: false
@@ -32,7 +35,9 @@ export class RidesComponent implements OnInit {
     this.rideService.getAllRides(10)
       .subscribe((rideList) => {
         this.rides = rideList;
+        for (let i = 0; i < 4; i++) {
+          this.carousel_rides.push(this.rides[i]);
+        }
       });
   }
-
 }

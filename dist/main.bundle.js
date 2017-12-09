@@ -1272,7 +1272,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".carousal-text{\r\n  min-height: 200px;\r\n  background-color: #ccc;\r\n  text-align: center;\r\n  line-height: 200px;\r\n}\r\n.leftRs {\r\n  position: absolute;\r\n  margin: auto;\r\n  top: 0;\r\n  bottom: 0;\r\n  width: 50px;\r\n  height: 50px;\r\n  box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);\r\n  border-radius: 999px;\r\n  left: 0;\r\n}\r\n\r\n.rightRs {\r\n  position: absolute;\r\n  margin: auto;\r\n  top: 0;\r\n  bottom: 0;\r\n  width: 50px;\r\n  height: 50px;\r\n  box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);\r\n  border-radius: 999px;\r\n  right: 0;\r\n}\r\n", ""]);
+exports.push([module.i, ".carousal-height{\r\n  height: 50pt;\r\n  vertical-align: middle;\r\n  margin-bottom: 0pt;\r\n  margin-top: -15pt;\r\n}\r\n\r\n.carousal-text{\r\n  text-align: center;\r\n  line-height: 50pt;\r\n}\r\n\r\n.leftRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-left: 20px;\r\n  outline: none;\r\n}\r\n\r\n.rightRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-right: 20px;\r\n  outline: none;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1285,7 +1285,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/rides/rides.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n\r\n<div class=\"container page-margin\">\r\n  <div class=\"row\">\r\n    <ngx-carousel\r\n      [inputs]=\"carouselTile\"\r\n      (carouselLoad)=\"carouselTileLoad($event)\">\r\n\r\n      <ngx-tile NgxCarouselItem *ngFor=\"let ride of rides\">\r\n        <h3 class=\"carousal-text\">{{ride.departure_time}}</h3>\r\n      </ngx-tile>\r\n\r\n      <button NgxCarouselPrev class='leftRs'>&lt;</button>\r\n      <button NgxCarouselNext class='rightRs'>&gt;</button>\r\n    </ngx-carousel>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <ngx-carousel [inputs]=\"carouselTile\">\r\n\r\n      <ngx-tile class=\"carousal-height\" NgxCarouselItem *ngFor=\"let ride of carousel_rides\">\r\n        <div class=\"carousal-height\">\r\n          <h3 class=\"carousal-text\">{{ride.departure_time | date:\"hh:mm a\"}}</h3>\r\n        </div>\r\n      </ngx-tile>\r\n\r\n      <button NgxCarouselPrev class=\"leftRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n        </a>\r\n      </button>\r\n\r\n      <button NgxCarouselNext class=\"rightRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n        </a>\r\n      </button>\r\n    </ngx-carousel>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1310,17 +1310,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RidesComponent = (function () {
     function RidesComponent(rideService) {
         this.rideService = rideService;
+        this.carousel_rides = [];
     }
     RidesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.carouselTile = {
-            grid: { xs: 2, sm: 3, md: 3, lg: 5, all: 0 },
-            slide: 2,
+            grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+            slide: 1,
             animation: 'lazy',
             point: {
                 visible: false
             },
-            load: 2,
+            load: 1,
             touch: true,
             easing: 'ease',
             loop: false
@@ -1328,6 +1329,9 @@ var RidesComponent = (function () {
         this.rideService.getAllRides(10)
             .subscribe(function (rideList) {
             _this.rides = rideList;
+            for (var i = 0; i < 4; i++) {
+                _this.carousel_rides.push(_this.rides[i]);
+            }
         });
     };
     return RidesComponent;

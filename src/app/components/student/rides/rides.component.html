@@ -19,19 +19,27 @@
   </div>
 </nav>
 
-
-<div class="container page-margin">
+<div class="container-fluid">
   <div class="row">
-    <ngx-carousel
-      [inputs]="carouselTile"
-      (carouselLoad)="carouselTileLoad($event)">
+    <ngx-carousel [inputs]="carouselTile">
 
-      <ngx-tile NgxCarouselItem *ngFor="let ride of rides">
-        <h3 class="carousal-text">{{ride.departure_time}}</h3>
+      <ngx-tile class="carousal-height" NgxCarouselItem *ngFor="let ride of carousel_rides">
+        <div class="carousal-height">
+          <h3 class="carousal-text">{{ride.departure_time | date:"hh:mm a"}}</h3>
+        </div>
       </ngx-tile>
 
-      <button NgxCarouselPrev class='leftRs'>&lt;</button>
-      <button NgxCarouselNext class='rightRs'>&gt;</button>
+      <button NgxCarouselPrev class="leftRs vertical-center">
+        <a class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+      </button>
+
+      <button NgxCarouselNext class="rightRs vertical-center">
+        <a class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </button>
     </ngx-carousel>
   </div>
 </div>

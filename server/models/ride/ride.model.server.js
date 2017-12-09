@@ -26,8 +26,9 @@ function updateRide(ride) {
 }
 
 function getAllRides() {
-  var current_time = new Date();
-  return RideModel.find({departure_time: {$gte : current_time}});
+  //var current_time = new Date()-10;
+  //return RideModel.find({departure_time: {$gte : current_time}});
+  return RideModel.find({});
 }
 
 function addToQueue(rideID, queueSlot) {
