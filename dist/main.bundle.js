@@ -108,12 +108,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_ngx_carousel__ = __webpack_require__("../../../../ngx-carousel/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_hammerjs__ = __webpack_require__("../../../../hammerjs/hammer.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_28_hammerjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__services_shared_service__ = __webpack_require__("../../../../../src/app/services/shared.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -180,7 +182,7 @@ AppModule = __decorate([
                 libraries: ['places']
             })
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_13__services_user_service_client__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_17__services_ride_service_client__["a" /* RideService */], __WEBPACK_IMPORTED_MODULE_18__services_queueslot_service_client__["a" /* QueueSlotService */], __WEBPACK_IMPORTED_MODULE_19__services_home_service_client__["a" /* HomeService */], __WEBPACK_IMPORTED_MODULE_20__services_driver_service_client__["a" /* DriverService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */], __WEBPACK_IMPORTED_MODULE_13__services_user_service_client__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_17__services_ride_service_client__["a" /* RideService */], __WEBPACK_IMPORTED_MODULE_18__services_queueslot_service_client__["a" /* QueueSlotService */], __WEBPACK_IMPORTED_MODULE_19__services_home_service_client__["a" /* HomeService */], __WEBPACK_IMPORTED_MODULE_20__services_driver_service_client__["a" /* DriverService */], __WEBPACK_IMPORTED_MODULE_29__services_shared_service__["a" /* SharedService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -320,11 +322,9 @@ var DriverPanelComponent = (function () {
     };
     DriverPanelComponent.prototype.createDriver = function (username, password, firstName, lastName, emailId) {
         var _this = this;
-        var user = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('', username, password, emailId, 'DRIVER', '');
+        var user = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('', username, password, emailId, 'DRIVER');
         user.firstName = firstName;
         user.lastName = lastName;
-        user.latitude = 0.0;
-        user.longitude = 0.0;
         this.userService.createUser(user)
             .subscribe(function (ride1) {
             if (ride1) {
@@ -697,9 +697,6 @@ var DropoffComponent = (function () {
                 _this.firstName = user.firstName;
                 _this.lastName = user.lastName;
                 _this.type = user.role;
-                _this.dropoff = user.dropoff_location;
-                _this.latitude = user.latitude;
-                _this.longitude = user.longitude;
             });
         });
         // this.latitude = 42.3404957;
@@ -738,9 +735,7 @@ var DropoffComponent = (function () {
         if (!this.userId) {
             return;
         }
-        var tempUser = new __WEBPACK_IMPORTED_MODULE_4__models_user_model_client__["a" /* User */](this.userId, this.username, this.user.password, this.emailId, this.type, this.dropoff);
-        tempUser.latitude = this.latitude;
-        tempUser.longitude = this.longitude;
+        var tempUser = new __WEBPACK_IMPORTED_MODULE_4__models_user_model_client__["a" /* User */](this.userId, this.username, this.user.password, this.emailId, this.type);
         this.userService
             .updateUser(this.userId, tempUser)
             .subscribe(function (user) {
@@ -922,7 +917,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/shortestpath/shortestpath.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId, 'driver']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Ride</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>Ride Information:</label>\r\n      <label>{{this.rideId}}</label>\r\n    </div>\r\n  </div>\r\n  <div class = \"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <input #search\r\n             placeholder=\"Add a Custom Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"search\"\r\n             class=\"form-control\"\r\n             disabled\r\n             [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>ORIGIN</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleOrigin}}</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>DESTINATION</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleDestination}}</span>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>STUDENTS</label>\r\n    </div>\r\n  </div>\r\n  <ul class=\"list-group\">\r\n    <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-2\">\r\n          {{queueSlot.student.firstName}}\r\n        </div>\r\n        <div class=\"col-xs-2\">\r\n          {{queueSlot.student.lastName}}\r\n        </div>\r\n        <div class=\"col-xs-4\">\r\n          {{queueSlot.student.dropoff_location}}\r\n        </div>\r\n        <div class=\"col-xs-2\">\r\n          <button type=\"button\" class=\"btn btn-primary btn-xs\">Check In</button>\r\n        </div>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <button #findRoute\r\n              id=\"findRoute\"\r\n              type=\"button\"\r\n              class=\"btn btn-primary btn-block\"\r\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map id=\"map\"\r\n               [latitude]=\"latitude\"\r\n               [longitude]=\"longitude\"\r\n               [scrollwheel]=\"false\"\r\n               [zoom]=\"16\">\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId, 'driver']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Ride</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>Ride Information:</label>\r\n      <label>{{this.rideId}}</label>\r\n    </div>\r\n  </div>\r\n  <div class = \"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <input #search\r\n             placeholder=\"Add a Custom Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"search\"\r\n             class=\"form-control\"\r\n             disabled\r\n             [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>ORIGIN</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleOrigin}}</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>DESTINATION</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleDestination}}</span>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>STUDENTS</label>\r\n    </div>\r\n  </div>\r\n  <ul class=\"list-group\">\r\n    <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\r\n      <div class=\"row\">\r\n        <div class=\"col-xs-2\">\r\n          {{queueSlot.student.firstName}}\r\n        </div>\r\n        <div class=\"col-xs-2\">\r\n          {{queueSlot.student.lastName}}\r\n        </div>\r\n        <div class=\"col-xs-4\">\r\n          {{queueSlot.dropoff_location}}\r\n        </div>\r\n        <div class=\"col-xs-2\">\r\n          <button type=\"button\" class=\"btn btn-primary btn-xs\">Check In</button>\r\n        </div>\r\n      </div>\r\n    </li>\r\n  </ul>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <button #findRoute\r\n              id=\"findRoute\"\r\n              type=\"button\"\r\n              class=\"btn btn-primary btn-block\"\r\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map id=\"map\"\r\n               [latitude]=\"latitude\"\r\n               [longitude]=\"longitude\"\r\n               [scrollwheel]=\"false\"\r\n               [zoom]=\"16\">\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -976,20 +971,22 @@ var ShortestpathComponent = (function () {
             // .findQueueSlotByRideId(this.rideId)
             // .subscribe((queueSlots: QueueSlot[]) => {
             // console.log(queueSlots);
-            var user1 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'abc', 'q1', 'q1', 'STUDENT', '1179 Boylston St, Boston, MA 02215, USA');
+            var dropoff_1 = '1179 Boylston St, Boston, MA 02215, USA';
+            var user1 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'abc', 'q1', 'q1', 'STUDENT');
             user1.firstName = 'Nisarg';
             user1.lastName = 'Shah';
-            var user2 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'q2', 'q2', 'q2', 'STUDENT', '75 Peterborough St, Boston, MA 02215, USA');
+            var dropoff_2 = '75 Peterborough St, Boston, MA 02215, USA';
+            var user2 = new __WEBPACK_IMPORTED_MODULE_6__models_user_model_client__["a" /* User */]('', 'q2', 'q2', 'q2', 'STUDENT');
             user2.firstName = 'Purva';
             user2.lastName = 'Kamat';
-            var queueSlot1 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user1, _this.rideId);
-            var queueSlot2 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */]('', user2, _this.rideId);
+            var queueSlot1 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */](user1._id, _this.rideId, dropoff_1);
+            var queueSlot2 = new __WEBPACK_IMPORTED_MODULE_5__models_queueslot_model_client__["a" /* QueueSlot */](user2._id, _this.rideId, dropoff_2);
             _this.queueSlots = [];
             _this.queueSlots.push(queueSlot1);
             _this.queueSlots.push(queueSlot2);
             // console.log(this.queueSlots);
             for (var index = 0; index < _this.queueSlots.length; index++) {
-                var temp = _this.queueSlots[index].student.dropoff_location;
+                var temp = _this.queueSlots[index].dropoff_location;
                 _this.addDropLocation(temp);
             }
             //
@@ -1112,7 +1109,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/myride/myride.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">MY RIDE</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class = \"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Dropoff Location\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"dropoff\"\r\n             [(ngModel)]=\"dropoff\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"locationConfirmed()\">\r\n        Confirm Drop Off Location\r\n      </button>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">MY RIDE</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--chevron-->\r\n    <p class=\"navbar-text pull-left vertical-center\">\r\n      <a [routerLink]=\"['/rides']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class = \"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <input placeholder=\"Choose your dropoff location\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"dropoff\"\r\n             [(ngModel)]=\"dropoff\"\r\n             class=\"form-control\"\r\n             #search [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"16\" >\r\n        <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\" [iconUrl]=\"iconUrl\"></agm-marker>\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row dropoff\">\r\n    <div class=\"col-xs-12\">\r\n      <button type=\"button\" class=\"btn btn-success btn-block\" (click)=\"locationConfirmed()\">\r\n        Confirm Drop Off Location\r\n      </button>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1124,6 +1121,10 @@ module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_service__ = __webpack_require__("../../../../../src/app/services/shared.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__ = __webpack_require__("../../../../../src/app/services/queueslot.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_queueslot_model_client__ = __webpack_require__("../../../../../src/app/models/queueslot.model.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1136,10 +1137,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var MyrideComponent = (function () {
-    function MyrideComponent(mapsAPILoader, ngZone) {
+    function MyrideComponent(mapsAPILoader, ngZone, router, sharedService, queueService) {
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
+        this.router = router;
+        this.sharedService = sharedService;
+        this.queueService = queueService;
         this.latitude = 42.3404957;
         this.longitude = -71.0878975;
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
@@ -1182,6 +1190,11 @@ var MyrideComponent = (function () {
         }
     };
     MyrideComponent.prototype.locationConfirmed = function () {
+        var _this = this;
+        var slot = new __WEBPACK_IMPORTED_MODULE_6__models_queueslot_model_client__["a" /* QueueSlot */]("", this.sharedService.addToRideId, this.dropOff);
+        this.queueService.createQueueSlot(slot).subscribe(function (slot) {
+            _this.router.navigate(['/rides']);
+        });
     };
     return MyrideComponent;
 }());
@@ -1195,10 +1208,10 @@ MyrideComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/student/myride/myride.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/student/myride/myride.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _f || Object])
 ], MyrideComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=myride.component.js.map
 
 /***/ }),
@@ -1281,7 +1294,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".carousal-height{\r\n  height: 50pt;\r\n  vertical-align: middle;\r\n  margin-bottom: 0pt;\r\n  margin-top: -15pt;\r\n}\r\n\r\n.carousal-text{\r\n  text-align: center;\r\n  line-height: 50pt;\r\n}\r\n\r\n.leftRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-left: 20px;\r\n  outline: none;\r\n}\r\n\r\n.rightRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-right: 20px;\r\n  outline: none;\r\n}\r\n\r\n.responsive-image {\r\n  height: auto;\r\n  max-width: 200px;\r\n  margin: auto;\r\n  display: block;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".carousal-height{\r\n  height: 50pt;\r\n  vertical-align: middle;\r\n  margin-bottom: 0pt;\r\n  margin-top: -15pt;\r\n}\r\n\r\n.carousal-text{\r\n  text-align: center;\r\n  line-height: 50pt;\r\n}\r\n\r\n.leftRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-left: 20px;\r\n  outline: none;\r\n}\r\n\r\n.rightRs {\r\n  border: none;\r\n  background: none;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  width: 40px;\r\n  height: 40px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  margin-right: 20px;\r\n  outline: none;\r\n}\r\n\r\n.responsive-image {\r\n  height: auto;\r\n  max-width: 200px;\r\n  margin: auto;\r\n  display: block;\r\n}\r\n\r\n.queue-slot-outer{\r\n  margin: 5pt;\r\n}\r\n\r\n.queue-slot-inner{\r\n  width: 120pt;\r\n  height: 30pt;\r\n  margin: auto;\r\n  border-style: groove;\r\n  border: 2pt solid lightgrey;\r\n  border-radius: 10px;\r\n}\r\n\r\n.queue{\r\n  list-style-type: none;\r\n  margin: auto;\r\n  width: auto;\r\n  height: auto;\r\n  padding: 0;\r\n}\r\n\r\n.add-button{\r\n  margin: 15pt;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -1294,7 +1307,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/student/rides/rides.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <ngx-carousel [inputs]=\"carouselTile\">\r\n\r\n      <ngx-tile class=\"carousal-height\" NgxCarouselItem *ngFor=\"let ride of carousel_rides\">\r\n        <div class=\"carousal-height\">\r\n          <h3 class=\"carousal-text\">{{ride.departure_time | date:\"hh:mm a\"}}</h3>\r\n        </div>\r\n      </ngx-tile>\r\n\r\n      <button NgxCarouselPrev class=\"leftRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n        </a>\r\n      </button>\r\n\r\n      <button NgxCarouselNext class=\"rightRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n        </a>\r\n      </button>\r\n    </ngx-carousel>\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <img class=\"responsive-image\" src=\"../../../assets/red_eye.png\">\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!--heading on the nav bar-->\r\n    <p class=\"navbar-header\">\r\n      <a class=\"navbar-brand thick\">\r\n        <b class=\"nav-foreground\">RIDES</b>\r\n      </a>\r\n    </p>\r\n\r\n    <!--hamburger to open rides in list form-->\r\n    <p class=\"navbar-text pull-right vertical-center\">\r\n      <a [routerLink]=\"['/rides-list']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-align-justify nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <ngx-carousel [inputs]=\"carouselTile\"\r\n                  (onMove)=\"nextRide($event)\">\r\n\r\n      <ngx-tile class=\"carousal-height\" NgxCarouselItem *ngFor=\"let ride of carousel_rides\">\r\n        <div class=\"carousal-height\">\r\n          <h3 class=\"carousal-text\">{{ride.departure_time | date:\"hh:mm a\"}}</h3>\r\n        </div>\r\n      </ngx-tile>\r\n\r\n      <button NgxCarouselPrev class=\"leftRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n        </a>\r\n      </button>\r\n\r\n      <button NgxCarouselNext class=\"rightRs vertical-center\">\r\n        <a class=\"navbar-link\">\r\n          <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n        </a>\r\n      </button>\r\n    </ngx-carousel>\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <img class=\"responsive-image\" src=\"../../../../assets/red_eye.png\">\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <ul class=\"queue\">\r\n      <li *ngFor=\"let slot of queue_slots\">\r\n        <div class=\"queue-slot-outer\">\r\n          <div class=\"queue-slot-inner\">\r\n            <img *ngIf=\"slot.occupied\" class=\"responsive-image\" width=\"35px\" src=\"../../../../assets/person.png\">\r\n          </div>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n  <div class=\"row add-button\">\r\n    <button class=\"btn btn-success btn-block\" (click)=\"addToQueue()\">ADD TO QUEUE</button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/myride']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-road nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1305,6 +1318,9 @@ module.exports = "\r\n<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RidesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_queueslot_service_client__ = __webpack_require__("../../../../../src/app/services/queueslot.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_service__ = __webpack_require__("../../../../../src/app/services/shared.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1316,10 +1332,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 var RidesComponent = (function () {
-    function RidesComponent(rideService) {
+    function RidesComponent(rideService, queueService, router, sharedService) {
         this.rideService = rideService;
+        this.queueService = queueService;
+        this.router = router;
+        this.sharedService = sharedService;
         this.carousel_rides = [];
+        this.queue_slots = [];
     }
     RidesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1338,10 +1361,37 @@ var RidesComponent = (function () {
         this.rideService.getAllRides(10)
             .subscribe(function (rideList) {
             _this.rides = rideList;
-            for (var i = 0; i < 4; i++) {
+            var count = Math.min(4, rideList.length);
+            for (var i = 0; i < count; i++) {
                 _this.carousel_rides.push(_this.rides[i]);
             }
+            _this.currentRide = 0;
+            _this.fetchQueue();
         });
+    };
+    RidesComponent.prototype.nextRide = function (data) {
+        this.currentRide = data.currentSlide;
+        this.fetchQueue();
+    };
+    RidesComponent.prototype.fetchQueue = function () {
+        var _this = this;
+        var rideId = this.carousel_rides[this.currentRide]._id;
+        var seatCount = this.carousel_rides[this.currentRide].seat_count;
+        this.queue_slots = [];
+        this.queueService.findQueueSlotsByRideId(rideId)
+            .subscribe(function (queueSlots) {
+            var occupied = queueSlots.length;
+            for (var i = 0; i < seatCount; i++) {
+                if (i < occupied)
+                    _this.queue_slots.push({ 'occupied': true });
+                else
+                    _this.queue_slots.push({ 'occupied': false });
+            }
+        });
+    };
+    RidesComponent.prototype.addToQueue = function () {
+        this.sharedService.addToRideId = this.carousel_rides[this.currentRide]._id;
+        this.router.navigate(['/myride']);
     };
     return RidesComponent;
 }());
@@ -1351,10 +1401,10 @@ RidesComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/student/rides/rides.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/student/rides/rides.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */]) === "function" && _d || Object])
 ], RidesComponent);
 
-var _a;
+var _a, _b, _c, _d;
 //# sourceMappingURL=rides.component.js.map
 
 /***/ }),
@@ -1511,7 +1561,6 @@ var HomeComponent = (function () {
                 _this.firstName = user.firstName;
                 _this.lastName = user.lastName;
                 _this.type = user.role;
-                _this.dropoff = user.dropoff_location;
             });
             _this.homeService.findAllRides()
                 .subscribe(function (rides) {
@@ -1698,13 +1747,12 @@ var ProfileComponent = (function () {
                 _this.firstName = user.firstName;
                 _this.lastName = user.lastName;
                 _this.type = user.role;
-                _this.dropoff = user.dropoff_location;
             });
         });
     };
     ProfileComponent.prototype.updateUser = function (userName, emailId, firstName, lastName) {
         var _this = this;
-        var tempUser = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */](this.userId, userName, this.user.password, this.emailId, this.type, this.dropoff);
+        var tempUser = new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */](this.userId, userName, this.user.password, this.emailId, this.type);
         tempUser.emailId = emailId;
         tempUser.firstName = firstName;
         tempUser.lastName = lastName;
@@ -1803,9 +1851,7 @@ var RegisterComponent = (function () {
         this.verifyPassword = verifyPassword;
         this.emailId = emailId;
         if (password === verifyPassword) {
-            var tempUser_1 = new __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */]('', username, password, emailId, type, this.dropoff);
-            tempUser_1.latitude = 42.3404;
-            tempUser_1.longitude = -71.0878;
+            var tempUser_1 = new __WEBPACK_IMPORTED_MODULE_1__models_user_model_client__["a" /* User */]('', username, password, emailId, type);
             this.userService
                 .findUserByUsername(username)
                 .subscribe(function (user) {
@@ -1847,10 +1893,10 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QueueSlot; });
 var QueueSlot = (function () {
-    function QueueSlot(_id, student, _ride) {
-        this._id = _id;
-        this.student = student;
-        this._ride = _ride;
+    function QueueSlot(student, ride, location) {
+        this._student = student;
+        this._ride = ride;
+        this.dropoff_location = location;
     }
     return QueueSlot;
 }());
@@ -1883,13 +1929,12 @@ var Ride = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var User = (function () {
-    function User(_id, username, password, emailId, role, dropoff_location) {
+    function User(_id, username, password, emailId, role) {
         this._id = _id;
         this.username = username;
         this.password = password;
         this.emailId = emailId;
         this.role = role;
-        this.dropoff_location = dropoff_location;
     }
     return User;
 }());
@@ -2005,7 +2050,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QueueSlotService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__ = __webpack_require__("../../../../../src/environments/environment.prod.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("../../../../rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2023,12 +2068,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var QueueSlotService = (function () {
     function QueueSlotService(http) {
         this.http = http;
-        this.baseUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].baseUrl;
+        this.baseURLRide = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].baseUrl + '/api/rideQueue';
+        this.baseURLQueue = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].baseUrl + '/api/queue';
     }
-    QueueSlotService.prototype.findQueueSlotByRideId = function (rideId) {
-        // console.log(this.baseUrl);
-        var url = this.baseUrl + '/api/ride/' + rideId + '/queue';
-        // console.log(url);
+    QueueSlotService.prototype.createQueueSlot = function (queueSlot) {
+        var url = this.baseURLQueue;
+        console.log(url);
+        console.log(queueSlot);
+        return this.http.post(url, queueSlot)
+            .map(function (response) {
+            return response.json();
+        });
+    };
+    QueueSlotService.prototype.findQueueSlotsByRideId = function (rideId) {
+        var url = this.baseURLRide + '/' + rideId + '/queue';
         return this.http.get(url)
             .map(function (response) {
             return response.json();
@@ -2102,6 +2155,32 @@ RideService = __decorate([
 
 var _a;
 //# sourceMappingURL=ride.service.client.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/shared.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var SharedService = (function () {
+    function SharedService() {
+    }
+    return SharedService;
+}());
+SharedService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
+], SharedService);
+
+//# sourceMappingURL=shared.service.js.map
 
 /***/ }),
 
@@ -2185,19 +2264,6 @@ UserService = __decorate([
 
 var _a;
 //# sourceMappingURL=user.service.client.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/environments/environment.prod.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-var environment = {
-    production: true,
-    baseUrl: ''
-};
-//# sourceMappingURL=environment.prod.js.map
 
 /***/ }),
 

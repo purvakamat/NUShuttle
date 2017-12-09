@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Ride} from "../../../models/ride.model.client";
-import { NgxCarousel } from 'ngx-carousel';
+import {NgxCarousel, NgxCarouselStore} from 'ngx-carousel';
 import {RideService} from "../../../services/ride.service.client";
+import {QueueSlot} from "../../../models/queueslot.model.client";
+import {QueueSlotService} from "../../../services/queueslot.service.client";
+import {Router} from "@angular/router";
+import {SharedService} from "../../../services/shared.service";
 
 @Component({
   selector: 'app-rides',
@@ -12,10 +16,16 @@ export class RidesComponent implements OnInit {
 
   carousel_rides: Ride[];
   rides: Ride[];
+  queue_slots: any[];
   carouselTile: NgxCarousel;
+  currentRide: number;
 
-  constructor(private rideService: RideService) {
+  constructor(private rideService: RideService,
+              private queueService: QueueSlotService,
+              private router: Router,
+              private sharedService: SharedService) {
     this.carousel_rides = [];
+    this.queue_slots = [];
   }
 
   ngOnInit() {
@@ -35,9 +45,42 @@ export class RidesComponent implements OnInit {
     this.rideService.getAllRides(10)
       .subscribe((rideList) => {
         this.rides = rideList;
-        for (let i = 0; i < 4; i++) {
+
+        var count = Math.min(4, rideList.length);
+        for (let i = 0; i < count; i++) {
           this.carousel_rides.push(this.rides[i]);
         }
+
+        this.currentRide = 0;
+        this.fetchQueue();
       });
+  }
+
+  nextRide(data: NgxCarouselStore) {
+    this.currentRide = data.currentSlide;
+    this.fetchQueue();
+  }
+
+  fetchQueue(){
+    var rideId = this.carousel_rides[this.currentRide]._id;
+    var seatCount = this.carousel_rides[this.currentRide].seat_count;
+
+    this.queue_slots = [];
+
+    this.queueService.findQueueSlotsByRideId(rideId)
+      .subscribe((queueSlots) => {
+        var occupied = queueSlots.length;
+        for(var i=0; i<seatCount; i++){
+          if(i < occupied)
+            this.queue_slots.push({'occupied': true});
+          else
+            this.queue_slots.push({'occupied': false});
+        }
+      });
+  }
+
+  addToQueue(){
+    this.sharedService.addToRideId = this.carousel_rides[this.currentRide]._id;
+    this.router.navigate(['/myride']);
   }
 }

@@ -1,11 +1,11 @@
 
 module.exports = function (app) {
 
-  app.post("/api/ride/:rideId/queue", createQueueSlot);
-  app.get("/api/ride/:rideId/queue", getQueueSlotsForRide);
-  app.get("/api/ride/queue/:slotId", findQueueSlotById);
-  app.put("/api/ride/queue/:slotId", updateQueueSlot);
-  app.delete("/api/ride/queue/:slotId", deleteQueueSlot);
+  app.post("/api/queue", createQueueSlot);
+  app.get("/api/rideQueue/:rideId/queue", getQueueSlotsForRide);
+  app.get("/api/queue/:slotId", findQueueSlotById);
+  app.put("/api/queue/:slotId", updateQueueSlot);
+  app.delete("/api/queue/:slotId", deleteQueueSlot);
 
   var queueSlotModel = require("../models/queue_slot/queue_slot.model.server");
 

@@ -2,14 +2,15 @@ import {User} from './user.model.client';
 
 export class QueueSlot {
   _id: String;
-  student: User;
+  _student: String;
   checked_in: Boolean;
   ready: Boolean;
   notified: Boolean;
   _ride: String;
-  constructor(_id: String, student: User, _ride: String) {
-    this._id = _id;
-    this.student = student;
-    this._ride = _ride;
+  dropoff_location: String;
+  constructor( student: String, ride: String, location: String) {
+    this._student = student;
+    this._ride = ride;
+    this.dropoff_location = location;
   }
 }

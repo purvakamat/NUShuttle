@@ -46,9 +46,6 @@ export class DropoffComponent implements OnInit {
           this.firstName = user.firstName;
           this.lastName = user.lastName;
           this.type = user.role;
-          this.dropoff = user.dropoff_location
-          this.latitude = user.latitude;
-          this.longitude = user.longitude;
         });
     });
     // this.latitude = 42.3404957;
@@ -92,9 +89,7 @@ export class DropoffComponent implements OnInit {
     if (!this.userId) {
       return;
     }
-    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type, this.dropoff);
-    tempUser.latitude = this.latitude;
-    tempUser.longitude = this.longitude;
+    const tempUser = new User(this.userId, this.username, this.user.password, this.emailId, this.type);
     this.userService
       .updateUser(this.userId, tempUser)
       .subscribe((user) => {

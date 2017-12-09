@@ -53,22 +53,22 @@ export class ShortestpathComponent implements OnInit {
         // .findQueueSlotByRideId(this.rideId)
         // .subscribe((queueSlots: QueueSlot[]) => {
           // console.log(queueSlots);
-          const user1 = new User('', 'abc', 'q1', 'q1', 'STUDENT',
-            '1179 Boylston St, Boston, MA 02215, USA');
+          var dropoff_1 = '1179 Boylston St, Boston, MA 02215, USA';
+          const user1 = new User('', 'abc', 'q1', 'q1', 'STUDENT');
           user1.firstName = 'Nisarg';
           user1.lastName = 'Shah';
-          const user2 = new User('', 'q2', 'q2', 'q2', 'STUDENT',
-            '75 Peterborough St, Boston, MA 02215, USA');
+          var dropoff_2 = '75 Peterborough St, Boston, MA 02215, USA';
+          const user2 = new User('', 'q2', 'q2', 'q2', 'STUDENT');
           user2.firstName = 'Purva';
           user2.lastName = 'Kamat';
-          const queueSlot1 = new QueueSlot('', user1, this.rideId);
-          const queueSlot2 = new QueueSlot('', user2, this.rideId);
+          const queueSlot1 = new QueueSlot(user1._id, this.rideId, dropoff_1);
+          const queueSlot2 = new QueueSlot(user2._id, this.rideId, dropoff_2);
           this.queueSlots = [];
           this.queueSlots.push(queueSlot1);
           this.queueSlots.push(queueSlot2);
           // console.log(this.queueSlots);
           for (let index = 0; index < this.queueSlots.length; index++) {
-            const temp = this.queueSlots[index].student.dropoff_location;
+            const temp = this.queueSlots[index].dropoff_location;
             this.addDropLocation(temp);
           }
         //

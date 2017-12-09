@@ -34,13 +34,12 @@ export class ProfileComponent implements OnInit {
           this.firstName = user.firstName;
           this.lastName = user.lastName;
           this.type = user.role;
-          this.dropoff = user.dropoff_location;
         });
     });
   }
 
   updateUser(userName: String, emailId: String, firstName: String, lastName: String) {
-    const tempUser = new User(this.userId, userName, this.user.password, this.emailId, this.type, this.dropoff);
+    const tempUser = new User(this.userId, userName, this.user.password, this.emailId, this.type);
     tempUser.emailId = emailId;
     tempUser.firstName = firstName;
     tempUser.lastName = lastName;

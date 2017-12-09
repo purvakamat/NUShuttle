@@ -27,6 +27,7 @@ import { MyrideComponent } from './components/student/myride/myride.component';
 import { RidesListComponent } from './components/student/rides-list/rides-list.component';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
+import {SharedService} from "./services/shared.service";
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import 'hammerjs';
       libraries: ['places']
     })
   ],
-  providers: [HttpModule, UserService, RideService, QueueSlotService, HomeService, DriverService],
+  providers: [HttpModule, UserService, RideService, QueueSlotService, HomeService, DriverService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -47,3 +47,28 @@
   display: block;
 }
 
+.queue-slot-outer{
+  margin: 5pt;
+}
+
+.queue-slot-inner{
+  width: 120pt;
+  height: 30pt;
+  margin: auto;
+  border-style: groove;
+  border: 2pt solid lightgrey;
+  border-radius: 10px;
+}
+
+.queue{
+  list-style-type: none;
+  margin: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+
+.add-button{
+  margin: 15pt;
+}
+

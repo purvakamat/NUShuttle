@@ -31,9 +31,7 @@ export class RegisterComponent implements OnInit {
     this.verifyPassword = verifyPassword;
     this.emailId = emailId;
     if (password === verifyPassword) {
-      const tempUser = new User('', username, password, emailId, type, this.dropoff);
-      tempUser.latitude = 42.3404;
-      tempUser.longitude = -71.0878;
+      const tempUser = new User('', username, password, emailId, type);
       this.userService
         .findUserByUsername(username)
         .subscribe((user) => {

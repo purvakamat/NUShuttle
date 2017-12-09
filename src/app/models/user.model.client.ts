@@ -6,15 +6,12 @@ export class User {
   lastName: String;
   emailId: String;
   role: String;
-  dropoff_location: String;
-  latitude: Number;
-  longitude: Number;
-  constructor(_id: String, username: String, password: String, emailId: String, role: String, dropoff_location: String) {
+  _ride: String;
+  constructor(_id: String, username: String, password: String, emailId: String, role: String) {
     this._id = _id;
     this.username = username;
     this.password = password;
     this.emailId = emailId;
     this.role = role;
-    this.dropoff_location = dropoff_location;
   }
 }

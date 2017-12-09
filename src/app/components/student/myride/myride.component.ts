@@ -2,6 +2,11 @@ import {Component, OnInit, ElementRef, ViewChild, NgZone} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {MapsAPILoader} from "@agm/core";
 import {} from '@types/googlemaps';
+import {Router} from "@angular/router";
+import {SharedService} from "../../../services/shared.service";
+import {QueueSlotService} from "../../../services/queueslot.service.client";
+import {QueueSlot} from "../../../models/queueslot.model.client";
+import {User} from "../../../models/user.model.client";
 
 @Component({
   selector: 'app-myride',
@@ -21,7 +26,10 @@ export class MyrideComponent implements OnInit {
   searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader,
-              private ngZone: NgZone) {
+              private ngZone: NgZone,
+              private router: Router,
+              private sharedService: SharedService,
+              private queueService: QueueSlotService) {
     this.latitude = 42.3404957;
     this.longitude = -71.0878975;
     this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
@@ -67,7 +75,10 @@ export class MyrideComponent implements OnInit {
   }
 
   private locationConfirmed(){
-
+    var slot = new QueueSlot("", this.sharedService.addToRideId, this.dropOff);
+    this.queueService.createQueueSlot(slot).subscribe((slot) => {
+      this.router.navigate(['/rides']);
+    });
   }
 
 }

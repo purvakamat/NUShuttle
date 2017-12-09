@@ -1,18 +1,32 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
-import {environment} from '../../environments/environment.prod';
+import {environment} from '../../environments/environment';
 import 'rxjs/Rx';
+import {QueueSlot} from "../models/queueslot.model.client";
 
 @Injectable()
-
 export class QueueSlotService {
-  constructor(private http: Http) {}
-  baseUrl = environment.baseUrl;
 
-  findQueueSlotByRideId(rideId: String) {
-    // console.log(this.baseUrl);
-    const url = this.baseUrl + '/api/ride/' + rideId + '/queue';
-    // console.log(url);
+  baseURLRide: string;
+  baseURLQueue: string;
+
+  constructor(private http: Http) {
+    this.baseURLRide = environment.baseUrl + '/api/rideQueue';
+    this.baseURLQueue = environment.baseUrl + '/api/queue';
+  }
+
+  createQueueSlot(queueSlot: QueueSlot){
+    const url = this.baseURLQueue;
+    console.log(url);
+    console.log(queueSlot);
+    return this.http.post(url, queueSlot)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
+  findQueueSlotsByRideId(rideId: String) {
+    const url = this.baseURLRide + '/' + rideId + '/queue';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

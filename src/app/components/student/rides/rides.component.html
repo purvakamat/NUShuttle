@@ -21,7 +21,8 @@
 
 <div class="container-fluid">
   <div class="row">
-    <ngx-carousel [inputs]="carouselTile">
+    <ngx-carousel [inputs]="carouselTile"
+                  (onMove)="nextRide($event)">
 
       <ngx-tile class="carousal-height" NgxCarouselItem *ngFor="let ride of carousel_rides">
         <div class="carousal-height">
@@ -44,11 +45,23 @@
   </div>
 
   <div class="row">
-    <img class="responsive-image" src="../../../assets/red_eye.png">
+    <img class="responsive-image" src="../../../../assets/red_eye.png">
   </div>
 
   <div class="row">
+    <ul class="queue">
+      <li *ngFor="let slot of queue_slots">
+        <div class="queue-slot-outer">
+          <div class="queue-slot-inner">
+            <img *ngIf="slot.occupied" class="responsive-image" width="35px" src="../../../../assets/person.png">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
+  <div class="row add-button">
+    <button class="btn btn-success btn-block" (click)="addToQueue()">ADD TO QUEUE</button>
   </div>
 </div>
 

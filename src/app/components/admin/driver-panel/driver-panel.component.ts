@@ -39,11 +39,9 @@ export class DriverPanelComponent implements OnInit {
   }
 
   createDriver(username, password, firstName, lastName, emailId) {
-    const user = new User('', username, password, emailId, 'DRIVER', '');
+    const user = new User('', username, password, emailId, 'DRIVER');
     user.firstName = firstName;
     user.lastName = lastName;
-    user.latitude = 0.0;
-    user.longitude = 0.0;
     this.userService.createUser(user)
       .subscribe((ride1) => {
         if (ride1) {
