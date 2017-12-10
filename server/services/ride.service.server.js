@@ -12,6 +12,7 @@ module.exports = function (app) {
 
   function createRide(req, res) {
     var ride = req.body;
+    console.log('createRide server: ' + req.body);
     delete ride._id;
     rideModel.createRide(ride).then(function (ride) {
       res.json(ride);
