@@ -64,7 +64,7 @@ export class ScheduleNewComponent implements OnInit {
     this.userService.findUserById(selectedValue)
       .subscribe((user) => {
       console.log(user);
-      ride.driver_name = user.firstname + ' ' + user.lastName;
+      ride.driver_name = user.firstName + ' ' + user.lastName;
       console.log(ride.driver_name);
     });
     this.rideService.createRide(ride)

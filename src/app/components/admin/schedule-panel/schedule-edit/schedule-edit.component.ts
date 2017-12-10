@@ -80,7 +80,7 @@ export class ScheduleEditComponent implements OnInit {
     this.userService.findUserById(selectedValue)
       .subscribe((user) => {
         if (user) {
-          ride.driver_name = user.firstname + ' ' + user.lastName;
+          ride.driver_name = user.firstName + ' ' + user.lastName;
         }
       });
     this.rideService.updateRide(this.rideId, ride)
