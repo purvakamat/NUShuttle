@@ -82,10 +82,10 @@ export class ScheduleEditComponent implements OnInit {
         if (user) {
           ride.driver_name = user.firstName + ' ' + user.lastName;
         }
-      });
-    this.rideService.updateRide(this.rideId, ride)
-      .subscribe((ride1) => {
-        this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
+        this.rideService.updateRide(this.rideId, ride)
+          .subscribe((ride1) => {
+            this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
+          });
       });
   }
 
