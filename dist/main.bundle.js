@@ -266,7 +266,7 @@ var APP_ROUTES = [
     { path: 'admin-drivers', component: __WEBPACK_IMPORTED_MODULE_13__components_admin_driver_panel_driver_list_driver_list_component__["a" /* DriverListComponent */] },
     { path: 'admin-new-driver', component: __WEBPACK_IMPORTED_MODULE_16__components_admin_driver_panel_driver_new_driver_new_component__["a" /* DriverNewComponent */] },
     { path: 'admin-edit-driver/:did', component: __WEBPACK_IMPORTED_MODULE_17__components_admin_driver_panel_driver_edit_driver_edit_component__["a" /* DriverEditComponent */] },
-    { path: 'shortest-path', component: __WEBPACK_IMPORTED_MODULE_8__components_apitest_shortestpath_shortestpath_component__["a" /* ShortestpathComponent */] },
+    { path: 'shortest-path/:rid', component: __WEBPACK_IMPORTED_MODULE_8__components_apitest_shortestpath_shortestpath_component__["a" /* ShortestpathComponent */] },
     { path: 'rides-list', component: __WEBPACK_IMPORTED_MODULE_9__components_student_rides_list_rides_list_component__["a" /* RidesListComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'rides', component: __WEBPACK_IMPORTED_MODULE_10__components_student_rides_rides_component__["a" /* RidesComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'myride', component: __WEBPACK_IMPORTED_MODULE_11__components_student_myride_myride_component__["a" /* MyrideComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__services_auth_guard_service__["a" /* AuthGuard */]] },
@@ -1537,7 +1537,6 @@ var ShortestpathComponent = (function () {
     ShortestpathComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.userId = params['uid'];
             _this.rideId = params['rid'];
             _this.queueslotService
                 .findQueueSlotsByRideId(_this.rideId)
@@ -1725,7 +1724,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/driver/driver.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4 col-xs-offset-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Dashboard</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <h2>My Rides</h2>\r\n      <ul class=\"list-group\">\r\n        <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xs-3\">\r\n              <span>Departure Time</span>\r\n              <a [routerLink]=\"['/user', userId, 'driver', 'ride' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Seat Count</span>\r\n              <span>{{ride.seat_count}}</span>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Status</span>\r\n              <span>{{ride.status}}</span>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Delay</span>\r\n              <span>{{ride.delay}}</span>\r\n            </div>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4 col-xs-offset-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Dashboard</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <h2>My Rides</h2>\r\n      <ul class=\"list-group\">\r\n        <li *ngFor=\"let ride of rides\" class=\"list-group-item\">\r\n          <div class=\"row\">\r\n            <div class=\"col-xs-3\">\r\n              <span>Departure Time</span>\r\n              <a [routerLink]=\"['/shortest-path' , ride._id]\">{{ride.departure_time | date:'medium'}}</a>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Seat Count</span>\r\n              <span>{{ride.seat_count}}</span>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Status</span>\r\n              <span>{{ride.status}}</span>\r\n            </div>\r\n            <div class=\"col-xs-3\">\r\n              <span>Delay</span>\r\n              <span>{{ride.delay}}</span>\r\n            </div>\r\n          </div>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1735,9 +1734,9 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <d
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DriverComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_shared_service__ = __webpack_require__("../../../../../src/app/services/shared.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1752,21 +1751,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var DriverComponent = (function () {
-    function DriverComponent(userService, driverService, route) {
+    function DriverComponent(userService, driverService, sharedService) {
         this.userService = userService;
         this.driverService = driverService;
-        this.route = route;
+        this.sharedService = sharedService;
     }
     DriverComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.params.subscribe(function (params) {
-            _this.userId = params['uid'];
-            _this.driverService
-                .findRidesByUser(_this.userId)
-                .subscribe(function (rides) {
-                // console.log(rides);
-                _this.rides = rides;
-            });
+        var userId = this.sharedService.user._id;
+        this.driverService
+            .findRidesByUser(userId)
+            .subscribe(function (rides) {
+            // console.log(rides);
+            _this.rides = rides;
         });
     };
     return DriverComponent;
@@ -1777,7 +1774,7 @@ DriverComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/driver/driver.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/driver/driver.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_driver_service_client__["a" /* DriverService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_shared_service__["a" /* SharedService */]) === "function" && _c || Object])
 ], DriverComponent);
 
 var _a, _b, _c;
@@ -1852,7 +1849,7 @@ var LoginComponent = (function () {
             if (user.role == 'STUDENT')
                 _this.router.navigate(['/rides']);
             else if (user.role == 'DRIVER')
-                _this.router.navigate(['/user', user._id, 'driver']);
+                _this.router.navigate(['/driver']);
             else if (user.role == 'ADMIN')
                 _this.router.navigate(['/admin-schedules']);
             else {
@@ -1979,7 +1976,7 @@ var ProfileComponent = (function () {
                     this.router.navigate(['/rides']);
                     break;
                 case 'DRIVER':
-                    this.router.navigate(['/admin-drivers']);
+                    this.router.navigate(['/driver']);
                     break;
                 case 'ADMIN':
                     this.router.navigate(['/admin-schedules']);

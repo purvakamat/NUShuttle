@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
           this.router.navigate(['/rides']);
           break;
         case 'DRIVER':
-          this.router.navigate(['/admin-drivers']);
+          this.router.navigate(['/driver']);
           break;
         case 'ADMIN':
           this.router.navigate(['/admin-schedules']);

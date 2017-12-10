@@ -34,7 +34,7 @@ const APP_ROUTES: Routes = [
   {path: 'admin-drivers', component: DriverListComponent},
   {path: 'admin-new-driver', component: DriverNewComponent},
   {path: 'admin-edit-driver/:did', component: DriverEditComponent},
-  {path: 'shortest-path', component: ShortestpathComponent},
+  {path: 'shortest-path/:rid', component: ShortestpathComponent},
   {path: 'rides-list', component: RidesListComponent, canActivate: [AuthGuard]},
   {path: 'rides', component: RidesComponent, canActivate: [AuthGuard]},
   {path: 'myride', component: MyrideComponent, canActivate: [AuthGuard]},

@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-xs-3">
               <span>Departure Time</span>
-              <a [routerLink]="['/user', userId, 'driver', 'ride' , ride._id]">{{ride.departure_time | date:'medium'}}</a>
+              <a [routerLink]="['/shortest-path' , ride._id]">{{ride.departure_time | date:'medium'}}</a>
             </div>
             <div class="col-xs-3">
               <span>Seat Count</span>

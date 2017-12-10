@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           if(user.role == 'STUDENT')
             this.router.navigate(['/rides']);
           else if(user.role == 'DRIVER')
-            this.router.navigate(['/user',user._id,'driver']);
+            this.router.navigate(['/driver']);
           else if(user.role == 'ADMIN')
             this.router.navigate(['/admin-schedules']);
           else{

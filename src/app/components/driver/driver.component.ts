@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service.client';
 import {DriverService} from '../../services/driver.service.client';
 import {Ride} from '../../models/ride.model.client';
+import {SharedService} from "../../services/shared.service";
 
 @Component({
   selector: 'app-driver',
@@ -13,19 +13,17 @@ export class DriverComponent implements OnInit {
 
   constructor(private userService: UserService,
               private driverService: DriverService,
-              private route: ActivatedRoute) { }
+              private sharedService: SharedService) { }
 
-  userId: String;
   rides: Ride[];
+
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.userId = params['uid'];
-      this.driverService
-        .findRidesByUser(this.userId)
-        .subscribe((rides: Ride[]) => {
-          // console.log(rides);
-          this.rides = rides;
-        });
-    });
+    var userId = this.sharedService.user._id;
+    this.driverService
+      .findRidesByUser(userId)
+      .subscribe((rides: Ride[]) => {
+        // console.log(rides);
+        this.rides = rides;
+      });
   }
 }
