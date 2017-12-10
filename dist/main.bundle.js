@@ -600,7 +600,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">EDIT RIDE</b>\r\n    </a>\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/admin-schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\" class=\"nhs-padding\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\r\n        <option *ngFor=\"let driver of fetchDrivers()\"\r\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\" class=\"nhs-padding\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [ngModel]=\"departureTime | date: 'yyyy-MM-dd'\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\" class=\"nhs-padding\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"0\" value=\"0\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"origin\" class=\"nhs-padding\">\r\n        Origin\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"origin\"\r\n             type=\"text\" id=\"origin\" name=\"origin\"\r\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"destination\" >\r\n        Destination\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"destination\"\r\n             type=\"text\" id=\"destination\" name=\"destination\"\r\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\r\n      Update Ride\r\n    </button>\r\n    <button class=\"btn btn-danger btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"deleteRide()\">Delete Ride\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">EDIT RIDE</b>\r\n    </a>\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/admin-schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\" class=\"nhs-padding\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\r\n        <option *ngFor=\"let driver of fetchDrivers()\"\r\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\" class=\"nhs-padding\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [ngModel]=\"departureTime | date: 'yyyy-MM-dd'\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\" class=\"nhs-padding\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"0\" value=\"0\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"origin\" class=\"nhs-padding\">\r\n        Origin\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"origin\"\r\n             type=\"text\" id=\"origin\" name=\"origin\"\r\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"destination\" >\r\n        Destination\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"destination\"\r\n             type=\"text\" id=\"destination\" name=\"destination\"\r\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\r\n      Update Ride\r\n    </button>\r\n    <button class=\"btn btn-danger btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"deleteRide()\">Delete Ride\r\n    </button>\r\n  </div>\r\n  <div *ngIf=\"errorFlag\"\r\n       class=\"alert alert-danger\">\r\n    {{errorMsg}}\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
 
 /***/ }),
 
@@ -671,6 +671,21 @@ var ScheduleEditComponent = (function () {
     };
     ScheduleEditComponent.prototype.updateRide = function (departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
         var _this = this;
+        if (this.validateVehicleNo(vehicleNo) === false) {
+            this.errorMsg = 'Vehicle number cannot be empty!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateSelectedValue(selectedValue) === false) {
+            this.errorMsg = 'Please select a driver!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateDepartureTime(departureTime) === false) {
+            this.errorMsg = 'Please enter departure time!';
+            this.errorFlag = true;
+            return;
+        }
         var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, departureTime, selectedValue, '');
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
@@ -700,6 +715,30 @@ var ScheduleEditComponent = (function () {
     };
     ScheduleEditComponent.prototype.fetchDrivers = function () {
         return this.drivers;
+    };
+    ScheduleEditComponent.prototype.validateVehicleNo = function (vehicleNo) {
+        if (vehicleNo === '' || null || undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleEditComponent.prototype.validateSelectedValue = function (selectedValue) {
+        if (selectedValue === '' || null || undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleEditComponent.prototype.validateDepartureTime = function (departureTime) {
+        if (departureTime === '' || null || undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
     };
     return ScheduleEditComponent;
 }());
@@ -820,7 +859,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-new/schedule-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">NEW RIDE</b>\r\n    </a>\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/admin-schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\" class=\"nhs-padding\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\r\n        <option *ngFor=\"let driver of fetchDrivers()\"\r\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\" class=\"nhs-padding\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <!--<div class=\"input-control\">\r\n    <owl-date-time [(ngModel)]=\"departureTime\" [inputId]=\"'input1'\"></owl-date-time>\r\n    </div>-->\r\n    <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\" class=\"nhs-padding\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"origin\" class=\"nhs-padding\">\r\n        Origin\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"origin\"\r\n             type=\"text\" id=\"origin\" name=\"origin\"\r\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"destination\" class=\"nhs-padding\">\r\n        Destination\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"destination\"\r\n             type=\"text\" id=\"destination\" name=\"destination\"\r\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\r\n      Add Ride\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">NEW RIDE</b>\r\n    </a>\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/admin-schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\" class=\"nhs-padding\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\r\n        <option *ngFor=\"let driver of fetchDrivers()\"\r\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\" class=\"nhs-padding\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <!--<div class=\"input-control\">\r\n    <owl-date-time [(ngModel)]=\"departureTime\" [inputId]=\"'input1'\"></owl-date-time>\r\n    </div>-->\r\n    <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\" class=\"nhs-padding\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"origin\" class=\"nhs-padding\">\r\n        Origin\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"origin\"\r\n             type=\"text\" id=\"origin\" name=\"origin\"\r\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"destination\" class=\"nhs-padding\">\r\n        Destination\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"destination\"\r\n             type=\"text\" id=\"destination\" name=\"destination\"\r\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\r\n      Add Ride\r\n    </button>\r\n  </div>\r\n  <div *ngIf=\"errorFlag\"\r\n       class=\"alert alert-danger\">\r\n    {{errorMsg}}\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
 
 /***/ }),
 
@@ -878,6 +917,31 @@ var ScheduleNewComponent = (function () {
     };
     ScheduleNewComponent.prototype.createRide = function (departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
         var _this = this;
+        if (this.validateVehicleNo(vehicleNo) === false) {
+            this.errorMsg = 'Vehicle number cannot be empty!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateSelectedValue(selectedValue) === false) {
+            this.errorMsg = 'Please select a driver!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateDepartureTime(departureTime) === false) {
+            this.errorMsg = 'Please enter departure time!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateSeatCount(seatCount) === false) {
+            this.errorMsg = 'Seat Number has to be from 1 to 10!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateBlockedCount(blockedCount, seatCount) === false) {
+            this.errorMsg = 'Please enter valid number for Blocked seats!';
+            this.errorFlag = true;
+            return;
+        }
         var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */]('', departureTime, selectedValue, '');
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
@@ -896,6 +960,46 @@ var ScheduleNewComponent = (function () {
                 }
             });
         });
+    };
+    ScheduleNewComponent.prototype.validateVehicleNo = function (vehicleNo) {
+        if (vehicleNo === '' || null || undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleNewComponent.prototype.validateSelectedValue = function (selectedValue) {
+        if (selectedValue === '' || null || undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleNewComponent.prototype.validateDepartureTime = function (departureTime) {
+        if (departureTime === '' || null || undefined) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleNewComponent.prototype.validateSeatCount = function (seatCount) {
+        if ((seatCount < 1) || (seatCount > 10)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleNewComponent.prototype.validateBlockedCount = function (blockedCount, seatCount) {
+        if ((blockedCount > seatCount) || (blockedCount < 0)) {
+            return false;
+        }
+        else {
+            return true;
+        }
     };
     ScheduleNewComponent.prototype.fetchDrivers = function () {
         return this.drivers;
