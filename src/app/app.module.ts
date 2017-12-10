@@ -17,9 +17,6 @@ import {DriverComponent} from './components/driver/driver.component';
 import {RideService} from './services/ride.service.client';
 import {QueueSlotService} from './services/queueslot.service.client';
 import {DriverService} from './services/driver.service.client';
-import { SchedulePanelComponent } from './components/admin/schedule-panel/schedule-panel.component';
-import { DriverPanelComponent } from './components/admin/driver-panel/driver-panel.component';
-import { SettingPanelComponent } from './components/admin/setting-panel/setting-panel.component';
 import { RidesComponent } from './components/student/rides/rides.component';
 import { MyrideComponent } from './components/student/myride/myride.component';
 import { RidesListComponent } from './components/student/rides-list/rides-list.component';
@@ -48,9 +45,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     RegisterComponent,
     ApitestComponent,
     DriverComponent,
-    SchedulePanelComponent,
-    DriverPanelComponent,
-    SettingPanelComponent,
     RidesComponent,
     MyrideComponent,
     RidesListComponent,

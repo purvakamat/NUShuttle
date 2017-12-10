@@ -7,7 +7,6 @@ import {ApitestComponent} from './components/apitest/apitest.component';
 import {PickupComponent} from './components/apitest/pickup/pickup.component';
 import {DropoffComponent} from './components/apitest/dropoff/dropoff.component';
 import {DriverComponent} from './components/driver/driver.component';
-import {SettingPanelComponent} from './components/admin/setting-panel/setting-panel.component';
 import {ShortestpathComponent} from './components/apitest/shortestpath/shortestpath.component';
 import {RidesListComponent} from './components/student/rides-list/rides-list.component';
 import {RidesComponent} from './components/student/rides/rides.component';
@@ -26,21 +25,20 @@ const APP_ROUTES: Routes = [
   {path: 'apitest', component: ApitestComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'user/:uid/pickup', component: PickupComponent},
-  {path: 'user/:uid/dropoff', component: DropoffComponent},
-  {path: 'user/:uid/driver', component: DriverComponent},
-  {path: 'user/:uid/admin/schedules', component: ScheduleListComponent},
-  {path: 'user/:uid/admin/schedules/new', component: ScheduleNewComponent},
-  {path: 'user/:uid/admin/schedules/:rid', component: ScheduleEditComponent},
-  {path: 'user/:uid/admin/drivers', component: DriverListComponent},
-  {path: 'user/:uid/admin/drivers/new', component: DriverNewComponent},
-  {path: 'user/:uid/admin/drivers/:did', component: DriverEditComponent},
-  {path: 'user/:uid/admin/setting-panel', component: SettingPanelComponent},
-  {path: 'user/:uid/driver/ride/:rid', component: ShortestpathComponent},
-  {path: 'rides-list', component: RidesListComponent},
+  {path: 'pickup', component: PickupComponent},
+  {path: 'dropoff', component: DropoffComponent},
+  {path: 'driver', component: DriverComponent},
+  {path: 'admin-schedules', component: ScheduleListComponent},
+  {path: 'admin-new-schedule', component: ScheduleNewComponent},
+  {path: 'admin-edit-schedule/:rid', component: ScheduleEditComponent},
+  {path: 'admin-drivers', component: DriverListComponent},
+  {path: 'admin-new-driver', component: DriverNewComponent},
+  {path: 'admin-edit-driver/:did', component: DriverEditComponent},
+  {path: 'shortest-path', component: ShortestpathComponent},
+  {path: 'rides-list', component: RidesListComponent, canActivate: [AuthGuard]},
   {path: 'rides', component: RidesComponent, canActivate: [AuthGuard]},
-  {path: 'myride', component: MyrideComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'myride', component: MyrideComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'anonymous', component: AnonymousComponent}
 ];
 

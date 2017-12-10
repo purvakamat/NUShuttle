@@ -65,10 +65,10 @@ export class ProfileComponent implements OnInit {
           this.router.navigate(['/rides']);
           break;
         case 'DRIVER':
-          this.router.navigate(['/user',this.user._id,'driver']);
+          this.router.navigate(['/admin-drivers']);
           break;
         case 'ADMIN':
-          this.router.navigate(['/user', this.user._id,'admin', 'schedules']);
+          this.router.navigate(['/admin-schedules']);
           break;
         default:{
           this.userService.logout().subscribe((res) => {

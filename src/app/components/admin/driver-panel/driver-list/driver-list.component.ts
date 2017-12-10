@@ -11,7 +11,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DriverListComponent implements OnInit {
   drivers: User[];
-  userId: String;
   username: String;
   password: String;
   firstName: String;
@@ -26,7 +25,6 @@ export class DriverListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.driverService.findAllDrivers()
         .subscribe((drivers: User[]) => {
           this.drivers = drivers;

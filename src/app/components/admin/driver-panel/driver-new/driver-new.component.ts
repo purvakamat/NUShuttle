@@ -11,7 +11,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class DriverNewComponent implements OnInit {
   drivers: User[];
-  userId: String;
   username: String;
   password: String;
   firstName: String;
@@ -29,7 +28,6 @@ export class DriverNewComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.driverService.findAllDrivers()
         .subscribe((drivers: User[]) => {
           this.drivers = drivers;
@@ -49,7 +47,7 @@ export class DriverNewComponent implements OnInit {
       this.userService.register(user)
         .subscribe((user1) => {
           if (user1) {
-            this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
+            this.router.navigate(['/admin-drivers']);
           }
         });
     }

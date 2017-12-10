@@ -11,7 +11,7 @@ import {User} from "../../../../models/user.model.client";
   styleUrls: ['./schedule-list.component.css']
 })
 export class ScheduleListComponent implements OnInit {
-  userId: String;
+
   rides: Ride[];
   departureTime: Date;
   _driver: String;
@@ -32,7 +32,6 @@ export class ScheduleListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
@@ -43,14 +42,4 @@ export class ScheduleListComponent implements OnInit {
   fetchRides() {
     return this.rides;
   }
-
-/*  fetchDriverName(ride: Ride) {
-      console.log('I am being called');
-      this._driver = ride._driver;
-      this.userService.findUserById(this._driver)
-        .subscribe((user) => {
-        this.driver = user;
-        this.firstName = this.driver.firstName;
-        });
-    }*/
 }

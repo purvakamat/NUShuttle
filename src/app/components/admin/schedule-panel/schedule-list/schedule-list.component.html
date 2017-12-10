@@ -9,7 +9,7 @@
     </p>
 
     <div class="navbar-text pull-right">
-      <a [routerLink]="['/user', userId, 'admin', 'schedules', 'new']"
+      <a [routerLink]="['/admin-new-schedule']"
          class="navbar-link">
         <span class="glyphicon glyphicon-plus colorWhite"></span>
       </a>
@@ -59,7 +59,7 @@
             {{ride.blocked_seats}}
           </div>
           <div class="col-xs-2">
-          <a [routerLink]="['/user', userId, 'admin', 'schedules', ride._id]">
+          <a [routerLink]="['/admin-edit-schedule', ride._id]">
             <div class="nhs-glyphicon">
             <span class="glyphicon-cog glyphicon"></span>
             </div>
@@ -75,7 +75,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
-      <a [routerLink]="['/user', userId, 'admin', 'drivers']" class="navbar-link">
+      <a [routerLink]="['/admin-drivers']" class="navbar-link">
         <span class="glyphicon glyphicon-sunglasses nav-foreground"></span>
       </a>
     </p>

@@ -11,7 +11,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class DriverEditComponent implements OnInit {
   drivers: User[];
-  userId: String;
   username: String;
   password: String;
   firstName: String;
@@ -31,7 +30,7 @@ export class DriverEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
+
       this.driverId = params['did'];
       this.userService.findUserById(this.driverId)
         .subscribe((user) => {
@@ -62,7 +61,7 @@ export class DriverEditComponent implements OnInit {
       this.userService.updateUser(this.driverId, user)
         .subscribe((ride1) => {
           if (ride1) {
-            this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
+            this.router.navigate(['/admin-drivers']);
           }
         });
     }
@@ -72,7 +71,7 @@ export class DriverEditComponent implements OnInit {
     this.userService.deleteUser(this.driverId)
       .subscribe((drivers) => {
         this.drivers = drivers;
-        this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
+        this.router.navigate(['/admin-drivers']);
       });
   }
 }

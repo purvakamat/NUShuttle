@@ -8,14 +8,14 @@
     </p>
 
     <p class="navbar-text pull-left">
-      <a [routerLink]="['/user', userId, 'admin', 'schedules']" class="navbar-link">
+      <a [routerLink]="['/admin-schedules']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left nav-foreground"></span>
       </a>
     </p>
 
     <!--hamburger to open rides in list form-->
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user', userId, 'admin', 'drivers', 'new']" class="navbar-link">
+      <a [routerLink]="['/admin-new-driver']" class="navbar-link">
         <span class="glyphicon glyphicon-plus nav-foreground"></span>
       </a>
     </p>
@@ -54,7 +54,7 @@
             {{driver.emailId}}
           </div>
           <div class="col-xs-3">
-            <a [routerLink]="['/user', userId, 'admin', 'drivers', driver._id]">
+            <a [routerLink]="['/admin-edit-driver', driver._id]">
               <div class="nhs-glyphicon">
                 <span class="glyphicon-cog glyphicon"></span>
               </div>
@@ -70,7 +70,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
-      <a [routerLink]="['/user', userId, 'admin', 'schedules']" class="navbar-link">
+      <a [routerLink]="['/admin-schedules']" class="navbar-link">
         <span class="glyphicon glyphicon-align-justify nav-foreground"></span>
       </a>
     </p>

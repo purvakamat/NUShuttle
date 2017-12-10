@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           else if(user.role == 'DRIVER')
             this.router.navigate(['/user',user._id,'driver']);
           else if(user.role == 'ADMIN')
-            this.router.navigate(['/user', user._id,'admin', 'schedules']);
+            this.router.navigate(['/admin-schedules']);
           else{
             this.userService.logout().subscribe((res) => {
               this.router.navigate(['/login']);

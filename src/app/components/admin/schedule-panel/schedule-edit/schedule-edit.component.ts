@@ -13,7 +13,7 @@ import {connectableObservableDescriptor} from 'rxjs/observable/ConnectableObserv
   styleUrls: ['./schedule-edit.component.css']
 })
 export class ScheduleEditComponent implements OnInit {
-  userId: String;
+
   rides: Ride[];
   departureTime: Date;
   driverName: String;
@@ -38,7 +38,6 @@ export class ScheduleEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.rideId = params['rid'];
       this.rideService.findRideById(this.rideId)
         .subscribe((ride) => {
@@ -84,7 +83,7 @@ export class ScheduleEditComponent implements OnInit {
         }
         this.rideService.updateRide(this.rideId, ride)
           .subscribe((ride1) => {
-            this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
+            this.router.navigate(['/admin-schedules']);
           });
       });
   }
@@ -93,7 +92,7 @@ export class ScheduleEditComponent implements OnInit {
     this.rideService.deleteRide(this.rideId)
       .subscribe((rides) => {
         this.rides = rides;
-        this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
+        this.router.navigate(['/admin-schedules']);
       });
   }
 
