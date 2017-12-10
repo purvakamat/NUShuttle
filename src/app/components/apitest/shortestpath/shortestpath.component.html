@@ -65,17 +65,17 @@
   <ul class="list-group">
     <li  class="list-group-item" *ngFor="let queueSlot of queueSlots">
       <div class="row">
-        <div class="col-xs-2">
-          {{queueSlot.student.firstName}}
-        </div>
-        <div class="col-xs-2">
-          {{queueSlot.student.lastName}}
+        <div class="col-xs-3">
+          {{queueSlot.student_name}}
         </div>
         <div class="col-xs-4">
           {{queueSlot.dropoff_location}}
         </div>
         <div class="col-xs-2">
           <button type="button" class="btn btn-primary btn-xs">Check In</button>
+        </div>
+        <div class="col-xs-2">
+          <button type="button" class="btn btn-error btn-xs">No Show</button>
         </div>
       </div>
     </li>

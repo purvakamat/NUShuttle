@@ -47,31 +47,18 @@ export class ShortestpathComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'] || '0';
-      this.rideId = params['rid'] || '0';
-      // this.queueslotService
-        // .findQueueSlotByRideId(this.rideId)
-        // .subscribe((queueSlots: QueueSlot[]) => {
-          // console.log(queueSlots);
-          var dropoff_1 = '1179 Boylston St, Boston, MA 02215, USA';
-          const user1 = new User('', 'abc', 'q1', 'q1', 'STUDENT');
-          user1.firstName = 'Nisarg';
-          user1.lastName = 'Shah';
-          var dropoff_2 = '75 Peterborough St, Boston, MA 02215, USA';
-          const user2 = new User('', 'q2', 'q2', 'q2', 'STUDENT');
-          user2.firstName = 'Purva';
-          user2.lastName = 'Kamat';
-          const queueSlot1 = new QueueSlot(user1._id, user1.firstName + " " + user1.lastName, this.rideId, dropoff_1);
-          const queueSlot2 = new QueueSlot(user2._id, user2.firstName + " " + user2.lastName, this.rideId, dropoff_2);
-          this.queueSlots = [];
-          this.queueSlots.push(queueSlot1);
-          this.queueSlots.push(queueSlot2);
-          // console.log(this.queueSlots);
-          for (let index = 0; index < this.queueSlots.length; index++) {
-            const temp = this.queueSlots[index].dropoff_location;
-            this.addDropLocation(temp);
-          }
-        //
+      this.userId = params['uid'];
+      this.rideId = params['rid'];
+      this.queueslotService
+          .findQueueSlotsByRideId(this.rideId)
+          .subscribe((queueSlots: QueueSlot[]) => {
+            console.log(queueSlots);
+            this.queueSlots = queueSlots;
+            for (let index = 0; index < this.queueSlots.length; index++) {
+              const temp = this.queueSlots[index].dropoff_location;
+              this.addDropLocation(temp);
+            }
+          });
     });
     // create search FormControl
     this.searchControl = new FormControl();
