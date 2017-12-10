@@ -37,6 +37,7 @@ export class MyrideComponent implements OnInit {
   driver_name: String = "";
   pick_up: String = "";
   checkedIn: Boolean = false;
+  noShow: Boolean = false;
 
   @ViewChild('search')
   searchElementRef: ElementRef;
@@ -94,6 +95,7 @@ export class MyrideComponent implements OnInit {
         .subscribe((slot: QueueSlot) => {
           this.queueSlot = slot;
           this.checkedIn = slot.checked_in;
+          this.noShow = slot.notified;
           this.sharedService.selectedRide = slot._ride;
 
           this.rideService.findRideById(this.sharedService.selectedRide).subscribe((ride: Ride) => {

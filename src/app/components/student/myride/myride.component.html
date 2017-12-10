@@ -29,7 +29,11 @@
         YOU HAVE BEEN CHECKED IN.
       </div>
 
-      <div class="row">
+      <div *ngIf="noShow" class="row alert alert-danger">
+        YOU HAVE BEEN MARKED FOR NO SHOW.
+      </div>
+
+      <div>
         <p><b>Departure Time : </b> {{departure_time | date:"MM/dd/yyyy 'at' h:mm a"}}</p>
         <p><b>Vehicle No. : </b> {{vehicle_no}}</p>
         <p><b>Driver : </b> {{driver_name}}</p>
