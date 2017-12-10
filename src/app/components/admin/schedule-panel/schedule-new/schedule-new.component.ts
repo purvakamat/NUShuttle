@@ -43,7 +43,6 @@ export class ScheduleNewComponent implements OnInit {
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
-          console.log(rides);
         });
       this.driverService.findAllDrivers()
         .subscribe((drivers: User[]) => {
@@ -63,16 +62,15 @@ export class ScheduleNewComponent implements OnInit {
     ride.vehicle_no = vehicleNo;
     this.userService.findUserById(selectedValue)
       .subscribe((user) => {
-      console.log(user);
-      ride.driver_name = user.firstName + ' ' + user.lastName;
-      console.log(ride.driver_name);
-    });
-    this.rideService.createRide(ride)
-      .subscribe((ride1) => {
-        if (ride1) {
-          this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
-        }
+        ride.driver_name = user.firstName + ' ' + user.lastName;
+        this.rideService.createRide(ride)
+          .subscribe((ride1) => {
+            if (ride1) {
+              this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
+            }
+          });
       });
+
   }
 
   fetchDrivers() {
