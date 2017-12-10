@@ -13,6 +13,11 @@ import {SharedService} from "../../../services/shared.service";
 export class ProfileComponent implements OnInit {
 
   user: User;
+  role: String;
+  username: String;
+  email: String;
+  firstname: String;
+  lastname: String;
 
   constructor(private userService: UserService,
               private router: Router,
@@ -20,9 +25,20 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user;
+    this.role = this.user.role;
+    this.username = this.user.username;
+    this.firstname = this.user.firstName;
+    this.lastname = this.user.lastName;
+    this.email = this.user.emailId;
   }
 
   updateUser() {
+    this.user.role = this.role;
+    this.user.username = this.username;
+    this.user.firstName = this.firstname;
+    this.user.lastName = this.lastname;
+    this.user.emailId = this.email;
+
     this.userService.updateUser(this.user._id, this.user)
       .subscribe((data) => {
         console.log(data);
