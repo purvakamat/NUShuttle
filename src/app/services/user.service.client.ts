@@ -29,7 +29,6 @@ export class UserService{
       .map(
         (res: Response) => {
           const data = res.json();
-          this.sharedService.user = data;
           return data;
         }
       );
