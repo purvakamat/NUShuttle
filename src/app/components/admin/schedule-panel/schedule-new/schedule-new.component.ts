@@ -4,6 +4,7 @@ import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from "../../../../models/user.model.client";
 import {DriverService} from "../../../../services/driver.service.client";
+import {UserService} from "../../../../services/user.service.client";
 
 @Component({
   selector: 'app-schedule-new',
@@ -22,8 +23,10 @@ export class ScheduleNewComponent implements OnInit {
   blockedCount: Number;
   ride: Ride;
   drivers: User[];
+  driver: User;
 
-  constructor(private driverService: DriverService,
+  constructor(private userService: UserService,
+              private driverService: DriverService,
               private rideService: RideService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -45,6 +48,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
+    console.log('from create ride : ' + this._driver);
     const ride = new Ride('', departureTime, _driver);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
