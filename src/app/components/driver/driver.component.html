@@ -8,13 +8,6 @@
           </a>
         </div>
       </div>
-      <div class="col-xs-4">
-        <div class="navbar-text pull-right">
-          <a  class="navbar-link">
-            <span class="glyphicon glyphicon-user colorWhite"></span>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </nav>
@@ -47,3 +40,13 @@
     </div>
   </div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
+        <span class="glyphicon glyphicon-user nav-foreground"></span>
+      </a>
+    </p>
+  </div>
+</nav>
