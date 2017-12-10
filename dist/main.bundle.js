@@ -954,6 +954,8 @@ var ScheduleNewComponent = (function () {
             _this.userId = params['uid'];
             _this.seatCount = 9;
             _this.blockedCount = 0;
+            _this.origin = '360 Huntington Ave, Boston, MA 02115';
+            _this.destination = '360 Huntington Ave, Boston, MA 02115';
             _this.rideService.getAllRides(100)
                 .subscribe(function (rides) {
                 _this.rides = rides;
@@ -971,18 +973,8 @@ var ScheduleNewComponent = (function () {
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
         ride.delay = 0;
-        if (origin === '' || null || undefined) {
-            ride.origin = '360 Huntington Ave, Boston, MA 02115';
-        }
-        else {
-            ride.origin = origin;
-        }
-        if (this.destination === '' || null || undefined) {
-            ride.destination = '360 Huntington Ave, Boston, MA 02115';
-        }
-        else {
-            ride.destination = destination;
-        }
+        ride.origin = origin;
+        ride.destination = destination;
         ride.status = 'On Time';
         ride.vehicle_no = vehicleNo;
         this.rideService.createRide(ride)

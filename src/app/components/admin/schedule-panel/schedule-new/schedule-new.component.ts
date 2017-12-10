@@ -38,6 +38,8 @@ export class ScheduleNewComponent implements OnInit {
       this.userId = params['uid'];
       this.seatCount = 9;
       this.blockedCount = 0;
+      this.origin = '360 Huntington Ave, Boston, MA 02115';
+      this.destination = '360 Huntington Ave, Boston, MA 02115';
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
@@ -55,16 +57,8 @@ export class ScheduleNewComponent implements OnInit {
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;
-    if (origin === '' || null || undefined) {
-      ride.origin = '360 Huntington Ave, Boston, MA 02115';
-    } else {
-      ride.origin = origin;
-    }
-    if (this.destination === '' || null || undefined) {
-      ride.destination = '360 Huntington Ave, Boston, MA 02115';
-    } else {
-      ride.destination = destination;
-    }
+    ride.origin = origin;
+    ride.destination = destination;
     ride.status = 'On Time';
     ride.vehicle_no = vehicleNo;
     this.rideService.createRide(ride)
