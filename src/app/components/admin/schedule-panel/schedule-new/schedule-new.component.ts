@@ -48,13 +48,11 @@ export class ScheduleNewComponent implements OnInit {
     });
   }
 
-  createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
-    console.log('from create ride : ' + this._driver);
-    console.log('this is selected value: ' + this.selectedValue);
-    const ride = new Ride('', departureTime, _driver);
+  createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
+    console.log('this is selected value: ' + selectedValue);
+    const ride = new Ride('', departureTime, selectedValue);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
-    ride._driver = 'driver_id';
     ride.delay = 0;
     ride.origin = origin;
     ride.status = 'On Time';
