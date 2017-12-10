@@ -998,6 +998,7 @@ var ScheduleNewComponent = (function () {
         this.rideService.createRide(ride)
             .subscribe(function (ride1) {
             if (ride1) {
+                console.log('ride returned: ' + ride1);
                 _this.router.navigate(['/user', _this.userId, 'admin', 'schedules']);
             }
         });
