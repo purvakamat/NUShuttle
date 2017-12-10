@@ -30,7 +30,7 @@
       <li class="list-group-item">
         <div class="row" *ngFor="let ride of fetchRides()">
           <div class="col-xs-2">
-            {{fetchDriverName(ride)}}
+            {{ride.origin}}
           </div>
           <div class="col-xs-2">
             {{ride.departure_time}}

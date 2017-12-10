@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -25,7 +25,8 @@ export class ScheduleListComponent implements OnInit {
   constructor(private userService: UserService,
               private rideService: RideService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -39,10 +40,11 @@ export class ScheduleListComponent implements OnInit {
   }
 
   fetchRides() {
-    console.log(this.rides);
+    console.log('In fetchRides: ' + this.rides);
     return this.rides;
   }
-  fetchDriverName(ride: Ride) {
+
+  /*fetchDriverName(ride: Ride) {
     console.log('I am being called');
     this._driver = ride._driver;
     this.userService.findUserById(this._driver)
@@ -51,5 +53,5 @@ export class ScheduleListComponent implements OnInit {
         this.lastName = user.lastName;
       });
     return this.firstName;
-  }
+  }*/
 }
