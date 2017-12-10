@@ -23,7 +23,7 @@ export class DriverComponent implements OnInit {
       this.driverService
         .findRidesByUser(this.userId)
         .subscribe((rides: Ride[]) => {
-          console.log(rides);
+          // console.log(rides);
           this.rides = rides;
         });
     });
