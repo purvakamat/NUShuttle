@@ -877,12 +877,10 @@ var ScheduleListComponent = (function () {
             _this.rideService.getAllRides(100)
                 .subscribe(function (rides) {
                 _this.rides = rides;
-                console.log(rides);
             });
         });
     };
     ScheduleListComponent.prototype.fetchRides = function () {
-        console.log('In fetchRides: ' + this.rides);
         return this.rides;
     };
     return ScheduleListComponent;
@@ -998,7 +996,6 @@ var ScheduleNewComponent = (function () {
         this.rideService.createRide(ride)
             .subscribe(function (ride1) {
             if (ride1) {
-                console.log('ride returned: ' + ride1);
                 _this.router.navigate(['/user', _this.userId, 'admin', 'schedules']);
             }
         });
@@ -2898,6 +2895,7 @@ var RideService = (function () {
         this.baseURLRides = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].baseUrl + '/api/rides';
     }
     RideService.prototype.createRide = function (user) {
+        console.log(user);
         var url = this.baseURL;
         return this.http.post(url, user)
             .map(function (response) {

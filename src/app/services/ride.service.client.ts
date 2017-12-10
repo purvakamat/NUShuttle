@@ -16,6 +16,7 @@ export class RideService {
   }
 
   createRide(user: Ride) {
+    console.log(user);
     const url = this.baseURL;
     return this.http.post(url, user)
       .map((response: Response) => {

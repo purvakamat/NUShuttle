@@ -36,13 +36,11 @@ export class ScheduleListComponent implements OnInit {
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
-          console.log(rides);
         });
     });
   }
 
   fetchRides() {
-    console.log('In fetchRides: ' + this.rides);
     return this.rides;
   }
 
