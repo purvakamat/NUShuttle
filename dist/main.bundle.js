@@ -819,7 +819,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-list/schedule-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header\">\n      <a class=\"navbar-brand thick\">\n        <b class=\"nav-foreground\">SCHEDULES</b>\n      </a>\n    </p>\n\n    <div class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules', 'new']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Rides</label>\n    </div>\n  </div>\n\n  <div>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <div class=\"row\" *ngFor=\"let ride of fetchRides()\">\n          <div class=\"col-xs-2\" *ngFor=\"let driver of fetchDriverName(ride)\">\n            {{firstName}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.departure_time}}\n          </div>\n          <div class=\"col-xs-4\">\n            {{ride.seat_count}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.blocked_seats}}\n          </div>\n          <a [routerLink]=\"['/user', userId, 'admin', 'schedules', ride._id]\"\n             class=\"pull-right\">\n            <span class=\"glyphicon-cog glyphicon\"></span>\n          </a>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'drivers']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-sunglasses nav-foreground\"></span>\n      </a>\n    </p>\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header\">\n      <a class=\"navbar-brand thick\">\n        <b class=\"nav-foreground\">SCHEDULES</b>\n      </a>\n    </p>\n\n    <div class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules', 'new']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Rides</label>\n    </div>\n  </div>\n\n  <div>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <div class=\"row\" *ngFor=\"let ride of fetchRides()\">\n          <div class=\"col-xs-2\">\n            {{ride._driver}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.departure_time}}\n          </div>\n          <div class=\"col-xs-4\">\n            {{ride.seat_count}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.blocked_seats}}\n          </div>\n          <a [routerLink]=\"['/user', userId, 'admin', 'schedules', ride._id]\"\n             class=\"pull-right\">\n            <span class=\"glyphicon-cog glyphicon\"></span>\n          </a>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'drivers']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-sunglasses nav-foreground\"></span>\n      </a>\n    </p>\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -866,16 +866,6 @@ var ScheduleListComponent = (function () {
     ScheduleListComponent.prototype.fetchRides = function () {
         console.log('In fetchRides: ' + this.rides);
         return this.rides;
-    };
-    ScheduleListComponent.prototype.fetchDriverName = function (ride) {
-        var _this = this;
-        console.log('I am being called');
-        this._driver = ride._driver;
-        this.userService.findUserById(this._driver)
-            .subscribe(function (user) {
-            _this.driver = user;
-            _this.firstName = _this.driver.firstName;
-        });
     };
     return ScheduleListComponent;
 }());

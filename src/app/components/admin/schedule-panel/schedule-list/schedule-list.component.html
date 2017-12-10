@@ -29,8 +29,8 @@
     <ul class="list-group">
       <li class="list-group-item">
         <div class="row" *ngFor="let ride of fetchRides()">
-          <div class="col-xs-2" *ngFor="let driver of fetchDriverName(ride)">
-            {{firstName}}
+          <div class="col-xs-2">
+            {{ride._driver}}
           </div>
           <div class="col-xs-2">
             {{ride.departure_time}}
