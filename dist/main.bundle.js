@@ -991,7 +991,9 @@ var ScheduleNewComponent = (function () {
         ride.vehicle_no = vehicleNo;
         this.userService.findUserById(selectedValue)
             .subscribe(function (user) {
+            console.log(user);
             ride.driver_name = user.firstname + ' ' + user.lastName;
+            console.log(ride.driver_name);
         });
         this.rideService.createRide(ride)
             .subscribe(function (ride1) {
