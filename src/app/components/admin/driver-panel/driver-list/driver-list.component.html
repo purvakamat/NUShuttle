@@ -32,21 +32,34 @@
 
   <div>
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let driver of fetchDrivers()">
+      <li class="list-group-item nhs-table-header colorWhite">
         <div class="row">
-          <div class="col-xs-2">
-            {{driver.firstName}}
-          </div>
-          <div class="col-xs-2">
-            {{driver.lastName}}
-          </div>
           <div class="col-xs-4">
+            Name
+          </div>
+          <div class="col-xs-6">
+            Email
+          </div>
+          <div class="col-xs-2">
+            Settings
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item nhs-table-content" *ngFor="let driver of fetchDrivers()">
+        <div class="row">
+          <div class="col-xs-4">
+            {{driver.firstName}} {{driver.lastName}}
+          </div>
+          <div class="col-xs-5">
             {{driver.emailId}}
           </div>
-          <a [routerLink]="['/user', userId, 'admin', 'drivers', driver._id]"
-             class="pull-right">
-            <span class="glyphicon-cog glyphicon"></span>
-          </a>
+          <div class="col-xs-3">
+            <a [routerLink]="['/user', userId, 'admin', 'drivers', driver._id]">
+              <div class="nhs-glyphicon">
+                <span class="glyphicon-cog glyphicon"></span>
+              </div>
+            </a>
+          </div>
         </div>
       </li>
     </ul>

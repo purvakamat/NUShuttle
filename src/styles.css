@@ -95,3 +95,19 @@ div.tab button:hover {
 .nhs-padding{
   margin-top: 7px;
 }
+
+.nhs-table-header {
+  background-color: #428BCA;
+  text-align: center;
+}
+
+.nhs-table-content {
+  text-align: center;
+}
+
+.nhs-glyphicon {
+  display: block;
+  text-align: center;
+}
+
+

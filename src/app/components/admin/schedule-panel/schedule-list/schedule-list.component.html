@@ -27,42 +27,46 @@
 
   <div>
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let ride of fetchRides()">
-        <!--<div class="row">
+      <li class="list-group-item nhs-table-header colorWhite">
+        <div class="row">
           <div class="col-xs-3">
             Driver's Name
           </div>
-          <div class="col-xs-5">
+          <div class="col-xs-4">
             Departure Time
           </div>
-          <div class="col-xs-2">
+          <div class="col-xs-1">
             Seats
           </div>
           <div class="col-xs-2">
             Blocked Seats
           </div>
-          <a [routerLink]="['/user', userId, 'admin', 'schedules', ride._id]"
-             class="pull-right">
-            <span class="glyphicon-cog glyphicon"></span>
-          </a>
-        </div>-->
+          <div class="col-xs-2">
+            Settings
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item nhs-table-content" *ngFor="let ride of fetchRides()">
         <div class="row">
           <div class="col-xs-3">
             {{ride.driver_name}}
           </div>
-          <div class="col-xs-5">
+          <div class="col-xs-4">
             {{ride.departure_time | date:'medium'}}
           </div>
-          <div class="col-xs-2">
+          <div class="col-xs-1">
             {{ride.seat_count}}
           </div>
           <div class="col-xs-2">
             {{ride.blocked_seats}}
           </div>
-          <a [routerLink]="['/user', userId, 'admin', 'schedules', ride._id]"
-             class="pull-right">
+          <div class="col-xs-2">
+          <a [routerLink]="['/user', userId, 'admin', 'schedules', ride._id]">
+            <div class="nhs-glyphicon">
             <span class="glyphicon-cog glyphicon"></span>
+            </div>
           </a>
+          </div>
         </div>
       </li>
     </ul>
