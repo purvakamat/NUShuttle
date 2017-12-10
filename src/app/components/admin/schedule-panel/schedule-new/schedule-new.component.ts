@@ -24,6 +24,7 @@ export class ScheduleNewComponent implements OnInit {
   ride: Ride;
   drivers: User[];
   driver: User;
+  selectedValue: String;
 
   constructor(private userService: UserService,
               private driverService: DriverService,
@@ -49,6 +50,7 @@ export class ScheduleNewComponent implements OnInit {
 
   createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
     console.log('from create ride : ' + this._driver);
+    console.log('this is selected value: ' + this.selectedValue);
     const ride = new Ride('', departureTime, _driver);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
