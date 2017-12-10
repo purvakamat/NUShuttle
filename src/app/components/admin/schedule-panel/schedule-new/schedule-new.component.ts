@@ -9,6 +9,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./schedule-new.component.css']
 })
 export class ScheduleNewComponent implements OnInit {
+  origin: String;
+  destination: String;
   userId: String;
   rides: Ride[];
   departureTime: Date;
@@ -34,15 +36,15 @@ export class ScheduleNewComponent implements OnInit {
     });
   }
 
-  createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount) {
+  createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
     const ride = new Ride('', departureTime, _driver);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride._driver = 'driver_id';
     ride.delay = 0;
-    ride.origin = '';
-    ride.status = '';
-    ride.destination = '';
+    ride.origin = origin;
+    ride.status = 'On Time';
+    ride.destination = destination;
     ride.vehicle_no = vehicleNo;
     this.rideService.createRide(ride)
       .subscribe((ride1) => {

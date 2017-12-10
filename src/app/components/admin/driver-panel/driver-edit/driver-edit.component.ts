@@ -19,6 +19,7 @@ export class DriverEditComponent implements OnInit {
   emailId: String;
   driverId: String;
   driver: User;
+  verifyPassword: String;
 
   constructor(private userService: UserService,
               private driverService: DriverService,
@@ -46,7 +47,7 @@ export class DriverEditComponent implements OnInit {
     });
   }
 
-  updateDriver(username, password, firstName, lastName, emailId) {
+  updateDriver(username, password, verifyPassword, firstName, lastName, emailId) {
     const user = new User(this.driverId, username, password, emailId, 'DRIVER');
     user.firstName = firstName;
     user.lastName = lastName;

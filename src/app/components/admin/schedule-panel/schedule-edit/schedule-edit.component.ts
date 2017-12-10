@@ -18,6 +18,8 @@ export class ScheduleEditComponent implements OnInit {
   blockedCount: Number;
   ride: Ride;
   rideId: String;
+  origin: String;
+  destination: String;
   constructor(private rideService: RideService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -34,6 +36,8 @@ export class ScheduleEditComponent implements OnInit {
           this.seatCount = this.ride.seat_count;
           this.blockedCount = this.ride.blocked_seats;
           this.vehicleNo = this.ride.vehicle_no;
+          this.origin = this.ride.origin;
+          this.destination = this.destination;
         });
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
@@ -43,15 +47,15 @@ export class ScheduleEditComponent implements OnInit {
     });
   }
 
-  updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount) {
+  updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
     const ride = new Ride(this.rideId, departureTime, _driver);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride._driver = 'driver_id';
     ride.delay = 0;
-    ride.origin = '';
-    ride.status = '';
-    ride.destination = '';
+    ride.origin = origin;
+    ride.status = 'On Time';
+    ride.destination = destination;
     ride.vehicle_no = vehicleNo;
     this.rideService.updateRide(this.rideId, ride)
       .subscribe((ride1) => {

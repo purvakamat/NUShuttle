@@ -31,8 +31,17 @@
     </label>
     <input [(ngModel)]="password"
            placeholder="Password"
-           type="text"
+           type="password"
            id="password"
+           class="form-control"/>
+
+    <label for="verifyPassword">
+      Verify Password
+    </label>
+    <input [(ngModel)]="verifyPassword"
+           placeholder="Verify Password"
+           type="password"
+           id="verifyPassword"
            class="form-control"/>
 
     <label for="firstName">
@@ -61,7 +70,7 @@
            id="email"
            class="form-control"/>
     <button class="btn btn-primary btn-block" type="submit"
-            (click)="updateDriver(username, password, firstName, lastName, emailId)">Update Driver</button>
+            (click)="updateDriver(username, password, verifyPassword, firstName, lastName, emailId)">Update Driver</button>
     <button class="btn btn-danger btn-block" type="submit"
             (click)="deleteDriver()">Delete Driver</button>
   </div>

@@ -18,6 +18,8 @@ export class DriverNewComponent implements OnInit {
   lastName: String;
   emailId: String;
   verifyPassword: String;
+  errorMsg: String;
+  errorFlag: boolean;
 
   constructor(private userService: UserService,
               private driverService: DriverService,
@@ -36,14 +38,20 @@ export class DriverNewComponent implements OnInit {
   }
 
   createDriver(username, password, verifyPassword, firstName, lastName, emailId) {
-    const user = new User('', username, password, emailId, 'DRIVER');
-    user.firstName = firstName;
-    user.lastName = lastName;
-    this.userService.createUser(user)
-      .subscribe((ride1) => {
-        if (ride1) {
-          this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
-        }
-      });
+    if (verifyPassword !== password) {
+      this.errorMsg = 'Passwords do not match!';
+      this.errorFlag = true;
+      return;
+    } else {
+      const user = new User('', username, password, emailId, 'DRIVER');
+      user.firstName = firstName;
+      user.lastName = lastName;
+      this.userService.createUser(user)
+        .subscribe((ride1) => {
+          if (ride1) {
+            this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
+          }
+        });
+    }
   }
 }
