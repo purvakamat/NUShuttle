@@ -46,9 +46,9 @@ export class DriverNewComponent implements OnInit {
       const user = new User('', username, password, emailId, 'DRIVER');
       user.firstName = firstName;
       user.lastName = lastName;
-      this.userService.createUser(user)
-        .subscribe((ride1) => {
-          if (ride1) {
+      this.userService.register(user)
+        .subscribe((user1) => {
+          if (user1) {
             this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
           }
         });

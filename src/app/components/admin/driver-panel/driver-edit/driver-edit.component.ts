@@ -38,6 +38,7 @@ export class DriverEditComponent implements OnInit {
           this.driver = user;
           this.username = this.driver.username;
           this.password = this.driver.password;
+          this.verifyPassword = this.driver.password;
           this.firstName = this.driver.firstName;
           this.lastName = this.driver.lastName;
           this.emailId = this.driver.emailId;
