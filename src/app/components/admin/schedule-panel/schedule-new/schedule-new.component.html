@@ -31,9 +31,9 @@
         Choose driver
       </label>
     </div>
-    <div *ngFor="let driver of fetchDrivers()">
+    <div>
       <select id="driver" class="form-control">
-        <option value="driver1">{{driver.firstName}}</option>
+        <option *ngFor="let driver of fetchDrivers()" value="{{driver._id}}">{{driver.firstName}}</option>
       </select>
     </div>
     <div>
