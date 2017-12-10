@@ -53,7 +53,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
-    const ride = new Ride('', departureTime, selectedValue);
+    const ride = new Ride('', departureTime, selectedValue._id, selectedValue.firstname + " " + selectedValue.lastname);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;

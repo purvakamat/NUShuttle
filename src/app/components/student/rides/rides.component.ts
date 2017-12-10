@@ -29,6 +29,8 @@ export class RidesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sharedService.selectedRide = undefined;
+
     this.carouselTile = {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
       slide: 1,

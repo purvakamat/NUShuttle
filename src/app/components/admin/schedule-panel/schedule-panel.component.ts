@@ -39,7 +39,7 @@ export class SchedulePanelComponent implements OnInit {
   }
 
   createRide(departureTime, _driver, vehicleNo, seatCount, blockedCount) {
-    const ride = new Ride('', departureTime, _driver);
+    const ride = new Ride('', departureTime, _driver, " ");
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride._driver = 'driver_id';

@@ -23,7 +23,7 @@ function updateQueueSlot(slotID, queueSlot) {
 }
 
 function getQSlotWithID(slotID) {
-  return QueueSlotModel.find({_id: slotID});
+  return QueueSlotModel.findOne({_id: slotID});
 }
 
 function getQueueSlotsForRide(rideId){

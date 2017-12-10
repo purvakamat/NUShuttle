@@ -34,8 +34,16 @@ export class QueueSlotService {
   }
 
   findQueueSlotById(slotId: String) {
-    const url = this.baseURLRide + '/' + slotId;
+    const url = this.baseURLQueue + '/' + slotId;
     return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
+  deleteQueueSlot(slotId: String) {
+    const url = this.baseURLQueue + '/' + slotId;
+    return this.http.delete(url)
       .map((response: Response) => {
         return response.json();
       });

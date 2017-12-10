@@ -19,40 +19,54 @@
 
 <div class="container-fluid">
 
-  <div *ngIf="showRideDetails">
-    <p><b>Departure Time : </b> {{ride.departure_time | date:"MM/dd/yyyy 'at' h:mm a"}}</p>
-    <p><b>Vehicle No. : </b> {{ride.vehicle_no}}</p>
-    <p><b>Driver : </b> {{driver.firstName + " " + driver.lastName}}</p>
-    <p><b>Pick Up : </b> {{ride.origin}}</p>
+  <div *ngIf="noRides">
+    <h4>Currently not in queue for any ride.</h4>
   </div>
 
-  <div class = "row dropoff">
-    <div class="col-xs-12">
-      <input placeholder="Choose your dropoff location"
-             autocorrect="off"
-             autocapitalize="off"
-             spellcheck="off"
-             type="text"
-             name="dropoff"
-             [(ngModel)]="dropoff"
-             class="form-control"
-             #search [formControl]="searchControl">
+  <div *ngIf="!noRides">
+    <div *ngIf="showRideDetails">
+      <p><b>Departure Time : </b> {{departure_time | date:"MM/dd/yyyy 'at' h:mm a"}}</p>
+      <p><b>Vehicle No. : </b> {{vehicle_no}}</p>
+      <p><b>Driver : </b> {{driver_name}}</p>
+      <p><b>Pick Up : </b> {{pick_up}}</p>
     </div>
-  </div>
 
-  <div class="row dropoff">
-    <div class="col-xs-12">
-      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="16" >
-        <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconUrl"></agm-marker>
-      </agm-map>
+    <div class="row dropoff">
+      <div class="col-xs-12">
+        <input placeholder="Choose your dropoff location"
+               autocorrect="off"
+               autocapitalize="off"
+               spellcheck="off"
+               type="text"
+               name="dropoff"
+               [(ngModel)]="dropoff"
+               class="form-control"
+               #search [formControl]="searchControl">
+      </div>
     </div>
-  </div>
 
-  <div class="row dropoff">
-    <div class="col-xs-12">
-      <button type="button" class="btn btn-success btn-block" (click)="locationConfirmed()">
-        {{showRideDetails? "Confirm Drop Off Location" : "Change Drop Off Location"}}
-      </button>
+    <div class="row dropoff">
+      <div class="col-xs-12">
+        <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="16" >
+          <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconUrl"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+
+    <div class="row dropoff">
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-success btn-block" (click)="locationConfirmed()">
+          Set Drop Off Location
+        </button>
+      </div>
+    </div>
+
+    <div class="row dropoff">
+      <div class="col-xs-12">
+        <button *ngIf="showRideDetails" type="button" class="btn btn-danger btn-block" (click)="dropOffQueue()">
+          Drop Out Of Queue
+        </button>
+      </div>
     </div>
   </div>
 

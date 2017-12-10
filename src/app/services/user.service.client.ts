@@ -86,6 +86,7 @@ export class UserService{
 
   findUserById(userId : String){
     return this.http.get(this.baseURL+ '/api/user' + "/" + userId).map((response: Response) => {
+      console.log(response.json());
       return response.json();
     });
   }

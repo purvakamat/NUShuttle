@@ -61,8 +61,8 @@ export class ShortestpathComponent implements OnInit {
           const user2 = new User('', 'q2', 'q2', 'q2', 'STUDENT');
           user2.firstName = 'Purva';
           user2.lastName = 'Kamat';
-          const queueSlot1 = new QueueSlot(user1._id, this.rideId, dropoff_1);
-          const queueSlot2 = new QueueSlot(user2._id, this.rideId, dropoff_2);
+          const queueSlot1 = new QueueSlot(user1._id, user1.firstName + " " + user1.lastName, this.rideId, dropoff_1);
+          const queueSlot2 = new QueueSlot(user2._id, user2.firstName + " " + user2.lastName, this.rideId, dropoff_2);
           this.queueSlots = [];
           this.queueSlots.push(queueSlot1);
           this.queueSlots.push(queueSlot2);
