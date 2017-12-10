@@ -93,5 +93,9 @@ div.tab button:hover {
 }
 
 .nhs-btn{
-  margin-top: 5px;
+  margin-top: 10px;
+}
+
+.nhs-padding{
+  margin-top: 7px;
 }
