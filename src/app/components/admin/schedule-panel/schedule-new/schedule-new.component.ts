@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from "../../../../models/user.model.client";
+import {DriverService} from "../../../../services/driver.service.client";
 
 @Component({
   selector: 'app-schedule-new',
@@ -19,8 +21,10 @@ export class ScheduleNewComponent implements OnInit {
   seatCount: Number;
   blockedCount: Number;
   ride: Ride;
+  drivers: User[];
 
-  constructor(private rideService: RideService,
+  constructor(private driverService: DriverService,
+              private rideService: RideService,
               private route: ActivatedRoute,
               private router: Router) {
   }
@@ -32,6 +36,10 @@ export class ScheduleNewComponent implements OnInit {
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
           console.log(rides);
+        });
+      this.driverService.findAllDrivers()
+        .subscribe((drivers: User[]) => {
+          this.drivers = drivers;
         });
     });
   }
@@ -52,5 +60,9 @@ export class ScheduleNewComponent implements OnInit {
           this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
         }
       });
+  }
+
+  fetchDrivers() {
+    return this.drivers;
   }
 }
