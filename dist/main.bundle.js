@@ -864,6 +864,7 @@ var ScheduleListComponent = (function () {
         });
     };
     ScheduleListComponent.prototype.fetchRides = function () {
+        console.log(this.rides);
         return this.rides;
     };
     ScheduleListComponent.prototype.fetchDriverName = function (ride) {
@@ -874,8 +875,8 @@ var ScheduleListComponent = (function () {
             .subscribe(function (user) {
             _this.firstName = user.firstName;
             _this.lastName = user.lastName;
-            return (_this.firstName);
         });
+        return this.firstName;
     };
     return ScheduleListComponent;
 }());

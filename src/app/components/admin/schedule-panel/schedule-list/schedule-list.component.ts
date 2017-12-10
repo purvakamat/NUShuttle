@@ -39,6 +39,7 @@ export class ScheduleListComponent implements OnInit {
   }
 
   fetchRides() {
+    console.log(this.rides);
     return this.rides;
   }
   fetchDriverName(ride: Ride) {
@@ -48,7 +49,7 @@ export class ScheduleListComponent implements OnInit {
       .subscribe((user) => {
         this.firstName = user.firstName;
         this.lastName = user.lastName;
-        return (this.firstName);
       });
+    return this.firstName;
   }
 }
