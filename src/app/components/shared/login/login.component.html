@@ -1,4 +1,17 @@
-<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">NU SHUTTLE</b>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container page-margin">
 
   <h3><b>LOGIN</b></h3>
 
@@ -15,7 +28,7 @@
     </span>
     <button class="btn btn-primary btn-block login-elements" type="submit" [disabled]="!form.valid">Login</button>
     <button class="btn btn-success btn-block login-elements" type="submit" [routerLink]="['/register']">Register</button>
-    <button class="btn btn-success btn-block login-elements" type="submit" [routerLink]="['/anonymous']">Guest</button>
+    <a class="login-elements pull-right" href="/anonymous"><h4>Ride Schedule</h4></a>
   </form>
 
   <div *ngIf="errorFlag" class="alert alert-danger">
@@ -23,3 +36,10 @@
   </div>
 
 </div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!--empty-->
+  </div>
+</nav>
