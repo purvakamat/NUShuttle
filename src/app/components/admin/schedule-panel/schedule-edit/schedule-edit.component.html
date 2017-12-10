@@ -32,9 +32,9 @@
       </label>
     </div>
     <div>
-      <select id="driver" class="form-control">
-        <option value="driver1">Driver1</option>
-        <option value="driver2">Driver2</option>
+      <select id="driver" class="form-control" [(ngModel)]="{{}}">
+        <option *ngFor="let driver of fetchDrivers()"
+                value="{{driver._id}}">{{driver.firstName}} {{driver.lastName}}</option>
       </select>
     </div>
     <div>

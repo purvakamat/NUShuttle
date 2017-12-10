@@ -74,6 +74,10 @@
     <button class="btn btn-danger btn-block" type="submit"
             (click)="deleteDriver()">Delete Driver</button>
   </div>
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
 </div>
 
 <!-- Footer -->

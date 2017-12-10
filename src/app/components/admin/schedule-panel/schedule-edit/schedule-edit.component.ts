@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from "../../../../models/user.model.client";
+import {DriverService} from "../../../../services/driver.service.client";
+import {UserService} from "../../../../services/user.service.client";
 
 @Component({
   selector: 'app-schedule-edit',
@@ -12,7 +15,7 @@ export class ScheduleEditComponent implements OnInit {
   userId: String;
   rides: Ride[];
   departureTime: Date;
-  _driver: String;
+  driverName: String;
   vehicleNo: String;
   seatCount: Number;
   blockedCount: Number;
@@ -20,9 +23,15 @@ export class ScheduleEditComponent implements OnInit {
   rideId: String;
   origin: String;
   destination: String;
-  constructor(private rideService: RideService,
+  drivers: User[];
+  driver: User;
+  _driver: String;
+
+  constructor(private userService: UserService,
+              private rideService: RideService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -44,10 +53,15 @@ export class ScheduleEditComponent implements OnInit {
           this.rides = rides;
           console.log(rides);
         });
+      this.userService.findUserById(this._driver)
+        .subscribe((user) => {
+        this.driver = user;
+        });
     });
   }
 
   updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
+    console.log('from updateRide: ' + _driver);
     const ride = new Ride(this.rideId, departureTime, _driver);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
@@ -71,6 +85,10 @@ export class ScheduleEditComponent implements OnInit {
         this.rides = rides;
         this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
       });
+  }
+
+  fetchDrivers() {
+    return this.drivers;
   }
 
 }

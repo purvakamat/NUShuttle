@@ -20,6 +20,8 @@ export class DriverEditComponent implements OnInit {
   driverId: String;
   driver: User;
   verifyPassword: String;
+  errorMsg: String;
+  errorFlag: boolean;
 
   constructor(private userService: UserService,
               private driverService: DriverService,
@@ -37,7 +39,7 @@ export class DriverEditComponent implements OnInit {
           this.username = this.driver.username;
           this.password = this.driver.password;
           this.firstName = this.driver.firstName;
-          this.lastName =  this.driver.lastName;
+          this.lastName = this.driver.lastName;
           this.emailId = this.driver.emailId;
         });
       this.driverService.findAllDrivers()
@@ -48,15 +50,21 @@ export class DriverEditComponent implements OnInit {
   }
 
   updateDriver(username, password, verifyPassword, firstName, lastName, emailId) {
-    const user = new User(this.driverId, username, password, emailId, 'DRIVER');
-    user.firstName = firstName;
-    user.lastName = lastName;
-    this.userService.updateUser(this.driverId, user)
-      .subscribe((ride1) => {
-        if (ride1) {
-          this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
-        }
-      });
+    if (verifyPassword !== password) {
+      this.errorMsg = 'Passwords do not match!';
+      this.errorFlag = true;
+      return;
+    } else {
+      const user = new User(this.driverId, username, password, emailId, 'DRIVER');
+      user.firstName = firstName;
+      user.lastName = lastName;
+      this.userService.updateUser(this.driverId, user)
+        .subscribe((ride1) => {
+          if (ride1) {
+            this.router.navigate(['/user', this.userId, 'admin', 'drivers']);
+          }
+        });
+    }
   }
 
   deleteDriver() {
