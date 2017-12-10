@@ -1925,7 +1925,8 @@ var ProfileComponent = (function () {
         var _this = this;
         this.userService.updateUser(this.user._id, this.user)
             .subscribe(function (data) {
-            _this.user = data;
+            console.log(data);
+            //this.user = data;
             _this.sharedService.user = _this.user;
         });
     };
