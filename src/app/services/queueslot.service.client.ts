@@ -50,7 +50,7 @@ export class QueueSlotService {
   }
 
   updateQueueSlot(queueSlotId: String, queueSlot: QueueSlot) {
-    const url = this.baseURLQueue + queueSlotId;
+    const url = this.baseURLQueue + '/' +  queueSlotId;
     console.log(url);
     return this.http.put(url, queueSlot)
       .map((response: Response) =>  {
