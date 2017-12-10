@@ -153,7 +153,8 @@ module.exports = function(app) {
     var userId = req.params['userId'];
 
     userModel.deleteUser(userId).then(function (response) {
-      if(response.deletedCount == 1)
+      console.log(response);
+      if(response.deletedCount >= 1)
         res.json("User deleted");
       else
         res.status(404).send("User cannot be deleted");
