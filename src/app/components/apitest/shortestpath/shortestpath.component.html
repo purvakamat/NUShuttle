@@ -66,12 +66,14 @@
           {{queueSlot.dropoff_location}}
         </div>
         <div class="col-xs-2">
-          <button type="button" class="btn btn-primary btn-xs" [disabled]="queueSlot.checked_in"
+          <button type="button" class="btn btn-primary btn-xs" [disabled]="queueSlot.checked_in && queueSlot.notified"
                   (click)="checkIn(queueSlot._id, queueSlot)">
             Check In</button>
         </div>
         <div class="col-xs-2">
-          <button type="button" class="btn btn-danger btn-xs">No Show</button>
+          <button type="button" class="btn btn-danger btn-xs" [disabled]="queueSlot.checked_in && queueSlot.notified"
+          (click)="noShow(queueSlot._id, queueSlot)">
+            No Show</button>
         </div>
       </div>
     </li>

@@ -127,6 +127,8 @@ export class ShortestpathComponent implements OnInit {
     const rideId = queueSlot._ride;
     const newQueueSlot = new QueueSlot(studentId, studentName, rideId , dropOffLocation);
     newQueueSlot.checked_in = true;
+    newQueueSlot.notified = queueSlot.notified;
+    newQueueSlot.ready = queueSlot.ready;
     this.queueslotService
       .updateQueueSlot(queueSlotId, newQueueSlot)
       .subscribe((queueSlotUpdated) => {
@@ -138,6 +140,36 @@ export class ShortestpathComponent implements OnInit {
             console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
+              const temp = this.queueSlots[index].dropoff_location;
+              this.addDropLocation(temp);
+            }
+          });
+      });
+  }
+
+  private noShow(queueSlotId: String, queueSlot: QueueSlot) {
+    const studentId = queueSlot._student;
+    const studentName = queueSlot.student_name;
+    const dropOffLocation = queueSlot.dropoff_location;
+    const rideId = queueSlot._ride;
+    const newQueueSlot = new QueueSlot(studentId, studentName, rideId , dropOffLocation);
+    newQueueSlot.checked_in = !queueSlot.checked_in;
+    newQueueSlot.notified = true;
+    newQueueSlot.ready = queueSlot.ready;
+    this.queueslotService
+      .updateQueueSlot(queueSlotId, newQueueSlot)
+      .subscribe((queueSlotUpdated) => {
+        console.log(queueSlotUpdated);
+        this.waypoints = [];
+        this.queueslotService
+          .findQueueSlotsByRideId(this.rideId)
+          .subscribe((queueSlots: QueueSlot[]) => {
+            console.log(queueSlots);
+            this.queueSlots = queueSlots;
+            for (let index = 0; index < this.queueSlots.length; index++) {
+              if (this.queueSlots[index].notified) {
+                continue;
+              }
               const temp = this.queueSlots[index].dropoff_location;
               this.addDropLocation(temp);
             }
