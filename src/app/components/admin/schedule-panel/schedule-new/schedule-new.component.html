@@ -39,16 +39,18 @@
       </select>
     </div>
     <div>
-      <label class="nhs-padding">
+      <label for="departureTime" class="nhs-padding">
         Departure Time
       </label>
     </div>
-    <owl-date-time [(ngModel)]="departureTime"></owl-date-time>
-   <!-- <div>
+    <!--<div class="input-control">
+    <owl-date-time [(ngModel)]="departureTime" [inputId]="'input1'"></owl-date-time>
+    </div>-->
+    <div>
       <input [(ngModel)]="departureTime"
              type="datetime-local" id="departureTime" name="departureTime"
              placeholder="HH:mm:ss" class="form-control"/>
-    </div>-->
+    </div>
 
     <div>
       <label for="seatCount" class="nhs-padding">
