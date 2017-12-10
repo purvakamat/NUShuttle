@@ -32,4 +32,12 @@ export class QueueSlotService {
         return response.json();
       });
   }
+
+  findQueueSlotById(slotId: String) {
+    const url = this.baseURLRide + '/' + slotId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 }

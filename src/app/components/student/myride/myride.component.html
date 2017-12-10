@@ -18,6 +18,14 @@
 </nav>
 
 <div class="container-fluid">
+
+  <div *ngIf="showRideDetails">
+    <p><b>Departure Time : </b> {{ride.departure_time | date:"MM/dd/yyyy 'at' h:mm a"}}</p>
+    <p><b>Vehicle No. : </b> {{ride.vehicle_no}}</p>
+    <p><b>Driver : </b> {{driver.firstName + " " + driver.lastName}}</p>
+    <p><b>Pick Up : </b> {{ride.origin}}</p>
+  </div>
+
   <div class = "row dropoff">
     <div class="col-xs-12">
       <input placeholder="Choose your dropoff location"
@@ -43,7 +51,7 @@
   <div class="row dropoff">
     <div class="col-xs-12">
       <button type="button" class="btn btn-success btn-block" (click)="locationConfirmed()">
-        Confirm Drop Off Location
+        {{showRideDetails? "Confirm Drop Off Location" : "Change Drop Off Location"}}
       </button>
     </div>
   </div>

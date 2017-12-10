@@ -6,6 +6,6 @@ var UserSchema = mongoose.Schema ({
   lastName: String,
   emailId: String,
   role: String,
-  _ride: String
+  _queue: String
 }, {collection: 'user'});
 module.exports = UserSchema;

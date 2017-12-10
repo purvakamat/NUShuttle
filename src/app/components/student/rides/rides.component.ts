@@ -82,7 +82,7 @@ export class RidesComponent implements OnInit {
   }
 
   addToQueue(){
-    this.sharedService.addToRideId = this.carousel_rides[this.currentRide]._id;
+    this.sharedService.selectedRide = this.carousel_rides[this.currentRide]._id;
     this.router.navigate(['/myride']);
   }
 }

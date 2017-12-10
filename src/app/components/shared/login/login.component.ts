@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(this.username, this.password)
       .subscribe((user: any) => {
+          console.log(user)
           if(user.role == 'STUDENT')
             this.router.navigate(['/rides']);
           else if(user.role == 'DRIVER')

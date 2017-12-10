@@ -78,13 +78,9 @@ div.tab button:hover {
   margin-bottom: 3pt;
 }
 
-.color-check{
-  color: #9bef64;
-}
-
 .dropoff {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .gm-style div{color: #fff !important; font-weight: bold;}
 
