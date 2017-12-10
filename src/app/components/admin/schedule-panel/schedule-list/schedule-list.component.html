@@ -29,10 +29,13 @@
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let ride of fetchRides()">
         <div class="row">
-          <div class="col-xs-2">
-            {{ride.departure_time | date:'medium'}}
+          <div class="col-xs-4">
+            {{ride.driver_name}}
           </div>
           <div class="col-xs-4">
+            {{ride.departure_time | date:'medium'}}
+          </div>
+          <div class="col-xs-2">
             {{ride.seat_count}}
           </div>
           <div class="col-xs-2">
