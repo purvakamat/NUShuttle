@@ -868,6 +868,7 @@ var ScheduleListComponent = (function () {
     };
     ScheduleListComponent.prototype.fetchDriverName = function (ride) {
         var _this = this;
+        console.log('I am being called');
         this._driver = ride._driver;
         this.userService.findUserById(this._driver)
             .subscribe(function (user) {

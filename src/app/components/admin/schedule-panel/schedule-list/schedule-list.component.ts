@@ -42,6 +42,7 @@ export class ScheduleListComponent implements OnInit {
     return this.rides;
   }
   fetchDriverName(ride: Ride) {
+    console.log('I am being called');
     this._driver = ride._driver;
     this.userService.findUserById(this._driver)
       .subscribe((user) => {
