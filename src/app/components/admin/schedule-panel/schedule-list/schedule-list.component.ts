@@ -3,6 +3,7 @@ import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from "../../../../services/user.service.client";
+import {User} from "../../../../models/user.model.client";
 
 @Component({
   selector: 'app-schedule-list',
@@ -21,6 +22,7 @@ export class ScheduleListComponent implements OnInit {
   rideId: String;
   firstName: String;
   lastName: String;
+  driver: User;
 
   constructor(private userService: UserService,
               private rideService: RideService,
@@ -45,17 +47,12 @@ export class ScheduleListComponent implements OnInit {
   }
 
   fetchDriverName(ride: Ride) {
-    if (ride === undefined) {
-      return;
-    } else {
       console.log('I am being called');
       this._driver = ride._driver;
       this.userService.findUserById(this._driver)
         .subscribe((user) => {
-          this.firstName = user.firstName;
-          this.lastName = user.lastName;
+        this.driver = user;
+        return this.driver;
         });
-      return this.firstName;
     }
-  }
 }
