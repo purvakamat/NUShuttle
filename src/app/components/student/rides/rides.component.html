@@ -60,13 +60,27 @@
     </ul>
   </div>
 
-  <div *ngIf="showAddButton" class="row add-button">
-    <button class="btn btn-success btn-block" (click)="addToQueue()">ADD TO QUEUE</button>
+  <div [ngSwitch]="queueStatus">
+    <div *ngSwitchCase="'ADDTOQUEUE'" class="row add-button">
+      <button class="btn btn-success btn-block" (click)="addToQueue()">ADD TO QUEUE</button>
+    </div>
+
+    <div *ngSwitchCase="'VIEWRIDE'" class="row add-button">
+      <button class="btn btn-primary btn-block" (click)="openMyRide()">VIEW MY RIDE</button>
+    </div>
+
+    <div *ngSwitchCase="'QUEUEFULL'" class="row add-button">
+      <div class="alert alert-danger">
+        Queue is full ! Check the next ride.
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'PROCESSING'" class="row add-button">
+      <!--Empty UI-->
+    </div>
   </div>
 
-  <div *ngIf="!showAddButton" class="row add-button">
-    <button class="btn btn-primary btn-block" (click)="openMyRide()">VIEW MY RIDE</button>
-  </div>
+
 </div>
 
 <!-- Footer -->

@@ -21,7 +21,7 @@ export class RidesComponent implements OnInit {
   queue_slots: any[];
   carouselTile: NgxCarousel;
   currentRide: number;
-  showAddButton: boolean;
+  queueStatus: string;  // ADDTOQUEUE, VIEWRIDE, QUEUEFULL, PROCESSING
 
   constructor(private rideService: RideService,
               private queueService: QueueSlotService,
@@ -29,7 +29,7 @@ export class RidesComponent implements OnInit {
               private sharedService: SharedService) {
     this.carousel_rides = [];
     this.queue_slots = [];
-    this.showAddButton = true;
+    this.queueStatus = 'PROCESSING';
   }
 
   ngOnInit() {
@@ -60,10 +60,6 @@ export class RidesComponent implements OnInit {
         this.currentRide = 0;
         this.fetchQueue();
       });
-
-    if(!isNullOrUndefined(this.sharedService.user) && !isNullOrUndefined(this.sharedService.user._queue)){
-      this.showAddButton = false;
-    }
   }
 
   nextRide(data: NgxCarouselStore) {
@@ -88,6 +84,15 @@ export class RidesComponent implements OnInit {
           else
             this.queue_slots.push({'occupied': false});
         }
+
+        if(!isNullOrUndefined(this.sharedService.user) && !isNullOrUndefined(this.sharedService.user._queue)){
+          this.queueStatus = 'VIEWRIDE';
+        }
+        else if(occupied < seatCount){
+          this.queueStatus = 'ADDTOQUEUE';
+        }
+        else
+          this.queueStatus = 'QUEUEFULL';
       });
   }
 
