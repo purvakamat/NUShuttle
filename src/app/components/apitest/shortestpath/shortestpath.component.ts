@@ -52,7 +52,7 @@ export class ShortestpathComponent implements OnInit {
       this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
           .subscribe((queueSlots: QueueSlot[]) => {
-            console.log(queueSlots);
+            // console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
               const temp = this.queueSlots[index].dropoff_location;
@@ -132,12 +132,12 @@ export class ShortestpathComponent implements OnInit {
     this.queueslotService
       .updateQueueSlot(queueSlotId, newQueueSlot)
       .subscribe((queueSlotUpdated) => {
-        console.log(queueSlotUpdated);
+        // console.log(queueSlotUpdated);
         this.waypoints = [];
         this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
           .subscribe((queueSlots: QueueSlot[]) => {
-            console.log(queueSlots);
+            // console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
               const temp = this.queueSlots[index].dropoff_location;
@@ -153,18 +153,18 @@ export class ShortestpathComponent implements OnInit {
     const dropOffLocation = queueSlot.dropoff_location;
     const rideId = queueSlot._ride;
     const newQueueSlot = new QueueSlot(studentId, studentName, rideId , dropOffLocation);
-    newQueueSlot.checked_in = !queueSlot.checked_in;
+    newQueueSlot.checked_in = queueSlot.checked_in;
     newQueueSlot.notified = true;
     newQueueSlot.ready = queueSlot.ready;
     this.queueslotService
       .updateQueueSlot(queueSlotId, newQueueSlot)
       .subscribe((queueSlotUpdated) => {
-        console.log(queueSlotUpdated);
+        // console.log(queueSlotUpdated);
         this.waypoints = [];
         this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
           .subscribe((queueSlots: QueueSlot[]) => {
-            console.log(queueSlots);
+            // console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
               if (this.queueSlots[index].notified) {
