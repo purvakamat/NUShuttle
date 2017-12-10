@@ -85,6 +85,16 @@ export class ScheduleEditComponent implements OnInit {
       this.errorFlag = true;
       return;
     }
+    if (this.validateSeatCount(seatCount) === false) {
+      this.errorMsg = 'Seat Number has to be from 1 to 10!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateBlockedCount(blockedCount, seatCount) === false) {
+      this.errorMsg = 'Please enter valid number for Blocked seats!';
+      this.errorFlag = true;
+      return;
+    }
     const ride = new Ride(this.rideId, departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
@@ -116,8 +126,9 @@ export class ScheduleEditComponent implements OnInit {
   fetchDrivers() {
     return this.drivers;
   }
+
   validateVehicleNo(vehicleNo) {
-    if (vehicleNo === '' || null || undefined) {
+    if ((vehicleNo === '') || (vehicleNo === null) || (vehicleNo === undefined)) {
       return false;
     } else {
       return true;
@@ -125,7 +136,7 @@ export class ScheduleEditComponent implements OnInit {
   }
 
   validateSelectedValue(selectedValue) {
-    if (selectedValue === '' || null || undefined) {
+    if ((selectedValue === '') || (selectedValue === null) || (selectedValue === undefined)) {
       return false;
     } else {
       return true;
@@ -133,7 +144,23 @@ export class ScheduleEditComponent implements OnInit {
   }
 
   validateDepartureTime(departureTime) {
-    if (departureTime === '' || null || undefined) {
+    if ((departureTime === '') || (departureTime === null) || (departureTime === undefined)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateSeatCount(seatCount) {
+    if ((seatCount < 1) || (seatCount > 10)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateBlockedCount(blockedCount, seatCount) {
+    if ((blockedCount > seatCount) || (blockedCount < 0)) {
       return false;
     } else {
       return true;

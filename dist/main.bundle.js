@@ -356,6 +356,26 @@ var DriverEditComponent = (function () {
     };
     DriverEditComponent.prototype.updateDriver = function (username, password, verifyPassword, firstName, lastName, emailId) {
         var _this = this;
+        if (this.validateUsername(username) === false) {
+            this.errorMsg = 'Username cannot be empty!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validatePassword(password) === false) {
+            this.errorMsg = 'Password cannot be empty!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateFirstName(firstName) === false) {
+            this.errorMsg = 'Please enter first name!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateLastName(lastName) === false) {
+            this.errorMsg = 'Please enter last name!';
+            this.errorFlag = true;
+            return;
+        }
         if (verifyPassword !== password) {
             this.errorMsg = 'Passwords do not match!';
             this.errorFlag = true;
@@ -380,6 +400,38 @@ var DriverEditComponent = (function () {
             _this.drivers = drivers;
             _this.router.navigate(['/admin-drivers']);
         });
+    };
+    DriverEditComponent.prototype.validateUsername = function (username) {
+        if ((username === '') || (username === null) || (username === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    DriverEditComponent.prototype.validatePassword = function (password) {
+        if ((password === '') || (password === null) || (password === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    DriverEditComponent.prototype.validateFirstName = function (firstName) {
+        if ((firstName === '') || (firstName === null) || (firstName === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    DriverEditComponent.prototype.validateLastName = function (lastName) {
+        if ((lastName === '') || (lastName === null) || (lastName === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
     };
     return DriverEditComponent;
 }());
@@ -546,6 +598,26 @@ var DriverNewComponent = (function () {
     };
     DriverNewComponent.prototype.createDriver = function (username, password, verifyPassword, firstName, lastName, emailId) {
         var _this = this;
+        if (this.validateUsername(username) === false) {
+            this.errorMsg = 'Username cannot be empty!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validatePassword(password) === false) {
+            this.errorMsg = 'Password cannot be empty!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateFirstName(firstName) === false) {
+            this.errorMsg = 'Please enter first name!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateLastName(lastName) === false) {
+            this.errorMsg = 'Please enter last name!';
+            this.errorFlag = true;
+            return;
+        }
         if (verifyPassword !== password) {
             this.errorMsg = 'Passwords do not match!';
             this.errorFlag = true;
@@ -561,6 +633,38 @@ var DriverNewComponent = (function () {
                     _this.router.navigate(['/admin-drivers']);
                 }
             });
+        }
+    };
+    DriverNewComponent.prototype.validateUsername = function (username) {
+        if ((username === '') || (username === null) || (username === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    DriverNewComponent.prototype.validatePassword = function (password) {
+        if ((password === '') || (password === null) || (password === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    DriverNewComponent.prototype.validateFirstName = function (firstName) {
+        if ((firstName === '') || (firstName === null) || (firstName === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    DriverNewComponent.prototype.validateLastName = function (lastName) {
+        if ((lastName === '') || (lastName === null) || (lastName === undefined)) {
+            return false;
+        }
+        else {
+            return true;
         }
     };
     return DriverNewComponent;
@@ -686,6 +790,16 @@ var ScheduleEditComponent = (function () {
             this.errorFlag = true;
             return;
         }
+        if (this.validateSeatCount(seatCount) === false) {
+            this.errorMsg = 'Seat Number has to be from 1 to 10!';
+            this.errorFlag = true;
+            return;
+        }
+        if (this.validateBlockedCount(blockedCount, seatCount) === false) {
+            this.errorMsg = 'Please enter valid number for Blocked seats!';
+            this.errorFlag = true;
+            return;
+        }
         var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, departureTime, selectedValue, '');
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
@@ -717,7 +831,7 @@ var ScheduleEditComponent = (function () {
         return this.drivers;
     };
     ScheduleEditComponent.prototype.validateVehicleNo = function (vehicleNo) {
-        if (vehicleNo === '' || null || undefined) {
+        if ((vehicleNo === '') || (vehicleNo === null) || (vehicleNo === undefined)) {
             return false;
         }
         else {
@@ -725,7 +839,7 @@ var ScheduleEditComponent = (function () {
         }
     };
     ScheduleEditComponent.prototype.validateSelectedValue = function (selectedValue) {
-        if (selectedValue === '' || null || undefined) {
+        if ((selectedValue === '') || (selectedValue === null) || (selectedValue === undefined)) {
             return false;
         }
         else {
@@ -733,7 +847,23 @@ var ScheduleEditComponent = (function () {
         }
     };
     ScheduleEditComponent.prototype.validateDepartureTime = function (departureTime) {
-        if (departureTime === '' || null || undefined) {
+        if ((departureTime === '') || (departureTime === null) || (departureTime === undefined)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleEditComponent.prototype.validateSeatCount = function (seatCount) {
+        if ((seatCount < 1) || (seatCount > 10)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    ScheduleEditComponent.prototype.validateBlockedCount = function (blockedCount, seatCount) {
+        if ((blockedCount > seatCount) || (blockedCount < 0)) {
             return false;
         }
         else {
@@ -962,7 +1092,7 @@ var ScheduleNewComponent = (function () {
         });
     };
     ScheduleNewComponent.prototype.validateVehicleNo = function (vehicleNo) {
-        if (vehicleNo === '' || null || undefined) {
+        if ((vehicleNo === '') || (vehicleNo === null) || (vehicleNo === undefined)) {
             return false;
         }
         else {
@@ -970,7 +1100,7 @@ var ScheduleNewComponent = (function () {
         }
     };
     ScheduleNewComponent.prototype.validateSelectedValue = function (selectedValue) {
-        if (selectedValue === '' || null || undefined) {
+        if ((selectedValue === '') || (selectedValue === null) || (selectedValue === undefined)) {
             return false;
         }
         else {
@@ -978,7 +1108,7 @@ var ScheduleNewComponent = (function () {
         }
     };
     ScheduleNewComponent.prototype.validateDepartureTime = function (departureTime) {
-        if (departureTime === '' || null || undefined) {
+        if ((departureTime === '') || (departureTime === null) || (departureTime === undefined)) {
             return false;
         }
         else {

@@ -101,7 +101,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   validateVehicleNo(vehicleNo) {
-    if (vehicleNo === '' || null || undefined) {
+    if ((vehicleNo === '') || (vehicleNo === null) || (vehicleNo === undefined)) {
       return false;
     } else {
       return true;
@@ -109,7 +109,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   validateSelectedValue(selectedValue) {
-    if (selectedValue === '' || null || undefined) {
+    if ((selectedValue === '') || (selectedValue === null) || (selectedValue === undefined)) {
       return false;
     } else {
       return true;
@@ -117,7 +117,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   validateDepartureTime(departureTime) {
-    if (departureTime === '' || null || undefined) {
+    if ((departureTime === '') || (departureTime === null) || (departureTime === undefined)) {
       return false;
     } else {
       return true;

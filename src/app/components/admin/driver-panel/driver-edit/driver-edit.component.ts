@@ -50,6 +50,26 @@ export class DriverEditComponent implements OnInit {
   }
 
   updateDriver(username, password, verifyPassword, firstName, lastName, emailId) {
+    if (this.validateUsername(username) === false) {
+      this.errorMsg = 'Username cannot be empty!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validatePassword(password) === false) {
+      this.errorMsg = 'Password cannot be empty!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateFirstName(firstName) === false) {
+      this.errorMsg = 'Please enter first name!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateLastName(lastName) === false) {
+      this.errorMsg = 'Please enter last name!';
+      this.errorFlag = true;
+      return;
+    }
     if (verifyPassword !== password) {
       this.errorMsg = 'Passwords do not match!';
       this.errorFlag = true;
@@ -73,5 +93,37 @@ export class DriverEditComponent implements OnInit {
         this.drivers = drivers;
         this.router.navigate(['/admin-drivers']);
       });
+  }
+
+  validateUsername(username) {
+    if ((username === '') || (username === null) || (username === undefined)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validatePassword(password) {
+    if ((password === '') || (password === null) || (password === undefined)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateFirstName(firstName) {
+    if ((firstName === '') || (firstName === null) || (firstName === undefined)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateLastName(lastName) {
+    if ((lastName === '') || (lastName === null) || (lastName === undefined)) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
