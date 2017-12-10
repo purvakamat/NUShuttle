@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {User} from "../../../../models/user.model.client";
 import {DriverService} from "../../../../services/driver.service.client";
 import {UserService} from "../../../../services/user.service.client";
+import {connectableObservableDescriptor} from "rxjs/observable/ConnectableObservable";
 
 @Component({
   selector: 'app-schedule-edit',
@@ -26,8 +27,10 @@ export class ScheduleEditComponent implements OnInit {
   drivers: User[];
   driver: User;
   _driver: String;
+  selectedValue: String;
 
-  constructor(private userService: UserService,
+  constructor(private driverService: DriverService,
+              private userService: UserService,
               private rideService: RideService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -42,11 +45,13 @@ export class ScheduleEditComponent implements OnInit {
           this.ride = ride;
           this.departureTime = this.ride.departure_time;
           this._driver = this.ride._driver;
+          this.selectedValue = this.ride._driver;
+          console.log('from oninit: ' + this._driver);
           this.seatCount = this.ride.seat_count;
           this.blockedCount = this.ride.blocked_seats;
           this.vehicleNo = this.ride.vehicle_no;
           this.origin = this.ride.origin;
-          this.destination = this.destination;
+          this.destination = this.ride.destination;
         });
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
@@ -56,16 +61,20 @@ export class ScheduleEditComponent implements OnInit {
       this.userService.findUserById(this._driver)
         .subscribe((user) => {
         this.driver = user;
+        console.log('finding driver: ' + this.driver);
+        });
+      this.driverService.findAllDrivers()
+        .subscribe((drivers: User[]) => {
+          this.drivers = drivers;
         });
     });
   }
 
-  updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
-    console.log('from updateRide: ' + _driver);
-    const ride = new Ride(this.rideId, departureTime, _driver);
+  updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
+    console.log('from updateRide: ' + this.selectedValue);
+    const ride = new Ride(this.rideId, departureTime, selectedValue);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
-    ride._driver = 'driver_id';
     ride.delay = 0;
     ride.origin = origin;
     ride.status = 'On Time';

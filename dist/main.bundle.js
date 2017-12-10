@@ -684,7 +684,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <a class=\"navbar-brand\">\n      <b class=\"colorWhite\">EDIT RIDE</b>\n    </a>\n\n    <div class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container fluid\">\n  <div class=\"form-group\">\n    <label for=\"vehicleNo\">\n      Vehicle No:\n    </label>\n    <input [(ngModel)]=\"vehicleNo\"\n           placeholder=\"Vehicle Number\"\n           type=\"text\"\n           id=\"vehicleNo\"\n           class=\"form-control\"/>\n\n    <div>\n      <label for=\"driver\">\n        Choose driver\n      </label>\n    </div>\n    <div>\n      <select id=\"driver\" class=\"form-control\">\n        <option *ngFor=\"let driver of fetchDrivers()\"\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}</option>\n      </select>\n    </div>\n    <div>\n      <label for=\"departureTime\">\n        Departure Time\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"departureTime\"\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\n             placeholder=\"HH:mm:ss\"/>\n    </div>\n\n    <div>\n      <label for=\"seatCount\">\n        Seat count\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"seatCount\"\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\n             placeholder=\"9\" value=\"9\"/>\n    </div>\n\n    <div>\n      <label for=\"blockedSeat\">\n        Blocked Seat\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"blockedCount\"\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\n             placeholder=\"0\" value=\"0\"/>\n    </div>\n\n    <div>\n      <label for=\"origin\">\n        Origin\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"origin\"\n             type=\"text\" id=\"origin\" name=\"origin\"\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"/>\n    </div>\n\n    <div>\n      <label for=\"destination\">\n        Destination\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"destination\"\n             type=\"text\" id=\"destination\" name=\"destination\"\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"/>\n    </div>\n\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\n            (click)=\"updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination)\">Update Ride\n    </button>\n    <button class=\"btn btn-danger btn-block\" type=\"submit\"\n            (click)=\"deleteRide()\">Delete Ride\n    </button>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <a class=\"navbar-brand\">\n      <b class=\"colorWhite\">EDIT RIDE</b>\n    </a>\n\n    <div class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container fluid\">\n  <div class=\"form-group\">\n    <label for=\"vehicleNo\">\n      Vehicle No:\n    </label>\n    <input [(ngModel)]=\"vehicleNo\"\n           placeholder=\"Vehicle Number\"\n           type=\"text\"\n           id=\"vehicleNo\"\n           class=\"form-control\"/>\n\n    <div>\n      <label for=\"driver\">\n        Choose driver\n      </label>\n    </div>\n    <div>\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\n        <option *ngFor=\"let driver of fetchDrivers()\"\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}</option>\n      </select>\n    </div>\n    <div>\n      <label for=\"departureTime\">\n        Departure Time\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"departureTime\"\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\n             placeholder=\"HH:mm:ss\"/>\n    </div>\n\n    <div>\n      <label for=\"seatCount\">\n        Seat count\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"seatCount\"\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\n             placeholder=\"9\" value=\"9\"/>\n    </div>\n\n    <div>\n      <label for=\"blockedSeat\">\n        Blocked Seat\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"blockedCount\"\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\n             placeholder=\"0\" value=\"0\"/>\n    </div>\n\n    <div>\n      <label for=\"origin\">\n        Origin\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"origin\"\n             type=\"text\" id=\"origin\" name=\"origin\"\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"/>\n    </div>\n\n    <div>\n      <label for=\"destination\">\n        Destination\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"destination\"\n             type=\"text\" id=\"destination\" name=\"destination\"\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"/>\n    </div>\n\n    <button class=\"btn btn-primary btn-block\" type=\"submit\"\n            (click)=\"updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">Update Ride\n    </button>\n    <button class=\"btn btn-danger btn-block\" type=\"submit\"\n            (click)=\"deleteRide()\">Delete Ride\n    </button>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\n"
 
 /***/ }),
 
@@ -697,7 +697,8 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__ = __webpack_require__("../../../../../src/app/models/ride.model.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_driver_service_client__ = __webpack_require__("../../../../../src/app/services/driver.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -712,8 +713,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ScheduleEditComponent = (function () {
-    function ScheduleEditComponent(userService, rideService, route, router) {
+    function ScheduleEditComponent(driverService, userService, rideService, route, router) {
+        this.driverService = driverService;
         this.userService = userService;
         this.rideService = rideService;
         this.route = route;
@@ -729,11 +732,13 @@ var ScheduleEditComponent = (function () {
                 _this.ride = ride;
                 _this.departureTime = _this.ride.departure_time;
                 _this._driver = _this.ride._driver;
+                _this.selectedValue = _this.ride._driver;
+                console.log('from oninit: ' + _this._driver);
                 _this.seatCount = _this.ride.seat_count;
                 _this.blockedCount = _this.ride.blocked_seats;
                 _this.vehicleNo = _this.ride.vehicle_no;
                 _this.origin = _this.ride.origin;
-                _this.destination = _this.destination;
+                _this.destination = _this.ride.destination;
             });
             _this.rideService.getAllRides(100)
                 .subscribe(function (rides) {
@@ -743,16 +748,20 @@ var ScheduleEditComponent = (function () {
             _this.userService.findUserById(_this._driver)
                 .subscribe(function (user) {
                 _this.driver = user;
+                console.log('finding driver: ' + _this.driver);
+            });
+            _this.driverService.findAllDrivers()
+                .subscribe(function (drivers) {
+                _this.drivers = drivers;
             });
         });
     };
-    ScheduleEditComponent.prototype.updateRide = function (departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination) {
+    ScheduleEditComponent.prototype.updateRide = function (departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
         var _this = this;
-        console.log('from updateRide: ' + _driver);
-        var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, departureTime, _driver);
+        console.log('from updateRide: ' + this.selectedValue);
+        var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, departureTime, selectedValue);
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
-        ride._driver = 'driver_id';
         ride.delay = 0;
         ride.origin = origin;
         ride.status = 'On Time';
@@ -784,10 +793,10 @@ ScheduleEditComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_ride_service_client__["a" /* RideService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_driver_service_client__["a" /* DriverService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_driver_service_client__["a" /* DriverService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_ride_service_client__["a" /* RideService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _e || Object])
 ], ScheduleEditComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=schedule-edit.component.js.map
 
 /***/ }),
@@ -949,7 +958,6 @@ var ScheduleNewComponent = (function () {
     };
     ScheduleNewComponent.prototype.createRide = function (departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
         var _this = this;
-        console.log('this is selected value: ' + selectedValue);
         var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */]('', departureTime, selectedValue);
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;

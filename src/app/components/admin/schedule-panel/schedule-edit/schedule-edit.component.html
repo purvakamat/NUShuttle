@@ -32,7 +32,7 @@
       </label>
     </div>
     <div>
-      <select id="driver" class="form-control">
+      <select id="driver" class="form-control" [(ngModel)]="selectedValue">
         <option *ngFor="let driver of fetchDrivers()"
                 value="{{driver._id}}">{{driver.firstName}} {{driver.lastName}}</option>
       </select>
@@ -93,7 +93,7 @@
     </div>
 
     <button class="btn btn-primary btn-block" type="submit"
-            (click)="updateRide(departureTime, _driver, vehicleNo, seatCount, blockedCount, origin, destination)">Update Ride
+            (click)="updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)">Update Ride
     </button>
     <button class="btn btn-danger btn-block" type="submit"
             (click)="deleteRide()">Delete Ride
