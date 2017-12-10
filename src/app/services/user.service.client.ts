@@ -29,6 +29,7 @@ export class UserService{
       .map(
         (res: Response) => {
           const data = res.json();
+          this.sharedService.user = data;
           return data;
         }
       );
@@ -40,7 +41,6 @@ export class UserService{
     return this.http.post(this.baseURL + '/api/logout', '', requestOptions)
       .map(
         (res: Response) => {
-          const data = res;
           this.sharedService.user = null;
         }
       );

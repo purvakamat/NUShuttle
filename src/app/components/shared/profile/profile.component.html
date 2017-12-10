@@ -1,70 +1,72 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="navbar-text pull-left">
-          <a [routerLink]="['/user', userId, 'home']"
-             class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left colorWhite"></span>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-4">
-        <div class=" navbar-header">
-          <a class="navbar-brand">
-            <b class="colorWhite">Profile</b>
-          </a>
-        </div>
-      </div>
-      <div class="col-xs-4">
-        <div class="navbar-text pull-right">
-          <a  class="navbar-link">
-            <span class="glyphicon glyphicon-ok colorWhite"
-                  (click)="updateUser(username, emailId, firstName, lastName)"></span>
-          </a>
-        </div>
-      </div>
-    </div>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">PROFILE</b>
+      </a>
+    </p>
+
+    <!--chevron-->
+    <p class="navbar-text pull-left vertical-center">
+      <a (click)="backToPrevPage()" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left nav-foreground"></span>
+      </a>
+    </p>
+
+    <!--tick-->
+    <p class="navbar-text pull-right vertical-center">
+      <a (click)="updateUser()" class="navbar-link">
+        <span class="glyphicon glyphicon-ok nav-foreground"></span>
+      </a>
+    </p>
+
   </div>
 </nav>
+
 <div class="container">
-  <div class="row">
+  <form #f="ngForm">
+
     <div class="form-group col-xs-12">
-      <label for="username">Type</label>
-      <input type="text" class="form-control" id="type" placeholder="username" disabled="true" [(ngModel)]="type">
+      <label for="username">Role</label>
+      <input type="text" class="form-control" id="type" placeholder="username" disabled="true" [(ngModel)]="user.role">
     </div>
-  </div>
-  <div class="row">
+
     <div class="form-group col-xs-12">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="username" [(ngModel)]="username">
+      <input type="text" class="form-control" id="username" placeholder="username" [(ngModel)]="user.username">
     </div>
-  </div>
-  <div class="row">
+
     <div class="form-group col-xs-12">
-      <label for="email">Email Address</label>
-      <input type="email" class="form-control" id="email" placeholder="emailid" [(ngModel)]="emailId" disabled="true">
+      <label for="email">Email ID</label>
+      <input type="email" class="form-control" id="email" placeholder="emailid" [(ngModel)]="user.emailId" disabled="true">
     </div>
-  </div>
-  <div class="row">
+
     <div class="form-group col-xs-12">
       <label for="first-name">First Name</label>
-      <input type="text" class="form-control" id="first-name" placeholder="firstname" [(ngModel)]="firstName">
+      <input type="text" class="form-control" id="first-name" placeholder="firstname" [(ngModel)]="user.firstName">
     </div>
-  </div>
-  <div class="row">
+
     <div class="form-group col-xs-12">
       <label for="last-name">Last Name</label>
-      <input type="text" class="form-control" id="last-name" placeholder="lastname" [(ngModel)]="lastName">
+      <input type="text" class="form-control" id="last-name" placeholder="lastname" [(ngModel)]="user.lastName">
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 form-group">
-      <a class = "btn btn-success btn-block form-control" [routerLink]="['/user', userId, 'pickup']">Update PickUp</a>
+
+    <div class="form-group col-xs-12">
+      <button class = "btn btn-success btn-block form-control" (click)="logout()">Logout</button>
     </div>
-    <div class="col-xs-6 form-group">
-      <a class = "btn btn-success btn-block form-control" [routerLink]="['/user', userId, 'dropoff']">Update DropOff</a>
+
+    <div class="form-group col-xs-12">
+      <button class = "btn btn-danger btn-block form-control" (click)="deleteUser()">Delete</button>
     </div>
-  </div>
-  <a class = "btn btn-danger btn-block form-control" (click)="deleteUser(user._id)">Delete</a>
+  </form>
 </div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!--empty-->
+  </div>
+</nav>
+

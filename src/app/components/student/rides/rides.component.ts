@@ -62,6 +62,8 @@ export class RidesComponent implements OnInit {
   }
 
   fetchQueue(){
+    if(this.carousel_rides.length == 0)
+      return;
     var rideId = this.carousel_rides[this.currentRide]._id;
     var seatCount = this.carousel_rides[this.currentRide].seat_count;
 
