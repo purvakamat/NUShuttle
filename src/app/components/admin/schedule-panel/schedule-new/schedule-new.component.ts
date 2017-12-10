@@ -53,7 +53,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
-    const ride = new Ride('', departureTime, selectedValue._id, selectedValue.firstname + ' ' + selectedValue.lastname);
+    const ride = new Ride('', departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;
@@ -61,6 +61,10 @@ export class ScheduleNewComponent implements OnInit {
     ride.destination = destination;
     ride.status = 'On Time';
     ride.vehicle_no = vehicleNo;
+    this.userService.findUserById(selectedValue)
+      .subscribe((user) => {
+      ride.driver_name = user.firstname + ' ' + user.lastName;
+    });
     this.rideService.createRide(ride)
       .subscribe((ride1) => {
         if (ride1) {

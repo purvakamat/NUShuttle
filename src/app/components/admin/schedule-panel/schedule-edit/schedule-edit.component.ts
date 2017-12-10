@@ -59,7 +59,7 @@ export class ScheduleEditComponent implements OnInit {
         });
       this.userService.findUserById(this._driver)
         .subscribe((user) => {
-        this.driver = user;
+          this.driver = user;
         });
       this.driverService.findAllDrivers()
         .subscribe((drivers: User[]) => {
@@ -69,7 +69,7 @@ export class ScheduleEditComponent implements OnInit {
   }
 
   updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
-    const ride = new Ride(this.rideId, departureTime, selectedValue._id, selectedValue.firstname + ' ' + selectedValue.lastname);
+    const ride = new Ride(this.rideId, departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;
@@ -77,11 +77,15 @@ export class ScheduleEditComponent implements OnInit {
     ride.status = 'On Time';
     ride.destination = destination;
     ride.vehicle_no = vehicleNo;
+    this.userService.findUserById(selectedValue)
+      .subscribe((user) => {
+        if (user) {
+          ride.driver_name = user.firstname + ' ' + user.lastName;
+        }
+      });
     this.rideService.updateRide(this.rideId, ride)
       .subscribe((ride1) => {
-        if (ride1) {
-          this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
-        }
+        this.router.navigate(['/user', this.userId, 'admin', 'schedules']);
       });
   }
 

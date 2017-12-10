@@ -34,7 +34,7 @@
     <div>
       <select id="driver" class="form-control" [(ngModel)]="selectedValue">
         <option *ngFor="let driver of fetchDrivers()"
-                value="driver">{{driver.firstName}} {{driver.lastName}}
+                value="{{driver._id}}">{{driver.firstName}} {{driver.lastName}}
         </option>
       </select>
     </div>
