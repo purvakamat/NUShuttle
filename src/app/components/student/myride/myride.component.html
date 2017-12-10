@@ -25,10 +25,16 @@
 
   <div *ngIf="!noRides">
     <div *ngIf="showRideDetails">
-      <p><b>Departure Time : </b> {{departure_time | date:"MM/dd/yyyy 'at' h:mm a"}}</p>
-      <p><b>Vehicle No. : </b> {{vehicle_no}}</p>
-      <p><b>Driver : </b> {{driver_name}}</p>
-      <p><b>Pick Up : </b> {{pick_up}}</p>
+      <div *ngIf="checkedIn" class="row alert alert-success">
+        YOU HAVE BEEN CHECKED IN.
+      </div>
+
+      <div class="row">
+        <p><b>Departure Time : </b> {{departure_time | date:"MM/dd/yyyy 'at' h:mm a"}}</p>
+        <p><b>Vehicle No. : </b> {{vehicle_no}}</p>
+        <p><b>Driver : </b> {{driver_name}}</p>
+        <p><b>Pick Up : </b> {{pick_up}}</p>
+      </div>
     </div>
 
     <div class="row dropoff">
