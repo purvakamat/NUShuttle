@@ -35,6 +35,7 @@ import {DriverNewComponent} from './components/admin/driver-panel/driver-new/dri
 import {AuthGuard} from "./services/auth-guard.service";
 import { AnonymousComponent } from './components/anonymous/anonymous.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { DateTimePickerModule } from 'ng-pick-datetime';
   imports: [
     DateTimePickerModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,

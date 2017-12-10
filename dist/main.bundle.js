@@ -117,12 +117,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_anonymous_anonymous_component__ = __webpack_require__("../../../../../src/app/components/anonymous/anonymous.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime__ = __webpack_require__("../../../../ng-pick-datetime/picker.module.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -194,6 +196,7 @@ AppModule = __decorate([
         imports: [
             __WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime__["DateTimePickerModule"],
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_37__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
