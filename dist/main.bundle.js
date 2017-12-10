@@ -1954,8 +1954,6 @@ var ProfileComponent = (function () {
         this.user.emailId = this.email;
         this.userService.updateUser(this.user._id, this.user)
             .subscribe(function (data) {
-            console.log(data);
-            //this.user = data;
             _this.sharedService.user = _this.user;
         });
     };

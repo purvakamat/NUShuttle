@@ -154,7 +154,7 @@ module.exports = function(app) {
 
     userModel.deleteUser(userId).then(function (response) {
       console.log(response);
-      if(response.deletedCount >= 1)
+      if(response.result.n > 0 && response.result.ok > 0)
         res.json("User deleted");
       else
         res.status(404).send("User cannot be deleted");
