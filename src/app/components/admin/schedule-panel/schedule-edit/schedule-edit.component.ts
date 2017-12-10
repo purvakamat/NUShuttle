@@ -46,7 +46,6 @@ export class ScheduleEditComponent implements OnInit {
           this.departureTime = this.ride.departure_time;
           this._driver = this.ride._driver;
           this.selectedValue = this.ride._driver;
-          console.log('from oninit: ' + this._driver);
           this.seatCount = this.ride.seat_count;
           this.blockedCount = this.ride.blocked_seats;
           this.vehicleNo = this.ride.vehicle_no;
@@ -61,7 +60,6 @@ export class ScheduleEditComponent implements OnInit {
       this.userService.findUserById(this._driver)
         .subscribe((user) => {
         this.driver = user;
-        console.log('finding driver: ' + this.driver);
         });
       this.driverService.findAllDrivers()
         .subscribe((drivers: User[]) => {
@@ -71,7 +69,6 @@ export class ScheduleEditComponent implements OnInit {
   }
 
   updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
-    console.log('from updateRide: ' + this.selectedValue);
     const ride = new Ride(this.rideId, departureTime, selectedValue);
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;

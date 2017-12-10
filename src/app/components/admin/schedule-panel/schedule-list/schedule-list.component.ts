@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from "../../../../services/user.service.client";
 
 @Component({
   selector: 'app-schedule-list',
@@ -18,8 +19,11 @@ export class ScheduleListComponent implements OnInit {
   blockedCount: Number;
   ride: Ride;
   rideId: String;
+  firstName: String;
+  lastName: String;
 
-  constructor(private rideService: RideService,
+  constructor(private userService: UserService,
+              private rideService: RideService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -36,5 +40,14 @@ export class ScheduleListComponent implements OnInit {
 
   fetchRides() {
     return this.rides;
+  }
+  fetchDriverName(ride: Ride) {
+    this._driver = ride._driver;
+    this.userService.findUserById(this._driver)
+      .subscribe((user) => {
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        return (this.firstName);
+      });
   }
 }

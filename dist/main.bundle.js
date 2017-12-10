@@ -733,7 +733,6 @@ var ScheduleEditComponent = (function () {
                 _this.departureTime = _this.ride.departure_time;
                 _this._driver = _this.ride._driver;
                 _this.selectedValue = _this.ride._driver;
-                console.log('from oninit: ' + _this._driver);
                 _this.seatCount = _this.ride.seat_count;
                 _this.blockedCount = _this.ride.blocked_seats;
                 _this.vehicleNo = _this.ride.vehicle_no;
@@ -748,7 +747,6 @@ var ScheduleEditComponent = (function () {
             _this.userService.findUserById(_this._driver)
                 .subscribe(function (user) {
                 _this.driver = user;
-                console.log('finding driver: ' + _this.driver);
             });
             _this.driverService.findAllDrivers()
                 .subscribe(function (drivers) {
@@ -758,7 +756,6 @@ var ScheduleEditComponent = (function () {
     };
     ScheduleEditComponent.prototype.updateRide = function (departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
         var _this = this;
-        console.log('from updateRide: ' + this.selectedValue);
         var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, departureTime, selectedValue);
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
@@ -822,7 +819,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-list/schedule-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header\">\n      <a class=\"navbar-brand thick\">\n        <b class=\"nav-foreground\">SCHEDULES</b>\n      </a>\n    </p>\n\n    <div class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules', 'new']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Rides</label>\n    </div>\n  </div>\n\n  <div>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <div class=\"row\" *ngFor=\"let ride of fetchRides()\">\n          <div class=\"col-xs-2\">\n            {{ride._driver}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.departure_time}}\n          </div>\n          <div class=\"col-xs-4\">\n            {{ride.seat_count}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.blocked_seats}}\n          </div>\n          <a [routerLink]=\"['/user', userId, 'admin', 'schedules', ride._id]\"\n             class=\"pull-right\">\n            <span class=\"glyphicon-cog glyphicon\"></span>\n          </a>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'drivers']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-sunglasses nav-foreground\"></span>\n      </a>\n    </p>\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <!--heading on the nav bar-->\n    <p class=\"navbar-header\">\n      <a class=\"navbar-brand thick\">\n        <b class=\"nav-foreground\">SCHEDULES</b>\n      </a>\n    </p>\n\n    <div class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules', 'new']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-plus colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-xs-12\">\n      <label>Rides</label>\n    </div>\n  </div>\n\n  <div>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <div class=\"row\" *ngFor=\"let ride of fetchRides()\">\n          <div class=\"col-xs-2\">\n            {{fetchDriverName(ride)}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.departure_time}}\n          </div>\n          <div class=\"col-xs-4\">\n            {{ride.seat_count}}\n          </div>\n          <div class=\"col-xs-2\">\n            {{ride.blocked_seats}}\n          </div>\n          <a [routerLink]=\"['/user', userId, 'admin', 'schedules', ride._id]\"\n             class=\"pull-right\">\n            <span class=\"glyphicon-cog glyphicon\"></span>\n          </a>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\n  <div class=\"container-fluid\">\n    <p class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'drivers']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-sunglasses nav-foreground\"></span>\n      </a>\n    </p>\n    <p class=\"navbar-text pull-right\">\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\n      </a>\n    </p>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -834,6 +831,7 @@ module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__ = __webpack_require__("../../../../../src/app/services/ride.service.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -846,8 +844,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ScheduleListComponent = (function () {
-    function ScheduleListComponent(rideService, route, router) {
+    function ScheduleListComponent(userService, rideService, route, router) {
+        this.userService = userService;
         this.rideService = rideService;
         this.route = route;
         this.router = router;
@@ -866,6 +866,16 @@ var ScheduleListComponent = (function () {
     ScheduleListComponent.prototype.fetchRides = function () {
         return this.rides;
     };
+    ScheduleListComponent.prototype.fetchDriverName = function (ride) {
+        var _this = this;
+        this._driver = ride._driver;
+        this.userService.findUserById(this._driver)
+            .subscribe(function (user) {
+            _this.firstName = user.firstName;
+            _this.lastName = user.lastName;
+            return (_this.firstName);
+        });
+    };
     return ScheduleListComponent;
 }());
 ScheduleListComponent = __decorate([
@@ -874,10 +884,10 @@ ScheduleListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-list/schedule-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-list/schedule-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_ride_service_client__["a" /* RideService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], ScheduleListComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=schedule-list.component.js.map
 
 /***/ }),
