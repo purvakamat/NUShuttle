@@ -33,6 +33,7 @@ import {DriverListComponent} from './components/admin/driver-panel/driver-list/d
 import {DriverEditComponent} from './components/admin/driver-panel/driver-edit/driver-edit.component';
 import {DriverNewComponent} from './components/admin/driver-panel/driver-new/driver-new.component';
 import {AuthGuard} from "./services/auth-guard.service";
+import { AnonymousComponent } from './components/anonymous/anonymous.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {AuthGuard} from "./services/auth-guard.service";
     ScheduleEditComponent,
     DriverListComponent,
     DriverNewComponent,
-    DriverEditComponent
+    DriverEditComponent,
+    AnonymousComponent
   ],
   imports: [
     BrowserModule,

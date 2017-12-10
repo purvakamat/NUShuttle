@@ -36,6 +36,8 @@ export class ScheduleNewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = params['uid'];
+      this.seatCount = 9;
+      this.blockedCount = 0;
       this.rideService.getAllRides(100)
         .subscribe((rides: Ride[]) => {
           this.rides = rides;
@@ -53,9 +55,17 @@ export class ScheduleNewComponent implements OnInit {
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;
-    ride.origin = origin;
+    if (origin === '' || null || undefined) {
+      ride.origin = '360 Huntington Ave, Boston, MA 02115';
+    } else {
+      ride.origin = origin;
+    }
+    if (this.destination === '' || null || undefined) {
+      ride.destination = '360 Huntington Ave, Boston, MA 02115';
+    } else {
+      ride.destination = destination;
+    }
     ride.status = 'On Time';
-    ride.destination = destination;
     ride.vehicle_no = vehicleNo;
     this.rideService.createRide(ride)
       .subscribe((ride1) => {

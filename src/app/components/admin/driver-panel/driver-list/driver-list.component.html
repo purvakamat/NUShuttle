@@ -32,8 +32,8 @@
 
   <div>
     <ul class="list-group">
-      <li class="list-group-item">
-        <div class="row" *ngFor="let driver of fetchDrivers()">
+      <li class="list-group-item" *ngFor="let driver of fetchDrivers()">
+        <div class="row">
           <div class="col-xs-2">
             {{driver.firstName}}
           </div>

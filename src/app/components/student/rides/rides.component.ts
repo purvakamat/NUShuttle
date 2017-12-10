@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Ride} from "../../../models/ride.model.client";
+import {Ride} from '../../../models/ride.model.client';
 import {NgxCarousel, NgxCarouselStore} from 'ngx-carousel';
-import {RideService} from "../../../services/ride.service.client";
-import {QueueSlot} from "../../../models/queueslot.model.client";
-import {QueueSlotService} from "../../../services/queueslot.service.client";
-import {Router} from "@angular/router";
-import {SharedService} from "../../../services/shared.service";
+import {RideService} from '../../../services/ride.service.client';
+import {QueueSlot} from '../../../models/queueslot.model.client';
+import {QueueSlotService} from '../../../services/queueslot.service.client';
+import {Router} from '@angular/router';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-rides',

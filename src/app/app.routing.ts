@@ -16,9 +16,10 @@ import {ScheduleListComponent} from './components/admin/schedule-panel/schedule-
 import {DriverListComponent} from './components/admin/driver-panel/driver-list/driver-list.component';
 import {ScheduleNewComponent} from './components/admin/schedule-panel/schedule-new/schedule-new.component';
 import {ScheduleEditComponent} from './components/admin/schedule-panel/schedule-edit/schedule-edit.component';
-import {DriverNewComponent} from "./components/admin/driver-panel/driver-new/driver-new.component";
-import {DriverEditComponent} from "./components/admin/driver-panel/driver-edit/driver-edit.component";
-import {AuthGuard} from "./services/auth-guard.service";
+import {DriverNewComponent} from './components/admin/driver-panel/driver-new/driver-new.component';
+import {DriverEditComponent} from './components/admin/driver-panel/driver-edit/driver-edit.component';
+import {AuthGuard} from './services/auth-guard.service';
+import {AnonymousComponent} from './components/anonymous/anonymous.component';
 
 const APP_ROUTES: Routes = [
   {path: '', component: LoginComponent},
@@ -40,6 +41,7 @@ const APP_ROUTES: Routes = [
   {path: 'rides', component: RidesComponent, canActivate: [AuthGuard]},
   {path: 'myride', component: MyrideComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'anonymous', component: AnonymousComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

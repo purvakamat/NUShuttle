@@ -92,4 +92,6 @@ div.tab button:hover {
   color: white;
 }
 
-/*Styles added for student component*/
+.nhs-btn{
+  margin-top: 5px;
+}

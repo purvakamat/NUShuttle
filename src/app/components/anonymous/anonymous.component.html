@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!--heading on the nav bar-->
+    <p class="navbar-header">
+      <a class="navbar-brand thick">
+        <b class="nav-foreground">RIDES</b>
+      </a>
+    </p>
+
+    <!--chevron-->
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/login']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left nav-foreground"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
+
+<div class="container">
+  <ul class="list-group">
+    <li *ngFor="let ride of rides" class="list-group-item">
+      <div class="row">
+        <div class="col-xs-3">
+          <span>Departure Time</span>
+          <span>{{ride.departure_time | date:'medium'}}</span>
+        </div>
+        <div class="col-xs-3">
+          <span>Seat Count</span>
+          <span>{{ride.seat_count}}</span>
+        </div>
+        <div class="col-xs-3">
+          <span>Status</span>
+          <span>{{ride.status}}</span>
+        </div>
+        <div class="col-xs-3">
+          <span>Delay</span>
+          <span>{{ride.delay}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom"></nav>
