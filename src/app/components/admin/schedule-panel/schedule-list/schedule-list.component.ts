@@ -52,7 +52,7 @@ export class ScheduleListComponent implements OnInit {
       this.userService.findUserById(this._driver)
         .subscribe((user) => {
         this.driver = user;
-        return this.driver;
+        this.firstName = this.driver.firstName;
         });
     }
 }
