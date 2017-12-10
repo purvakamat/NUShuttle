@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from "../../../../models/user.model.client";
-import {DriverService} from "../../../../services/driver.service.client";
-import {UserService} from "../../../../services/user.service.client";
+import {User} from '../../../../models/user.model.client';
+import {DriverService} from '../../../../services/driver.service.client';
+import {UserService} from '../../../../services/user.service.client';
 
 @Component({
   selector: 'app-schedule-new',
@@ -25,6 +25,8 @@ export class ScheduleNewComponent implements OnInit {
   drivers: User[];
   driver: User;
   selectedValue: String;
+  errorFlag: boolean;
+  errorMsg: String;
 
   constructor(private userService: UserService,
               private driverService: DriverService,
@@ -52,6 +54,31 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
+    if (this.validateVehicleNo(vehicleNo) === false) {
+      this.errorMsg = 'Vehicle number cannot be empty!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateSelectedValue(selectedValue) === false) {
+      this.errorMsg = 'Please select a driver!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateDepartureTime(departureTime) === false) {
+      this.errorMsg = 'Please enter departure time!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateSeatCount(seatCount) === false) {
+      this.errorMsg = 'Seat Number has to be from 1 to 10!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateBlockedCount(blockedCount, seatCount) === false) {
+      this.errorMsg = 'Please enter valid number for Blocked seats!';
+      this.errorFlag = true;
+      return;
+    }
     const ride = new Ride('', departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
@@ -71,6 +98,44 @@ export class ScheduleNewComponent implements OnInit {
           });
       });
 
+  }
+
+  validateVehicleNo(vehicleNo) {
+    if (vehicleNo === '' || null || undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateSelectedValue(selectedValue) {
+    if (selectedValue === '' || null || undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateDepartureTime(departureTime) {
+    if (departureTime === '' || null || undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateSeatCount(seatCount) {
+    if ((seatCount < 1) || (seatCount > 10)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateBlockedCount(blockedCount, seatCount) {
+    if ((blockedCount > seatCount) || (blockedCount < 0)) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   fetchDrivers() {

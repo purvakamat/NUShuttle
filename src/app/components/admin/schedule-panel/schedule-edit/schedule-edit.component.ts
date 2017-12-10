@@ -28,6 +28,8 @@ export class ScheduleEditComponent implements OnInit {
   driver: User;
   _driver: String;
   selectedValue: String;
+  errorMsg: String;
+  errorFlag: boolean;
 
   constructor(private driverService: DriverService,
               private userService: UserService,
@@ -68,6 +70,21 @@ export class ScheduleEditComponent implements OnInit {
   }
 
   updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination) {
+    if (this.validateVehicleNo(vehicleNo) === false) {
+      this.errorMsg = 'Vehicle number cannot be empty!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateSelectedValue(selectedValue) === false) {
+      this.errorMsg = 'Please select a driver!';
+      this.errorFlag = true;
+      return;
+    }
+    if (this.validateDepartureTime(departureTime) === false) {
+      this.errorMsg = 'Please enter departure time!';
+      this.errorFlag = true;
+      return;
+    }
     const ride = new Ride(this.rideId, departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
@@ -98,6 +115,29 @@ export class ScheduleEditComponent implements OnInit {
 
   fetchDrivers() {
     return this.drivers;
+  }
+  validateVehicleNo(vehicleNo) {
+    if (vehicleNo === '' || null || undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateSelectedValue(selectedValue) {
+    if (selectedValue === '' || null || undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateDepartureTime(departureTime) {
+    if (departureTime === '' || null || undefined) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }

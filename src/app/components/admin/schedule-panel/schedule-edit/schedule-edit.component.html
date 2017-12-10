@@ -103,6 +103,10 @@
             (click)="deleteRide()">Delete Ride
     </button>
   </div>
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
 </div>
 
 <!-- Footer -->
