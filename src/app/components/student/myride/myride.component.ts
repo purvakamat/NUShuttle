@@ -84,32 +84,33 @@ export class MyrideComponent implements OnInit {
       });
     });
 
-    // to show a blank UI when no ride is selected
-    if((this.sharedService.user != undefined && this.sharedService.user._queue != undefined)
-        && this.sharedService.selectedRide != undefined){
+    if((this.sharedService.user != undefined) && (this.sharedService.user._queue != undefined)){
+      // ride is already selected, fetch details for display
       this.noRides = false;
-    }
-    else {
-      // checks if ride is already selected and fetches details for display
-      if (!isUndefined(this.sharedService.user)
-        && !isUndefined(this.sharedService.user._queue)) {
+      this.showRideDetails = true;
 
-        this.showRideDetails = true;
+      this.queueService.findQueueSlotById(this.sharedService.user._queue)
+        .subscribe((slot: QueueSlot) => {
+          this.queueSlot = slot;
+          this.sharedService.selectedRide = slot._ride;
 
-        this.queueService.findQueueSlotById(this.sharedService.user._queue)
-          .subscribe((slot: QueueSlot) => {
-            this.queueSlot = slot;
-            this.sharedService.selectedRide = slot._ride;
-
-            this.rideService.findRideById(this.sharedService.selectedRide).subscribe((ride: Ride) => {
-              this.ride = ride;
-              this.departure_time = ride.departure_time;
-              this.vehicle_no = ride.vehicle_no;
-              this.pick_up = ride.origin;
-              this.driver_name = ride.driver_name;
-            });
+          this.rideService.findRideById(this.sharedService.selectedRide).subscribe((ride: Ride) => {
+            this.ride = ride;
+            this.departure_time = ride.departure_time;
+            this.vehicle_no = ride.vehicle_no;
+            this.pick_up = ride.origin;
+            this.driver_name = ride.driver_name;
           });
-      }
+        });
+    }
+    else if(this.sharedService.selectedRide != undefined){
+      // ask user to select drop off location before adding to queue
+      this.noRides = false;
+      this.showRideDetails = false;
+    }
+    else{
+      // show a blank UI when no ride is selected
+      this.noRides = true;
     }
   }
 
@@ -137,7 +138,7 @@ export class MyrideComponent implements OnInit {
 
   dropOffQueue(){
     this.queueService.deleteQueueSlot(this.queueSlot._id).subscribe((res) => {
-      this.sharedService.user._queue = '';
+      this.sharedService.user._queue = null;
       this.showRideDetails = false;
       this.userService.updateUser(this.sharedService.user._id, this.sharedService.user)
         .subscribe((res) => {

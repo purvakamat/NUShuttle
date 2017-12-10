@@ -87,4 +87,9 @@ export class RidesComponent implements OnInit {
     this.sharedService.selectedRide = this.carousel_rides[this.currentRide]._id;
     this.router.navigate(['/myride']);
   }
+
+  openMyRide(){
+    this.sharedService.selectedRide = null;
+    this.router.navigate(['/myride']);
+  }
 }

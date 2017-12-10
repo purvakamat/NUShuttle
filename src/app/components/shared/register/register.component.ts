@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit {
     var ver_password = this.registerForm.value.verifypassword;
     var email = this.registerForm.value.email;
     var role = "STUDENT";
+    var firstname = this.registerForm.value.firstname;
+    var lastname = this.registerForm.value.lastname;
 
     if(password != ver_password){
       this.errorMsg = "The passwords do not match. Please re-enter the passwords."
@@ -35,6 +37,8 @@ export class RegisterComponent implements OnInit {
     }
     else{
       var user = new User('', username, password, email, role);
+      user.firstName = firstname;
+      user.lastName = lastname;
       this.userService.register(user).subscribe((user: User) => {
             if(user.role == 'STUDENT')
               this.router.navigate(['/rides']);

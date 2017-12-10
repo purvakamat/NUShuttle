@@ -52,6 +52,30 @@
       Please re-enter the password
     </span>
 
+    <input placeholder="firstname"
+           type="text"
+           class="form-control regitser-elements"
+           name="firstname"
+           ngModel
+           required
+           autofocus
+           #firstname="ngModel"/>
+    <span class="help-block regitser-elements" *ngIf="!firstname.valid && firstname.touched">
+      Please enter your first name
+    </span>
+
+    <input placeholder="lastname"
+           type="text"
+           class="form-control regitser-elements"
+           name="lastname"
+           ngModel
+           required
+           autofocus
+           #lastname="ngModel"/>
+    <span class="help-block regitser-elements" *ngIf="!lastname.valid && lastname.touched">
+      Please enter your last name
+    </span>
+
     <button class="btn btn-primary btn-block regitser-elements"
             type="submit" [disabled] = "!f.valid">Register</button>
     <button class="btn btn-danger btn-block regitser-elements"
