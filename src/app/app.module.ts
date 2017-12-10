@@ -34,6 +34,7 @@ import {DriverEditComponent} from './components/admin/driver-panel/driver-edit/d
 import {DriverNewComponent} from './components/admin/driver-panel/driver-new/driver-new.component';
 import {AuthGuard} from "./services/auth-guard.service";
 import { AnonymousComponent } from './components/anonymous/anonymous.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AnonymousComponent } from './components/anonymous/anonymous.component';
     AnonymousComponent
   ],
   imports: [
+    DateTimePickerModule,
     BrowserModule,
     FormsModule,
     HttpModule,

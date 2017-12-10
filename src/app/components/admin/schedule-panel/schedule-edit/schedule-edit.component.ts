@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Ride} from '../../../../models/ride.model.client';
 import {RideService} from '../../../../services/ride.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from "../../../../models/user.model.client";
-import {DriverService} from "../../../../services/driver.service.client";
-import {UserService} from "../../../../services/user.service.client";
-import {connectableObservableDescriptor} from "rxjs/observable/ConnectableObservable";
+import {User} from '../../../../models/user.model.client';
+import {DriverService} from '../../../../services/driver.service.client';
+import {UserService} from '../../../../services/user.service.client';
+import {connectableObservableDescriptor} from 'rxjs/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-schedule-edit',

@@ -3,9 +3,9 @@ import {MapsAPILoader, AgmMap} from '@agm/core';
 import {} from '@types/googlemaps';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {QueueSlotService} from "../../../services/queueslot.service.client";
-import {QueueSlot} from "../../../models/queueslot.model.client";
-import {User} from "../../../models/user.model.client";
+import {QueueSlotService} from '../../../services/queueslot.service.client';
+import {QueueSlot} from '../../../models/queueslot.model.client';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-shortestpath',

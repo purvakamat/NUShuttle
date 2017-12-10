@@ -62,7 +62,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -115,6 +115,8 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_admin_driver_panel_driver_new_driver_new_component__ = __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__services_auth_guard_service__ = __webpack_require__("../../../../../src/app/services/auth-guard.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_anonymous_anonymous_component__ = __webpack_require__("../../../../../src/app/components/anonymous/anonymous.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime__ = __webpack_require__("../../../../ng-pick-datetime/picker.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -157,13 +159,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_5__components_apitest_pickup_pickup_component__["a" /* PickupComponent */],
@@ -189,10 +192,11 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_35__components_anonymous_anonymous_component__["a" /* AnonymousComponent */]
         ],
         imports: [
+            __WEBPACK_IMPORTED_MODULE_36_ng_pick_datetime__["DateTimePickerModule"],
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_12__app_routing__["a" /* Routing */],
             __WEBPACK_IMPORTED_MODULE_25_ngx_carousel__["a" /* NgxCarouselModule */],
             __WEBPACK_IMPORTED_MODULE_6__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -390,7 +394,7 @@ var DriverEditComponent = (function () {
     return DriverEditComponent;
 }());
 DriverEditComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-driver-edit',
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-edit/driver-edit.component.css")]
@@ -473,7 +477,7 @@ var DriverListComponent = (function () {
     return DriverListComponent;
 }());
 DriverListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-driver-list',
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-list/driver-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-list/driver-list.component.css")]
@@ -574,7 +578,7 @@ var DriverNewComponent = (function () {
     return DriverNewComponent;
 }());
 DriverNewComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-driver-new',
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-new/driver-new.component.css")]
@@ -657,7 +661,7 @@ var DriverPanelComponent = (function () {
     return DriverPanelComponent;
 }());
 DriverPanelComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-driver-panel',
         template: __webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/driver-panel/driver-panel.component.css")]
@@ -691,7 +695,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <a class=\"navbar-brand\">\n      <b class=\"colorWhite\">EDIT RIDE</b>\n    </a>\n\n    <div class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container fluid\">\n  <div class=\"form-group\">\n    <label for=\"vehicleNo\">\n      Vehicle No:\n    </label>\n    <input [(ngModel)]=\"vehicleNo\"\n           placeholder=\"Vehicle Number\"\n           type=\"text\"\n           id=\"vehicleNo\"\n           class=\"form-control\"/>\n\n    <div>\n      <label for=\"driver\" class=\"nhs-padding\">\n        Choose driver\n      </label>\n    </div>\n    <div>\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\n        <option *ngFor=\"let driver of fetchDrivers()\"\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\n        </option>\n      </select>\n    </div>\n    <div>\n      <label for=\"departureTime\" class=\"nhs-padding\">\n        Departure Time\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"departureTime\"\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"seatCount\" class=\"nhs-padding\">\n        Seat count\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"seatCount\"\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\n        Blocked Seat\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"blockedCount\"\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\n             placeholder=\"0\" value=\"0\" class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"origin\" class=\"nhs-padding\">\n        Origin\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"origin\"\n             type=\"text\" id=\"origin\" name=\"origin\"\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\n             class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"destination\" class=\"nhs-padding\">\n        Destination\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"destination\"\n             type=\"text\" id=\"destination\" name=\"destination\"\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\n             class=\"form-control\"/>\n    </div>\n\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\n            (click)=\"updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\n      Update Ride\n    </button>\n    <button class=\"btn btn-danger btn-block nhs-btn\" type=\"submit\"\n            (click)=\"deleteRide()\">Delete Ride\n    </button>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"container-fluid\">\n\n    <a class=\"navbar-brand\">\n      <b class=\"colorWhite\">EDIT RIDE</b>\n    </a>\n\n    <div class=\"navbar-text pull-left\">\n      <a [routerLink]=\"['/user', userId, 'admin', 'schedules']\"\n         class=\"navbar-link\">\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\n      </a>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container fluid\">\n  <div class=\"form-group\">\n    <label for=\"vehicleNo\">\n      Vehicle No:\n    </label>\n    <input [(ngModel)]=\"vehicleNo\"\n           placeholder=\"Vehicle Number\"\n           type=\"text\"\n           id=\"vehicleNo\"\n           class=\"form-control\"/>\n\n    <div>\n      <label for=\"driver\" class=\"nhs-padding\">\n        Choose driver\n      </label>\n    </div>\n    <div>\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\n        <option *ngFor=\"let driver of fetchDrivers()\"\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\n        </option>\n      </select>\n    </div>\n    <div>\n      <label for=\"departureTime\" class=\"nhs-padding\">\n        Departure Time\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"departureTime\"\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"seatCount\" class=\"nhs-padding\">\n        Seat count\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"seatCount\"\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\n        Blocked Seat\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"blockedCount\"\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\n             placeholder=\"0\" value=\"0\" class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"origin\" class=\"nhs-padding\">\n        Origin\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"origin\"\n             type=\"text\" id=\"origin\" name=\"origin\"\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\n             class=\"form-control\"/>\n    </div>\n\n    <div>\n      <label for=\"destination\" >\n        Destination\n      </label>\n    </div>\n    <div>\n      <input [(ngModel)]=\"destination\"\n             type=\"text\" id=\"destination\" name=\"destination\"\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\n             class=\"form-control\"/>\n    </div>\n\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\n            (click)=\"updateRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\n      Update Ride\n    </button>\n    <button class=\"btn btn-danger btn-block nhs-btn\" type=\"submit\"\n            (click)=\"deleteRide()\">Delete Ride\n    </button>\n  </div>\n</div>\n\n<!-- Footer -->\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\n"
 
 /***/ }),
 
@@ -792,7 +796,7 @@ var ScheduleEditComponent = (function () {
     return ScheduleEditComponent;
 }());
 ScheduleEditComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-schedule-edit',
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-edit/schedule-edit.component.css")]
@@ -877,7 +881,7 @@ var ScheduleListComponent = (function () {
     return ScheduleListComponent;
 }());
 ScheduleListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-schedule-list',
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-list/schedule-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-list/schedule-list.component.css")]
@@ -911,7 +915,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/admin/schedule-panel/schedule-new/schedule-new.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">NEW RIDE</b>\r\n    </a>\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/user', userId,'admin', 'schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\" class=\"nhs-padding\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\r\n        <option *ngFor=\"let driver of fetchDrivers()\"\r\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label for=\"departureTime\" class=\"nhs-padding\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"seatCount\" class=\"nhs-padding\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"origin\" class=\"nhs-padding\">\r\n        Origin\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"origin\"\r\n             type=\"text\" id=\"origin\" name=\"origin\"\r\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"destination\" class=\"nhs-padding\">\r\n        Destination\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"destination\"\r\n             type=\"text\" id=\"destination\" name=\"destination\"\r\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\r\n      Add Ride\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <a class=\"navbar-brand\">\r\n      <b class=\"colorWhite\">NEW RIDE</b>\r\n    </a>\r\n\r\n    <div class=\"navbar-text pull-left\">\r\n      <a [routerLink]=\"['/user', userId,'admin', 'schedules']\"\r\n         class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"container fluid\">\r\n  <div class=\"form-group\">\r\n    <label for=\"vehicleNo\">\r\n      Vehicle No:\r\n    </label>\r\n    <input [(ngModel)]=\"vehicleNo\"\r\n           placeholder=\"Vehicle Number\"\r\n           type=\"text\"\r\n           id=\"vehicleNo\"\r\n           class=\"form-control\"/>\r\n\r\n    <div>\r\n      <label for=\"driver\" class=\"nhs-padding\">\r\n        Choose driver\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <select id=\"driver\" class=\"form-control\" [(ngModel)]=\"selectedValue\">\r\n        <option *ngFor=\"let driver of fetchDrivers()\"\r\n                value=\"{{driver._id}}\">{{driver.firstName}} {{driver.lastName}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n    <div>\r\n      <label class=\"nhs-padding\">\r\n        Departure Time\r\n      </label>\r\n    </div>\r\n    <owl-date-time [(ngModel)]=\"departureTime\"></owl-date-time>\r\n   <!-- <div>\r\n      <input [(ngModel)]=\"departureTime\"\r\n             type=\"datetime-local\" id=\"departureTime\" name=\"departureTime\"\r\n             placeholder=\"HH:mm:ss\" class=\"form-control\"/>\r\n    </div>-->\r\n\r\n    <div>\r\n      <label for=\"seatCount\" class=\"nhs-padding\">\r\n        Seat count\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"seatCount\"\r\n             type=\"number\" id=\"seatCount\" name=\"seatCount\"\r\n             placeholder=\"9\" value=\"9\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"blockedSeat\" class=\"nhs-padding\">\r\n        Blocked Seat\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"blockedCount\"\r\n             type=\"number\" id=\"Blockedseat\" name=\"blockedSeat\"\r\n             placeholder=\"1\" value=\"1\" class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"origin\" class=\"nhs-padding\">\r\n        Origin\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"origin\"\r\n             type=\"text\" id=\"origin\" name=\"origin\"\r\n             placeholder=\"Address of origin\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <div>\r\n      <label for=\"destination\" class=\"nhs-padding\">\r\n        Destination\r\n      </label>\r\n    </div>\r\n    <div>\r\n      <input [(ngModel)]=\"destination\"\r\n             type=\"text\" id=\"destination\" name=\"destination\"\r\n             placeholder=\"Destination address\" value=\"360 Huntington Ave, Boston, MA 02115\"\r\n             class=\"form-control\"/>\r\n    </div>\r\n\r\n    <button class=\"btn btn-primary btn-block nhs-btn\" type=\"submit\"\r\n            (click)=\"createRide(departureTime, selectedValue, vehicleNo, seatCount, blockedCount, origin, destination)\">\r\n      Add Ride\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<!-- Footer -->\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\"></nav>\r\n"
 
 /***/ }),
 
@@ -991,7 +995,7 @@ var ScheduleNewComponent = (function () {
     return ScheduleNewComponent;
 }());
 ScheduleNewComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-schedule-new',
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-new/schedule-new.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-new/schedule-new.component.css")]
@@ -1092,7 +1096,7 @@ var SchedulePanelComponent = (function () {
     return SchedulePanelComponent;
 }());
 SchedulePanelComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-schedule-panel',
         template: __webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/schedule-panel/schedule-panel.component.css")]
@@ -1154,7 +1158,7 @@ var SettingPanelComponent = (function () {
     return SettingPanelComponent;
 }());
 SettingPanelComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-setting-panel',
         template: __webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/admin/setting-panel/setting-panel.component.css")]
@@ -1223,7 +1227,7 @@ var AnonymousComponent = (function () {
     return AnonymousComponent;
 }());
 AnonymousComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-anonymous',
         template: __webpack_require__("../../../../../src/app/components/anonymous/anonymous.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/anonymous/anonymous.component.css")]
@@ -1293,7 +1297,7 @@ var ApitestComponent = (function () {
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         this.dropoff = '360 Huntington Avenue, Boston, MA, United States';
         // create search FormControl
-        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         this.setCurrentPosition();
         // load Places Autocomplete
         this.mapsAPILoader.load().then(function () {
@@ -1333,16 +1337,16 @@ var ApitestComponent = (function () {
     return ApitestComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('search'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('search'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], ApitestComponent.prototype, "searchElementRef", void 0);
 ApitestComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-apitest',
         template: __webpack_require__("../../../../../src/app/components/apitest/apitest.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/apitest/apitest.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _c || Object])
 ], ApitestComponent);
 
 var _a, _b, _c;
@@ -1426,7 +1430,7 @@ var DropoffComponent = (function () {
         // this.longitude = -71.0878975;
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         // create search FormControl
-        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         // set current position
         this.setCurrentPosition();
         // load Places Autocomplete
@@ -1477,16 +1481,16 @@ var DropoffComponent = (function () {
     return DropoffComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('search'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('search'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], DropoffComponent.prototype, "searchElementRef", void 0);
 DropoffComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-dropoff',
         template: __webpack_require__("../../../../../src/app/components/apitest/dropoff/dropoff.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/apitest/dropoff/dropoff.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _e || Object])
 ], DropoffComponent);
 
 var _a, _b, _c, _d, _e;
@@ -1557,7 +1561,7 @@ var PickupComponent = (function () {
         });
         this.iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
         // create search FormControl
-        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         // set current position
         this.setCurrentPosition();
         // load Places Autocomplete
@@ -1599,16 +1603,16 @@ var PickupComponent = (function () {
     return PickupComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('search'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('search'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], PickupComponent.prototype, "searchElementRef", void 0);
 PickupComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-pickup',
         template: __webpack_require__("../../../../../src/app/components/apitest/pickup/pickup.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/apitest/pickup/pickup.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _d || Object])
 ], PickupComponent);
 
 var _a, _b, _c, _d;
@@ -1712,7 +1716,7 @@ var ShortestpathComponent = (function () {
             //
         });
         // create search FormControl
-        this.searchControl = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]();
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]();
         // set current position
         this.setCurrentPosition();
         // load Places Autocomplete
@@ -1787,20 +1791,20 @@ var ShortestpathComponent = (function () {
     return ShortestpathComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('search'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('search'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], ShortestpathComponent.prototype, "searchElementRef", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1__agm_core__["b" /* AgmMap */]),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1__agm_core__["b" /* AgmMap */]),
     __metadata("design:type", Object)
 ], ShortestpathComponent.prototype, "agmMap", void 0);
 ShortestpathComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-shortestpath',
         template: __webpack_require__("../../../../../src/app/components/apitest/shortestpath/shortestpath.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/apitest/shortestpath/shortestpath.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _e || Object])
 ], ShortestpathComponent);
 
 var _a, _b, _c, _d, _e;
@@ -1876,7 +1880,7 @@ var DriverComponent = (function () {
     return DriverComponent;
 }());
 DriverComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-driver',
         template: __webpack_require__("../../../../../src/app/components/driver/driver.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/driver/driver.component.css")]
@@ -1973,11 +1977,11 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('form'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* NgForm */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* NgForm */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('form'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["NgForm"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["NgForm"]) === "function" && _a || Object)
 ], LoginComponent.prototype, "loginForm", void 0);
 LoginComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',
         template: __webpack_require__("../../../../../src/app/components/shared/login/login.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/shared/login/login.component.css")]
@@ -2100,7 +2104,7 @@ var ProfileComponent = (function () {
     return ProfileComponent;
 }());
 ProfileComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-profile',
         template: __webpack_require__("../../../../../src/app/components/shared/profile/profile.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/shared/profile/profile.component.css")]
@@ -2208,11 +2212,11 @@ var RegisterComponent = (function () {
     return RegisterComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('f'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* NgForm */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["c" /* NgForm */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('f'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["NgForm"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["NgForm"]) === "function" && _a || Object)
 ], RegisterComponent.prototype, "registerForm", void 0);
 RegisterComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-register',
         template: __webpack_require__("../../../../../src/app/components/shared/register/register.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/shared/register/register.component.css")]
@@ -2313,7 +2317,7 @@ var MyrideComponent = (function () {
             });
         }
         // create search FormControl
-        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]();
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         // set current position
         this.setCurrentPosition();
         // load Places Autocomplete
@@ -2368,16 +2372,16 @@ var MyrideComponent = (function () {
     return MyrideComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('search'),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('search'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], MyrideComponent.prototype, "searchElementRef", void 0);
 MyrideComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-myride',
         template: __webpack_require__("../../../../../src/app/components/student/myride/myride.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/student/myride/myride.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_user_service_client__["a" /* UserService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_9__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_ride_service_client__["a" /* RideService */]) === "function" && _h || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["c" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__["a" /* QueueSlotService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_queueslot_service_client__["a" /* QueueSlotService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_user_service_client__["a" /* UserService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_9__services_ride_service_client__["a" /* RideService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_ride_service_client__["a" /* RideService */]) === "function" && _h || Object])
 ], MyrideComponent);
 
 var _a, _b, _c, _d, _e, _f, _g, _h;
@@ -2442,7 +2446,7 @@ var RidesListComponent = (function () {
     return RidesListComponent;
 }());
 RidesListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-rides-list',
         template: __webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/student/rides-list/rides-list.component.css")]
@@ -2567,7 +2571,7 @@ var RidesComponent = (function () {
     return RidesComponent;
 }());
 RidesComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-rides',
         template: __webpack_require__("../../../../../src/app/components/student/rides/rides.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/student/rides/rides.component.css")]
@@ -2667,7 +2671,7 @@ var AuthGuard = (function () {
     return AuthGuard;
 }());
 AuthGuard = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__user_service_client__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], AuthGuard);
 
@@ -2720,7 +2724,7 @@ var DriverService = (function () {
     return DriverService;
 }());
 DriverService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], DriverService);
 
@@ -2783,7 +2787,7 @@ var QueueSlotService = (function () {
     return QueueSlotService;
 }());
 QueueSlotService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], QueueSlotService);
 
@@ -2858,7 +2862,7 @@ var RideService = (function () {
     return RideService;
 }());
 RideService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], RideService);
 
@@ -2886,7 +2890,7 @@ var SharedService = (function () {
     return SharedService;
 }());
 SharedService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
 ], SharedService);
 
 //# sourceMappingURL=shared.service.js.map
@@ -3022,7 +3026,7 @@ var UserService = (function () {
     return UserService;
 }());
 UserService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_service__["a" /* SharedService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], UserService);
 
@@ -3058,7 +3062,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
