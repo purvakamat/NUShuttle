@@ -1,0 +1,13 @@
+.description {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 16px;
+}
+.restrictions {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 15px;
+}
+.home-element {
+  margin-top: 10px;
+}

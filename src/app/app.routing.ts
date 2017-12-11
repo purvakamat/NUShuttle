@@ -22,15 +22,16 @@ import {AnonymousComponent} from './components/anonymous/anonymous.component';
 import {AuthGuard} from "./services/auth-guard.service";
 import {AdminAuthGuard} from "./services/admin-auth-guard.service";
 import {DriverAuthGuard} from "./services/driver-auth-guard.service";
+import {HomeComponent} from './components/home/home.component';
 
 const APP_ROUTES: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: HomeComponent},
   {path: 'apitest', component: ApitestComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'pickup', component: PickupComponent},
   {path: 'dropoff', component: DropoffComponent},
-  {path: 'driver', component: DriverComponent,canActivate: [DriverAuthGuard]},
+  {path: 'driver', component: DriverComponent, canActivate: [DriverAuthGuard]},
   {path: 'admin-schedules', component: ScheduleListComponent,canActivate: [AdminAuthGuard]},
   {path: 'admin-new-schedule', component: ScheduleNewComponent,canActivate: [AdminAuthGuard]},
   {path: 'admin-edit-schedule/:rid', component: ScheduleEditComponent,canActivate: [AdminAuthGuard]},

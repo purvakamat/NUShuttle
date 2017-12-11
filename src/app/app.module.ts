@@ -36,6 +36,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AdminAuthGuard} from "./services/admin-auth-guard.service";
 import {DriverAuthGuard} from "./services/driver-auth-guard.service";
 import {AuthGuard} from "./services/auth-guard.service";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {AuthGuard} from "./services/auth-guard.service";
     DriverListComponent,
     DriverNewComponent,
     DriverEditComponent,
-    AnonymousComponent
+    AnonymousComponent,
+    HomeComponent
   ],
   imports: [
     DateTimePickerModule,
