@@ -25,9 +25,10 @@
     </div>
   </div>
 
-  <div class="row">
+  <div>
     <ul class="list-group">
       <li class="list-group-item nhs-table-header colorWhite">
+        <div class="row">
           <div class="col-xs-3">
             Driver's Name
           </div>
@@ -43,6 +44,7 @@
           <div class="col-xs-2">
             Settings
           </div>
+        </div>
       </li>
       <li class="list-group-item nhs-table-content" *ngFor="let ride of fetchRides()">
         <div class="row">
@@ -59,11 +61,11 @@
             {{ride.blocked_seats}}
           </div>
           <div class="col-xs-2">
-          <a [routerLink]="['/admin-edit-schedule', ride._id]">
-            <div class="nhs-glyphicon">
-            <span class="glyphicon-cog glyphicon"></span>
-            </div>
-          </a>
+            <a [routerLink]="['/admin-edit-schedule', ride._id]">
+              <div class="nhs-glyphicon">
+                <span class="glyphicon-cog glyphicon"></span>
+              </div>
+            </a>
           </div>
         </div>
       </li>
