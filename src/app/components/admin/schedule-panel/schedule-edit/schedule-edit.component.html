@@ -44,8 +44,8 @@
       </label>
     </div>
     <div>
-      <input  type="date" [(ngModel)] ="departureTime"
-              id="departureTime" name="departureTime" class="form-control"/>
+      <input type="datetime-local" id="departureTime" name="departureTime" ng-model="departureTime"
+             placeholder="yyyy-MM-dd HH:mm:ss" class="form-control" required />
     </div>
 
     <div>
