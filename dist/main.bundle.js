@@ -761,7 +761,6 @@ var ScheduleEditComponent = (function () {
             _this.rideService.getAllRides(100)
                 .subscribe(function (rides) {
                 _this.rides = rides;
-                console.log(rides);
             });
             _this.userService.findUserById(_this._driver)
                 .subscribe(function (user) {
@@ -2931,7 +2930,6 @@ var RideService = (function () {
     };
     RideService.prototype.updateRide = function (rideId, ride) {
         var url = this.baseURL + '/' + rideId;
-        console.log(url);
         return this.http.put(url, ride)
             .map(function (response) {
             return response.json();
@@ -2939,7 +2937,6 @@ var RideService = (function () {
     };
     RideService.prototype.deleteRide = function (rideId) {
         var url = this.baseURL + '/' + rideId;
-        console.log(url);
         return this.http.delete(url)
             .map(function (response) {
             return response.json();
@@ -3027,7 +3024,6 @@ var UserService = (function () {
         return this.http.post(this.baseURL + '/api/login', body, requestOptions)
             .map(function (res) {
             var data = res.json();
-            console.log(data);
             _this.sharedService.user = data;
             return data;
         });
@@ -3074,7 +3070,6 @@ var UserService = (function () {
     };
     UserService.prototype.findUserById = function (userId) {
         return this.http.get(this.baseURL + '/api/user' + "/" + userId).map(function (response) {
-            console.log(response.json());
             return response.json();
         });
     };
