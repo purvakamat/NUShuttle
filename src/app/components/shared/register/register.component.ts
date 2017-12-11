@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     var password = this.registerForm.value.password;
     var ver_password = this.registerForm.value.verifypassword;
     var email = this.registerForm.value.email;
-    var role = "STUDENT";
+    var role = "ADMIN";
     var firstname = this.registerForm.value.firstname;
     var lastname = this.registerForm.value.lastname;
 
@@ -43,9 +43,9 @@ export class RegisterComponent implements OnInit {
             if(user.role == 'STUDENT')
               this.router.navigate(['/rides']);
             else if(user.role == 'DRIVER')
-              this.router.navigate(['/user',user._id,'driver']);
+              this.router.navigate(['/driver']);
             else if(user.role == 'ADMIN')
-              this.router.navigate(['/user', user._id,'admin', 'schedules']);
+              this.router.navigate(['/admin-schedules']);
             else{
               this.userService.logout().subscribe((res) => {
                 this.router.navigate(['/login']);

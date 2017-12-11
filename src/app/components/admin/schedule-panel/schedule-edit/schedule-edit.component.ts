@@ -16,7 +16,6 @@ export class ScheduleEditComponent implements OnInit {
 
   rides: Ride[];
   departureTime: Date;
-  driverName: String;
   vehicleNo: String;
   seatCount: Number;
   blockedCount: Number;
@@ -95,6 +94,8 @@ export class ScheduleEditComponent implements OnInit {
       this.errorFlag = true;
       return;
     }
+    console.log(departureTime);
+    console.log(this.departureTime);
     const ride = new Ride(this.rideId, departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;

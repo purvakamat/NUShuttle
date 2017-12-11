@@ -79,6 +79,7 @@ export class ScheduleNewComponent implements OnInit {
       this.errorFlag = true;
       return;
     }
+
     const ride = new Ride('', departureTime, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;

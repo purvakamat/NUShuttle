@@ -13,11 +13,6 @@ import {User} from "../../../../models/user.model.client";
 export class ScheduleListComponent implements OnInit {
 
   rides: Ride[];
-  departureTime: Date;
-  _driver: String;
-  vehicleNo: String;
-  seatCount: Number;
-  blockedCount: Number;
   ride: Ride;
   rideId: String;
   firstName: String;

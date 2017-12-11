@@ -21,7 +21,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <label>Rides</label>
+      <label>RIDES</label>
     </div>
   </div>
 
@@ -52,7 +52,7 @@
             {{ride.driver_name}}
           </div>
           <div class="col-xs-4">
-            {{ride.departure_time | date:'MM-dd-yyyy hh:mm a':'+0500'}}
+            {{ride.departure_time | date:'medium'}}
           </div>
           <div class="col-xs-1">
             {{ride.seat_count}}
