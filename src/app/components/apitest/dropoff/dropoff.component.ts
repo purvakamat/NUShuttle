@@ -69,7 +69,6 @@ export class DropoffComponent implements OnInit {
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
           // get the place result
-          // console.log(autocomplete);
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
           // verify result

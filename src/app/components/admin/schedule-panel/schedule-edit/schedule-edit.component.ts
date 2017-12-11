@@ -93,9 +93,10 @@ export class ScheduleEditComponent implements OnInit {
       this.errorFlag = true;
       return;
     }
-    console.log(departureTime);
-    console.log(this.departureTime);
-    const ride = new Ride(this.rideId, departureTime, selectedValue, '');
+
+    var date = new Date(this.departureTime);
+    var dt = new Date(date.valueOf() + date.getTimezoneOffset());
+    const ride = new Ride(this.rideId, dt, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;

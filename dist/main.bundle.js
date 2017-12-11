@@ -812,9 +812,9 @@ var ScheduleEditComponent = (function () {
             this.errorFlag = true;
             return;
         }
-        console.log(departureTime);
-        console.log(this.departureTime);
-        var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, departureTime, selectedValue, '');
+        var date = new Date(this.departureTime);
+        var dt = new Date(date.valueOf() + date.getTimezoneOffset());
+        var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */](this.rideId, dt, selectedValue, '');
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
         ride.delay = 0;
@@ -1086,7 +1086,9 @@ var ScheduleNewComponent = (function () {
             this.errorFlag = true;
             return;
         }
-        var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */]('', departureTime, selectedValue, '');
+        var date = new Date(this.departureTime);
+        var dt = new Date(date.valueOf() + date.getTimezoneOffset());
+        var ride = new __WEBPACK_IMPORTED_MODULE_1__models_ride_model_client__["a" /* Ride */]('', dt, selectedValue, '');
         ride.seat_count = seatCount;
         ride.blocked_seats = blockedCount;
         ride.delay = 0;
@@ -1301,7 +1303,6 @@ var ApitestComponent = (function () {
             autocomplete.addListener('place_changed', function () {
                 _this.ngZone.run(function () {
                     // get the place result
-                    // console.log(autocomplete);
                     var place = autocomplete.getPlace();
                     // verify result
                     if (place.geometry === undefined || place.geometry === null) {
@@ -1435,7 +1436,6 @@ var DropoffComponent = (function () {
             autocomplete.addListener('place_changed', function () {
                 _this.ngZone.run(function () {
                     // get the place result
-                    // console.log(autocomplete);
                     var place = autocomplete.getPlace();
                     // verify result
                     if (place.geometry === undefined || place.geometry === null) {
@@ -1635,7 +1635,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/apitest/shortestpath/shortestpath.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/user', userId, 'driver']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Ride</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class = \"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <input #search\r\n             placeholder=\"Add a Custom Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"search\"\r\n             class=\"form-control\"\r\n             disabled\r\n             [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>ORIGIN</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleOrigin}}</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>DESTINATION</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleDestination}}</span>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>STUDENTS</label>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <ul class=\"list-group\">\r\n      <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\r\n        <div class=\"row\">\r\n          <div class=\"col-xs-3\">\r\n            {{queueSlot.student_name}}\r\n          </div>\r\n          <div class=\"col-xs-4\">\r\n            {{queueSlot.dropoff_location}}\r\n          </div>\r\n          <div class=\"col-xs-2 pull-left\">\r\n            <button type=\"button\" class=\"btn btn-primary btn-xs\" [disabled]=\"queueSlot.checked_in || queueSlot.notified\"\r\n                    (click)=\"checkIn(queueSlot._id, queueSlot)\">\r\n              Check In</button>\r\n          </div>\r\n          <div class=\"col-xs-2 pull-left\">\r\n            <button type=\"button\" class=\"btn btn-danger btn-xs\" [disabled]=\"queueSlot.checked_in || queueSlot.notified\"\r\n            (click)=\"noShow(queueSlot._id, queueSlot)\">\r\n              No Show</button>\r\n          </div>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <button #findRoute\r\n              id=\"findRoute\"\r\n              type=\"button\"\r\n              class=\"btn btn-primary btn-block\"\r\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map id=\"map\"\r\n               [latitude]=\"latitude\"\r\n               [longitude]=\"longitude\"\r\n               [scrollwheel]=\"false\"\r\n               [zoom]=\"16\">\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n</div>\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"row\">\r\n      <div class=\"col-xs-4\">\r\n        <div class=\"navbar-text pull-left\">\r\n          <a [routerLink]=\"['/driver']\"\r\n             class=\"navbar-link\">\r\n            <span class=\"glyphicon glyphicon-chevron-left colorWhite\"></span>\r\n          </a>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-xs-4\">\r\n        <div class=\" navbar-header\">\r\n          <a class=\"navbar-brand\">\r\n            <b class=\"colorWhite\">Ride</b>\r\n          </a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class = \"container\">\r\n  <div class = \"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <input #search\r\n             placeholder=\"Add a Custom Dropoff Address\"\r\n             autocorrect=\"off\"\r\n             autocapitalize=\"off\"\r\n             spellcheck=\"off\"\r\n             type=\"text\"\r\n             name=\"search\"\r\n             class=\"form-control\"\r\n             disabled\r\n             [formControl]=\"searchControl\">\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>ORIGIN</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleOrigin}}</span>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6\">\r\n      <label>DESTINATION</label>\r\n    </div>\r\n    <div class=\"col-xs-6\">\r\n      <span>{{shuttleDestination}}</span>\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12\">\r\n      <label>STUDENTS</label>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <ul class=\"list-group\">\r\n      <li  class=\"list-group-item\" *ngFor=\"let queueSlot of queueSlots\">\r\n        <div class=\"row\">\r\n          <div class=\"col-xs-3\">\r\n            {{queueSlot.student_name}}\r\n          </div>\r\n          <div class=\"col-xs-4\">\r\n            {{queueSlot.dropoff_location}}\r\n          </div>\r\n          <div class=\"col-xs-2 pull-left\">\r\n            <button type=\"button\" class=\"btn btn-primary btn-xs\" [disabled]=\"queueSlot.checked_in || queueSlot.notified\"\r\n                    (click)=\"checkIn(queueSlot._id, queueSlot)\">\r\n              Check In</button>\r\n          </div>\r\n          <div class=\"col-xs-2 pull-left\">\r\n            <button type=\"button\" class=\"btn btn-danger btn-xs\" [disabled]=\"queueSlot.checked_in || queueSlot.notified\"\r\n            (click)=\"noShow(queueSlot._id, queueSlot)\">\r\n              No Show</button>\r\n          </div>\r\n        </div>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <button #findRoute\r\n              id=\"findRoute\"\r\n              type=\"button\"\r\n              class=\"btn btn-primary btn-block\"\r\n              (click)=\"findOptimumRoute()\">Find Shortest Route</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"row row-style\">\r\n    <div class=\"col-xs-12\">\r\n      <agm-map id=\"map\"\r\n               [latitude]=\"latitude\"\r\n               [longitude]=\"longitude\"\r\n               [scrollwheel]=\"false\"\r\n               [zoom]=\"16\">\r\n      </agm-map>\r\n    </div>\r\n  </div>\r\n</div>\r\n<nav class=\"navbar navbar-default navbar-fixed-bottom\">\r\n  <div class=\"container-fluid\">\r\n    <p class=\"navbar-text pull-right\">\r\n      <a [routerLink]=\"['/profile']\" class=\"navbar-link\">\r\n        <span class=\"glyphicon glyphicon-user nav-foreground\"></span>\r\n      </a>\r\n    </p>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1681,12 +1681,10 @@ var ShortestpathComponent = (function () {
     ShortestpathComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.userId = params['uid'];
             _this.rideId = params['rid'];
             _this.queueslotService
                 .findQueueSlotsByRideId(_this.rideId)
                 .subscribe(function (queueSlots) {
-                // console.log(queueSlots);
                 _this.queueSlots = queueSlots;
                 for (var index = 0; index < _this.queueSlots.length; index++) {
                     var temp = _this.queueSlots[index].dropoff_location;
@@ -1717,7 +1715,6 @@ var ShortestpathComponent = (function () {
                     _this.longitude = place.geometry.location.lng();
                     _this.zoom = 12;
                     _this.currentLocation = place.formatted_address;
-                    // console.log(this.currentLocation);
                 });
             });
         });
@@ -1736,13 +1733,10 @@ var ShortestpathComponent = (function () {
     };
     ShortestpathComponent.prototype.addDropLocation = function (dropOffLocation) {
         if (dropOffLocation) {
-            // console.log('Adding DropOffLocation: ' + dropOffLocation);
             this.waypoints.push({
                 location: dropOffLocation,
                 stopover: true
             });
-            // console.log('testing');
-            // console.log(this.waypoints);
         }
     };
     ShortestpathComponent.prototype.checkIn = function (queueSlotId, queueSlot) {
@@ -1758,12 +1752,10 @@ var ShortestpathComponent = (function () {
         this.queueslotService
             .updateQueueSlot(queueSlotId, newQueueSlot)
             .subscribe(function (queueSlotUpdated) {
-            // console.log(queueSlotUpdated);
             _this.waypoints = [];
             _this.queueslotService
                 .findQueueSlotsByRideId(_this.rideId)
                 .subscribe(function (queueSlots) {
-                // console.log(queueSlots);
                 _this.queueSlots = queueSlots;
                 for (var index = 0; index < _this.queueSlots.length; index++) {
                     var temp = _this.queueSlots[index].dropoff_location;
@@ -1785,12 +1777,10 @@ var ShortestpathComponent = (function () {
         this.queueslotService
             .updateQueueSlot(queueSlotId, newQueueSlot)
             .subscribe(function (queueSlotUpdated) {
-            // console.log(queueSlotUpdated);
             _this.waypoints = [];
             _this.queueslotService
                 .findQueueSlotsByRideId(_this.rideId)
                 .subscribe(function (queueSlots) {
-                // console.log(queueSlots);
                 _this.queueSlots = queueSlots;
                 for (var index = 0; index < _this.queueSlots.length; index++) {
                     if (_this.queueSlots[index].notified) {
@@ -1803,11 +1793,9 @@ var ShortestpathComponent = (function () {
         });
     };
     ShortestpathComponent.prototype.findOptimumRoute = function () {
-        // console.log('map loaded');
         var directionsService = new google.maps.DirectionsService();
         var directionsDisplay = new google.maps.DirectionsRenderer();
         directionsDisplay.setMap(this.map);
-        // console.log(directionsDisplay);
         directionsService.route({
             origin: this.shuttleOrigin,
             destination: this.shuttleDestination,
@@ -1816,7 +1804,6 @@ var ShortestpathComponent = (function () {
             travelMode: google.maps.TravelMode.DRIVING
         }, function (response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
-                // console.log(directionsDisplay);
                 directionsDisplay.setDirections(response);
             }
             else {
@@ -1907,7 +1894,6 @@ var DriverComponent = (function () {
         this.driverService
             .findRidesByUser(userId)
             .subscribe(function (rides) {
-            // console.log(rides);
             _this.rides = rides;
         });
     };
@@ -2933,8 +2919,6 @@ var QueueSlotService = (function () {
     }
     QueueSlotService.prototype.createQueueSlot = function (queueSlot) {
         var url = this.baseURLQueue;
-        console.log(url);
-        console.log(queueSlot);
         return this.http.post(url, queueSlot)
             .map(function (response) {
             return response.json();
@@ -2963,7 +2947,6 @@ var QueueSlotService = (function () {
     };
     QueueSlotService.prototype.updateQueueSlot = function (queueSlotId, queueSlot) {
         var url = this.baseURLQueue + '/' + queueSlotId;
-        console.log(url);
         return this.http.put(url, queueSlot)
             .map(function (response) {
             return response.json();

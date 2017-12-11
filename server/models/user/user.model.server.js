@@ -23,8 +23,6 @@ function deleteUser(userId) {
 
 function findAllUsers() {
   UserModel.find(function(err, doc) {
-    console.log(err);
-    console.log(doc);
   });
 }
 

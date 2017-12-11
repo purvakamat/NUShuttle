@@ -25,7 +25,6 @@ export class ShortestpathComponent implements OnInit {
   searchControl: FormControl;
   rideId: String;
   queueSlots: QueueSlot[];
-  userId: String;
 
   @ViewChild('search')
   searchElementRef: ElementRef;
@@ -48,12 +47,10 @@ export class ShortestpathComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['uid'];
       this.rideId = params['rid'];
       this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
           .subscribe((queueSlots: QueueSlot[]) => {
-            // console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
               const temp = this.queueSlots[index].dropoff_location;
@@ -89,7 +86,6 @@ export class ShortestpathComponent implements OnInit {
           this.zoom = 12;
 
           this.currentLocation = place.formatted_address;
-          // console.log(this.currentLocation);
         });
       });
     });
@@ -111,13 +107,10 @@ export class ShortestpathComponent implements OnInit {
 
   addDropLocation(dropOffLocation: String) {
     if (dropOffLocation) {
-      // console.log('Adding DropOffLocation: ' + dropOffLocation);
       this.waypoints.push({
         location: dropOffLocation,
         stopover: true
       });
-      // console.log('testing');
-      // console.log(this.waypoints);
     }
   }
 
@@ -133,12 +126,10 @@ export class ShortestpathComponent implements OnInit {
     this.queueslotService
       .updateQueueSlot(queueSlotId, newQueueSlot)
       .subscribe((queueSlotUpdated) => {
-        // console.log(queueSlotUpdated);
         this.waypoints = [];
         this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
           .subscribe((queueSlots: QueueSlot[]) => {
-            // console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
               const temp = this.queueSlots[index].dropoff_location;
@@ -160,12 +151,10 @@ export class ShortestpathComponent implements OnInit {
     this.queueslotService
       .updateQueueSlot(queueSlotId, newQueueSlot)
       .subscribe((queueSlotUpdated) => {
-        // console.log(queueSlotUpdated);
         this.waypoints = [];
         this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
           .subscribe((queueSlots: QueueSlot[]) => {
-            // console.log(queueSlots);
             this.queueSlots = queueSlots;
             for (let index = 0; index < this.queueSlots.length; index++) {
               if (this.queueSlots[index].notified) {
@@ -179,12 +168,9 @@ export class ShortestpathComponent implements OnInit {
   }
 
   private findOptimumRoute() {
-
-    // console.log('map loaded');
     const directionsService = new google.maps.DirectionsService();
     const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(this.map);
-    // console.log(directionsDisplay);
 
     directionsService.route({
       origin: this.shuttleOrigin,
@@ -194,7 +180,6 @@ export class ShortestpathComponent implements OnInit {
       travelMode : google.maps.TravelMode.DRIVING
     }, function(response, status) {
       if (status === google.maps.DirectionsStatus.OK) {
-        // console.log(directionsDisplay);
         directionsDisplay.setDirections(response);
       } else {
         window.alert('Directions request failed due to ' + status);

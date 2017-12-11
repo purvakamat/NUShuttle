@@ -17,8 +17,6 @@ export class QueueSlotService {
 
   createQueueSlot(queueSlot: QueueSlot){
     const url = this.baseURLQueue;
-    console.log(url);
-    console.log(queueSlot);
     return this.http.post(url, queueSlot)
       .map((response: Response) => {
         return response.json();
@@ -51,7 +49,6 @@ export class QueueSlotService {
 
   updateQueueSlot(queueSlotId: String, queueSlot: QueueSlot) {
     const url = this.baseURLQueue + '/' +  queueSlotId;
-    console.log(url);
     return this.http.put(url, queueSlot)
       .map((response: Response) =>  {
         return response.json();

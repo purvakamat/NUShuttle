@@ -22,7 +22,6 @@ export class DriverComponent implements OnInit {
     this.driverService
       .findRidesByUser(userId)
       .subscribe((rides: Ride[]) => {
-        // console.log(rides);
         this.rides = rides;
       });
   }

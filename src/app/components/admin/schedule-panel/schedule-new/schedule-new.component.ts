@@ -80,7 +80,9 @@ export class ScheduleNewComponent implements OnInit {
       return;
     }
 
-    const ride = new Ride('', departureTime, selectedValue, '');
+    var date = new Date(this.departureTime);
+    var dt = new Date(date.valueOf() + date.getTimezoneOffset());
+    const ride = new Ride('', dt, selectedValue, '');
     ride.seat_count = seatCount;
     ride.blocked_seats = blockedCount;
     ride.delay = 0;

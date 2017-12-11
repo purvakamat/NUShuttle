@@ -153,7 +153,6 @@ module.exports = function(app) {
     var userId = req.params['userId'];
 
     userModel.deleteUser(userId).then(function (response) {
-      console.log(response);
       if(response.result.n > 0 && response.result.ok > 0)
         res.json("User deleted");
       else
