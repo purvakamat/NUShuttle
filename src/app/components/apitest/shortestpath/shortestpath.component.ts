@@ -25,6 +25,7 @@ export class ShortestpathComponent implements OnInit {
   searchControl: FormControl;
   rideId: String;
   queueSlots: QueueSlot[];
+  userId: String;
 
   @ViewChild('search')
   searchElementRef: ElementRef;
@@ -47,6 +48,7 @@ export class ShortestpathComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      this.userId = params['uid'];
       this.rideId = params['rid'];
       this.queueslotService
           .findQueueSlotsByRideId(this.rideId)
