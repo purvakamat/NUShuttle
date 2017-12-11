@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     var password = this.registerForm.value.password;
     var ver_password = this.registerForm.value.verifypassword;
     var email = this.registerForm.value.email;
-    var role = "ADMIN";
+    var role = "STUDENT";
     var firstname = this.registerForm.value.firstname;
     var lastname = this.registerForm.value.lastname;
 

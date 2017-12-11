@@ -60,7 +60,7 @@
     </ul>
   </div>
 
-  <div [ngSwitch]="queueStatus">
+  <div class="row" [ngSwitch]="queueStatus">
     <div *ngSwitchCase="'ADDTOQUEUE'" class="row add-button">
       <button class="btn btn-success btn-block" (click)="addToQueue()">ADD TO QUEUE</button>
     </div>
