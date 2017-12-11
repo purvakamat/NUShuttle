@@ -29,10 +29,13 @@ import {ScheduleEditComponent} from './components/admin/schedule-panel/schedule-
 import {DriverListComponent} from './components/admin/driver-panel/driver-list/driver-list.component';
 import {DriverEditComponent} from './components/admin/driver-panel/driver-edit/driver-edit.component';
 import {DriverNewComponent} from './components/admin/driver-panel/driver-new/driver-new.component';
-import {AuthGuard} from "./services/auth-guard.service";
+import {StudentAuthGuard} from "./services/student-auth-guard.service";
 import { AnonymousComponent } from './components/anonymous/anonymous.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AdminAuthGuard} from "./services/admin-auth-guard.service";
+import {DriverAuthGuard} from "./services/driver-auth-guard.service";
+import {AuthGuard} from "./services/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -70,7 +73,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       libraries: ['places']
     })
   ],
-  providers: [HttpModule, UserService, RideService, QueueSlotService, DriverService, SharedService, AuthGuard],
+  providers: [HttpModule, UserService, RideService, QueueSlotService, DriverService, SharedService, AuthGuard,
+              StudentAuthGuard, AdminAuthGuard, DriverAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
