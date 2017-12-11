@@ -29,7 +29,6 @@ export class UserService{
       .map(
         (res: Response) => {
           const data = res.json();
-          console.log(data);
           this.sharedService.user = data;
           return data;
         }
@@ -86,7 +85,6 @@ export class UserService{
 
   findUserById(userId : String){
     return this.http.get(this.baseURL+ '/api/user' + "/" + userId).map((response: Response) => {
-      console.log(response.json());
       return response.json();
     });
   }

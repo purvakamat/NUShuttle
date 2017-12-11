@@ -39,7 +39,6 @@ export class RideService {
 
   updateRide(rideId, ride) {
     const url = this.baseURL + '/' + rideId;
-    console.log(url);
     return this.http.put(url, ride)
       .map((response: Response) => {
         return response.json();
@@ -48,7 +47,6 @@ export class RideService {
 
   deleteRide(rideId) {
     const url = this.baseURL + '/' + rideId;
-    console.log(url);
     return this.http.delete(url)
       .map((response: Response) => {
         return response.json();
