@@ -11,3 +11,68 @@
 .home-element {
   margin-top: 10px;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.align-right{
+  width: 100%;
+  text-align: right;
+}
+
+.image-style{
+  margin: 20px;
+  height: 300px;
+  max-width: 200px;
+  display: block;
+}
+
+.all-round-margin{
+  margin: 10px;
+}
+
+.center {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+
+.pull-center{
+  margin-right: 3pt;
+  margin-left: 3pt;
+}
+
+iframe {
+  margin: auto;
+  min-width: 300px;
+  min-height: 300px;
+  width: 100%;
+  height: 100%;
+}
+
+.up-down-margin{
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+
+.align-center{
+  width: 100%;
+  text-align: center;
+}
+
+.align-justify{
+  width: 100%;
+  text-align: justify;
+}
+
