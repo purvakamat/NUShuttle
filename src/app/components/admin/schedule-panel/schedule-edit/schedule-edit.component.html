@@ -44,7 +44,7 @@
       </label>
     </div>
     <div>
-      <input  type="date" [ngModel] ="departureTime | date:'yyyy-MM-dd hh:mm a'" (ngModelChange)="departureTime = $event"
+      <input  type="date" [(ngModel)] ="departureTime"
               id="departureTime" name="departureTime" class="form-control"/>
     </div>
 
